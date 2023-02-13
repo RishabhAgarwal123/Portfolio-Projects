@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const authMiddleware = require('../middlewares/authMiddleware');
 
 const User = require('../models/user');
 
@@ -76,5 +77,24 @@ router.post('/login', async (req, res) => {
         })
     }
 });
+
+// get user
+router.post('/get-user', authMiddleware, async (req, res) => {
+    try {
+        const user = await User.findById(req.body.userId);
+        user.password = '';
+        res.send({
+            message: 'User found successfully',
+            success: true,
+            data: user,
+            status: 200
+        })
+    } catch (error) {
+        res.send({
+            message: error.message,
+            success: false
+        })
+    }
+})
 
 module.exports = router

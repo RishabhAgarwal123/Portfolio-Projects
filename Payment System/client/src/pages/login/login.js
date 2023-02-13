@@ -23,7 +23,9 @@ function Login() {
                 const res = data.data;
                 if (res.success) {
                     message.success(res.message);
-                    // navigate('/dashboard');
+                    localStorage.setItem('token', res.data)
+                    // navigate('/');
+                    window.location.href = '/'
                 } else {
                     message.error(res.message);
                 }

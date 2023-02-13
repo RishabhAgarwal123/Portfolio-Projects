@@ -17,3 +17,12 @@ export const RegisterUser = async (payload) => {
         return error.response.data;
     }
 }
+
+// Get user info
+export const GetUser = async () => {
+    try {
+        return ApiConfig.post('/api/users/get-user');
+    } catch (error) {
+        return error.response.data
+    }
+}
