@@ -12,10 +12,14 @@ import Register from './pages/register/register';
 import Home from './pages/home/home';
 import ProtectedRoute from './components/protectedRoute';
 import PublicRoute from './components/publicRoute';
+import Loader from './components/loader';
+import { useSelector } from 'react-redux';
 
 function App() {
+  const { loader } = useSelector(state => state.loader);
   return (
     <div>
+      {loader && <Loader />}
       <BrowserRouter>
         <Routes>
           <Route path='/login' element={<PublicRoute> <Login /> </PublicRoute>} />

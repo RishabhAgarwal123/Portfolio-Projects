@@ -3,9 +3,12 @@ import { message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { RegisterUser } from '../../apis/users';
 import styles from './register.module.css';
+import { useDispatch } from 'react-redux';
+import { HideLoader, ShowLoader } from '../../redux/loaderSlice';
 
 function Register() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const formData = {
         firstName: '',
         lastName: '',
@@ -42,14 +45,17 @@ function Register() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
+            dispatch(ShowLoader());
             await RegisterUser(registerData).then((data) => {
                 const res = data.data
+                dispatch(HideLoader());
                 if (res.success) {
                     message.success(res.message);
                     navigate('/login');
                 } else message.error(res.message);
             });
         } catch (error) {
+            dispatch(HideLoader());
             message.error(error.message);
         }
     }
