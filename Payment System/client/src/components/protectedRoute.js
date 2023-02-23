@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { SetUser } from '../redux/userSlice';
 import { HideLoader, ShowLoader } from '../redux/loaderSlice';
+import DefaultLayout from './defaultLayout';
 
 function ProtectedRoute(props) {
     const { user } = useSelector(state => state.user);
@@ -21,11 +22,12 @@ function ProtectedRoute(props) {
                     message.success(res.message);
                     dispatch(SetUser(res.data))
                     navigate("/")
-                } else message.error(res.message);
+                } else {
+                    message.error(res.message);
+                }
             })
         } catch (error) {
             dispatch(HideLoader());
-            navigate('/login');
             message.error(error.message);
         }
     }
@@ -41,8 +43,9 @@ function ProtectedRoute(props) {
 
     return (
         user && <div>
-            {user.email}
-            {props.children}
+            <DefaultLayout>
+                {props.children}
+            </DefaultLayout>
         </div>
     )
 }
