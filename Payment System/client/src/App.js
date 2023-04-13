@@ -16,6 +16,7 @@ import PublicRoute from './components/publicRoute';
 import Loader from './components/loader';
 import { useSelector } from 'react-redux';
 import Transactions from './pages/transactions/transactions';
+import Request from './pages/requests/request';
 
 function App() {
   const { loader } = useSelector(state => state.loader);
@@ -26,7 +27,8 @@ function App() {
         <Routes>
           <Route path='/login' element={<PublicRoute> <Login /> </PublicRoute>} />
           <Route path='/register' element={<PublicRoute> <Register /> </PublicRoute>} />
-          <Route path='/transactions' element={<PublicRoute> < Transactions /></PublicRoute>} />
+          <Route path='/transactions' element={<ProtectedRoute> < Transactions /></ProtectedRoute>} />
+          <Route path='/requests' element={<ProtectedRoute> <Request /> </ProtectedRoute>} />
           <Route path='/' element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
