@@ -1,0 +1,133 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: fantasy;
+    height: 100vh;
+    transition: all 0.3s ease-in-out;
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Left slider */
+.slider-left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 70%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-left > div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+.slider-1 {
+    background-image: url('./img_1/tesla.jpg');
+}
+
+.slider-2 {
+    background-image: url('./img_1/bmw_1.jpg');
+}
+
+.slider-3 {
+    background-image: url('./img_1/audi_pic.webp');
+}
+
+.slider-4 {
+    background-image: url('./img_1/geigercars-chevrolet-camaro.jpg');
+}
+
+.slider-5 {
+    background-image: url('./img_1/mersedes_car.jpg');
+}
+
+/* Right slider  */
+.slider-right {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    width: 30%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.slider-right > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+}
+
+.slider-right div:nth-child(1) {
+    background-color: #58dd3a;
+}
+
+.slider-right div:nth-child(2) {
+    background-color: #526db8;
+}
+
+.slider-right div:nth-child(3) {
+    background-color: #16b761;
+}
+
+.slider-right div:nth-child(4) {
+    background-color: #000000;
+}
+
+.slider-right div:nth-child(5) {
+    background-color: #1f2c33;
+}
+
+.slider-right h1 {
+    font-size: 40px;
+    margin-top: 120px;
+    padding: 20px;
+}
+
+/* Buttons */
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 15px;
+}
+
+button:hover {
+    opacity: 0.7;
+}
+
+.container .button-group button {
+    position: absolute;
+    right: 26.4%;
+    top: 50%;
+    z-index: 2;
+}
+
+.container .button-group .button-down {
+    transform: translateX(-100%);
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 95px;
+}
+
+.container .button-group .button-up {
+    transform: translateY(-100%);
+    border-top-right-radius: 95px;
+    border-bottom-right-radius: 50%;
+}
