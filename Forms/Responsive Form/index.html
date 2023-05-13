@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <title>Sliding Sign In Copy Responsive Form</title>
+  <body>
+      <div class="container" id="container">
+          <div class="form-container sign-up-container">
+              <form action="">
+                  <h1 class="form-title sign-up">Sign Up</h1>
+                  <div class="form-control">
+                      <input type="text" required>
+                      <label for="email">Email</label>
+                  </div>
+                  <div class="form-control">
+                      <input type="password" required>
+                      <label for="password">Password</label>
+                  </div>
+                  <button onclick="return false;">Sign Up</button>
+                  <span class="add-link">Sign Up With:</span>
+                  <div class="social-container">
+                      <a href="#" class="social">
+                          <i class="fab fa-google"></i>
+                      </a>
+                      <a href="#" class="social">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="#" class="social">
+                          <i class="fab fa-facebook-f"></i>
+                      </a>
+                  </div>
+              </form>
+          </div>
+          <div class="form-container sign-in-container">
+              <form action="">
+                  <h1 class="form-title sign-in">Sign In</h1>
+                  <div class="form-control">
+                      <input type="text" required>
+                      <label for="email">Email</label>
+                  </div>
+                  <div class="form-control">
+                      <input type="password" required>
+                      <label for="password">Password</label>
+                  </div>
+                  <a href="#">Forgot Your Password ?</a>
+                  <button onclick="return false;">Sign In</button>
+                  <span class="add-link">Sign In With:</span>
+                  <div class="social-container">
+                      <a href="#" class="social">
+                          <i class="fab fa-google"></i>
+                      </a>
+                      <a href="#" class="social">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="#" class="social">
+                          <i class="fab fa-facebook-f"></i>
+                      </a>
+                  </div>
+              </form>
+          </div>
+          <div class="overlay-container">
+              <div class="overlay">
+                  <div class="overlay-panel overlay-left">
+                      <h1>Have you already registered ?</h1>
+                      <p>You can login with your personal info</p>
+                      <button class="next-side-btn" id="sign-in">
+                          Sign In
+                      </button>
+                  </div>
+                  <div class="overlay-panel overlay-right">
+                      <h1>Hello, Friend!</h1>
+                      <p>Let's create your account</p>
+                      <button class="next-side-btn" id="sign-up">
+                          Sign Up
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <script src="./script.js"></script>
+  </body>
+</html>
