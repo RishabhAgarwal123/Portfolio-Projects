@@ -1,0 +1,42 @@
+body {
+  font-family: sans-serif;
+  padding: 40px;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}
+
+.text-part {
+  position: relative;
+  display: inline-block;
+  border-radius: 6px;
+  background: #97c02f;
+  padding: 20px 40px;
+  margin: 12px;
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+  clip-path: polygon(20px 0px, 100% 0px, 100% 100%, 0% 100%, 0% 20px);
+  transition: clip-path 500ms;
+}
+
+.text-part:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background: #658e15;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  transition: transform 500ms;
+  border-radius: 0 0 6px 0;
+}
+
+.text-part:hover {
+  clip-path: polygon(0px 0px, 100% 0px, 100% 100%, 0% 100%, 0% 0px);
+}
+
+.text-part:hover:after {
+  transform: translate(-100%, -100%);
+}
