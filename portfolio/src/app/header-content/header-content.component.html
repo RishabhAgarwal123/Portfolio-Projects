@@ -1,0 +1,41 @@
+<div class="scroll-frame" id="scrollbar2" appScrollbar>
+  <div class="scroll p-15-15">
+    <ul class="scroll__ul">
+      <li class="scroll__ul-li">
+        <h6>Residence:</h6>
+        <span>Rudrapur</span>
+      </li>
+      <li class="scroll__ul-li">
+        <h6>State:</h6>
+        <span>Uttarakhand</span>
+      </li>
+      <li class="scroll__ul-li">
+        <h6>Age:</h6>
+        <span>27</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+  <!-- language -->
+  <div *ngFor="let language of languages" class="language p-30-15">
+    <div class="language-items">
+      <div class="circle-progress" id="circle">
+        <h6>{{ language }}</h6>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="skills p-30-15" *ngFor="let skill of skills; let i = index">
+    <div class="skills__item">
+      <div class="skills__item-heading">
+        <h6>{{ skill }}</h6>
+      </div>
+      <div class="skill__item-progress">
+        <div id="line{{ i + 1 }}"></div>
+      </div>
+    </div>
+  </div>
+</div>

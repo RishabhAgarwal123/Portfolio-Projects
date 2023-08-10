@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-loader',
@@ -7,11 +7,24 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class LoaderComponent implements OnInit {
 
-  constructor() { }
+  isLoading: boolean = true;
+  progress: number = 0;
+  
+  @Output() loadingCompleted = new EventEmitter<void>();
 
   ngOnInit(): void {
+    this.startProgressBar();
   }
 
-  @Input() progress: number = 0;
+  startProgressBar(): void {
+    const interval = setInterval(() => {
+      this.progress += 1;
+      if (this.progress === 100) {
+        clearInterval(interval);
+        this.isLoading = false;
+        this.loadingCompleted.emit(); // Emit the event
+      }
+    }, 0);
+  }
 
 }

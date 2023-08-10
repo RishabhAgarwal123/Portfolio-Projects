@@ -1,0 +1,173 @@
+@import "../../styles/config";
+.header {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  padding: 3rem;
+  height: 23.5rem;
+  background: $info-bar-2-color-light;
+  text-align: center;
+  box-shadow: $shadow-2;
+
+  &__avatar {
+    width: 9rem;
+    height: 9rem;
+    margin: 0 auto;
+    border-radius: 50%;
+    position: relative;
+    margin-bottom: 1.5rem;
+
+    &-photo {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      outline: inherit;
+      transition: $tr-lg;
+      z-index: 0;
+
+      & img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        z-index: 0;
+      }
+
+      & i {
+        background: $card-color-s-light;
+        width: 3rem;
+        height: 3rem;
+        text-align: center;
+        align-self: center;
+        font-weight: 700;
+        font-size: 1.1rem;
+        line-height: 3rem;
+        color: $text-color-1;
+        border-radius: 50%;
+        opacity: 0;
+        z-index: 1;
+        transition: $tr-md;
+      }
+
+      &:hover {
+        opacity: 1;
+        transition: $tr-sm;
+        outline: inherit;
+
+        & i {
+          opacity: -7;
+
+          &:hover {
+            opacity: 1;
+            transform: scale(1.07);
+          }
+        }
+      }
+    }
+
+    &-lamp {
+      z-index: 2;
+
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -0.1rem;
+        right: 0.1rem;
+        background: $text-color-1;
+        height: 2.3rem;
+        width: 2.3rem;
+        border-radius: 50%;
+        animation: puls 1s infinite;
+
+        @keyframes puls {
+          0% {
+            transform: scale(0.6);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 0;
+          }
+        }
+      }
+
+      &-available {
+        position: absolute;
+        bottom: 0.3rem;
+        right: 0.5rem;
+        height: 1.5rem;
+        width: 1.5rem;
+        background: $main-color;
+        border-radius: 50%;
+        z-index: 0;
+        transition: $tr-md;
+
+        &:after {
+          position: relative;
+          content: "I am available for freelance work";
+          width: 11.5rem;
+          display: block;
+          padding: 0.5rem 1rem;
+          margin-left: 1rem;
+          top: -1rem;
+          left: 2rem;
+          font-size: 0.8rem;
+          font-weight: 200;
+          color: $text-color-2;
+          box-shadow: $shadow-2;
+          background: $deep-color;
+          opacity: 0;
+          pointer-events: none;
+          transform: translate(2rem);
+          transition: $tr-md;
+          text-align: left;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          height: 0.5rem;
+          width: 0.5rem;
+          right: -1.5rem;
+          top: 0.5rem;
+          opacity: 0;
+          background: $deep-color;
+          pointer-events: none;
+          transform: translateX(2rem) rotate(45deg);
+          transition: $tr-md;
+          z-index: 99;
+        }
+
+        &:hover {
+          transform: scale(1);
+
+          &:after {
+            opacity: 1;
+            transform: translateX(0);
+          }
+
+          &:before {
+            opacity: 1;
+            transform: translateX(0) rotate(45deg);
+          }
+        }
+      }
+    }
+  }
+
+  &-name {
+    color: $text-color-1;
+    transition: $tr-md;
+    font-size: 1.1rem;
+  }
+
+  &-sm-text {
+    font-size: 1rem;
+  }
+}

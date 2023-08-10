@@ -1,0 +1,24 @@
+@import "../../styles/config";
+.skills {
+    &__item {
+        margin-bottom: 1.5rem;
+        position: relative;
+
+        &-heading {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        &-progress {
+            width: 100%;
+
+            &-progress-text {
+                width: 100%;
+                text-align: right;
+                top: -6rem !important;
+                font-size: 1.1rem;
+                color: $text-color-2 !important;
+            }
+        }
+    }
+}
