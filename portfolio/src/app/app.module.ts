@@ -10,6 +10,8 @@ import { AboutComponent } from './about/about.component';
 import { HeaderComponent } from './header/header.component';
 import { ScrollbarDirective } from './directives/scrollbar.directive';
 import { HeaderContentComponent } from './header-content/header-content.component';
+import { ProgressComponent } from './progress/progress.component';
+import { CircularProgressComponent } from './circular-progress/circular-progress.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { HeaderContentComponent } from './header-content/header-content.componen
     AboutComponent,
     HeaderComponent,
     ScrollbarDirective,
-    HeaderContentComponent
+    HeaderContentComponent,
+    ProgressComponent,
+    CircularProgressComponent
   ],
   imports: [
     BrowserModule,

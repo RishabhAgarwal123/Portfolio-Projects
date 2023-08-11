@@ -18,24 +18,48 @@
 
   <div class="divider"></div>
   <!-- language -->
-  <div *ngFor="let language of languages" class="language p-30-15">
-    <div class="language-items">
-      <div class="circle-progress" id="circle">
-        <h6>{{ language }}</h6>
+  <div class="language-container">
+    <div *ngFor="let language of languages" class="language p-30-15">
+      <div class="language-items">
+        <div class="circle-progress">
+          <app-circular-progress [progressValue]="language.ability"></app-circular-progress>
+          <h6>{{ language.lang }}</h6>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="divider"></div>
 
-  <div class="skills p-30-15" *ngFor="let skill of skills; let i = index">
-    <div class="skills__item">
-      <div class="skills__item-heading">
-        <h6>{{ skill }}</h6>
-      </div>
-      <div class="skill__item-progress">
-        <div id="line{{ i + 1 }}"></div>
+  <div class="skills-container">
+    <div class="skills p-30-0" *ngFor="let skill of skills; let i = index">
+      <div class="skills__item">
+        <div class="skills__item-heading">
+          <h6>{{ skill.skill }}</h6>
+          <span>{{ skill.ability }}%</span>
+        </div>
+        <app-progress [progressValue]="skill.ability"></app-progress>
       </div>
     </div>
   </div>
+
+  <div class="divider"></div>
+
+  <div class="knowledge-list p-15-0">
+    <li>Material UI, Scss</li>
+    <li>MongoDB, MySQL</li>
+    <li>GIT, GutHub</li>
+    <li>Agile Methodology</li>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="cv p-15-15">
+    <a href="../../assets/files/Rishabh_Agarwal_Resume.pdf" class="link" download>Download CV <i class="fas fa-download"></i> </a>
+  </div>
+</div>
+<div class="social">
+  <a href="#." target="_blank"><i class="fa-regular fa-envelope fa-2xl"></i></a>
+  <a href="#." target="_blank"><i class="fa-brands fa-instagram fa-2xl"></i></a>
+  <a href="#." target="_blank"><i class="fa-brands fa-github fa-2xl"></i></a>
 </div>

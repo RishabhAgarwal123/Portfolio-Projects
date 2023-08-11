@@ -26,26 +26,38 @@ body {
 
 .scroll-frame {
   width: 100%;
-  height: calc(100vh - 3rem);
+  height: calc(100vh - 12vh);
 }
 
 .scroll {
+  margin-top: 23rem !important;
   &__ul {
     padding: 0;
     margin: 0;
 
     &-li {
-      font-size: 2rem;
+      font-size: 1rem;
       list-style-type: none;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
       margin-bottom: 0.5rem;
+
+      & h6 {
+        color: rgb(7, 151, 247);
+      }
 
       &:last-child {
         margin-bottom: 0;
       }
     }
   }
+}
+
+.scrollbar-track-y, .scrollbar-track-x {
+  width: 0 !important;
+  background: transparent !important;
+  overflow: hidden !important;
 }
 
 .divider {
@@ -65,6 +77,23 @@ a {
 
   &:focus {
     outline: inherit;
+  }
+}
+
+.link {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 1rem;
+  display: inline-block;
+  letter-spacing: .15rem;
+  margin-bottom: 1rem;
+  margin-right: 1.5rem;
+  transition: 0.4s ease-in-out;
+  color: rgba(140, 140, 142, 1);
+
+  &:hover {
+    color: rgb(7, 151, 247);
+    text-shadow: 0 0 3px rgba(10, 243, 212, 0.4);
   }
 }
 

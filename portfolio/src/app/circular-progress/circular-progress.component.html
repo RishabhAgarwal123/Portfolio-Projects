@@ -1,0 +1,16 @@
+<div class="circle-progress-container">
+  <svg width="140px" height="140px">
+    <circle class="circle-background" cx="60" cy="60" r="40"></circle>
+    <circle
+      class="circle-fill"
+      cx="60"
+      cy="60"
+      r="40"
+      [style.strokeDasharray]="circumference"
+      [style.strokeDashoffset]="progressOffset"
+    ></circle>
+    <text class="progress-text" x="50%" y="45%" dy=".3em" text-anchor="middle">
+      {{ progressValue }}%
+    </text>
+  </svg>
+</div>

@@ -1,0 +1,36 @@
+@import "../../styles/config";
+
+.circle-progress-container {
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.circle-background {
+  fill: none;
+  stroke: $info-bar-1-color;
+  stroke-width: 12;
+  stroke-dasharray: 339;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 0.3s ease-in-out;
+}
+
+.circle-fill {
+  fill: none;
+  stroke: $text-color-4;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 339;
+  stroke-dashoffset: 339;
+  transition: stroke-dashoffset 0.3s ease-in-out;
+}
+
+.progress-text {
+  font-size: 1rem;
+  text-anchor: middle;
+  fill: $text-color-2;
+}
