@@ -19,6 +19,7 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "@fortawesome/fontawesome-free": "^6.4.2",
+    "bootstrap": "^5.3.1",
     "postcss": "^8.4.27",
     "progressbar.js": "^1.1.0",
     "rxjs": "~7.5.0",

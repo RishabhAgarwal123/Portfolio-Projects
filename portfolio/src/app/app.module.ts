@@ -12,6 +12,8 @@ import { ScrollbarDirective } from './directives/scrollbar.directive';
 import { HeaderContentComponent } from './header-content/header-content.component';
 import { ProgressComponent } from './progress/progress.component';
 import { CircularProgressComponent } from './circular-progress/circular-progress.component';
+import { ContentHeaderComponent } from './content-header/content-header.component';
+import { TypewriterComponent } from './typewriter/typewriter.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CircularProgressComponent } from './circular-progress/circular-progress
     ScrollbarDirective,
     HeaderContentComponent,
     ProgressComponent,
-    CircularProgressComponent
+    CircularProgressComponent,
+    ContentHeaderComponent,
+    TypewriterComponent
   ],
   imports: [
     BrowserModule,
