@@ -1,0 +1,73 @@
+@import "../../styles/config";
+
+.card {
+    background: $card-color;
+    box-shadow: $shadow-1;
+    width: 100%;
+    padding: 3rem;
+    margin-bottom: 3rem;
+}
+
+.contact-form .input:focus {
+    outline: none;
+}
+
+// .contact-form .input + label {
+
+// }
+.contact-form .input:focus + label {
+    background: $main-color;
+    color: $info-bar-1-color;
+}
+
+.contact-form label {
+    text-align: center;
+    position: absolute;
+    height: 5rem;
+    width: 5rem;
+    color: $text-color-2;
+    background: $info-bar-1-color;
+    top: 0;
+    left: 0;
+    padding: 0 1.5rem;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    line-height: 5rem;
+    letter-spacing: .1rem;
+    font-weight: 500;
+    transition: $tr-md;
+    cursor: pointer;
+}
+
+.form-field {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.form-field input,
+.form-field textarea {
+    height: 5rem;
+    width: 100%;
+    background: $info-bar-2-color;
+    border: none;
+    color: $text-color-1;
+    padding-left: 6.5rem;
+    box-sizing: inset $shadow-1;
+    margin-bottom: 0;
+    transition: $tr-md;
+}
+
+::placeholder {
+    color: $text-color-3;
+}
+
+.form-field textarea {
+    padding-left: 1.5rem;
+    padding-top: 1.5rem;
+    height: 15rem;
+    border-left: solid 5rem $info-bar-1-color;
+    
+    &:focus {
+        border-color: $main-color;
+    }
+}

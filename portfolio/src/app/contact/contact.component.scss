@@ -1,0 +1,21 @@
+@import "../../styles/config";
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card {
+    background: $card-color;
+    box-shadow: $shadow-1;
+    width: 26rem;
+    padding: 3rem;
+    margin-bottom: 3rem;
+}

@@ -1,0 +1,20 @@
+@import "../../styles/config";
+
+.row {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section {
+    &__right {
+        padding-bottom: 3rem;
+        
+        &-filter {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 1.2rem;
+            margin-left: 26rem;
+        }
+    }
+}

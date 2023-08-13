@@ -1,0 +1,33 @@
+@import "../../styles/config";
+
+.counter__container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3rem;
+    position: relative;
+    color: $text-color-1;
+
+    &-box {
+        min-width: 4rem;
+
+        &-counter {
+            color: $main-color;
+            font-weight: 600;
+            font-family: $pf;
+            font-size: 1.5rem;
+        }
+
+        &-plus {
+            color: $main-color;
+            margin-left: .1rem;
+            font-weight: 600;
+            font-family: $pf;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}

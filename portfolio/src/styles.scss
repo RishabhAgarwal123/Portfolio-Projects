@@ -88,6 +88,17 @@ a {
   }
 }
 
+.transition-large {
+  transition: 0.55s ease-in-out;
+}
+
+.sub-title {
+  margin-top: .5rem;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: rgba(100,100,102,1);
+}
+
 .link {
   position: relative;
   text-transform: uppercase;
@@ -98,6 +109,7 @@ a {
   margin-right: 1.5rem;
   transition: 0.4s ease-in-out;
   color: rgba(140, 140, 142, 1);
+  font-weight: 600;
 
   &:hover {
     color: rgb(7, 151, 247);
@@ -187,6 +199,60 @@ a {
   }
 }
 
+.buttons-frame {
+  & a {
+      margin-right: 1.5rem;
+  }
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+
+  &-text {
+    align-self: center;
+    position: relative;
+    margin-bottom: 3rem;
+
+    & h4 {
+      color: rgb(7, 151, 247);
+    }
+  }
+}
+
+.table {
+  color: rgb(7, 151, 247);
+
+  & ul {
+    padding: 0;
+    margin: 0;
+
+    & li {
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .5rem;
+      font-size: 1rem;
+
+      & h6 {
+        font-size: 1rem;
+        color: rgb(7, 151, 247);
+      }
+      
+      & span { 
+        font-size: .8rem;
+        color: rgba(140,140,142,1); 
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+
 h1 {
   font-size: 5.2rem;
   font-weight: 800;
@@ -269,4 +335,15 @@ h6 {
 
 .mb-30 {
   margin-bottom: 25px;
+}
+
+@keyframes puls {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
 }
