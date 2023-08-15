@@ -92,7 +92,7 @@ function DefaultLayout({ children }) {
                             const isActive = window.location.pathname === menu.path
                             return <div className={`menu-item ${isActive ? 'active-menu-item' : ''}`} onClick={menu.onClick} key={index}>
                                 {menu.icon}
-                                {!closeSideBar && <h1 className='text-white text-sm'>{menu.title}</h1>}
+                                {!closeSideBar && <h1 className={`${isActive ? 'active-menu-item text-sm' : 'text-sm'}`}>{menu.title}</h1>}
                             </div>
                         })
                     }

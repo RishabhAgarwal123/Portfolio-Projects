@@ -31,8 +31,8 @@
 }
 
 .active-menu-item {
-  border: 1px solid #ffffff;
   border-radius: 3px;
+  color: var(--secondary) !important;
 }
 
 .body {
