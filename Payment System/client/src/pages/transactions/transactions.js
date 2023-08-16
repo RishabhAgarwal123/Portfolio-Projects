@@ -1,27 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PageTitle from '../../components/pageTitle';
 import styles from './transactions.module.css';
-import { Table } from 'antd';
+import { Table, message } from 'antd';
 import TransferFundsModal from './transferFundsModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { HideLoader, ShowLoader } from '../../redux/loaderSlice';
+import { GetTransactionsDetails } from '../../apis/transactions';
+import moment from 'moment';
 
 function Transactions() {
     const [showTransferFundModal, setShowTransferFundModal] = useState(false);
+    const dispatch = useDispatch();
+    const [data = [], setData] = useState([]);
+    const { user } = useSelector(state => state.user)
+
     const columns = [
         {
             title: 'Date',
-            dataIndex: 'date'
+            dataIndex: 'date',
+            render: (text, record) => moment(record.createdAt).format('DD-MM-YYY hh:mm:ss A')
         },
         {
             title: 'Transactio ID',
-            dataIndex: 'transactionId'
+            dataIndex: '_id'
         },
         {
             title: 'Amount',
-            dataIndex: 'amount'
+            dataIndex: 'balance'
         },
         {
             title: 'Type',
-            dataIndex: 'type'
+            dataIndex: 'type',
+            render: (text, record) => {
+                return record.sender === user._id ? 'Debit' : 'Credit'
+            }
+        },
+        {
+            title: 'Reference Account',
+            dataIndex: '',
+            render: (text, record) => {
+                // return record.sender === user._id ? <div>
+                //     <h1 className='text-sm'>{ record.receiver.firstName } { record.receiver.lastName }</h1>
+                // </div> :
+                //     <div>
+                //         <h1 className='text-sm'>{ record.sender.firstName } { record.sender.lastName }</h1>
+                //     </div>
+                return record.sender === user._id ? record.receiver : record.sender;
+            }
         },
         {
             title: 'Reference',
@@ -31,7 +56,27 @@ function Transactions() {
             title: 'Status',
             dataIndex: 'status'
         }
-    ]
+    ];
+
+    const getTransactionData = async () => {
+        try {
+            dispatch(ShowLoader());
+            const res = await GetTransactionsDetails();
+            if (res.data.success) {
+                setData(res.data.data);
+            }
+            dispatch(HideLoader());
+        } catch (error) {
+            dispatch(HideLoader());
+            message.error(error.message);
+        }
+    }
+
+    useEffect(() => {
+        getTransactionData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
         <div>
             <div className='flex justify-between items-center'>
@@ -40,16 +85,16 @@ function Transactions() {
                     <button className={styles.btn}>
                         Deposit
                     </button>
-                    <button className={`${styles.btn} ${styles.primaryBtn}`} 
-                    onClick={() => setShowTransferFundModal(true)}>
+                    <button className={`${styles.btn} ${styles.primaryBtn}`}
+                        onClick={() => setShowTransferFundModal(true)}>
                         Transfer
                     </button>
                 </div>
             </div>
-            <Table columns={columns} dataSource={[]} style={{marginTop: '20px'}} />
-            {showTransferFundModal && <TransferFundsModal 
-                    showTransferFundModal={showTransferFundModal} 
-                    setShowTransferFundModal={setShowTransferFundModal} />}
+            <Table columns={columns} dataSource={data} style={{ marginTop: '20px' }} />
+            {showTransferFundModal && <TransferFundsModal
+                showTransferFundModal={showTransferFundModal}
+                setShowTransferFundModal={setShowTransferFundModal} />}
         </div>
     )
 }

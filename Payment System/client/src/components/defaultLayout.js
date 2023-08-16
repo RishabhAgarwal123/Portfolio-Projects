@@ -101,8 +101,8 @@ function DefaultLayout({ children }) {
             <div className='body'>
                 <div className='header flex justify-between items-center'>
                     <div className='text-white'>
-                        {closeSideBar && <i className="ri-close-line" style={{cursor: 'pointer'}} onClick={() => setCloseSideBar(!closeSideBar)}></i>}
-                        {!closeSideBar && <i className="ri-menu-2-line" style={{cursor: 'pointer'}} onClick={() => setCloseSideBar(!closeSideBar)}></i>}
+                        {!closeSideBar && <i className="ri-close-line" style={{cursor: 'pointer'}} onClick={() => setCloseSideBar(!closeSideBar)}></i>}
+                        {closeSideBar && <i className="ri-menu-2-line" style={{cursor: 'pointer'}} onClick={() => setCloseSideBar(!closeSideBar)}></i>}
                     </div>
                     <div>
                         <h1 className='text-xl text-white'>

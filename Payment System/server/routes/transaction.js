@@ -32,7 +32,7 @@ router.post('/transfer-fund', authMiddleware, async (req, res) => {
 });
 
 // verify receiver account
-router.post('/verify-user', authMiddleware, async (req, res) => {
+router.post('/verify-account', authMiddleware, async (req, res) => {
     try {
         const user = await User.findOne({ _id: req.body.receiver });
         if (user) {
@@ -47,12 +47,35 @@ router.post('/verify-user', authMiddleware, async (req, res) => {
             success: false
         })
     } catch (error) {
-        es.send({
+        res.send({
             message: 'Account not found',
             data: null,
             success: false
         })
     }
-})
+});
+
+// Get all transactions for all users
+router.post('/get-all-transactions-by-user', authMiddleware, async (req, res) => {
+    try {
+        const transactions = await Transaction.find({
+            $or: [
+                { sender: req.body.userId },
+                { receiver: req.body.userId }
+            ]
+        }).sort({createdAt: -1});
+        res.send({
+            message: 'Transaction Details',
+            data: transactions,
+            success: true
+        })
+    } catch (error) {
+        res.send({
+            message: 'Failed to load transactions',
+            data: null,
+            success: false
+        })
+    }
+});
 
 module.exports = router;

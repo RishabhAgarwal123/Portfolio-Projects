@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const TransactionSchema = new mongoose.Schema({
-    amount: {
+    balance: {
         type: Number,
         required: true,
     },
@@ -14,10 +14,6 @@ const TransactionSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user',
         required: true
-    },
-    type: {
-        type: String,
-        required: true,
     },
     reference: {
         type: String,

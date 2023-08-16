@@ -26,3 +26,17 @@
 .text-black {
     color: #000 !important;
 }
+
+.success-bg {
+    background-color: #0a6c0a !important;
+    color: #fff !important;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.error-bg {
+    background-color: rgba(241, 60, 60, 0.932) !important;
+    color: #fff;
+    padding: 10px;
+    border-radius: 3px;
+}
