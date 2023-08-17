@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import styles from './transferFundsModal.module.css';
-import { Modal, Form, message } from 'antd';
+import { Form, Modal, message } from 'antd';
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { TransferFunds, VerifyAccount } from '../../apis/transactions';
 import { HideLoader, ShowLoader } from '../../redux/loaderSlice';
+import {  SendRequest } from '../../apis/requests';
+import { VerifyAccount } from '../../apis/transactions';
 
-const TransferFundsModal = (props) => {
-    const { showTransferFundModal, setShowTransferFundModal, reloadData } = props;
-    const [ isVerified, setIsVerified ] = useState('');
+const RequestModal = (props) => {
+    const { newRequestModal, setNewRequestModal, reloadData } = props;
+    const [isVerified, setIsVerified] = useState('');
     const [form] = Form.useForm();
     const dispatch = useDispatch();
     const { user } = useSelector(state => state.user)
 
-    const verfiyAccount = async () => {
+    const verifyAccount = async () => {
         try {
             dispatch(ShowLoader())
             const res = await VerifyAccount({
                 receiver: form.getFieldValue('receiver')
             });
-            if (res.data.success) { 
+            if (res.data.success) {
                 setIsVerified('true')
             } else {
                 setIsVerified('false');
@@ -36,13 +36,13 @@ const TransferFundsModal = (props) => {
             const payload = {
                 ...values,
                 sender: user._id,
-                reference: values.reference || '',
+                reference: values.description || '',
                 balance: Number(values.balance),
                 status: 'success'
             }
-            const res = await TransferFunds(payload);
+            const res = await SendRequest(payload);
             if (res.data.success) {
-                setShowTransferFundModal(false);
+                setNewRequestModal(false);
                 message.success(res.data.message);
                 reloadData();
             } else message.error(res.data.message);
@@ -57,8 +57,8 @@ const TransferFundsModal = (props) => {
         <div>
             <Modal
                 title='Transfer Funds'
-                open={showTransferFundModal}
-                onCancel={() => setShowTransferFundModal(false)}
+                open={newRequestModal}
+                onCancel={() => setNewRequestModal(false)}
                 footer={null}
             >
                 <Form layout='vertical' form={form} onFinish={onFinish}>
@@ -66,30 +66,30 @@ const TransferFundsModal = (props) => {
                         <Form.Item label='Account Number' name='receiver' className='w-full'>
                             <input type='text' value='' />
                         </Form.Item>
-                        <button className={`${styles.btn} ${styles.primaryBtn} mt-1`}
+                        <button className={`btn primaryBtn mt-1`}
                             type='button'
-                            onClick={() => verfiyAccount() }>
+                            onClick={() => verifyAccount()}>
                             VERIFY
                         </button>
                     </div>
                     {isVerified === 'true' && <div className='success-bg'>Account Verified Successfully</div>}
-                    {isVerified === 'false' &&<div className='error-bg'> Invalid Account</div>}
+                    {isVerified === 'false' && <div className='error-bg'> Invalid Account</div>}
                     <Form.Item label='Amount' name='balance'
                         rules={[
-                            { required: true, message: 'Please input your amount'},
-                            { max: user.balance, message: 'Insufficient Balance'}
+                            { required: true, message: 'Please input your amount' },
+                            { max: user.balance, message: 'Insufficient Balance' }
                         ]}
                     >
                         <input type='number' />
                     </Form.Item>
-                    <Form.Item label='Reference' name='reference'>
+                    <Form.Item label='Description' name='description'>
                         <textarea type='text' />
                     </Form.Item>
-                    
+
                     <div className='flex justify-end gap-1'>
-                        <button className={styles.btn} onClick={() => setShowTransferFundModal(false)}> Cancel </button>
-                        { isVerified === 'true' && 
-                        <button className={`${styles.btn} ${styles.primaryBtn}`}>Transfer</button>}
+                        <button className='btn' onClick={() => setNewRequestModal(false)}> Cancel </button>
+                        {isVerified === 'true' &&
+                            <button className={`btn primaryBtn`}>Request</button>}
                     </div>
                 </Form>
             </Modal>
@@ -97,4 +97,4 @@ const TransferFundsModal = (props) => {
     )
 }
 
-export default TransferFundsModal
+export default RequestModal

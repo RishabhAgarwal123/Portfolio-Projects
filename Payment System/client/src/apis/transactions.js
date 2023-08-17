@@ -26,3 +26,13 @@ export const GetTransactionsDetails = async (payload) => {
         return error.response.data;
     }
 }
+
+// Deposit funds using stripe
+export const DepositFunds = async (payload) => {
+    try {
+        console.log(payload)
+        return await ApiConfig.post('/api/transaction/deposit-funds', payload);
+    } catch (error) {
+        return error.message.data;
+    }
+}

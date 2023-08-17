@@ -7,9 +7,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { HideLoader, ShowLoader } from '../../redux/loaderSlice';
 import { GetTransactionsDetails } from '../../apis/transactions';
 import moment from 'moment';
+import DepositModal from './depositModal';
 
 function Transactions() {
     const [showTransferFundModal, setShowTransferFundModal] = useState(false);
+    const [showDepositModal, setShowDepositModal] = useState(false);
     const dispatch = useDispatch();
     const [data = [], setData] = useState([]);
     const { user } = useSelector(state => state.user)
@@ -32,7 +34,9 @@ function Transactions() {
             title: 'Type',
             dataIndex: 'type',
             render: (text, record) => {
-                return record.sender === user._id ? 'Debit' : 'Credit'
+                if (record.sender._id === record.receiver._id) return 'Deposit';
+                else if (record.sender._id === user._id) return 'Debit';
+                else return 'Credit';
             }
         },
         {
@@ -82,7 +86,8 @@ function Transactions() {
             <div className='flex justify-between items-center'>
                 <PageTitle title='Transactions' />
                 <div className='flex gap-1'>
-                    <button className={styles.btn}>
+                    <button className={styles.btn} 
+                        onClick={() => setShowDepositModal(true)}>
                         Deposit
                     </button>
                     <button className={`${styles.btn} ${styles.primaryBtn}`}
@@ -91,10 +96,16 @@ function Transactions() {
                     </button>
                 </div>
             </div>
-            <Table columns={columns} dataSource={data} style={{ marginTop: '20px' }} />
+            <Table columns={columns} dataSource={data} rowKey='key' style={{ marginTop: '20px' }} />
             {showTransferFundModal && <TransferFundsModal
                 showTransferFundModal={showTransferFundModal}
+                reloadData={getTransactionData}
                 setShowTransferFundModal={setShowTransferFundModal} />}
+            {showDepositModal && <DepositModal 
+                showDepositModal={showDepositModal} 
+                reloadData={getTransactionData}
+                setShowDepositModal={setShowDepositModal}
+            />}
         </div>
     )
 }

@@ -28,6 +28,19 @@
   border: 1px solid #000;
 }
 
+.btn {
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 5px;
+  width: 8rem;
+}
+
+.primaryBtn {
+  background-color: rgb(11, 78, 179);
+  color: antiquewhite;
+}
+
 @keyframes loader-animation {
   0% {
     transform: rotate(0deg);
