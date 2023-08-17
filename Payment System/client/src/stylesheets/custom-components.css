@@ -24,6 +24,10 @@
   animation: loader-animation 1s linear infinite;
 }
 
+.card {
+  border: 1px solid #000;
+}
+
 @keyframes loader-animation {
   0% {
     transform: rotate(0deg);

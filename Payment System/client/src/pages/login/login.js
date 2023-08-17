@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { LoginUser } from '../../apis/users';
 import { HideLoader, ShowLoader } from '../../redux/loaderSlice';
-import { SetUser } from '../../redux/userSlice';
 import styles from './login.module.css';
 
 function Login() {
@@ -30,7 +29,6 @@ function Login() {
                 dispatch(HideLoader())
                 if (res.success) {
                     message.success(res.message);
-                    dispatch(SetUser(res))
                     localStorage.setItem('token', res.data)
                     navigate('/');
                 } else {
