@@ -4,6 +4,7 @@ import { Modal, Form, message } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { TransferFunds, VerifyAccount } from '../../apis/transactions';
 import { HideLoader, ShowLoader } from '../../redux/loaderSlice';
+import { SetReloadUser } from '../../redux/userSlice';
 
 const TransferFundsModal = (props) => {
     const { showTransferFundModal, setShowTransferFundModal, reloadData } = props;
@@ -44,6 +45,7 @@ const TransferFundsModal = (props) => {
             if (res.data.success) {
                 setShowTransferFundModal(false);
                 message.success(res.data.message);
+                dispatch(SetReloadUser(true))
                 reloadData();
             } else message.error(res.data.message);
             dispatch(HideLoader());

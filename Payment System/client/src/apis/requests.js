@@ -19,3 +19,10 @@ export const SendRequest = async (payload) => {
 }
 
 // accept or reject request
+export const UpdateRequestStatus = async (request) => {
+    try {
+        return await ApiConfig.post('/api/requests/update-request-status', request)
+    } catch (error) {
+        return error.response.data;
+    }
+}
