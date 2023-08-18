@@ -142,4 +142,30 @@ router.post('/update-user-verification-status', authMiddleware, async (req, res)
     }
 });
 
+// update user
+router.post('/update-user', authMiddleware, async (req, res) => {
+    try {
+        const updatedUser = await User.findByIdAndUpdate(req.body._id, {
+            $set: { 
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                phone: req.body.phone,
+                address: req.body.address,
+            }
+        });
+        res.send({
+            data: updatedUser,
+            message: 'User updated successfully',
+            success: true
+        })
+    } catch (error) {
+        res.send({
+            message: error.message,
+            data: null,
+            success: false
+        })
+    }
+});
+
 module.exports = router

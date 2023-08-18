@@ -44,3 +44,12 @@ export const UpdateVerificationStatus = async (payload) => {
         return error.response.data;
     }
 }
+
+// update user
+export const UpdateUser = async (payload) => {
+    try {
+        return await ApiConfig.post('/api/users/update-user', payload);
+    } catch (error) {
+        return error.response.data;
+    }
+}
