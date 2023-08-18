@@ -63,6 +63,14 @@ router.post('/login', async (req, res) => {
             })
         }
 
+        // User is verified
+        if (!user.isVerified) {
+            return res.send({
+                success: false,
+                message: 'User is not verified'
+            });
+        }
+
         // Generate token
         const token = jwt.sign({ userId: user._id }, process.env.jwt_secret, { expiresIn: '1d' });
         res.send({
@@ -95,6 +103,43 @@ router.post('/get-user', authMiddleware, async (req, res) => {
             success: false
         })
     }
-})
+});
+
+router.get('/get-all-users', authMiddleware, async (req, res) => {
+    try {
+        const users = await User.find();
+        res.send({
+            message: 'Users List',
+            data: users,
+            success: true
+        });
+    } catch (error) {
+        res.send({
+            success: false,
+            data: null,
+            message: error.message
+        })
+    }
+});
+
+// update-user-verification-status
+router.post('/update-user-verification-status', authMiddleware, async (req, res) => {
+    try {
+        const user = await User.findByIdAndUpdate(req.body.selectedUser, {
+            isVerified: req.body.isVerified
+        });
+        res.send({
+            message: 'Status updated successfully',
+            data: user,
+            success: true 
+        });
+    } catch (error) {
+        res.send({
+            message: error.message,
+            data: null,
+            success: false
+        });
+    }
+});
 
 module.exports = router

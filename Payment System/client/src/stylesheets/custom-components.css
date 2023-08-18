@@ -41,6 +41,16 @@
   color: antiquewhite;
 }
 
+.successBtn {
+  background-color: rgb(62, 108, 9);
+  color: antiquewhite;
+}
+
+.dangerBtn {
+  background-color: rgb(248, 60, 60);
+  color: antiquewhite;
+}
+
 @keyframes loader-animation {
   0% {
     transform: rotate(0deg);

@@ -17,6 +17,8 @@ import Loader from './components/loader';
 import { useSelector } from 'react-redux';
 import Transactions from './pages/transactions/transactions';
 import Request from './pages/requests/request';
+import UserList from './pages/usersList/userList';
+import Profile from './pages/profile/profile';
 
 function App() {
   const { loader } = useSelector(state => state.loader);
@@ -29,6 +31,8 @@ function App() {
           <Route path='/register' element={<PublicRoute> <Register /> </PublicRoute>} />
           <Route path='/transactions' element={<ProtectedRoute> < Transactions /></ProtectedRoute>} />
           <Route path='/requests' element={<ProtectedRoute> <Request /> </ProtectedRoute>} />
+          <Route path='/users' element={<ProtectedRoute> <UserList /> </ProtectedRoute>} />
+          <Route path='/profile' element={<ProtectedRoute> <Profile /> </ProtectedRoute>} />
           <Route path='/' element={<ProtectedRoute> <Home /> </ProtectedRoute>} />
         </Routes>
       </BrowserRouter>
