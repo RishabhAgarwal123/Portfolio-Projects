@@ -5,6 +5,9 @@ const Features = require('../utils/features');
 
 // Create product -- ADMIN
 createProduct = catchAsyncError(async (req, res, next) => {
+    // Assining user
+    req.body.user = req.user.id;
+
     const product = await Product.create(req.body);
     res.send({
         status: 201,

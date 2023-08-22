@@ -53,7 +53,21 @@ loginUser = catchAsyncError(async (req, res, next) => {
     // })
 });
 
+// Logout user
+logOut = catchAsyncError(async (req, res, next) => {
+    res.cookie('cookie', null, {
+        maxAge: new Date(Date.now()),
+        secure: true,
+        httpOnly: true
+    });
+    res.send({
+        status: 200,
+        messgae: 'User logged out'
+    })
+})
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    logOut
 }
