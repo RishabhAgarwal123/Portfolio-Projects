@@ -15,21 +15,21 @@ const ProductSchema = new mongoose.Schema({
         required: [true, 'Please enter the product price'],
         max: [99999999, 'Price cannot exceed 8 figures'] // Changed maxLength to max
     },
-    rating: {
+    ratings: {
         type: Number,
         default: 0
     },
     images: [
-       {
-        public_id: {
-            type: String,
-            required: true
-        },
-        url: {
-            type: String,
-            required: true
+        {
+            public_id: {
+                type: String,
+                required: true
+            },
+            url: {
+                type: String,
+                required: true
+            }
         }
-       }
     ],
     category: {
         type: String, // Fixed typre to type
@@ -47,6 +47,11 @@ const ProductSchema = new mongoose.Schema({
     },
     reviews: [
         {
+            user: {
+                type: mongoose.Schema.ObjectId,
+                ref: 'User',
+                required: true
+            },
             name: {
                 type: String,
                 required: true

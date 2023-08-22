@@ -5,12 +5,12 @@ const User = require('../models/userModel');
 
 const isAuthenticatedUser = catchAsyncError(async (req, res, next) => {
     const { cookie: token } = req.cookies;
-
-    if (!token) return next(new ErrorHandler('Please login to access this resource', 401));
-
+    if (!token || token === 'j:null') return next(new ErrorHandler('Please login to access this resource', 401));
+    
     const decryptToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
     req.user = await User.findById(decryptToken.id);
+
     next();
 });
 

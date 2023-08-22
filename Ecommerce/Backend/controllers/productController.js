@@ -87,10 +87,52 @@ deleteProduct = catchAsyncError(async (req, res, next) => {
     });
 });
 
+// Create new review or update the review
+createAndUpdateReview = catchAsyncError(async (req, res, next) => {
+    const { _id: id, name } = req.user;
+    const { rating, comment, productId } = req.body;
+    
+    const review = {
+        id, 
+        name,
+        rating: Number(rating),
+        comment,
+    }
+
+    const product = await Product.findById(productId);
+
+    // Checking if user already provided a review
+    const isReviewed = product.reviews.find((review) => review.user.toString() === id.toString());
+        
+    if (isReviewed) {
+        product.reviews.forEach((review) => {
+            if (review.user.toString() === id.toString()) (review.rating = rating), (review.comment = comment)
+        })
+    } else {
+        product.reviews.push(review);
+        product.numberOfReviews = product.reviews.length;
+    }
+    let average = 0;
+    product.ratings = product.reviews.forEach(review => {
+        average += review.rating
+    });
+
+    product.ratings = average / product.reviews.length;
+
+    await product.save({ validateBeforeSave: false});
+
+    res.send({
+        status: 200,
+        success: true,
+        product
+    })
+});
+
 module.exports = {
     getAllProducts,
     createProduct,
     updateProduct,
     deleteProduct,
-    getProductById
+    getProductById,
+    createAndUpdateReview
 }
