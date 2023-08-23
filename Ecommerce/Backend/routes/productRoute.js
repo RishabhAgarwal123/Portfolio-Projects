@@ -4,7 +4,7 @@ const {
     updateProduct,
     deleteProduct,
     getProductById,
-    createAndUpdateReview
+    createProductReview
 } = require('../controllers/productController');
 
 const express = require('express');
@@ -16,7 +16,7 @@ router.route('/products/new').post(isAuthenticatedUser, authorization('admin'), 
 router.route('/products/:id').put(isAuthenticatedUser, authorization('admin'), updateProduct);
 router.route('/products/:id').delete(isAuthenticatedUser, authorization('admin'), deleteProduct);
 
-router.route('/products/reviews').put(isAuthenticatedUser, createAndUpdateReview);
+router.route('/reviews').put(isAuthenticatedUser, createProductReview);
 
 router.route('/products').get(getAllProducts);
 router.route('/products/:id').get(getProductById);
