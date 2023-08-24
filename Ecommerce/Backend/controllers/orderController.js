@@ -83,7 +83,9 @@ updateOrder = catchAsyncError(async (req, res, next) => {
     const id = req.params.id;
     const order = await Order.findById(id);
 
-    if (order.orderStatus === 'Delivered') return next(new ErrorHandler('You have already delivered this orded', 404));
+    if (!order) return next(new ErrorHandler(`No order found with ID: ${id}`, 400));
+
+    if (order.orderStatus === 'Delivered') return next(new ErrorHandler('You have already delivered this ordered', 404));
 
     order.orderItems.forEach(async (order) => {
         await updateStock(order.product, order.quantity);
@@ -124,6 +126,7 @@ deleteOrder = catchAsyncError(async (req, res, next) => {
     res.send({
         status: 200,
         success: true,
+        message: "Order deleted successfully"
     })
 });
 
