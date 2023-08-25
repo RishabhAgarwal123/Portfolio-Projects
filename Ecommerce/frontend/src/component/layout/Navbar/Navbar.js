@@ -1,13 +1,13 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFemale, faHome, faSearch, faUser, faUserPlus, faShoppingCart, faContactBook, faInfoCircle, faBoxOpen } from '@fortawesome/free-solid-svg-icons';
+import { faHome, faSearch, faUser, faUserPlus, faShoppingCart, faContactBook, faInfoCircle, faBoxOpen } from '@fortawesome/free-solid-svg-icons';
 import styles from './Navbar.module.css';
 
 const Navbar = () => {
     const cartCount = 2; // Set your cart count value here
 
     return (
-        <nav className={styles.navbar}>
+        <nav className={`${styles.navbar} ${styles.sticky}`}>
             <div className={styles.logo}>
                 Ecommerce
             </div>
@@ -19,7 +19,7 @@ const Navbar = () => {
             </ul>
             <div className={styles.searchBar}>
                 <input type="text" placeholder="Search" />
-                <button><FontAwesomeIcon icon={faSearch} /></button>
+                <button href=''><FontAwesomeIcon icon={faSearch} /></button>
             </div>
             <div className={styles.userActions}>
                 <a href="#"><FontAwesomeIcon icon={faUser} /> Login</a>
