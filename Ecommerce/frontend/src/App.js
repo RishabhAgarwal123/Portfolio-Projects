@@ -2,8 +2,10 @@
 import { useEffect } from 'react';
 import './App.css';
 import Navbar from './component/layout/Navbar/Navbar.js'
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import WebFont from 'webfontloader';
+import Footer from './component/layout/Footer/Footer';
+import Home from './component/Home/Home';
 
 function App() {
   useEffect(() => {
@@ -18,6 +20,10 @@ function App() {
     <>
       <Router>
         <Navbar />
+        <Routes>
+          <Route exact path='/' element={<Home />} />
+        </Routes>
+        <Footer />
       </Router>
     </>
   );

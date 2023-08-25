@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch, faUser, faUserPlus, faShoppingCart, faContactBook, faInfoCircle, faBoxOpen } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +10,7 @@ const Navbar = () => {
     return (
         <nav className={`${styles.navbar} ${styles.sticky}`}>
             <div className={styles.logo}>
-                Ecommerce
+                ECommerce
             </div>
             <ul className={styles.navLinks}>
                 <li><a href="#"><FontAwesomeIcon icon={faHome} /> Home</a></li>
