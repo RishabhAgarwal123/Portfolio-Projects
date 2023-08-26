@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    border-bottom: 1px solid #d2d0ee;
+    /* border-bottom: 1px solid #d2d0ee; */
 }
 
 .banner > p {
@@ -40,7 +40,7 @@
     width: 100vw;
     height: 100vmin;
     max-width: 100%;
-    background-color: #e6e6ec;
+    background-color: #FFF;
     position: absolute;
     clip-path: polygon(100% 63%, 0% 100%, 100% 100%);
 }
@@ -55,6 +55,11 @@
     margin: 2vmax auto; 
 }
 
-.conatiner {
-    background-color: #e6e6ec;;
+.container {
+    margin: 2vmax auto;
+    width: 90vw;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }

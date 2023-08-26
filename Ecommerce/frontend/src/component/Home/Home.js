@@ -3,6 +3,16 @@ import { CgMouse } from 'react-icons/cg';
 import styles from './Home.module.css';
 import Product from '../Product/Product';
 
+const product = {
+    name: 'T-Shirt',
+    images: [
+        { url: 'https://static.massimodutti.net/3/photos/2023/I/0/1/p/6823/540/251/6823540251_1_1_3.jpg?t=1692628511551'}
+    ],
+    price: '23212',
+    _id: 'Any id',
+    reviews: 25
+}
+
 const Home = () => {
   return (
     <>
@@ -16,10 +26,17 @@ const Home = () => {
                 </button>
             </a>
         </div>
-        <h1 className={styles.homeHeading}>Featured Prodcuts</h1>
+        <h1 className={styles.homeHeading} id='container'>Featured Prodcuts</h1>
 
-        <div className={styles.container} id='container'>
-            <Product product={'hello'} />
+        <div className={styles.container}>
+            <Product product={product} />
+            <Product product={product} />
+            <Product product={product} />
+            <Product product={product} />
+            <Product product={product} />
+            <Product product={product} />
+            <Product product={product} />
+            <Product product={product} />
         </div>
     </>
   )

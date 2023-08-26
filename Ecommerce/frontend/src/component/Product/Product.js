@@ -1,8 +1,29 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import ReactStars from 'react-rating-stars-component';
+import styles from './Product.module.css';
 
-const Product = () => {
+const options = {
+  edit: false,
+  color: 'rgba(20, 20, 20, 0.1)',
+  activeColor: 'tomato',
+  size: window.innerWidth < 600 ? 20: 25,
+  value: 2.5,
+  isHalf: true
+}
+
+const Product = ({product}) => {
+  const { name, images, price, _id, reviews } = product;
+
   return (
-    <div>Product</div>
+    <Link className={styles.productCard} id={_id}>
+      <img src={images[0].url} alt={name} />
+      <p>{name}</p>
+      <div>
+        <ReactStars {...options} /> <span>{`(${reviews} Reviews )`}</span>
+      </div>
+      <span>₹{price}</span>
+    </Link>
   )
 }
 
