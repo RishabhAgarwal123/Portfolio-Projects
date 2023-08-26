@@ -1,6 +1,6 @@
 .banner {
     background-image: linear-gradient(to right, #f3e8e8, #d2d0ee);
-    height: 100vmin;
+    height: 92vmin;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -38,7 +38,7 @@
 .banner::after {
     content: '';
     width: 100vw;
-    height: 100vmin;
+    height: 92vmin;
     max-width: 100%;
     background-color: #FFF;
     position: absolute;
