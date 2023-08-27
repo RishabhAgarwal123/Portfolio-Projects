@@ -13,14 +13,15 @@ const options = {
 }
 
 const Product = ({product}) => {
-  const { name, images, price, _id, reviews, ratings } = product;
+  const { name, images, price, _id, numberOfReviews, ratings } = product;
+
   const newOptions = { ...options, value: ratings}
   return (
-    <Link className={styles.productCard} id={_id}>
+    <Link className={styles.productCard} to={_id}>
       <img src={images[0].url} alt={name} />
       <p>{name}</p>
       <div>
-        <ReactStars {...newOptions} /> <span>{`(${reviews} Reviews )`}</span>
+        <ReactStars {...newOptions} /> <span>{`(${numberOfReviews} Reviews )`}</span>
       </div>
       <span>₹{price}</span>
     </Link>
