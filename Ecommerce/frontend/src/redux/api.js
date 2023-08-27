@@ -9,9 +9,20 @@ export const api = createApi({
                 return {
                     url: page ? `/api/v1/products?page=${page}` : `/api/v1/products`
                 }
-            }
+            },
         }),
+        getProduct: builder.query({
+            query: ({id}) => {
+                console.log(id)
+                return {
+                    url: `/api/v1/products/${id}`
+                }
+            }
+        })
     })
 });
 
-export const { useGetAllProductsQuery } = api;
+export const { 
+    useGetAllProductsQuery,
+    useGetProductQuery
+ } = api;

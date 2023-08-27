@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { CgMouse } from 'react-icons/cg';
 import styles from './Home.module.css';
 import Product from '../Product/Product';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetAllProductsQuery } from '../../redux/api';
-import { productSliceActions } from '../../redux/slices/products/productSlice';
+import { productSliceActions } from '../../redux/slices/productSlice';
 import Loader from '../layout/Loader/Loader';
 import { toast } from 'react-toastify';
-// import MetaData from '../layout/MetaData';
 
 const Home = () => {
   const dispatch = useDispatch();
   const { data, error, isLoading, refetch } = useGetAllProductsQuery(0);
-  const { products, productCount, errorMessage, loading } = useSelector(state => state.product)
+  const { products, loading } = useSelector(state => state.product)
 
   const updateProducts = (data) => {
     const { data: products, productCount } = data;
@@ -45,7 +44,6 @@ const Home = () => {
   return (
     <>
       {loading ? <Loader /> : <>
-        {/* <MetaData title='Ecommerce' /> */}
         <div className={styles.banner}>
           <p>Welcome to Ecommerce</p>
           <h1>FIND AMAZING PRODUCTS BELOW</h1>

@@ -8,6 +8,7 @@ import Footer from './component/layout/Footer/Footer';
 import Home from './component/Home/Home'; 
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ProductDetail from './component/Product/ProductDetail';
 
 function App() {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path='/' element={<Home />} />
+          <Route exact path='/products/:id' element={<ProductDetail />} />
         </Routes>
         <Footer />
       </Router>

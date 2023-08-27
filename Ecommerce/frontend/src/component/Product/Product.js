@@ -17,7 +17,7 @@ const Product = ({product}) => {
 
   const newOptions = { ...options, value: ratings}
   return (
-    <Link className={styles.productCard} to={_id}>
+    <Link className={styles.productCard} to={`/products/${_id}`} >
       <img src={images[0].url} alt={name} />
       <p>{name}</p>
       <div>
