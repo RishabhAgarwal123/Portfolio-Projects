@@ -140,3 +140,10 @@
 .btn:hover {
   background-color: #f04c40;
 }
+
+.review {
+  padding: 2vmax 6vmax;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

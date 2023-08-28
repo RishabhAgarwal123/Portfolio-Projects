@@ -10,6 +10,7 @@ import Loader from '../layout/Loader/Loader';
 import ReactStars from 'react-rating-stars-component';
 import styles from './ProductDetail.module.css';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Review from './Review';
 
 const options = {
   edit: false,
@@ -98,10 +99,13 @@ const ProductDetail = () => {
       </div>
 
       {/* Reviews */}
-      
+      {product?.reviews?.length === 0 && <div className='homeHeading'>Reviews</div>}
       {
-        product?.reviews?.length !== 0 ? <div>
-
+        product?.reviews?.length === 0 ? <div className={styles.review}>
+          <Review />
+          <Review />
+          <Review />
+          <Review />
         </div> : <div className='homeHeading'>No Reviews Yet</div>
       }
       </>}
