@@ -1,41 +1,100 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useEffect } from 'react'
 import { useGetProductQuery } from '../../redux/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { productSliceActions } from '../../redux/slices/productSlice';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import { Carousel } from 'react-responsive-carousel';
+import ReactStars from 'react-rating-stars-component';
+import styles from './ProductDetail.module.css';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+const options = {
+  edit: false,
+  color: 'rgba(20, 20, 20, 0.1)',
+  activeColor: 'tomato',
+  size: window.innerWidth < 600 ? 20 : 25,
+  value: 2.5,
+  isHalf: true
+}
 
 const ProductDetail = () => {
-    const dispatch = useDispatch();
-    const { product } = useSelector(state => state.product)
-    const { id } = useParams()
-    const { data, error, isLoading, refetch } = useGetProductQuery({id});
-    console.log(product)
-    const updateProduct = (product) => {
-        dispatch(productSliceActions.setProduct(product.data));
+  const dispatch = useDispatch();
+  const { product } = useSelector(state => state.product)
+  const { id } = useParams()
+  const { data, error, isLoading, refetch } = useGetProductQuery({ id });
+  const updateProduct = (product) => {
+    dispatch(productSliceActions.setProduct(product.data));
+  }
+console.log(data)
+  const getProduct = () => {
+    dispatch(productSliceActions.setLoading(true));
+    if (!isLoading) {
+      if (error) {
+        dispatch(productSliceActions.setError(error));
+        dispatch(productSliceActions.setLoading(false));
+        toast.error(error.error);
+      } else if (data) {
+        dispatch(productSliceActions.setLoading(false));
+        updateProduct(data)
+        toast.success(data.message)
+      }
     }
+  }
 
-    const getProduct = () => {
-        dispatch(productSliceActions.setLoading(true));
-        if (!isLoading) {
-            if (error) {
-              dispatch(productSliceActions.setError(error));
-              dispatch(productSliceActions.setLoading(false));
-              toast.error(error.error);
-            } else if (data) {
-              dispatch(productSliceActions.setLoading(false));
-              updateProduct(data)
-              toast.success(data.message)
-            }
-          }
-    }
-
-    useEffect(() => {
-        getProduct()
+  useEffect(() => {
+    getProduct()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data, error, isLoading, refetch])
+  }, [data, error, isLoading, refetch, id])
   return (
-    <div>ProductDetail</div>
+    <>
+      <div className={styles.productDetails}>
+        <div className={styles.productCarousel}>
+          <Carousel showThumbs={false} showStatus={false} emulateTouch>
+            {product?.images &&
+              product.images.map((image) => (
+                <div key={image._id}>
+                  <img src={image.url} alt={`Image ${image._id}`} />
+                </div>
+              ))}
+          </Carousel>
+        </div>
+        <div className={styles.column_75}>
+          <div className={styles.details_name}>
+            <h2>{product?.name}</h2>
+            <p>Product # {product?._id}</p>
+          </div>
+
+          <div className={styles.details_review}>
+            <ReactStars {...options} /> <span>{`(${product?.numberOfReviews} Reviews )`}</span>
+          </div>
+
+          <div className={styles.details}>
+            <h1>{`₹${product?.price}`}</h1>
+            <div className={styles.details_carts}>
+              <div className={styles.details_cart}>
+                <button>-</button>
+                <input value={1} type='number' />
+                <button>+</button>
+              </div>
+              <button>Add to cart</button>
+            </div>
+            <p>
+              Stock: <b className={product?.stock < 1 ? styles.redColor : styles.greenColor}>
+                { product?.stock < 1 ? 'Out of stock' : 'In stock'}
+              </b>
+            </p>
+          </div>
+
+          <div className={styles.details_description}>
+                Description: 
+                <p>{product?.description}</p>
+          </div>
+          <button className={styles.submitReview}>Submit Reviews</button>
+        </div>
+      </div>
+    </>
   )
 }
 

@@ -1,0 +1,50 @@
+.productDetails {
+  width: 100vw;
+  max-width: 100%;
+  padding: 6vmax;
+  display: flex;
+  gap: 2vmax;
+}
+
+.productCarousel {
+  width: 35%; /* Change width to 25% for the first column */
+  padding: 10px;
+}
+
+.productCarousel img {
+  max-width: 100%;
+  height: auto;
+}
+
+.column_75 {
+  width: 65%; /* Set width to 75% for the second column */
+}
+
+.productDetails > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 2vmax;
+}
+
+.productDetails > div:last-child {
+    align-items: flex-start;
+}
+
+.details_name > h2 {
+    color: rgb(14, 54, 54);
+    font: 600 1.6vmax 'Roboto';
+}
+
+.details_name > p {
+    color: rgba(54, 54, 54, 0.582);
+    font: 200 .6vmax 'Roboto';
+}
+
+.details_review {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
