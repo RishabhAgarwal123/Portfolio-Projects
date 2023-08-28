@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { CgMouse } from 'react-icons/cg';
 import styles from './Home.module.css';
-import Product from '../Product/Product';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetAllProductsQuery } from '../../redux/api';
 import { productSliceActions } from '../../redux/slices/productSlice';
 import Loader from '../layout/Loader/Loader';
 import { toast } from 'react-toastify';
+import ProductCard from '../Product/ProductCard';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,6 +28,7 @@ const Home = () => {
         dispatch(productSliceActions.setError(error));
         dispatch(productSliceActions.setLoading(false));
         toast.error(error.error);
+        dispatch(productSliceActions.resetState());
       } else if (data) {
         dispatch(productSliceActions.setLoading(false));
         updateProducts(data)
@@ -54,12 +55,12 @@ const Home = () => {
             </button>
           </a>
         </div>
-        <h1 className={styles.homeHeading} id='container'>Featured Prodcuts</h1>
+        <h1 className={styles.homeHeading} id='container'>Featured Products</h1>
 
         <div className={styles.container}>
           {
             products && products?.map((product) => {
-              return <Product product={product} key={product._id} />
+              return <ProductCard product={product} key={product._id} />
             })
           }
         </div>

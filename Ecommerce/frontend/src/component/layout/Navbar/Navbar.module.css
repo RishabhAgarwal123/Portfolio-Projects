@@ -27,19 +27,15 @@ ul {
   height: auto;
 }
 
-.navLinks {
-  list-style: none;
-  display: flex;
-}
-
-.navLinks li {
-  margin-right: 1rem;
-}
-
-.navLinks a {
-  color: #333;
+.icons {
+  color: #000;
   text-decoration: none;
 }
+
+.icons:not(:first-child) {
+  margin-left: 10px;
+}
+
 
 .searchBar {
     display: flex;
@@ -100,3 +96,42 @@ ul {
   top: 10px;
   right: 16px;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+
+  .navbar > div {
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  .searchBar {
+    width: 100%;
+    float: none;
+    margin-top: 10px;
+  }
+
+  .searchBar input[type="text"] {
+    width: 100%;
+    border-radius: 4px;
+  }
+
+  .searchBar button {
+    position: static;
+    margin-top: 10px;
+  }
+
+  .userActions {
+    margin-top: 10px;
+    text-align: center;
+  }
+
+  .userActions a {
+    margin-right: 0.5rem;
+  }
+}
+

@@ -9,6 +9,7 @@ import Home from './component/Home/Home';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProductDetail from './component/Product/ProductDetail';
+import Product from './component/Product/Product';
 
 function App() {
   useEffect(() => {
@@ -35,7 +36,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route exact path='/products/:id' element={<ProductDetail />} />
+          <Route exact path='/product/:id' element={<ProductDetail />} />
+          <Route exact path='/products' element={<Product />} />
         </Routes>
         <Footer />
       </Router>
