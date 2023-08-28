@@ -74,13 +74,13 @@ const ProductDetail = () => {
 
           <div className={styles.productPrice}>
             <h3>{`₹${product?.price}`}</h3>
-            <div className={styles.details_carts}>
-              <div className={styles.details_cart}>
-                <button>-</button>
-                <input value={1} type='number' onChange={() => console.log()} />
-                <button>+</button>
+            <div className={styles.productCarts}>
+              <div className={styles.productCart}>
+                <button className={styles.minus}>-</button>
+                <input value={1} type='number' className={styles.input} onChange={() => console.log()} />
+                <button className={styles.plus}>+</button>
               </div>
-              <button className={styles.addToCart} disabled={product?.stock < 1 ? true: false} >Add to cart</button>
+              <button className={styles.btn} disabled={product?.stock < 1 ? true: false} >Add to cart</button>
             </div>
             <p>
               Stock: <b className={product?.stock < 1 ? styles.redColor : styles.greenColor}>
@@ -93,9 +93,17 @@ const ProductDetail = () => {
             <ReactStars {...options} /> <span>{`(${product?.numberOfReviews} Reviews )`}</span>
           </div>
 
-          <button className={styles.submitReview}>Submit Reviews</button>
+          <button className={styles.btn}>Submit Reviews</button>
         </div>
       </div>
+
+      {/* Reviews */}
+      
+      {
+        product?.reviews?.length !== 0 ? <div>
+
+        </div> : <div className='homeHeading'>No Reviews Yet</div>
+      }
       </>}
     </>
   )

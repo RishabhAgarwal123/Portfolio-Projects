@@ -15,3 +15,13 @@ input[type='number'] {
     -moz-appearance: textfield;
     appearance: textfield;
 }
+
+.homeHeading {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 1.4vmax;
+    width: 20vmax;
+    border-bottom: 1px solid #d2d0ee;
+    padding: 1vmax;
+    margin: 2vmax auto; 
+}

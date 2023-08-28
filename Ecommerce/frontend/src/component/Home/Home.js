@@ -55,7 +55,7 @@ const Home = () => {
             </button>
           </a>
         </div>
-        <h1 className={styles.homeHeading} id='container'>Featured Products</h1>
+        <h1 className={'homeHeading'} id='container'>Featured Products</h1>
 
         <div className={styles.container}>
           {

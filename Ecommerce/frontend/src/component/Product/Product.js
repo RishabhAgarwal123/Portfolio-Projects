@@ -10,7 +10,7 @@ const Product = () => {
     return (
         <>
             {loader ? <Loader /> : <>
-                <h1 className={styles.homeHeading} id='container'>All Products</h1>
+                <h1 className={'homeHeading'} id='container'>All Products</h1>
                 <div className={styles.product}>
                     {
                         products?.length !== 0 && products?.map((product) => {
