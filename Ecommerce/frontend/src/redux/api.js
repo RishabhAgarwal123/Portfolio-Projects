@@ -13,7 +13,6 @@ export const api = createApi({
         }),
         getProduct: builder.query({
             query: ({id}) => {
-                console.log(id)
                 return {
                     url: `/api/v1/products/${id}`
                 }
