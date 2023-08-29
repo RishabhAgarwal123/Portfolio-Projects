@@ -18,11 +18,13 @@ const Review = ({ review }) => {
         <div className={styles.card}>
             <div className={styles.cardContainer}>
                 <img className={styles.cardImg} src='https://images.unsplash.com/photo-1533450718592-29d45635f0a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8anBnfGVufDB8fDB8fHww&w=1000&q=80' alt='Imags' />
-                <p className={styles.cardTitle}>{name}</p>
                 <ReactStars {...newOptions} />
             </div>
             <div className={styles.cardDescrWrapper}>
-                <p className={styles.cardTitle}>Review</p>
+                <div className={styles.cardTitleContainer}>
+                    <p className={styles.cardTitle}>Review</p>
+                    <p className={styles.reviewName}>- {name}</p>
+                </div>
                 <p className={styles.cardDescr}>
                     {description}
                 </p>
