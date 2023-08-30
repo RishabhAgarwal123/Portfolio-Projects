@@ -20,7 +20,7 @@ createProduct = catchAsyncError(async (req, res, next) => {
 // Get all products
 getAllProducts = catchAsyncError(async (req, res, next) => {
     // For Pagination
-    const resultPerPage = 8;
+    const resultPerPage = 2;
     const productCount = await Product.countDocuments();
 
     // Search and filter
@@ -34,6 +34,7 @@ getAllProducts = catchAsyncError(async (req, res, next) => {
         status: 200,
         data: products,
         productCount: productCount,
+        resultPerPage: resultPerPage,
         message: "Products list"
     });
 });

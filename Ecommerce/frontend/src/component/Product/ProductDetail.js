@@ -36,10 +36,10 @@ const settings = {
 };
 
 const cards = [
-  { name: 'Rishabh Agarwal', rating: 4, description: 'Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1'},
-  { name: 'Rishabh', rating: 4, description: 'Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1'},
-  { name: 'Rishabh', rating: 4, description: 'Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1'},
-  { name: 'Rishabh', rating: 4, description: 'Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1'},
+  { name: 'Rishabh Agarwal', rating: 4, description: 'Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description 1'},
+  { name: 'Rishabh', rating: 4, description: 'Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description '},
+  { name: 'Rishabh', rating: 4, description: 'Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 Description for Card 1 D'},
+  { name: 'Rishabh', rating: 4, description: 'Description for Card 1 Description for Card 1 Description for Card 1 Description'},
 ];
 
 const ProductDetail = () => {

@@ -7,7 +7,7 @@ export const api = createApi({
         getAllProducts: builder.query({
             query: ({page}) => {
                 return {
-                    url: page ? `/api/v1/products?page=${page}` : `/api/v1/products`
+                    url: page && page !== 0 ? `/api/v1/products?page=${page}` : `/api/v1/products`
                 }
             },
         }),

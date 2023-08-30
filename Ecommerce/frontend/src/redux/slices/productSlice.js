@@ -5,6 +5,7 @@ let initialState = {
     products: [],
     product: null,
     productsCount: 0,
+    resultPerPage: 0,
     errorMessage: null
 };
 
@@ -23,6 +24,9 @@ export const productSlice = createSlice({
         },
         setProductsCount: (state, action) => {
             state.productsCount = action.payload
+        },
+        setResultPerPage: (state, action) => {
+            state.resultPerPage = action.payload
         },
         setError: (state, action) => {
             state.errorMessage = action.payload

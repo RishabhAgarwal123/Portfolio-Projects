@@ -46,29 +46,29 @@
 }
 
 .cardTitleContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    color: var(--font-color);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  color: var(--font-color);
 }
 
 .cardTitle {
-    width: 55px;
+  width: 55px;
   border-bottom: 1px solid #d2d0ee;
   font-weight: 900;
   font-size: 16px;
 }
 
 .reviewName {
-    color: #aaa5a5;
-    font-weight: 900;
-    font-size: 14px;
-    font-style: italic;
+  color: #aaa5a5;
+  font-weight: 900;
+  font-size: 14px;
+  font-style: italic;
 }
 
 .cardDescr {
   color: var(--font-color);
-  margin-bottom: 5px;
+  margin: 5px 0;
   font-size: 14px;
   padding: 5px;
   height: 140px;

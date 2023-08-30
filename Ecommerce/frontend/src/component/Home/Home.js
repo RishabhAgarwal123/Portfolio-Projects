@@ -14,10 +14,11 @@ const Home = () => {
   const { products, loading } = useSelector(state => state.product)
 
   const updateProducts = (data) => {
-    const { data: products, productCount } = data;
+    const { data: products, productCount, resultPerPage } = data;
 
     dispatch(productSliceActions.setAllProducts(products));
     dispatch(productSliceActions.setProductsCount(productCount));
+    dispatch(productSliceActions.setResultPerPage(resultPerPage));
   }
 
   const getAllProducts = () => {

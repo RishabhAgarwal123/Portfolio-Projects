@@ -1,0 +1,39 @@
+/* styles/pagination.module.css */
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.paginationList {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.paginationItem {
+  margin: 0 0.5rem;
+}
+
+.paginationButton {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  text-decoration: none;
+  color: #333;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.paginationButton:hover {
+  background-color: #f4f4f4;
+}
+
+.active {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+}

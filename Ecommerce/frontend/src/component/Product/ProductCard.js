@@ -13,6 +13,7 @@ const options = {
 }
 
 const ProductCard = ({product}) => {
+  console.log(product)
   const { name, images, price, _id, numberOfReviews, ratings } = product;
 
   const newOptions = { ...options, value: ratings}
