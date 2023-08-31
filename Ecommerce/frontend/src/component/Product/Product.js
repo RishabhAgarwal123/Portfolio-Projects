@@ -22,13 +22,12 @@ const Product = () => {
 
     const updateProducts = (data) => {
         const { data: products, productCount } = data;
-        console.log(products)
 
         dispatch(productSliceActions.setAllProducts(products));
         dispatch(productSliceActions.setProductsCount(productCount));
         dispatch(productSliceActions.setResultPerPage(resultPerPage));
     }
-    console.log('Current', currentProducts)
+
     const getProductsPerPage = () => {
         // Fetch data using the query hook
         dispatch(productSliceActions.setLoading(true));
