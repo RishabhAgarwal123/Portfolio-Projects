@@ -14,18 +14,21 @@ const Product = () => {
 
     // Pagination
     const [currentPage, setCurrentPage] = useState(1);
+    const [productsList, setProductsList] = useState([...products]);
     const { data, error, isLoading, refetch } = useGetAllProductsQuery({ page: currentPage });
 
-    const indexOfLastItem = currentPage * resultPerPage;
-    const indexOfFirstItem = indexOfLastItem - resultPerPage;
-    const currentProducts = products.slice(indexOfFirstItem, indexOfLastItem);
+    let indexOfLastItem = currentPage * resultPerPage;
+    let indexOfFirstItem = indexOfLastItem - resultPerPage;
+    const current = productsList.slice(indexOfFirstItem, indexOfLastItem);
+    const [currentProducts, setCurrentProducts] = useState(current);;
 
     const updateProducts = (data) => {
         const { data: products, productCount } = data;
-
         dispatch(productSliceActions.setAllProducts(products));
         dispatch(productSliceActions.setProductsCount(productCount));
         dispatch(productSliceActions.setResultPerPage(resultPerPage));
+        setProductsList([...products])
+        setCurrentProducts([...products]);
     }
 
     const getProductsPerPage = () => {
