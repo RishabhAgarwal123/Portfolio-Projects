@@ -4,9 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faSearch, faUser, faUserPlus, faShoppingCart, faContactBook, faInfoCircle, faBoxOpen } from '@fortawesome/free-solid-svg-icons';
 import styles from './Navbar.module.css';
 import { Link } from 'react-router-dom';
+import { useSearch } from '../../utils/SearchContext';
 
-const Navbar = () => {
+const Navbar = ({ onSearch }) => {
     const cartCount = 2; // Set your cart count value here
+    const { searchText, setSearch } = useSearch();
+
+    const handleSearch = (query) => {
+        setSearch(query);
+    }
 
     return (
         <nav className={`${styles.navbar} ${styles.sticky}`}>
@@ -20,8 +26,14 @@ const Navbar = () => {
                 <Link to={'/about'} className={styles.icons}><FontAwesomeIcon icon={faInfoCircle} /> <span>About</span></Link>
             </div>
             <div className={styles.searchBar}>
-                <input type="text" placeholder="Search" />
-                <button href=''><FontAwesomeIcon icon={faSearch} /></button>
+            <input 
+                type="text"
+                placeholder="Search"
+                value={searchText || ''}
+                onChange={(e) => {
+                    handleSearch(e.target.value);
+                }} />
+            <button href=''><FontAwesomeIcon icon={faSearch} /></button>
             </div>
             <div className={styles.userActions}>
                 <Link to={'/login'}><FontAwesomeIcon icon={faUser} /> <span>Login</span></Link>

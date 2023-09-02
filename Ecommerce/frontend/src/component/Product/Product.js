@@ -7,14 +7,17 @@ import { useGetAllProductsQuery } from '../../redux/api';
 import { productSliceActions } from '../../redux/slices/productSlice';
 import { toast } from 'react-toastify';
 import Pagination from '../layout/Pagination/Pagination';
+import { useSearch } from '../utils/SearchContext';
 
 const Product = () => {
     const dispatch = useDispatch();
+    const { searchText } = useSearch();
     const { products, loader, resultPerPage, productCount } = useSelector(state => state.product);
 
     // Pagination
     const [currentPage, setCurrentPage] = useState(1);
     const [productsList, setProductsList] = useState([...products]);
+    const [debouncedSearch, setDebouncedSearch] = useState(searchText);
     const { data, error, isLoading, refetch } = useGetAllProductsQuery({ page: currentPage });
 
     let indexOfLastItem = currentPage * resultPerPage;
@@ -55,13 +58,26 @@ const Product = () => {
     useEffect(() => {
         // Refetch when the currentPage changes
         refetch({ page: currentPage });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentPage]);
 
     useEffect(() => {
         getProductsPerPage();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, error, isLoading, refetch]);
+
+    useEffect(() => {
+        // Update the debounced search text when searchText changes
+        setDebouncedSearch(searchText);
+    }, [searchText]);
+
+    useEffect(() => {
+        // Use the debounced search text for filtering products
+        const filteredProducts = productsList.filter((product) =>
+            product.name.toLowerCase().includes(debouncedSearch.toLowerCase())
+        );
+        setCurrentProducts(filteredProducts);
+    }, [debouncedSearch, productsList]);
 
     return (
         <>
