@@ -6,7 +6,7 @@ import styles from './Navbar.module.css';
 import { Link } from 'react-router-dom';
 import { useSearch } from '../../utils/SearchContext';
 
-const Navbar = ({ onSearch }) => {
+const Navbar = () => {
     const cartCount = 2; // Set your cart count value here
     const { searchText, setSearch } = useSearch();
 
