@@ -22,8 +22,18 @@
   cursor: pointer;
 }
 
+.paginationButton:hover {
+  background-color: #ddd;
+}
+
 .paginationButton.active {
-  background-color: #007BFF;
+  background-color: #ff6f61;
   color: #fff;
-  border: 1px solid #007BFF;
+  border: 1px solid #ff6f61;
+}
+
+.paginationButton.active:hover {
+  background-color: #f04c40;
+  color: #fff;
+  border: 1px solid #f04c40;
 }

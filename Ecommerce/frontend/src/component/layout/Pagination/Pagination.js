@@ -4,6 +4,8 @@ import styles from './Pagination.module.css';
 function Pagination({ itemsPerPage, totalItems, currentPage, onPageChange }) {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+    console.log(currentPage, totalPages)
+    console.log(currentPage === totalPages)
 
     return (
         <nav className={styles.pagination}>
@@ -31,7 +33,7 @@ function Pagination({ itemsPerPage, totalItems, currentPage, onPageChange }) {
                 <li>
                     <button
                         className={styles.paginationButton}
-                        disabled={currentPage === totalPages}
+                        disabled={currentPage === totalPages || currentPage >= totalPages}
                         onClick={() => onPageChange(currentPage + 1)}
                     >
                         Next
