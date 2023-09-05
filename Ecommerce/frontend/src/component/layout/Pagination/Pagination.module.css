@@ -1,39 +1,29 @@
-/* styles/pagination.module.css */
-
 .pagination {
   display: flex;
   justify-content: center;
-  margin-top: 1rem;
+  margin-top: 20px;
 }
 
 .paginationList {
   list-style: none;
   display: flex;
-  margin: 0;
-  padding: 0;
+  gap: 5px;
 }
 
 .paginationItem {
-  margin: 0 0.5rem;
+  display: inline-block;
 }
 
 .paginationButton {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid #ccc;
-  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
   color: #333;
-  background-color: transparent;
+  padding: 5px 10px;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-.paginationButton:hover {
-  background-color: #f4f4f4;
-}
-
-.active {
-  background-color: #007bff;
+.paginationButton.active {
+  background-color: #007BFF;
   color: #fff;
-  border: 1px solid #007bff;
+  border: 1px solid #007BFF;
 }

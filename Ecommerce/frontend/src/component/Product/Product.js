@@ -12,12 +12,13 @@ import { useSearch } from '../utils/SearchContext';
 const Product = () => {
     const dispatch = useDispatch();
     const { searchText } = useSearch();
-    const { products, loader, resultPerPage, productCount } = useSelector(state => state.product);
+    const { products, loader, resultPerPage} = useSelector(state => state.product);
 
     // Pagination
     const [currentPage, setCurrentPage] = useState(1);
     const [productsList, setProductsList] = useState([...products]);
     const [debouncedSearch, setDebouncedSearch] = useState(searchText);
+    const [productsCount, setProductsCount] = useState();
     const { data, error, isLoading, refetch } = useGetAllProductsQuery({ page: currentPage });
 
     let indexOfLastItem = currentPage * resultPerPage;
@@ -32,6 +33,7 @@ const Product = () => {
         dispatch(productSliceActions.setResultPerPage(resultPerPage));
         setProductsList([...products])
         setCurrentProducts([...products]);
+        setProductsCount(productCount);
     }
 
     const getProductsPerPage = () => {
@@ -92,7 +94,7 @@ const Product = () => {
                 </div>
                 <Pagination
                     itemsPerPage={resultPerPage}
-                    totalItems={productCount}
+                    totalItems={productsCount}
                     currentPage={currentPage}
                     onPageChange={onPageChange} // Pass the onPageChange function to the Pagination component
                 />

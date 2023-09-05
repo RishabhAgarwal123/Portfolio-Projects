@@ -3,21 +3,11 @@ import styles from './Pagination.module.css';
 
 function Pagination({ itemsPerPage, totalItems, currentPage, onPageChange }) {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
-
     const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
     return (
         <nav className={styles.pagination}>
             <ul className={styles.paginationList}>
-                <li>
-                    <button
-                        className={styles.paginationButton}
-                        disabled={currentPage === 1}
-                        onClick={() => onPageChange(1)}
-                    >
-                        First
-                    </button>
-                </li>
                 <li>
                     <button
                         className={styles.paginationButton}
@@ -45,15 +35,6 @@ function Pagination({ itemsPerPage, totalItems, currentPage, onPageChange }) {
                         onClick={() => onPageChange(currentPage + 1)}
                     >
                         Next
-                    </button>
-                </li>
-                <li>
-                    <button
-                        className={styles.paginationButton}
-                        disabled={currentPage === totalPages}
-                        onClick={() => onPageChange(totalPages)}
-                    >
-                        Last
                     </button>
                 </li>
             </ul>
