@@ -54,6 +54,7 @@ const Product = () => {
     }
 
     const onPageChange = newPage => {
+        console.log(typeof newPage)
         setCurrentPage(newPage);
     };
 
