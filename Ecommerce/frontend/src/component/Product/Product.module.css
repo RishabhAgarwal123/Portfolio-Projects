@@ -1,8 +1,34 @@
 .product {
-    margin: 2vmax auto;
-    width: 90vw;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  margin: 2vmax 10vmax;
+  width: 90vw;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filterBox {
+  position: absolute;
+  top: 13vmax;
+  margin: 0 2vmax;
+  width: 8vmax;
+}
+
+.categoryBox {
+  padding: 0;
+  margin-left: .5vmax;
+}
+
+.categoryLink {
+  list-style-type: none;
+  color: rgba(0, 0, 0, .6);
+  font: 400 .8vmax 'Roboto';
+  font-size: 1vmax;
+  cursor: pointer;
+  margin: .2vmax 0;
+  transition: all 0.5s;
+}
+
+.categoryLink:hover {
+    color: #ff6f61;
 }

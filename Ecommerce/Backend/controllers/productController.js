@@ -26,15 +26,16 @@ getAllProducts = catchAsyncError(async (req, res, next) => {
     // Search and filter
     const apiFeature = new Features(Product.find(), req.query)
         .search()
-        .filter()
-        .pagination(resultPerPage);
-    const products = await apiFeature.query;;
+        .filter().pagination(resultPerPage);
+
+    const products = await apiFeature.query;
     res.send({
         success: true,
         status: 200,
         data: products,
         productCount: productCount,
         resultPerPage: resultPerPage,
+        // filteredProducts: filteredProducts,
         message: "Products list"
     });
 });

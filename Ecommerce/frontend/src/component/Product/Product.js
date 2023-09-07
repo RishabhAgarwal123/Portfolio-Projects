@@ -8,26 +8,38 @@ import { productSliceActions } from '../../redux/slices/productSlice';
 import { toast } from 'react-toastify';
 import Pagination from '../layout/Pagination/Pagination';
 import { useSearch } from '../utils/SearchContext';
+import { Slider, Typography, createMuiTheme } from '@mui/material';
+
+const CATEGORIES = [
+    'Laptop',
+    'Mobile',
+    'Bottoms',
+    'Shirts',
+    'Camera',
+    'Shoes'
+];
 
 const Product = () => {
     const dispatch = useDispatch();
     const { searchText } = useSearch();
-    const { products, loader, resultPerPage} = useSelector(state => state.product);
+    const { products, loader, resultPerPage } = useSelector(state => state.product);
 
     // Pagination
     const [currentPage, setCurrentPage] = useState(1);
     const [productsList, setProductsList] = useState([...products]);
     const [debouncedSearch, setDebouncedSearch] = useState(searchText);
     const [productsCount, setProductsCount] = useState();
+    const [price, setPrice] = useState([0, 150000]);
+    const [category, setCategory] = useState('');
     const { data, error, isLoading, refetch } = useGetAllProductsQuery({ page: currentPage });
 
     let indexOfLastItem = currentPage * resultPerPage;
     let indexOfFirstItem = indexOfLastItem - resultPerPage;
     const current = productsList.slice(indexOfFirstItem, indexOfLastItem);
-    const [currentProducts, setCurrentProducts] = useState(current);;
+    const [currentProducts, setCurrentProducts] = useState(current);
 
     const updateProducts = (data) => {
-        const { data: products, productCount } = data;
+        const { data: products, productCount, resultPerPage } = data;
         dispatch(productSliceActions.setAllProducts(products));
         dispatch(productSliceActions.setProductsCount(productCount));
         dispatch(productSliceActions.setResultPerPage(resultPerPage));
@@ -54,9 +66,16 @@ const Product = () => {
     }
 
     const onPageChange = newPage => {
-        console.log(typeof newPage)
         setCurrentPage(newPage);
     };
+
+    const priceHandler = (event, newPrice) => {
+        const filteredProducts = productsList.filter((product) => {
+            return product?.price >= newPrice[0] && product?.price < newPrice[1];
+        });
+        setProductsList(filteredProducts);
+        setPrice(newPrice)
+    }
 
     useEffect(() => {
         // Refetch when the currentPage changes
@@ -66,6 +85,7 @@ const Product = () => {
 
     useEffect(() => {
         getProductsPerPage();
+        setPrice([0, 150000]);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, error, isLoading, refetch]);
 
@@ -93,12 +113,45 @@ const Product = () => {
                         })
                     }
                 </div>
-                <Pagination
+
+                <div className={styles.filterBox}>
+                    <Typography>Price</Typography>
+                    <Slider sx={{
+                        '& .MuiSlider-thumb': {
+                            color: "#ff6f61"
+                        },
+                        '& .MuiSlider-track': {
+                            color: "#f98074"
+                        }
+                    }}
+                        valueLabelDisplay='auto'
+                        aria-labelledby='range-slider'
+                        min={0}
+                        max={150000}
+                        value={price}
+                        onChange={priceHandler}
+                    />
+
+                    <Typography>Catgories</Typography>
+                    <ul className={styles.categoryBox}>
+                        {CATEGORIES.map((category) => {
+                            return <li
+                                className={styles.categoryLink}
+                                key={category}
+                                onClick={() => setCategory(category)}
+                            >
+                                {category}
+                            </li>
+                        })}
+                    </ul>
+                </div>
+
+                {(price[0] === 0 && price[1] === 150000) && resultPerPage < productsCount && <Pagination
                     itemsPerPage={resultPerPage}
                     totalItems={productsCount}
                     currentPage={currentPage}
                     onPageChange={onPageChange} // Pass the onPageChange function to the Pagination component
-                />
+                />}
             </>
             }
         </>

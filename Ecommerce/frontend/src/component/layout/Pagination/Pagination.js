@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './Pagination.module.css';
 
 function Pagination({ itemsPerPage, totalItems, currentPage, onPageChange }) {
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
-    const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
-    console.log(typeof currentPage)
+    const totalPages = itemsPerPage !== 0 && Math.ceil(totalItems / itemsPerPage);
+    const pageNumbers = totalPages !== 0 && Array.from({ length: totalPages }, (_, index) => index + 1);
+
     return (
         <nav className={styles.pagination}>
             <ul className={styles.paginationList}>
