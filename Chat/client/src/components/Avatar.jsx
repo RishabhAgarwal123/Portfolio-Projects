@@ -17,13 +17,23 @@ const backgroundColors = [
 ];
 
 // eslint-disable-next-line react/prop-types
-const Avatar = ({ userId, username }) => {
+const Avatar = ({ online, userId, username }) => {
     const userIdBase10 = parseInt(userId, 16);
     const color = backgroundColors[userIdBase10 % backgroundColors.length];
 
     return (
-        <div className={`w-8 h-8 ${color} rounded-full flex items-center justify-center opacity-70`}>
-            {username[0]?.toUpperCase()}
+        <div className={`w-8 h-8 relative ${color} rounded-full flex items-center justify-center opacity-70`}>
+            <div>{username[0]?.toUpperCase()}</div>
+            {
+                online && (
+                    <div className="absolute w-3 h-3 rounded-full bg-green-500 bottom-0 right-0 border border-white"></div>
+                )
+            }
+            {
+                !online && (
+                    <div className="absolute w-3 h-3 rounded-full bg-gray-500 bottom-0 right-0 border border-white"></div>
+                )
+            }
         </div>
     )
 }
