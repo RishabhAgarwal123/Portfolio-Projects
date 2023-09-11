@@ -1,11 +1,11 @@
 @import "../../styles/config";
 
 .content {
+    display: flex;
+    flex: 3;
     position: relative;
     overflow: hidden;
-    width: 100vw;
     height: calc(100vh - 3rem);
-    padding-right: 8rem;
     transition: $tr-lg;
 
     &__curtain {

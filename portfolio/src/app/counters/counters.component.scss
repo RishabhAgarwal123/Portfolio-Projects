@@ -8,7 +8,6 @@
     color: $text-color-1;
 
     &-box {
-        min-width: 4rem;
 
         &-counter {
             color: $main-color;
@@ -29,5 +28,6 @@
 
 .row {
     display: flex;
-    justify-content: space-between;
+    gap: 6rem;
+    width: 100%;
 }

@@ -2,8 +2,8 @@
 
 .about {
   background: $info-bar-1-color;
-  min-width: 29rem;
-  width: 29rem;
+  display: flex;
+  flex: 1;
   height: calc(100vh - 3rem);
   position: relative;
   z-index: 3;
