@@ -3,13 +3,13 @@
 .service {
     display: inline-flex;
     justify-content: flex-start;
+    gap: 1rem;
     flex-wrap: wrap;
 
     &__box {
-        max-width: 35%;
+        max-width: 30%;
         max-height: 25rem;
         margin-bottom: 3rem;
-        margin-left: 1rem;
         position: relative;
         z-index: 1;
         overflow: hidden;

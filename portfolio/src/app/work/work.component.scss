@@ -2,12 +2,10 @@
 
 .row {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    gap: 23rem;
 }
 
 .section {
-    width: 75%;
     &__right {
         padding-bottom: 3rem;
         
@@ -15,7 +13,6 @@
             display: flex;
             justify-content: space-between;
             margin-top: 1.2rem;
-            // margin-left: 26rem;
         }
     }
 }

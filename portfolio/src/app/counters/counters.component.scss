@@ -1,5 +1,11 @@
 @import "../../styles/config";
 
+.row {
+    display: flex;
+    padding-top: 2rem;
+    justify-content: space-between;
+}
+
 .counter__container {
     display: flex;
     align-items: center;
