@@ -5,7 +5,7 @@ import { UserContext } from "../ context/UserContext";
 const UserForm = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [isLoginOrRegister, setIsLoginOrregister] = useState('register');
+    const [isLoginOrRegister, setIsLoginOrregister] = useState('login');
 
     const { setUsername: setLoggedInUsername, setId } = useContext(UserContext);
 

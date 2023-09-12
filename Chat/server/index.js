@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const ws = require('ws');
 const { User } = require('./models/User');
 const { Message } = require('./models/Message');
+const fs = require('fs');
 const app = express();
 require('dotenv').config()
 require('./dbConfig');
@@ -20,6 +21,7 @@ app.use(cors({
 
 app.use(express.json());
 app.use(cookieParser());
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 const getUserFromToken = async (req) => {
     return new Promise((resolve, reject) => {
@@ -170,12 +172,24 @@ wss.on('connection', (connection, req) => {
 
     connection.on('message', async (message) => {
         const newMessage = JSON.parse(message.toString());
-        const { recipient, text } = newMessage;
-        if (recipient && text) {
+        const { recipient, text, file } = newMessage;
+        let filename = null;
+        if (file) {
+            const parts = file.name.split('.');
+            const extension = parts[parts.length - 1];
+            filename = Date.now() + '.' + extension;
+            const path = __dirname + '/uploads/' + filename;
+            const buffer = new Buffer(file.data?.split(',')[1], 'base64');
+            fs.writeFile(path, buffer, () => {
+            })
+        }
+
+        if (recipient && (text || file)) {
             const messageDoc = await Message.create({
                 sender: connection.userId,
                 recipient: recipient,
-                text: text
+                text: text,
+                file: file ? filename : null
             });
             [...wss.clients]
                 .filter(client => client.userId === recipient)
@@ -183,6 +197,7 @@ wss.on('connection', (connection, req) => {
                     text,
                     sender: connection.userId,
                     recipient: recipient,
+                    file: file ? filename : null,
                     _id: messageDoc._id
                 })
                 )

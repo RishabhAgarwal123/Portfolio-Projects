@@ -9,7 +9,8 @@ const MessageSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    text: String
+    text: String,
+    file: String
 }, { timestamps: true });
 
 const Message = mongoose.model('Message', MessageSchema);

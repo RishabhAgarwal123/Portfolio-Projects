@@ -31,7 +31,7 @@ const Chat = () => {
         if ('online' in message) {
             showOnlinePeople(message.online);
         } else if ('text' in message) {
-            setMessages((prev) => [...prev, { ...message, isOur: false }])
+            if (message.sender === selectedUserId) setMessages((prev) => [...prev, { ...message, isOur: false }])
         }
     }
 
@@ -40,16 +40,6 @@ const Chat = () => {
         setWs(ws);
         ws.addEventListener('message', handleMessage);
         ws.addEventListener('close', () => setTimeout(() => { makingWSSConnection() }, 1000));
-    }
-
-    const sendMessage = (e) => {
-        e.preventDefault();
-        ws.send(JSON.stringify({
-            recipient: selectedUserId,
-            text: newMessageText
-        }));
-        setNewMessageText('');
-        setMessages((prev) => [...prev, { text: newMessageText, sender: id, recipient: selectedUserId, _id: Date.now() }]);
     }
 
     const selectPerson = (userId) => setSelectedUserId(userId);
@@ -77,6 +67,33 @@ const Chat = () => {
         setWs(null);
         setId(null);
         setUsername(null);
+    }
+
+    const sendMessage = (e, file = null) => {
+        if (e) e.preventDefault();
+        ws.send(JSON.stringify({
+            recipient: selectedUserId,
+            text: newMessageText,
+            file
+        }));
+        setNewMessageText('');
+        if (file) {
+            getMessages();
+        } else {
+            setMessages((prev) => [...prev, { text: newMessageText, sender: id, recipient: selectedUserId, _id: Date.now() }]);
+        }
+    }
+
+    const sendFile = async (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            sendMessage(null, {
+                name: e.target.files[0]?.name,
+                data: reader.result
+            });
+        }
     }
 
     const excludeSelfFromOnlinePeople = { ...peopleOnline };
@@ -157,6 +174,16 @@ const Chat = () => {
                                                 <div
                                                     className={`text-left inline-block p-2 m-2 rounded-sm text-md ${message.sender === id ? 'bg-blue-500 text-white' : 'bg-white text-gray-500'}`}>
                                                     {message.text}
+                                                    {message.file && (
+                                                        <div className="flex items-center gap-1">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
+                                                            </svg>
+                                                            <a className="underline" href={`${axios.defaults.baseURL}/uploads/${message.file}`} target="_blank">
+                                                                {message.file}
+                                                            </a>
+                                                        </div>
+                                                    )}
                                                 </div>
                                             </div>
                                         ))}
@@ -174,6 +201,15 @@ const Chat = () => {
                                 className="bg-white border p-2 flex-grow rounded-sm"
                                 value={newMessageText || ''}
                                 onChange={(e) => setNewMessageText(e.target.value)} />
+                            <label
+                                className="bg-gray-200 p-2 text-gray-600 cursor-pointer rounded-sm border border-gray-300"
+                            >
+                                <input type="file" className="hidden" onChange={(e) => sendFile(e)} />
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M18.375 12.739l-7.693 7.693a4.5 4.5 0 01-6.364-6.364l10.94-10.94A3 3 0 1119.5 7.372L8.552 18.32m.009-.01l-.01.01m5.699-9.941l-7.81 7.81a1.5 1.5 0 002.112 2.13" />
+                                </svg>
+
+                            </label>
                             <button
                                 type="submit"
                                 className="p-2 text-white bg-blue-500 rounded-sm">
