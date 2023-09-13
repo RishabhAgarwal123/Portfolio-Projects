@@ -22,6 +22,8 @@ import { ExperienceComponent } from './experience/experience.component';
 import { ContactComponent } from './contact/contact.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GithubContributionComponent } from './github-contribution/github-contribution.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -43,13 +45,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     WorkComponent,
     ExperienceComponent,
     ContactComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    GithubContributionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

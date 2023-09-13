@@ -7,3 +7,4 @@ Projects related to all the portfolios
 3. https://hilarious-meringue-7a15b4.netlify.app/ - 3D Book Animation
 4. https://lucky-macaron-6a908f.netlify.app/ - Responsive Form
 5. https://natours-learning.netlify.app/ - Natours
+6. https://pumping-power.netlify.app/ - Gym
