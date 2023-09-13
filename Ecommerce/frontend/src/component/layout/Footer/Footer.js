@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTwitter, FaInstagram, FaGithub } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const icon = {
     color: '#333', 
@@ -23,8 +23,8 @@ const Footer = () => {
         <a href="https://github.com/RishabhAgarwal123" target='_blank' rel='noreferrer' style={icon}>
           <FaGithub />
         </a>
-        <a href="https://twitter.com/rishabh01234578" target='_blank' rel='noreferrer' style={icon}>
-          <FaTwitter />
+        <a href="https://www.linkedin.com/in/rishi8a69127" target='_blank' rel='noreferrer' style={icon}>
+          <FaLinkedin />
         </a>
         <a href="https://www.instagram.com/rishabh404agarwal/" target='_blank' rel='noreferrer' style={icon}>
           <FaInstagram />
