@@ -42,7 +42,7 @@ const Exercises = ({exercises, setExercises, bodyPart}) => {
       mt='50px'
       p='20px'
     >
-      <Typography variant='h3' mb='46px'>
+      <Typography variant='h3' mb='46px' textAlign={'center'}>
         Showing Results
       </Typography>
       <Stack 
