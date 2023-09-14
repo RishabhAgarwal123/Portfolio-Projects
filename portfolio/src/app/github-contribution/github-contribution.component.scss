@@ -1,0 +1,24 @@
+@import "../../styles/config";
+
+.row {
+  display: inline-flex;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.contributions-container {
+  display: grid;
+  grid-template-columns: repeat(
+    53,
+    20px
+  ); /* Adjust the number of columns and box size as needed */
+  gap: 5.3px; /* Adjust the gap between boxes as needed */
+}
+
+.contribution-box {
+  width: 20px; /* Adjust the box size as needed */
+  height: 20px; /* Adjust the box size as needed */
+  border: 1px solid #8c8c8e;
+  cursor: pointer;
+}

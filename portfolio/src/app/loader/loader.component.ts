@@ -24,7 +24,7 @@ export class LoaderComponent implements OnInit {
         this.isLoading = false;
         this.loadingCompleted.emit(); // Emit the event
       }
-    }, 50);
+    }, 0);
   }
 
 }
