@@ -8,7 +8,7 @@ import { productSliceActions } from '../../redux/slices/productSlice';
 import { toast } from 'react-toastify';
 import Pagination from '../layout/Pagination/Pagination';
 import { useSearch } from '../utils/SearchContext';
-import { Slider, Typography, createMuiTheme } from '@mui/material';
+import { Slider, Typography } from '@mui/material';
 
 const CATEGORIES = [
     'Laptop',
@@ -70,12 +70,22 @@ const Product = () => {
     };
 
     const priceHandler = (event, newPrice) => {
-        const filteredProducts = productsList.filter((product) => {
+        const filteredProducts = products?.filter((product) => {
             return product?.price >= newPrice[0] && product?.price < newPrice[1];
         });
         setProductsList(filteredProducts);
         setPrice(newPrice)
     }
+
+    const filterCategory = (cate) => {
+        setCategory(cate);
+        const filterProducts = products?.filter((product) => {
+            return product.category === cate;
+        })
+        setProductsList(filterProducts);
+    }
+
+    console.log(products)
 
     useEffect(() => {
         // Refetch when the currentPage changes
@@ -132,13 +142,13 @@ const Product = () => {
                         onChange={priceHandler}
                     />
 
-                    <Typography>Catgories</Typography>
+                    <Typography onClick={() => setProductsList(products)}>Catgories</Typography>
                     <ul className={styles.categoryBox}>
                         {CATEGORIES.map((category) => {
                             return <li
                                 className={styles.categoryLink}
                                 key={category}
-                                onClick={() => setCategory(category)}
+                                onClick={() => filterCategory(category)}
                             >
                                 {category}
                             </li>
