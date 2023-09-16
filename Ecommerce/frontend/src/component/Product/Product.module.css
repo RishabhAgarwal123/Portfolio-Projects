@@ -32,3 +32,11 @@
 .categoryLink:hover {
     color: #ff6f61;
 }
+
+.typo {
+  cursor: pointer;;
+}
+
+.active{
+  color: #ff6f61;
+}

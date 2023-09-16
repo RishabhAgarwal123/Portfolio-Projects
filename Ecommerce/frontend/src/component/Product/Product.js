@@ -85,8 +85,6 @@ const Product = () => {
         setProductsList(filterProducts);
     }
 
-    console.log(products)
-
     useEffect(() => {
         // Refetch when the currentPage changes
         refetch({ page: currentPage });
@@ -142,15 +140,18 @@ const Product = () => {
                         onChange={priceHandler}
                     />
 
-                    <Typography onClick={() => setProductsList(products)}>Catgories</Typography>
+                    <Typography className={styles.typo} onClick={() => {
+                        setProductsList(products)
+                        setCategory('');
+                    }}>Catgories</Typography>
                     <ul className={styles.categoryBox}>
-                        {CATEGORIES.map((category) => {
+                        {CATEGORIES.map((categ) => {
                             return <li
-                                className={styles.categoryLink}
-                                key={category}
-                                onClick={() => filterCategory(category)}
+                                className={`${categ === category ? styles.active : ''} ${styles.categoryLink}`}
+                                key={categ}
+                                onClick={() => filterCategory(categ)}
                             >
-                                {category}
+                                {categ}
                             </li>
                         })}
                     </ul>
