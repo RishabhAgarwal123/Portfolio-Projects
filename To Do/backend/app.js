@@ -11,9 +11,11 @@ app.use(cors());
 
 // Route imports
 const user = require('./controllers/userController');
+const task = require('./controllers/taskController');
 
 // Path
 app.use('/api/v1', user);
+app.use('/api/v1', task);
 
 // Middleware for error
 app.use(errorMiddleware);
