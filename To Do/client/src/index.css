@@ -27,6 +27,10 @@
   gap: 1rem;
 }
 
+span {
+  font-size: 20px;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -164,8 +168,7 @@
 
 /* Dashboard */
 .dashboard {
-  padding: 1rem;
-  background-color: gray;
+  padding: 4rem;
 }
 
 /* Tasks */
@@ -323,8 +326,8 @@ button {
 
 .checkbox-wrapper input[type="checkbox"] {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  width: 30px;
+  height: 30px;
   left: 0;
   top: 0;
   margin: 0;
