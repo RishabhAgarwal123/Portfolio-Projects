@@ -1,6 +1,8 @@
 import React from 'react'
 import Navbar from './Navbar';
 import './Dashboard.css';
+import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 const tasks = [
     { checked: true, taskName: 'Revision' },
@@ -49,7 +51,6 @@ const Dashboard = () => {
     }
 
     const datesAndDays = getDatesRange();
-    console.log(datesAndDays);
 
 
     return (
@@ -57,33 +58,31 @@ const Dashboard = () => {
             <Navbar />
             <div className='dashboard'>
                 <h1>Tracking Daily Progress</h1>
-                <div className='cardContainer'>
+                <div className='card-container'>
                     {
                         datesAndDays && datesAndDays.map((date) => {
-                            return <div className="book" key={date.day}>
-                                {
-                                    tasks.map((task) => {
-                                        return <>
-                                            <div className='todo'>
-                                                <div className="checkbox-wrapper taskStatus">
-                                                    <div>
-                                                        <input type="checkbox" />
-                                                        <svg viewBox="0 0 35.6 35.6">
-                                                            <circle r="5" cy="5" cx="5" className="background"></circle>
-                                                            <circle r="5" cy="5" cx="5" className="stroke"></circle>
-                                                            <polyline points="11.78 18.12 15.55 22.23 25.17 12.87" className="check"></polyline>
-                                                        </svg>
-                                                    </div>
-                                                </div>
-                                                <div className='taskName'>{task.taskName}</div>
-                                            </div>
-                                        </>
-                                    })
-                                }
-                                {/* <div className="cover">
-                                    <p>{date.date}</p>
-                                    <p>{date.day}</p>
-                                </div> */}
+                            return <div className="todo-list-card card">
+                                <div className="card-section">
+                                    <div className='date-day'>
+                                        <span>{date.day}</span>
+                                        <span style={{textDecoration: 'underline'}}>{date.date}</span>
+                                    </div>
+                                    <div className='card-divider'></div>
+                                    {
+                                        tasks && tasks.map((task, index) => {
+                                            return <ul key={index}>
+                                                {task.checked && <li className='center-li border-green'>
+                                                    <CheckCircleOutlinedIcon sx={{ color: 'green' }} />
+                                                    <span>{task.taskName}</span>
+                                                </li>}
+                                                {!task.checked && <li className='center-li border-red'>
+                                                    <CancelOutlinedIcon sx={{ color: 'red' }} />
+                                                    <span>{task.taskName}</span>
+                                                </li>}
+                                            </ul>
+                                        })
+                                    }
+                                </div>
                             </div>
                         })
                     }
