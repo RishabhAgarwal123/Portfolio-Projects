@@ -360,3 +360,20 @@ button {
   margin-top: 2rem;
   border: 1px solid rgb(217, 206, 206);
 }
+
+.task-content {
+  display: none; /* Initially hide the content */
+  /* Add other styles as needed */
+
+  /* Border properties for when content is expanded */
+  border: 1px solid #ccc; /* You can customize the border color and style */
+  padding: 10px; /* Add padding for spacing */
+}
+
+/* Add styles to show the content when the task is open */
+.task-item.open .task-content {
+  display: block; /* Show the content when the task is open */
+}
+
+
+

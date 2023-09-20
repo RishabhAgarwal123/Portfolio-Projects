@@ -64,7 +64,11 @@ const Task = () => {
             </div>
             {item.isOpen && (
               <div className="task-content">
-                <p>{item.content}</p>
+                <input 
+                  type='text' 
+                  className='addInput' 
+                  value={item.content || ''}
+                  />
               </div>
             )}
           </div>
