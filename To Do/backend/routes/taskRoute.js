@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { isAuthenticatedUser } = require('../middleware/authMiddleware');
+const { isAuthenticatedUser } = require('../middlewares/authMiddleware');
 
 const {
     addTask,

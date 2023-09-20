@@ -10,8 +10,8 @@ app.use(cookieParser());
 app.use(cors());
 
 // Route imports
-const user = require('./controllers/userController');
-const task = require('./controllers/taskController');
+const user = require('./routes/userRoute');
+const task = require('./routes/taskRoute');
 
 // Path
 app.use('/api/v1', user);
