@@ -51,7 +51,8 @@ logout = catchAsyncError(async(req, res, next) => {
     });
 
     res.send({
-        statue: 200,
+        status: 200,
+        success: true,
         message: 'User logged out'
     });
 });

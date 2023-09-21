@@ -68,6 +68,7 @@ const Task = () => {
                   type='text' 
                   className='addInput' 
                   value={item.content || ''}
+                  onChange={() => console.log()}
                   />
               </div>
             )}

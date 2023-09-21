@@ -9,13 +9,9 @@ const TaskSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    dueDate: {
-        type: Date,
-        required: true
-    },
     completed: {
         type: Boolean,
-        required: true
+        default: false
     },
     user: {
         type: mongoose.Schema.ObjectId,

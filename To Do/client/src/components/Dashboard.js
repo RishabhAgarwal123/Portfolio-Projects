@@ -60,8 +60,8 @@ const Dashboard = () => {
                 <h1>Tracking Daily Progress</h1>
                 <div className='card-container'>
                     {
-                        datesAndDays && datesAndDays.map((date) => {
-                            return <div className="todo-list-card card">
+                        datesAndDays && datesAndDays.map((date, index) => {
+                            return <div className="todo-list-card card" key={index}>
                                 <div className="card-section">
                                     <div className='date-day'>
                                         <span>{date.day}</span>

@@ -1,8 +1,10 @@
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 const Form = () => {
+    const navigate = useNavigate(); 
     const [formType, setFormtype] = useState('login');
     const [formValues, setFormValues] = useState({
         firstname: '',
@@ -20,13 +22,22 @@ const Form = () => {
             password: formValues.password
         }
         axios.post("/users/register", registerData).then((response) => {
-            console.log(response)
+            if (response.data.success) {
+                setFormtype('login');
+            }
         })
     }
 
     const handleLogin = (event) => {
         event.preventDefault();
-        console.log(loginData)
+        axios.post("/users/login", loginData).then((res) => {
+            console.log(res)
+            if (res.data.success) {
+                // setUser(user);
+                // setIsAuthenticated(true);
+                navigate('/dashboard');
+            }
+        })
     }
 
     const handleLoginInputChange = (event) => {

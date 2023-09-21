@@ -5,9 +5,15 @@ const app = express();
 
 const errorMiddleware = require('./middlewares/error');
 
+app.use(
+    cors({
+        origin: 'http://localhost:3000', // Specify the allowed origin(s)
+        methods: 'GET,POST,PUT,DELETE', // Specify the allowed HTTP methods
+        credentials: true, // Allow credentials (e.g., cookies)
+    })
+);
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
 
 // Route imports
 const user = require('./routes/userRoute');

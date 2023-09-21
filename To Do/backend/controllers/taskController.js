@@ -4,13 +4,12 @@ const catchAsyncError = require('../middlewares/catchAsyncError');
 
 // add task
 addTask = catchAsyncError(async (req, res, next) => {
-    const { taskName, description, completed, dueDate, user } = req.body;
+    const { taskName, description, completed, user } = req.body;
 
     const task = await Task.create({
         taskName,
         description,
         completed,
-        dueDate,
         updatedAt: Date.now(),
         userId: user._id
     });
@@ -25,7 +24,7 @@ addTask = catchAsyncError(async (req, res, next) => {
 // update task
 updateTask = catchAsyncError(async (req, res, next) => {
     const id = req.params.id;
-    const { taskName, description } = req.body;
+    const { taskName, description, completed } = req.body;
     const task = await Task.findById({id});
 
     if (!task) 
@@ -34,6 +33,7 @@ updateTask = catchAsyncError(async (req, res, next) => {
     task.taskName = taskName;
     task.description = description;
     task.updatedAt = Date.now();
+    task.completed = completed;
 
     await task.save({ validateBeforeSave: false });
 });
