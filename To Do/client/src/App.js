@@ -1,11 +1,13 @@
 import './App.css';
 import Form from './components/Form';
-import { Route, BrowserRouter as Router, Routes, Navigate } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import Task from './components/Task';
 import Tasks from './components/Tasks';
 import Dashboard from './components/Dashboard';
 import axios from 'axios';
-import Navbar from './components/Navbar';
+import store from './redux/store';
+import Loader from './components/Loader';
 
 function App() {
   axios.defaults.baseURL = 'http://localhost:4000/api/v1';
@@ -13,17 +15,17 @@ function App() {
 
   return (
     <>
-      {/* <UserContextProvider> */}
+      <Provider store={store}>
+      <Loader />
         <Router>
           <Routes>
-            <Route path='/' element={<Navbar />} />
-            <Route path="/login" element={<Form />} />
+            <Route path="/" element={<Form />} />
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/task" element={<Task />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </Router>
-      {/* </UserContextProvider> */}
+      </Provider>
     </>
   );
 }

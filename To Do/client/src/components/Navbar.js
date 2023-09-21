@@ -5,15 +5,12 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import axios from "axios";
 
 const Navbar = () => {
-    // const { user, setUser, setIsAuthenticated } = useContext(UserContext);
     const navigate = useNavigate();
 
     const handleLogout = () => {
         axios.get("/users/logout").then((res) => {
             if (res.data.success) {
-                navigate('/login');
-                // setUser(null);
-                // setIsAuthenticated(false);
+                navigate('/');
             }
         })
     }

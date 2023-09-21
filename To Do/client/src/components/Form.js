@@ -2,9 +2,14 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoading, setUser } from '../redux/reducer';
+// Example of correct import syntax in your component
 
 const Form = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const loading = useSelector(state => state.user.loading);
     const [formType, setFormtype] = useState('login');
     const [formValues, setFormValues] = useState({
         firstname: '',
@@ -30,14 +35,18 @@ const Form = () => {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        axios.post("/users/login", loginData).then((res) => {
-            console.log(res)
-            if (res.data.success) {
-                // setUser(user);
-                // setIsAuthenticated(true);
-                navigate('/dashboard');
-            }
-        })
+        try {
+            dispatch(setLoading(true))
+            axios.post("/users/login", loginData).then((res) => {
+                if (res.data.success) {
+                    dispatch(setLoading(false));
+                    dispatch(setUser(res.data.user));
+                    navigate('/dashboard');
+                }
+            });
+        } catch (error) {
+            dispatch(setLoading(false));
+        }
     }
 
     const handleLoginInputChange = (event) => {
@@ -58,7 +67,7 @@ const Form = () => {
 
     return (
         <>
-            <div className='center'>
+            {!loading && <div className='center'>
                 {formType === 'register' && <form className='form' onSubmit={(e) => handleRegister(e)}>
                     <p className='title'>Register</p>
                     <p className='message'>Signup now and get full access to our app. </p>
@@ -143,7 +152,7 @@ const Form = () => {
                             <a style={{ cursor: 'pointer' }} onClick={() => setFormtype('register')}> Sign Up</a> </p>
                     </form>
                 }
-            </div>
+            </div>}
         </>
     )
 }
