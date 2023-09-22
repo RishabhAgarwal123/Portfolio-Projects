@@ -7,7 +7,8 @@ const TaskSchema = new mongoose.Schema({
         trim: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     completed: {
         type: Boolean,
@@ -21,6 +22,10 @@ const TaskSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now()
+    },
+    isOpen: {
+        type: Boolean,
+        default: false
     },
     updatedAt: {
         type: Date

@@ -3,15 +3,30 @@ import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import ExpandLessOutlinedIcon from '@mui/icons-material/ExpandLessOutlined';
 import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoading, setTasks } from '../redux/reducer';
+import axios from 'axios';
 
 const Task = () => {
-  const [items, setItems] = useState([
-    // { id: 1, title: 'Section 1', content: 'Content for Section 1', isOpen: false },
-    // { id: 2, title: 'Section 2', content: 'Content for Section 2', isOpen: false },
-    // { id: 3, title: 'Section 3', content: 'Content for Section 3', isOpen: false },
-  ]);
+  const dispatch = useDispatch();
+  const { tasks } = useSelector(state => state.user);
+  const [items, setItems] = useState(tasks);
 
   const [checked, setChecked] = useState(false);
+
+  const getAllTasks = () => {
+    axios.get('/tasks').then((res) => {
+      dispatch(setLoading(true));
+      try {
+        if (res.data.success) {
+          dispatch(setLoading(false));
+          dispatch(setTasks(res.data.tasks))
+        }
+      } catch (error) {
+        dispatch(setLoading(false));
+      }
+    });
+  }
 
   const handleChange = () => {
     setChecked(!checked);
@@ -20,7 +35,7 @@ const Task = () => {
   const toggleAccordion = (id) => {
     setItems((prevItems) =>
       prevItems.map((item) =>
-        item.id === id ? { ...item, isOpen: !item.isOpen } : { ...item, isOpen: false }
+        item._id === id ? { ...item, isOpen: !item.isOpen } : { ...item, isOpen: false }
       )
     );
   };
@@ -32,7 +47,17 @@ const Task = () => {
   const handleDelete = (id) => {
     const confirmed = window.confirm('Are you sure you want to delete this item?');
     if (confirmed) {
-      setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+      axios.delete((`/tasks/${id}`)).then((res) => {
+        try {
+          dispatch(setLoading(true));
+          if (res.data.success) {
+            dispatch(setLoading(false));
+            getAllTasks();
+          }
+        } catch (error) {
+          dispatch(setLoading(false));
+        }
+      });
     }
   };
 
@@ -47,27 +72,27 @@ const Task = () => {
                   <input type="checkbox" />
                   <SVG />
                 </div>
-                <span>{item.title}</span>
+                <span>{item?.taskName}</span>
               </div>
               <div className='todo-actions'>
-                <button className="btn" onClick={() => handleEdit(item.id)}>
+                <button className="btn" onClick={() => handleEdit(item._id)}>
                   <BorderColorOutlinedIcon />
                 </button>
-                <button className="btn" onClick={() => handleDelete(item.id)}>
+                <button className="btn" onClick={() => handleDelete(item._id)}>
                   <DeleteForeverOutlinedIcon />
                 </button>
-                <button className='btn' onClick={() => toggleAccordion(item.id)}>
+                <button className='btn' onClick={() => toggleAccordion(item._id)}>
                   {!item.isOpen && <ExpandMoreOutlinedIcon />}
                   {item.isOpen && <ExpandLessOutlinedIcon />}
                 </button>
               </div>
             </div>
             {item.isOpen && (
-              <div className="task-content">
+              <div className="task-content" key={item.id}>
                 <input 
                   type='text' 
                   className='addInput' 
-                  value={item.content || ''}
+                  value={item.description || ''}
                   onChange={() => console.log()}
                   />
               </div>

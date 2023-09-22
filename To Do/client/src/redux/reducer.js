@@ -4,6 +4,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   loading: false,
   user: {},
+  tasks: []
 };
 
 const userSlice = createSlice({
@@ -16,8 +17,11 @@ const userSlice = createSlice({
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
+    setTasks: (state, action) => {
+      state.tasks = action.payload
+    }
   },
 });
 
-export const { setUser, setLoading } = userSlice.actions;
+export const { setUser, setLoading, setTasks } = userSlice.actions;
 export default userSlice.reducer;

@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading, setUser } from '../redux/reducer';
-// Example of correct import syntax in your component
 
 const Form = () => {
     const navigate = useNavigate();

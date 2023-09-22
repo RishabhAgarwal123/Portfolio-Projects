@@ -11,7 +11,8 @@ addTask = catchAsyncError(async (req, res, next) => {
         description,
         completed,
         updatedAt: Date.now(),
-        userId: user._id
+        user: user._id,
+        isOpen: false
     });
 
     res.send({

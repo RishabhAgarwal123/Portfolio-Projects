@@ -175,8 +175,8 @@ span {
 .tasks {
   position: absolute;
   left: 25%;
-  margin-top: 5rem;
   padding: 4rem;
+  padding-top: 2rem;
   width: 40rem;
   height: 40rem;
 }
@@ -200,6 +200,26 @@ span {
   padding: 24px 46px 24px 26px;
 }
 
+textarea {
+  width: 100%;
+  padding: 12px 16px;
+  resize: none;
+  height: 96px;
+  font-size: 15px;
+  color: gray;
+  outline: none;
+}
+
+.addDescription {
+  display: flex;
+  max-width: 40rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  position: relative;
+  margin-top: .5rem;
+}
+
 button {
   border: none;
 }
@@ -215,11 +235,11 @@ button {
   text-align: left;
   padding: 11px 0px 11px 0px;
   border: 2px solid rgb(215, 204, 204) !important;
-  border-top-left-radius: 45px;
-  border-bottom-left-radius: 45px;
+  border-radius: 45px;
   border-style: outset;
   box-shadow: -6px -5px 18px rgba(255, 255, 255, 0.1);
   cursor: pointer;
+  margin-top: 1rem;
 }
 
 .c-button .c-main {
