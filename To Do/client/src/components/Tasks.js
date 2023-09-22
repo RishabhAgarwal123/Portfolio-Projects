@@ -43,6 +43,7 @@ const Tasks = () => {
       axios.post('/tasks/new', task).then((res) => {
         if (res.data.sucess) {
           dispatch(setLoading(false));
+          setTasks(res.data.tasks);
           defaultState();
           getAllTasks();
         } else dispatch(setLoading(false));

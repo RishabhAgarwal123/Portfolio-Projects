@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import ExpandLessOutlinedIcon from '@mui/icons-material/ExpandLessOutlined';
@@ -6,7 +6,6 @@ import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading, setTasks } from '../redux/reducer';
 import axios from 'axios';
-
 const Task = () => {
   const dispatch = useDispatch();
   const { tasks } = useSelector(state => state.user);
@@ -61,6 +60,10 @@ const Task = () => {
     }
   };
 
+  useEffect(() => {
+    setItems(tasks);
+  }, [tasks])
+
   return (
     <>
       <div>
@@ -91,7 +94,7 @@ const Task = () => {
               <div className="task-content" key={item.id}>
                 <input 
                   type='text' 
-                  className='addInput' 
+                  className='addInput w-100' 
                   value={item.description || ''}
                   onChange={() => console.log()}
                   />
