@@ -7,13 +7,15 @@ import { setLoading, setTasks } from '../redux/reducer';
 
 const Tasks = () => {
   const dispatch = useDispatch();
-  const { user, loading } = useSelector(state => state.user);
+  const { user, loading, tasks } = useSelector(state => state.user);
   const [taskName, setTaskName] = useState('');
   const [taskDescription, setTaskDescription] = useState('');
+  const [buttonText, setButtonText] = useState('Add Task');
 
-  const defaultState= () => {
+  const defaultState = () => {
     setTaskName('');
     setTaskDescription('');
+    setButtonText('Add Task');
   }
 
   const getAllTasks = () => {
@@ -53,6 +55,53 @@ const Tasks = () => {
     }
   }
 
+  const updateTask = (id, completed) => {
+    if (taskName === '' || taskDescription === '') return;
+    const task = {
+      taskName,
+      description: taskDescription,
+      completed: completed,
+      user
+    }
+    axios.put(`/tasks/${id}`, task).then((res) => {
+      try {
+        dispatch(setLoading(true));
+        if (res.data.success) {
+          dispatch(setLoading(false));
+          getAllTasks();
+          defaultState();
+        }
+      } catch (error) {
+        dispatch(setLoading(false));
+      }
+    })
+  }
+
+  const handleEdit = (id, checked) => {
+    const task = tasks?.find((t) => t._id === id)
+    setTaskName(task?.taskName);
+    setTaskDescription(task?.description);
+    updateTask(id, checked);
+    setButtonText('Update Task');
+  }
+
+  const handleDelete = (id) => {
+    const confirmed = window.confirm('Are you sure you want to delete this item?');
+    if (confirmed) {
+      axios.delete((`/tasks/${id}`)).then((res) => {
+        try {
+          dispatch(setLoading(true));
+          if (res.data.success) {
+            dispatch(setLoading(false));
+            getAllTasks();
+          }
+        } catch (error) {
+          dispatch(setLoading(false));
+        }
+      });
+    }
+  };
+
   useEffect(() => {
     getAllTasks();
   }, []);
@@ -86,11 +135,11 @@ const Tasks = () => {
           <button className="c-button" onClick={addTask}>
             <span className="c-main">
               <span className="c-ico"><span className="c-blur"></span> <span className="ico-text">+</span></span>
-              Add Task
+              {buttonText}
             </span>
           </button>
           <div className='task'>
-            <Task />
+            <Task handleEdit={handleEdit} handleDelete={handleDelete} />
           </div>
         </div>
       </div>

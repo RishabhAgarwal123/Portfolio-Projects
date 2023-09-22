@@ -25,7 +25,7 @@ addTask = catchAsyncError(async (req, res, next) => {
 // update task
 updateTask = catchAsyncError(async (req, res, next) => {
     const id = req.params.id;
-    const { taskName, description, completed } = req.body;
+    const { taskName, description, completed, user } = req.body;
     const task = await Task.findById({id});
 
     if (!task) 
@@ -35,6 +35,7 @@ updateTask = catchAsyncError(async (req, res, next) => {
     task.description = description;
     task.updatedAt = Date.now();
     task.completed = completed;
+    task.user = user._id,
 
     await task.save({ validateBeforeSave: false });
 });

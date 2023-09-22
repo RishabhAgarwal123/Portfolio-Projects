@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 const Loader = () => {
     const loading = useSelector((state) => state.user.loading);
-    console.log(loading)
+
     return (
         loading ? <div className='center'>
             <div aria-label="Orange and tan hamster running in a metal wheel" role="img" className="wheel-and-hamster">

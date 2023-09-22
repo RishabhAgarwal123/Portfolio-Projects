@@ -5,13 +5,13 @@ import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 
 const tasks = [
-    { checked: true, taskName: 'Revision' },
-    { checked: false, taskName: 'Netflix' },
-    { checked: true, taskName: 'Coding' },
-    { checked: true, taskName: 'Upskill' },
-    { checked: false, taskName: 'Reels' },
-    { checked: true, taskName: 'Office Work' },
-    { checked: false, taskName: 'Gym' },
+    { completed: true, taskName: 'Revision' },
+    { completed: false, taskName: 'Netflix' },
+    { completed: true, taskName: 'Coding' },
+    { completed: true, taskName: 'Upskill' },
+    { completed: false, taskName: 'Reels' },
+    { completed: true, taskName: 'Office Work' },
+    { completed: false, taskName: 'Gym' },
 ]
 
 const Dashboard = () => {
@@ -71,11 +71,11 @@ const Dashboard = () => {
                                     {
                                         tasks && tasks.map((task, index) => {
                                             return <ul key={index}>
-                                                {task.checked && <li className='center-li border-green'>
+                                                {task.completed && <li className='center-li border-green'>
                                                     <CheckCircleOutlinedIcon sx={{ color: 'green' }} />
                                                     <span>{task.taskName}</span>
                                                 </li>}
-                                                {!task.checked && <li className='center-li border-red'>
+                                                {!task.completed && <li className='center-li border-red'>
                                                     <CancelOutlinedIcon sx={{ color: 'red' }} />
                                                     <span>{task.taskName}</span>
                                                 </li>}
