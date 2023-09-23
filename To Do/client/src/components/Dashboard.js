@@ -3,18 +3,11 @@ import Navbar from './Navbar';
 import './Dashboard.css';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
-
-const tasks = [
-    { completed: true, taskName: 'Revision' },
-    { completed: false, taskName: 'Netflix' },
-    { completed: true, taskName: 'Coding' },
-    { completed: true, taskName: 'Upskill' },
-    { completed: false, taskName: 'Reels' },
-    { completed: true, taskName: 'Office Work' },
-    { completed: false, taskName: 'Gym' },
-]
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
+    const { tasks } = useSelector(state => state.user);
+
     function getDatesRange() {
         const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const today = new Date();
