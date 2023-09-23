@@ -63,18 +63,19 @@ const Tasks = () => {
       completed: completed,
       user
     }
-    axios.put(`/tasks/${id}`, task).then((res) => {
-      try {
-        dispatch(setLoading(true));
-        if (res.data.success) {
-          dispatch(setLoading(false));
-          getAllTasks();
-          defaultState();
-        }
-      } catch (error) {
-        dispatch(setLoading(false));
-      }
-    })
+    console.log(task)
+    // axios.put(`/tasks/${id}`, task).then((res) => {
+    //   try {
+    //     dispatch(setLoading(true));
+    //     if (res.data.success) {
+    //       dispatch(setLoading(false));
+    //       getAllTasks();
+    //       defaultState();
+    //     }
+    //   } catch (error) {
+    //     dispatch(setLoading(false));
+    //   }
+    // })
   }
 
   const handleEdit = (id, checked) => {
@@ -132,12 +133,18 @@ const Tasks = () => {
               cols={65}
             />
           </div>
-          <button className="c-button" onClick={addTask}>
+          {buttonText === 'Add Task' && <button className="c-button" onClick={addTask}>
             <span className="c-main">
               <span className="c-ico"><span className="c-blur"></span> <span className="ico-text">+</span></span>
               {buttonText}
             </span>
-          </button>
+          </button>}
+          {buttonText === 'Update Task' && <button className="c-button" onClick={handleEdit}>
+            <span className="c-main">
+              <span className="c-ico"><span className="c-blur"></span> <span className="ico-text">+</span></span>
+              {buttonText}
+            </span>
+          </button>}
           <div className='task'>
             <Task handleEdit={handleEdit} handleDelete={handleDelete} />
           </div>
