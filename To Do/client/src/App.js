@@ -2,7 +2,6 @@ import './App.css';
 import Form from './components/Form';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import Task from './components/Task';
 import Tasks from './components/Tasks';
 import Dashboard from './components/Dashboard';
 import axios from 'axios';
@@ -21,7 +20,6 @@ function App() {
           <Routes>
             <Route path="/" element={<Form />} />
             <Route path="/tasks" element={<Tasks />} />
-            <Route path="/task" element={<Task />} />
             <Route path="/dashboard" element={<Dashboard />} />
           </Routes>
         </Router>
