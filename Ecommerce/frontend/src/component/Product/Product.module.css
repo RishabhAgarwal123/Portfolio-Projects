@@ -40,3 +40,9 @@
 .active{
   color: #ff6f61;
 }
+
+.details_review {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

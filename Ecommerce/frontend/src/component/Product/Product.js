@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactStars from 'react-rating-stars-component';
 import styles from './Product.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from '../layout/Loader/Loader';
@@ -8,7 +9,7 @@ import { productSliceActions } from '../../redux/slices/productSlice';
 import { toast } from 'react-toastify';
 import Pagination from '../layout/Pagination/Pagination';
 import { useSearch } from '../utils/SearchContext';
-import { Slider, Typography } from '@mui/material';
+import { Slider, Typography, typographyClasses } from '@mui/material';
 
 const CATEGORIES = [
     'Laptop',
@@ -31,7 +32,12 @@ const Product = () => {
     const [productsCount, setProductsCount] = useState();
     const [price, setPrice] = useState([0, 150000]);
     const [category, setCategory] = useState('');
-    const { data, error, isLoading, refetch } = useGetAllProductsQuery({ page: currentPage });
+    const [ratings, setRatings] = useState(2.5);
+    const { data, error, isLoading, refetch } = useGetAllProductsQuery({
+        page: currentPage,
+        category: category,
+        price: price
+    });
 
     let indexOfLastItem = currentPage * resultPerPage;
     let indexOfFirstItem = indexOfLastItem - resultPerPage;
@@ -65,35 +71,36 @@ const Product = () => {
         }
     }
 
+    const fetch = () => {
+        refetch({
+            page: currentPage,
+            category: category,
+            price: price
+        });
+    }
+
+    const ratingChanged = (newRating) => {
+        setRatings(newRating);
+        console.log(newRating);
+    }
+
     const onPageChange = newPage => {
         setCurrentPage(newPage);
+        fetch();
     };
 
     const priceHandler = (event, newPrice) => {
-        const filteredProducts = products?.filter((product) => {
-            return product?.price >= newPrice[0] && product?.price < newPrice[1];
-        });
-        setProductsList(filteredProducts);
-        setPrice(newPrice)
+        setPrice(newPrice);
+        fetch();
     }
 
     const filterCategory = (cate) => {
         setCategory(cate);
-        const filterProducts = products?.filter((product) => {
-            return product.category === cate;
-        })
-        setProductsList(filterProducts);
+        fetch();
     }
 
     useEffect(() => {
-        // Refetch when the currentPage changes
-        refetch({ page: currentPage });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [currentPage]);
-
-    useEffect(() => {
         getProductsPerPage();
-        setPrice([0, 150000]);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, error, isLoading, refetch]);
 
@@ -141,7 +148,6 @@ const Product = () => {
                     />
 
                     <Typography className={styles.typo} onClick={() => {
-                        setProductsList(products)
                         setCategory('');
                     }}>Catgories</Typography>
                     <ul className={styles.categoryBox}>
@@ -155,6 +161,19 @@ const Product = () => {
                             </li>
                         })}
                     </ul>
+
+                    <Typography sx={{ marginTop: '20px' }}>Ratings</Typography>
+                    <div className={styles.details_review}>
+                        <ReactStars
+                            edit={true}
+                            value={ratings}
+                            color='rgba(20, 20, 20, 0.1)'
+                            activeColor='tomato'
+                            size={window.innerWidth < 600 ? 20 : 25}
+                            isHalf={true}
+                            onChange={ratingChanged}
+                        />
+                    </div>
                 </div>
 
                 {(price[0] === 0 && price[1] === 150000) && resultPerPage < productsCount && <Pagination

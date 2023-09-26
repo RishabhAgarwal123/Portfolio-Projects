@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ProductDetail from './component/Product/ProductDetail';
 import Product from './component/Product/Product';
+import UserForm from './component/User/UserForm';
 
 function App() {
   useEffect(() => {
@@ -38,6 +39,7 @@ function App() {
           <Route exact path='/' element={<Home />} />
           <Route exact path='/product/:id' element={<ProductDetail />} />
           <Route exact path='/products' element={<Product />} />
+          <Route exact path='/account' element={<UserForm />} />
         </Routes>
         <Footer />
       </Router>

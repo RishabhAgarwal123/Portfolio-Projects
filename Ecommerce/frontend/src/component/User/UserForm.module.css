@@ -1,12 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap");
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
+.divCenter {
   background-color: #f6f5f7;
   font-family: "Signika Negative", sans-serif;
   display: flex;
@@ -17,7 +11,7 @@ body {
   margin: 1rem 0;
 }
 
-p {
+.para {
   font-size: 14px;
   font-weight: 100;
   line-height: 20px;
@@ -25,39 +19,14 @@ p {
   margin: 20px 0 30px;
 }
 
-.social-container {
-  margin: 10px 0 20px 0;
-}
-
-.social-container a {
-  border: 1px solid #dddddd;
-  border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 5px;
-  height: 40px;
-  width: 40px;
-  transition: all 0.7s ease;
-  margin-bottom: 20px;
-  font-size: 10px;
-}
-
-.social-container a:hover {
-  background-color: #000;
-  color: #fff;
-  border: none;
-  outline: none;
-}
-
-a {
+.link {
   color: rgb(66, 66, 66);
   font-size: 14px;
   text-decoration: none;
   margin-bottom: 14px;
 }
 
-button {
+.btn {
   cursor: pointer;
   border-radius: 20px;
   border: 1px solid #ff5e62;
@@ -72,26 +41,51 @@ button {
   transition: transform 80ms ease-out;
 }
 
-button:hover {
+.btn:hover {
   background: linear-gradient(to bottom, #ff9966 0%, #ff5e62 100%);
 }
 
-button:active {
+.btn:active {
   transform: scale(0.9);
 }
 
-button.next-side-btn {
+.btn.nextSideBtn {
   background-color: transparent;
   border-color: #fff;
   font-family: "Signika Negative", sans-serif;
 }
 
-button.next-side-btn:hover {
+.btn.nextSideBtn:hover {
   background: #fff;
   color: #02aab0;
 }
 
-form {
+.userFormContainer {
+  background-color: #fff;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2), 0 6px 14px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+  height: 800px;
+  width: 480px;
+  max-width: 100%;
+}
+
+.formContainer {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.signUpContainter {
+  top: 0;
+  height: 50%;
+  opacity: 0;
+  z-index: 2;
+}
+
+.form {
   background-color: #fff;
   display: flex;
   flex-direction: column;
@@ -102,7 +96,7 @@ form {
   text-align: center;
 }
 
-.form-title {
+.formTitle {
   text-align: center;
   font-weight: bold;
   background: linear-gradient(
@@ -120,23 +114,23 @@ form {
   animation: shine 3s linear infinite;
 }
 
-.sign-up {
+.signUp {
   margin-top: -5px;
   margin-bottom: 20px;
 }
 
-form .add-link {
+.addLink {
   margin-top: 14px;
   color: grey;
 }
 
-.form-control {
+.formControl {
   position: relative;
   margin: 20px 0 40px;
   width: 300px;
 }
 
-.form-control input {
+.formControl input {
   background-color: transparent;
   border: 0;
   border-bottom: 2px #ff5e62 solid;
@@ -147,14 +141,14 @@ form .add-link {
   color: #fff;
 }
 
-.form-control input:focus,
-.form-control input:valid {
+.formControl input:focus,
+.formControl input:valid {
   outline: 0;
   border-bottom: 2px solid #ff9966;
   color: #000;
 }
 
-.form-control label {
+.formControl label {
   position: absolute;
   top: 15px;
   left: 0;
@@ -162,62 +156,44 @@ form .add-link {
   color: grey;
 }
 
-.form-control label span {
+.formControl label span {
   display: inline-block;
   font-size: 18px;
   min-width: 5px;
   transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.form-control input:focus + label span,
-.form-control input:valid + label span {
+.formControl input:focus + label span,
+.formControl input:valid + label span {
   color: #ff5e62;
   transform: translateY(-30px);
 }
 
-.container {
-  background-color: #fff;
-  border-radius: 14px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2), 0 6px 14px rgba(0, 0, 0, 0.1);
-  position: relative;
-  overflow: hidden;
-  height: 1000px;
-  width: 480px;
-  max-width: 100%;
-}
-
-.form-container {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  transition: all 0.6s ease-in-out;
-}
-
-.sign-in-container {
+.signInContainer {
   top: 0;
   height: 50%;
   z-index: 2;
 }
 
-.container.right-panel-active .sign-in-container {
+.userFormContainer .rightPanelActive .signInContainer {
   transform: translateY(100%);
 }
 
-.sign-up-container {
+.signUpContainer {
   top: 0;
   height: 50%;
   opacity: 0;
   z-index: 2;
 }
 
-.container .right-panel-active .sign-up-container {
+.userFormContainer .rightPanelActive .signUpContainer {
   transform: translateY(100%);
   opacity: 1;
   z-index: 5;
   animation: show 0.6s;
 }
 
-.overlay-container {
+.overlayContainer {
   position: absolute;
   left: 0;
   top: 50%;
@@ -228,7 +204,7 @@ form .add-link {
   z-index: 100;
 }
 
-.container.right-panel-active .overlay-container {
+.userFormContainer .rightPanelActive .overlayContainer {
   transform: translateY(-100%);
 }
 
@@ -246,11 +222,11 @@ form .add-link {
   transition: transform 0.6s ease-in-out;
 }
 
-.container.right-panel-active .overlay {
+.userFormContainer .rightPanelActive .overlay {
   transform: translateY(50%);
 }
 
-.overlay-panel {
+.overlayPanel {
   position: absolute;
   display: flex;
   align-items: center;
@@ -265,113 +241,24 @@ form .add-link {
   transition: transform 0.6s ease-in-out;
 }
 
-.overlay-left {
+.overlayLeft {
   transform: translateY(-20%);
 }
 
-.container.right-panel-active .overlay-left {
+.userFormContainer .rightPanelActive .overlayLeft {
   transform: translateY(0);
 }
 
-.overlay-right {
+.overlayRight {
   bottom: 0;
   transform: translateY(0);
 }
 
-.container.right-panel-active .overlay-right {
+.userFormContainer .rightPanelActive .overlayRight {
   transform: translateY(20%);
 }
 
-@media (min-width: 768px) {
-  body {
-    margin: -20px 0 50px;
-  }
-
-  .container {
-    width: 768px;
-    max-width: 100%;
-    height: 480px;
-  }
-
-  .form-container {
-    top: 0;
-    height: 100%;
-    width: 50%;
-    padding-top: 12px;
-  }
-
-  .sign-in-container {
-    left: 0;
-    width: 50%;
-    height: 100%;
-  }
-
-  .sign-up-container {
-    left: 0;
-    width: 50%;
-    height: 100%;
-  }
-
-  .container.right-panel-active .sign-in-container {
-    transform: translateX(100%);
-  }
-
-  .container.right-panel-active .sign-up-container {
-    transform: translateX(100%);
-  }
-
-  .overlay-container {
-    left: 50%;
-    top: 0;
-    height: 100%;
-    width: 50%;
-  }
-
-  .container.right-panel-active .overlay-container {
-    transform: translateX(-100%);
-  }
-
-  .overlay {
-    top: 0;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-  }
-
-  .container.right-panel-active .overlay {
-    transform: translateX(50%);
-  }
-
-  .overlay-panel {
-    top: 0;
-    height: 100%;
-    width: 50%;
-    transform: translateX(0);
-  }
-
-  .overlay-left {
-    transform: translateX(-20%);
-  }
-
-  .container.right-panel-active .overlay-left {
-    transform: translateX(0);
-  }
-
-  .overlay-right {
-    right: 0;
-    top: 0;
-    left: 50%;
-    transform: translateX(0);
-  }
-
-  .container.right-panel-active .overlay-right {
-    transform: translateX(20%);
-  }
-}
-
 /* Animations */
-
 @keyframes shine {
   from {
     background-position: 200% center;

@@ -5,9 +5,13 @@ export const api = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000' }),
     endpoints: (builder) => ({
         getAllProducts: builder.query({
-            query: ({page}) => {
+            query: ({ page = 1, keyword = '', price = [0, 150000], category}) => {
+                let link = `api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lt]=${price[1]}&page=${page}`;
+                if (category) 
+                    link = `api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lt]=${price[1]}&page=${page}`;
+                
                 return {
-                    url: page && page !== 0 ? `/api/v1/products?page=${page}` : `/api/v1/products`
+                    url: link
                 }
             },
         }),
