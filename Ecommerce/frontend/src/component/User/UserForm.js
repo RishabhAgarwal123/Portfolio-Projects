@@ -1,35 +1,45 @@
 import React, { useState } from 'react';
 import Login from './Login';
 import styles from './UserForm.module.css';
+import Register from './Register';
+import './form.css';
 
 const UserForm = () => {
     const [checked, setChecked] = useState(true);
-
+    console.log(checked)
     return (
         <>
-        <div className={styles.divCenter}>
-            <div className={`${styles.userFormContainer} ${checked && styles.rightPanelActive}`}>
-                <div className={styles.overlayContainer}>
-                    <div className={styles.overlay}>
-                        <div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
-                            {checked && <Login />}
-                            <h1>Have you already registered ?</h1>
-                            <p>You can login with your personal info</p>
-                            <button className={styles.nextSideBtn} onClick={() => setChecked(true)}>
-                                Sign In
-                            </button>
-                        </div>
-                        <div className={`${styles.overlayPanel} ${styles.overlayLeft}`}>
-                            <h1>Hello, Friend!</h1>
-                            <p>Let's create your account</p>
-                            <button className={styles.nextSideBtn} onClick={() => setChecked(false)}>
-                                Sign Up
-                            </button>
+            <div className="body">
+                <div className={`container ${checked ? 'right-panel-active' : ''}`} id="container">
+                    <div className={`form-container sign-up-container ${checked ? 'right-panel-active' : ''}`}>
+                        <Register />
+                    </div>
+                    <div className={`form-container sign-in-container ${checked ? 'right-panel-active' : ''}`}>
+                        <Login />
+                    </div>
+                    <div className="overlay-container">
+                        <div className="overlay">
+                            <div className="overlay-panel overlay-left">
+                                <h1>Have you already registered ?</h1>
+                                <p>You can login with your personal info</p>
+                                <button className="next-side-btn" id="sign-in" onClick={() => setChecked(true)}>
+                                    Sign In
+                                </button>
+                            </div>
+                            <div className="overlay-panel overlay-right">
+                                <h1>Hello, Friend!</h1>
+                                <p>Let's create your account</p>
+                                <button className="next-side-btn" id="sign-up" onClick={() => setChecked(false)}>
+                                    Sign Up
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            );
+
+
         </>
     )
 }

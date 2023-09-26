@@ -1,22 +1,21 @@
 import React from 'react'
-import styles from './UserForm.module.css';
+import './form.css';
 
 const Login = () => {
     return (
-        <div className={`${styles.formContainer} ${styles.signUpContainer}`}>
-            <form action="" className={styles.form}>
-                <h1 className={`${styles.formTitle} ${styles.signUp}`}>Sign Up</h1>
-                <div className={styles.formControl}>
-                    <input type="text" required />
-                    <label htmlFor="email">Email</label>
-                </div>
-                <div className={styles.formControl}>
-                    <input type="password" required />
-                    <label htmlFor="password">Password</label>
-                </div>
-                <button className={styles.btn} >Sign Up</button>
-            </form>
-        </div>
+        <form action="">
+            <h1 className="form-title sign-in">Sign In</h1>
+            <div className="form-control">
+                <input type="text" />
+                <label htmlFor="email">Email</label>
+            </div>
+            <div className="form-control">
+                <input type="password" />
+                <label htmlFor="password">Password</label>
+            </div>
+            <a href="#">Forgot Your Password ?</a>
+            <button onClick={() => false}>Sign In</button>
+        </form>
     )
 }
 
