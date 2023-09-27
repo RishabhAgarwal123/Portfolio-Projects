@@ -37,7 +37,7 @@ const Navbar = () => {
             </div>
             <div className={styles.userActions}>
                 <Link to={'/login'}><FontAwesomeIcon icon={faUser} /> <span>Login</span></Link>
-                <Link to={'/signin'}><FontAwesomeIcon icon={faUserPlus} /> <span>Sign In</span></Link>
+                <Link to={'/register'}><FontAwesomeIcon icon={faUserPlus} /> <span>Sign In</span></Link>
                 <Link to={'/cart'}><FontAwesomeIcon icon={faShoppingCart} />
                     <span className={styles.cartCount}>{cartCount}</span>
                 </Link>

@@ -13,6 +13,7 @@ signInBtn.addEventListener('click', () => {
 const labels = document.querySelectorAll('.form-control label');
 
 labels.forEach((label) => {
+    console.log(label)
     label.innerHTML = label.innerHTML
         .split("")
         .map((letter, i) => `<span style='transition-delay: ${i * 50}ms'>${letter}</span>`)
