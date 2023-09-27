@@ -5,27 +5,49 @@ export const api = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:4000' }),
     endpoints: (builder) => ({
         getAllProducts: builder.query({
-            query: ({ page = 1, keyword = '', price = [0, 150000], category}) => {
+            query: ({ page = 1, keyword = '', price = [0, 150000], category }) => {
                 let link = `api/v1/products?keyword=${keyword}&price[gte]=${price[0]}&price[lt]=${price[1]}&page=${page}`;
-                if (category) 
+                if (category)
                     link = `api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lt]=${price[1]}&page=${page}`;
-                
+
                 return {
                     url: link
                 }
             },
         }),
         getProduct: builder.query({
-            query: ({id}) => {
+            query: ({ id }) => {
                 return {
                     url: `/api/v1/products/${id}`
                 }
             }
+        }),
+        loginUser: builder.mutation({
+            query: (loginUser) => ({
+                url: '',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                loginUser,
+            })
+        }),
+        registerUser: builder.mutation({
+            query: (registerUser) => ({
+                url: '',
+                method: 'POST',
+                registerUser,
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            })
         })
     })
 });
 
-export const { 
+export const {
     useGetAllProductsQuery,
-    useGetProductQuery
- } = api;
+    useGetProductQuery,
+    useLoginUserMutation,
+    useRegisterUserMutation
+} = api;

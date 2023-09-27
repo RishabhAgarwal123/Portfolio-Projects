@@ -9,7 +9,7 @@ import { productSliceActions } from '../../redux/slices/productSlice';
 import { toast } from 'react-toastify';
 import Pagination from '../layout/Pagination/Pagination';
 import { useSearch } from '../utils/SearchContext';
-import { Slider, Typography, typographyClasses } from '@mui/material';
+import { Slider, Typography } from '@mui/material';
 
 const CATEGORIES = [
     'Laptop',
@@ -81,7 +81,6 @@ const Product = () => {
 
     const ratingChanged = (newRating) => {
         setRatings(newRating);
-        console.log(newRating);
     }
 
     const onPageChange = newPage => {
