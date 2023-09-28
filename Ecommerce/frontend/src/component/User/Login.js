@@ -29,9 +29,7 @@ const Login = () => {
 
     const login = async (e) => {
         e.preventDefault();
-        const myForm = new FormData();
-        myForm.set('email', email);
-        myForm.set('password', password);
+
         dispatch(userSliceActions.setLoading(true)); // Set loading to true when the login process starts
 
         try {

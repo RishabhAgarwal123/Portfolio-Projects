@@ -3,7 +3,7 @@ import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlin
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Face6Icon from '@mui/icons-material/Face6';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRegisterUserMutation } from '../../redux/api';
+import { useRegisterMutation } from '../../redux/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { userSliceActions } from '../../redux/slices/userSlice';
 import { toast } from 'react-toastify';
@@ -21,36 +21,28 @@ const Register = () => {
     const [avatar, setAvatar] = useState();
     const [avatarPreview, setAvatarPreview] = useState('https://cdn1.iconfinder.com/data/icons/material-core/20/account-circle-1024.png');
     const { name, email, password } = registerData;
-    const { isLoading, mutate: register } = useRegisterUserMutation();
+    const [register] = useRegisterMutation();
 
     const registerUser = async (event) => {
         event.preventDefault();
 
-        const myForm = new FormData();
-        myForm.set('name', name);
-        myForm.set('email', email);
-        myForm.set('password', password);
-        myForm.set('avatar', avatar);
-
         dispatch(userSliceActions.setLoading(true)); // Set loading to true when the login process starts
 
         try {
-            if (!isLoading) {
-                const response = await register({ name, email, password, avatar }); // Assuming useLoginUserMutation is an async function
+            const response = await register({ name, email, password, avatar }); // Assuming useLoginUserMutation is an async function
 
-                if (response.error) {
-                    dispatch(userSliceActions.setLoading(false)); // Set loading to false if there's an error
-                    toast.error(response.error.message);
-                } else {
-                    dispatch(userSliceActions.setLoading(false)); // Set loading to false after a successful login
-                    toast.success('Registered Successfully!');
-                    dispatch(userSliceActions.resetState());
-                    navigate('/login');
-                }
+            if (response.data.success) {
+                dispatch(userSliceActions.setLoading(false)); // Set loading to false after a successful login
+                toast.success('Registered Successfully!');
+                dispatch(userSliceActions.resetState());
+                navigate('/login');
+            } else {
+                dispatch(userSliceActions.setLoading(false)); // Set loading to false if there's an error
+                toast.error('Something went wrong');
             }
         } catch (error) {
             dispatch(userSliceActions.setLoading(false)); // Set loading to false in case of an exception
-            toast.error('An error occurred while logging in.');
+            toast.error('An error occurred while registering a user.');
         }
     };
 

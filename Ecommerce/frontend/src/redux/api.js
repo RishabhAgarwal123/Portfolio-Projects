@@ -32,11 +32,11 @@ export const api = createApi({
                 body: loginUser,
             })
         }),
-        registerUser: builder.mutation({
+        register: builder.mutation({
             query: (registerUser) => ({
                 url: '',
                 method: 'POST',
-                registerUser,
+                body: registerUser,
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -49,5 +49,5 @@ export const {
     useGetAllProductsQuery,
     useGetProductQuery,
     useLoginUserMutation,
-    useRegisterUserMutation
+    useRegisterMutation
 } = api;
