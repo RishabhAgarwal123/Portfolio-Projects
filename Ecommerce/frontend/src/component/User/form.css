@@ -169,7 +169,8 @@ input[type="file"] {
 }
 
 .upload > img {
-  width: 2.3vmax;
+  width: 2.5vmax;
+  height: 2.5vmax;
   border-radius: 100%;
 }
 

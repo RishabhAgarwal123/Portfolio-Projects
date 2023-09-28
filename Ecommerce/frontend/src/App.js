@@ -21,6 +21,7 @@ function App() {
 
   const loadUserData = () => {
     console.log(data);
+    console.log(error)
   }
 
   useEffect(() => {

@@ -52,9 +52,10 @@ const Register = () => {
             if (reader.readyState === 2) {
                 const result = reader.result;
                 setAvatarPreview(result);
-                setAvatar(result);
             }
         }
+        setAvatar(event.target.files[0]);
+        console.log(event.target.files[0])
         reader.readAsDataURL(event.target.files[0]);
     }
 
@@ -110,7 +111,7 @@ const Register = () => {
                             <input
                                 type="file"
                                 name="avatar"
-                                value={avatar || ''}
+                                value={''}
                                 accept="image/*"
                                 onChange={onInputChange} />
                             <span className="custom-file-label">Choose a file</span>

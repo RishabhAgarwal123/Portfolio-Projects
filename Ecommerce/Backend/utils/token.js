@@ -2,17 +2,19 @@
 const sendToken = (user, status, res) => {
     const token = user.getJWTToken();
 
-    res.cookie('cookie', token, {
-        maxAge: process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000,
-        secure: true,
-        httpOnly: true,
-    })
+    // Cookie options
+    const options = {
+        expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
+        sameSite: 'none', 
+        secure: true
+    }
 
-    res.send({
+    res.status(status).cookie('cookie', token, options).json({
         success: true,
-        user: user,
-        token: token
+        user,
+        token
     })
-}
+};
+
 
 module.exports = sendToken;
