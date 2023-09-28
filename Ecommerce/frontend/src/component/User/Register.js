@@ -124,7 +124,7 @@ const Register = () => {
                             <span className="custom-file-label">Choose a file</span>
                         </label>
                     </div>
-                    <button onClick={registerUser}>Sign Up</button>
+                    <button className='form-button' onClick={registerUser}>Sign Up</button>
                     <Link className='link' to={'/login'}>Already have an Account</Link>
                 </div>
             }

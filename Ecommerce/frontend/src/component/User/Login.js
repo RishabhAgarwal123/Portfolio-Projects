@@ -17,7 +17,7 @@ const Login = () => {
     });
     const { email, password } = loginData;
     const { loading } = useSelector(state => state.user);
-    const { isLoading, mutate: login } = useLoginUserMutation();
+    const [loginUser] = useLoginUserMutation(loginData);
 
     const onInputChange = (e) => {
         e.preventDefault();
@@ -27,7 +27,7 @@ const Login = () => {
         });
     }
 
-    const loginUser = async (e) => {
+    const login = async (e) => {
         e.preventDefault();
         const myForm = new FormData();
         myForm.set('email', email);
@@ -35,18 +35,16 @@ const Login = () => {
         dispatch(userSliceActions.setLoading(true)); // Set loading to true when the login process starts
 
         try {
-            if (!isLoading) {
-                const response = await login({ email, password }); // Assuming useLoginUserMutation is an async function
+            const response = await loginUser({ email, password }); // Assuming useLoginUserMutation is an async function
 
-                if (response.error) {
-                    dispatch(userSliceActions.setLoading(false)); // Set loading to false if there's an error
-                    toast.error(response.error.message);
-                } else {
-                    const user = response.data; // Get the user data from the response
-                    dispatch(userSliceActions.setLoading(false)); // Set loading to false after a successful login
-                    toast.success('Logged In Successfully!');
-                    dispatch(userSliceActions.setUser(user)); // Set the user in your Redux store
-                }
+            if (response.data.status === 400) {
+                dispatch(userSliceActions.setLoading(false)); // Set loading to false if there's an error
+                toast.error(response.data.message);
+            } else {
+                const user = response.data; // Get the user data from the response
+                dispatch(userSliceActions.setLoading(false)); // Set loading to false after a successful login
+                toast.success('Logged In Successfully!');
+                dispatch(userSliceActions.setUser(user)); // Set the user in your Redux store
             }
         } catch (error) {
             dispatch(userSliceActions.setLoading(false)); // Set loading to false in case of an exception
@@ -78,7 +76,7 @@ const Login = () => {
                             onChange={onInputChange} />
                     </div>
                     <Link style={{ borderBottom: '0' }} className='link' to={"/"}>Forgot Your Password ?</Link>
-                    <button onClick={loginUser}>Sign In</button>
+                    <button className='form-button' onClick={login}>Sign In</button>
                     <Link className='link' to={'/register'}>Create a new Account</Link>
                 </div>
             }

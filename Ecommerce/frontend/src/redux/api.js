@@ -24,12 +24,12 @@ export const api = createApi({
         }),
         loginUser: builder.mutation({
             query: (loginUser) => ({
-                url: '',
+                url: '/api/v1/users/login',
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                loginUser,
+                body: loginUser,
             })
         }),
         registerUser: builder.mutation({

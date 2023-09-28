@@ -11,14 +11,6 @@
   margin: 1rem 0;
 }
 
-p {
-  font-size: 14px;
-  font-weight: 100;
-  line-height: 20px;
-  letter-spacing: 0.5px;
-  margin: 20px 0 30px;
-}
-
 .link {
   color: rgb(66, 66, 66);
   font-size: 16px;
@@ -27,7 +19,7 @@ p {
   border-bottom: 1px solid black;
 }
 
-button {
+.form-button {
   cursor: pointer;
   border-radius: 5px;
   border: 1px solid #ff5e62;
@@ -45,11 +37,11 @@ button {
   margin-bottom: 10px;
 }
 
-button:hover {
+.form-button:hover {
   background: linear-gradient(to bottom, #ff9966 0%, #ff5e62 100%);
 }
 
-button:active {
+.form-button:active {
   transform: scale(0.9);
 }
 
