@@ -22,6 +22,13 @@ export const api = createApi({
                 }
             }
         }),
+        loadUser: builder.query({
+            query: () => {
+                return {
+                    url: '/api/v1/users/me'
+                }
+            }
+        }),
         loginUser: builder.mutation({
             query: (loginUser) => ({
                 url: '/api/v1/users/login',
@@ -34,7 +41,7 @@ export const api = createApi({
         }),
         register: builder.mutation({
             query: (registerUser) => ({
-                url: '',
+                url: '/api/v1/users/register',
                 method: 'POST',
                 body: registerUser,
                 headers: {
@@ -49,5 +56,6 @@ export const {
     useGetAllProductsQuery,
     useGetProductQuery,
     useLoginUserMutation,
-    useRegisterMutation
+    useRegisterMutation,
+    useLoadUserQuery
 } = api;

@@ -4,18 +4,24 @@ const catchAsyncError = require('../middleware/catchAsyncError');
 const sendToken = require('../utils/token');
 const sendMail = require('../utils/sendMail');
 const crypto = require('crypto');
+const cloudinary = require('cloudinary');
 
 // Register user
 registerUser = catchAsyncError(async (req, res, next) => {
     const { name, email, password } = req.body;
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+        folder: 'Avatars',
+        width: 150,
+        crop: 'scale'
+    });
 
     const user = await User.create({
         name,
         email,
         password,
         avatar: {
-            public_id: 'This is sample image key',
-            url: 'Sample url'
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url
         }
     });
 
@@ -44,15 +50,6 @@ loginUser = catchAsyncError(async (req, res, next) => {
 
     // Generating token and sending 
     sendToken(user, 200, res);
-    // const token = user.getJWTToken();
-
-    // Returning token after login successfully
-    // res.send({
-    //     status: 200,
-    //     success: true,
-    //     message: 'User logged successfully',
-    //     token
-    // })
 });
 
 // Logout user
@@ -160,6 +157,7 @@ updatePassword = catchAsyncError(async (req, res, next) => {
 
 // Get user detail
 getUserDetail = catchAsyncError(async (req, res, next) => {
+    console.log(req.user)
     const user = await User.findById(req.user.id);
 
     res.send({

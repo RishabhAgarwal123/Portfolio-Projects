@@ -12,14 +12,24 @@ import ProductDetail from './component/Product/ProductDetail';
 import Product from './component/Product/Product';
 import Login from './component/User/Login';
 import Register from './component/User/Register';
+import { useDispatch } from 'react-redux';
+import { useLoadUserQuery } from './redux/api';
 
 function App() {
+  const dispatch = useDispatch();
+  const { data, error } = useLoadUserQuery();
+
+  const loadUserData = () => {
+    console.log(data);
+  }
+
   useEffect(() => {
     WebFont.load({
       google: {
         families: ['Roboto', 'Droid Sans', 'Chilanka']
       }
     })
+    loadUserData();
   }, []);
 
   return (

@@ -1,8 +1,10 @@
-const app = require('./app');
-const dotenv = require('dotenv');
+require('dotenv').config({
+    path: 'Backend/config/config.env'
+});
 require('./config/dbConfig');
-
-const PORT = process.env.PORT || 6000;
+const app = require('./app');
+const cloudinary = require('cloudinary');
+const PORT = process.env.PORT;
 
 // Unhandled caught exception
 process.on('uncaughtException', error => {
@@ -11,10 +13,12 @@ process.on('uncaughtException', error => {
     server.close(() => process.exit(1));
 });
 
-// Config
-dotenv.config({
-    path: 'Backend/config/config.env'
-})
+// 
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 // Starting server
 const server = app.listen(PORT, () => {
