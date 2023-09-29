@@ -5,25 +5,34 @@ const sendToken = require('../utils/token');
 const sendMail = require('../utils/sendMail');
 const crypto = require('crypto');
 const cloudinary = require('cloudinary');
+// Set up multer storage for file uploads
+const multer = require('multer');
+const storage = multer.memoryStorage(); // Use memory storage for handling files in memory
+const upload = multer({ storage: storage });
 
 // Register user
-registerUser = catchAsyncError(async (req, res, next) => {
+registerUser = catchAsyncError(upload.single('avatar'), async (req, res, next) => {
     const { name, email, password } = req.body;
-    console.log(req.body)
-    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-        folder: 'Avatars',
-        width: 150,
-        crop: 'scale'
-    });
+    console.log(req.body);
+
+    let avatar;
+    if (req.file) {
+        const myCloud = await cloudinary.uploader.upload(req.file.buffer, {
+            folder: 'Avatars',
+            width: 150,
+            crop: 'scale'
+        });
+        avatar = {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url
+        };
+    }
 
     const user = await User.create({
         name,
         email,
         password,
-        avatar: {
-            public_id: myCloud.public_id,
-            url: myCloud.secure_url
-        }
+        avatar
     });
 
     // Generating token and sending 
@@ -47,7 +56,7 @@ loginUser = catchAsyncError(async (req, res, next) => {
     const isPasswordVerified = await user.comparePassword(password);
 
     // If not verified Invalid password
-    if (!isPasswordVerified) return next(new ErrorHandler('Invalid password', 401));
+    if (!isPasswordVerified) return next(new ErrorHandler('Invalid password', 403));
 
     // Generating token and sending 
     sendToken(user, 200, res);
@@ -73,7 +82,7 @@ forgotPassword = catchAsyncError(async (req, res, next) => {
     });
 
     if (!user) return next(new ErrorHandler('User not found', 404));
-    
+
     // Get reset password token
     const resetToken = user.getResetPasswordToken();
 
@@ -101,7 +110,7 @@ forgotPassword = catchAsyncError(async (req, res, next) => {
     } catch (error) {
         user.resetPasswordToken = undefined;
         user.resetPasswordExpire = undefined;
-        
+
         await user.save({ validateBeforeSave: false });
 
         return next(new ErrorHandler(error.message, 500));
@@ -138,7 +147,7 @@ resetPassword = catchAsyncError(async (req, res, next) => {
 updatePassword = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user.id).select('+password');
 
-    const isPasswordMatch = await user.comparePassword(req.body.oldPassword); 
+    const isPasswordMatch = await user.comparePassword(req.body.oldPassword);
 
     if (!isPasswordMatch) return next(new ErrorHandler('Old password is incorrect', 400));
 
@@ -158,7 +167,6 @@ updatePassword = catchAsyncError(async (req, res, next) => {
 
 // Get user detail
 getUserDetail = catchAsyncError(async (req, res, next) => {
-    console.log(req.user)
     const user = await User.findById(req.user.id);
 
     res.send({
@@ -177,7 +185,7 @@ updateProfile = catchAsyncError(async (req, res, next) => {
     }
 
     // We will cloudinary later
-    
+
     const user = await User.findByIdAndUpdate(req.user.id, newUser, {
         new: true,
         runValidators: true,
@@ -216,7 +224,7 @@ getSingleUser = catchAsyncError(async (req, res, next) => {
 });
 
 // Update Role -- ADMIN
-updateUserRole= catchAsyncError(async (req, res, next) => {
+updateUserRole = catchAsyncError(async (req, res, next) => {
     const { name, email, role } = req.body;
 
     const newUser = {
@@ -224,7 +232,7 @@ updateUserRole= catchAsyncError(async (req, res, next) => {
         email,
         role
     }
-    
+
     const user = await User.findByIdAndUpdate(req.params.id, newUser, {
         new: true,
         runValidators: true,
@@ -239,8 +247,8 @@ updateUserRole= catchAsyncError(async (req, res, next) => {
 });
 
 // Delete user -- ADMIN
-deleteUser= catchAsyncError(async (req, res, next) => {
-    
+deleteUser = catchAsyncError(async (req, res, next) => {
+
     const user = await User.findById(req.params.id)
 
     if (!user) return next(new ErrorHandler(`User does not exist with ID: ${req.params.id}`, 400));

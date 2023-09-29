@@ -8,21 +8,21 @@ const app = express();
 const errorMiddleware = require('./middleware/error');
 
 const corsOptions = {
-    //To allow requests from client
-    origin: [
-      "http://localhost:3000",
-      "http://127.0.0.1",
-      "http://104.142.122.231",
-    ],
-    credentials: true,
-    exposedHeaders: ["Set-cookie"],
-  };
+  //To allow requests from client
+  origin: [
+    "http://localhost:3000",
+    "http://127.0.0.1",
+    "http://104.142.122.231",
+  ],
+  credentials: true,
+  exposedHeaders: ["Set-cookie"],
+};
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors(corsOptions));
 app.use(fileUpload());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Route imports
 const product = require('./routes/productRoute');

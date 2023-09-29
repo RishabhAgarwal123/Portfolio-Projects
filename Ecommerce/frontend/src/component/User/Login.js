@@ -44,7 +44,6 @@ const Login = () => {
                 dispatch(userSliceActions.setAuthenticated(true));
                 dispatch(userSliceActions.setUser(user)); // Set the user in your Redux store
                 toast.success('Logged In Successfully!');
-                localStorage.setItem('token', response.data.token);
             }
         } catch (error) {
             dispatch(userSliceActions.setLoading(false)); // Set loading to false in case of an exception

@@ -11,21 +11,24 @@ export const api = createApi({
                     link = `api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lt]=${price[1]}&page=${page}`;
 
                 return {
-                    url: link
+                    url: link,
+                    credentials: 'include'
                 }
             },
         }),
         getProduct: builder.query({
             query: ({ id }) => {
                 return {
-                    url: `/api/v1/products/${id}`
+                    url: `/api/v1/products/${id}`,
+                    credentials: 'include'
                 }
             }
         }),
         loadUser: builder.query({
             query: () => {
                 return {
-                    url: '/api/v1/users/me'
+                    url: '/api/v1/users/me',
+                    credentials: 'include'
                 }
             }
         }),
@@ -37,16 +40,18 @@ export const api = createApi({
                     'Content-Type': 'application/json'
                 },
                 body: loginUser,
+                credentials: 'include'
             })
         }),
         register: builder.mutation({
             query: (registerUser) => ({
                 url: '/api/v1/users/register',
                 method: 'POST',
+                // headers: {
+                //     'Content-Type': 'multipart/form-data',
+                // },
                 body: registerUser,
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
+                credentials: 'include'
             })
         })
     })

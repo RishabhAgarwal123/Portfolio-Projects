@@ -25,11 +25,16 @@ const Register = () => {
 
     const registerUser = async (event) => {
         event.preventDefault();
+        const formData = new FormData();
+        formData.append('name', registerData.name);
+        formData.append('email', registerData.email);
+        formData.append('password', registerData.password);
+        formData.append('avatar', avatar);
 
         dispatch(userSliceActions.setLoading(true)); // Set loading to true when the login process starts
 
         try {
-            const response = await register({ name, email, password, avatar }); // Assuming useLoginUserMutation is an async function
+            const response = await register(formData); // Assuming useLoginUserMutation is an async function
 
             if (response.data.success) {
                 dispatch(userSliceActions.setLoading(false)); // Set loading to false after a successful login
@@ -54,8 +59,8 @@ const Register = () => {
                 setAvatarPreview(result);
             }
         }
-        setAvatar(event.target.files[0]);
         console.log(event.target.files[0])
+        setAvatar(event.target.files[0]);
         reader.readAsDataURL(event.target.files[0]);
     }
 
@@ -71,9 +76,9 @@ const Register = () => {
     }
 
     return (
-        <div className='body'>
+        loading ? <Loader /> : <div className='body'>
             {
-                loading ? <Loader /> : <div className='form'>
+                <div className='form'>
                     <h1 className="form-title sign-in">Sign Up</h1>
                     <div className="form-control">
                         <span><Face6Icon sx={{ marginRight: '5px' }} /></span>
