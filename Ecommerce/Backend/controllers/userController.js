@@ -11,9 +11,12 @@ const storage = multer.memoryStorage(); // Use memory storage for handling files
 const upload = multer({ storage: storage });
 
 // Register user
-registerUser = catchAsyncError(upload.single('avatar'), async (req, res, next) => {
-    const { name, email, password } = req.body;
+registerUser = catchAsyncError(async (req, res, next) => {
+    const newMessage = JSON.parse(req.body.toString());
+    console.log(newMessage)
     console.log(req.body);
+    console.log(req.body.avatar);
+    const { name, email, password } = req.body;
 
     let avatar;
     if (req.file) {

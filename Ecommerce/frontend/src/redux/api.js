@@ -47,10 +47,10 @@ export const api = createApi({
             query: (registerUser) => ({
                 url: '/api/v1/users/register',
                 method: 'POST',
-                // headers: {
-                //     'Content-Type': 'multipart/form-data',
-                // },
-                body: registerUser,
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+                body: JSON.stringify(registerUser),
                 credentials: 'include'
             })
         })

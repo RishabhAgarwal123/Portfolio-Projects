@@ -30,11 +30,11 @@ const Register = () => {
         formData.append('email', registerData.email);
         formData.append('password', registerData.password);
         formData.append('avatar', avatar);
-
+        console.log(avatar)
         dispatch(userSliceActions.setLoading(true)); // Set loading to true when the login process starts
 
         try {
-            const response = await register(formData); // Assuming useLoginUserMutation is an async function
+            const response = await register({email, password, name, avatar}); // Assuming useLoginUserMutation is an async function
 
             if (response.data.success) {
                 dispatch(userSliceActions.setLoading(false)); // Set loading to false after a successful login
@@ -52,15 +52,18 @@ const Register = () => {
     };
 
     const handleAvatar = (event) => {
+        let file = {};
         const reader = new FileReader();
         reader.onload = () => {
             if (reader.readyState === 2) {
                 const result = reader.result;
+                file['data'] = result;
+                console.log(file)
                 setAvatarPreview(result);
             }
         }
-        console.log(event.target.files[0])
-        setAvatar(event.target.files[0]);
+        file['name'] = event.target.files[0].name;
+        setAvatar(file);;
         reader.readAsDataURL(event.target.files[0]);
     }
 
@@ -78,7 +81,7 @@ const Register = () => {
     return (
         loading ? <Loader /> : <div className='body'>
             {
-                <div className='form'>
+                <form encType="multipart/form-data" className='form'>
                     <h1 className="form-title sign-in">Sign Up</h1>
                     <div className="form-control">
                         <span><Face6Icon sx={{ marginRight: '5px' }} /></span>
@@ -124,7 +127,7 @@ const Register = () => {
                     </div>
                     <button className='form-button' onClick={registerUser}>Sign Up</button>
                     <Link className='link' to={'/login'}>Already have an Account</Link>
-                </div>
+                </form>
             }
         </div>
     )
