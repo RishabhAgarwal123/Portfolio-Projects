@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './form.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLoginUserMutation } from '../../redux/api';
@@ -11,12 +11,13 @@ import Loader from '../layout/Loader/Loader';
 
 const Login = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
     });
     const { email, password } = loginData;
-    const { loading } = useSelector(state => state.user);
+    const { loading, authenticated } = useSelector(state => state.user);
     const [loginUser] = useLoginUserMutation(loginData);
 
     const onInputChange = (e) => {
@@ -44,6 +45,7 @@ const Login = () => {
                 dispatch(userSliceActions.setAuthenticated(true));
                 dispatch(userSliceActions.setUser(user)); // Set the user in your Redux store
                 toast.success('Logged In Successfully!');
+                navigate('/');
             }
         } catch (error) {
             dispatch(userSliceActions.setLoading(false)); // Set loading to false in case of an exception
@@ -51,10 +53,14 @@ const Login = () => {
         }
     };
 
+    useEffect(() => {
+        if (authenticated) navigate('/');
+    }, [authenticated, navigate]);
+
     return (
-        <div className='body'>
+        loading ? <Loader /> : <div className='body'>
             {
-                loading ? <Loader /> : <div className='form'>
+                <div className='form'>
                     <h1 className="form-title sign-in">Sign In</h1>
                     <div className="form-control">
                         <span><AlternateEmailOutlinedIcon sx={{ marginRight: '5px' }} /></span>

@@ -28,6 +28,7 @@ ul {
 }
 
 .icons {
+  font-size: 20px;
   color: #000;
   text-decoration: none;
 }
@@ -36,49 +37,54 @@ ul {
   margin-left: 10px;
 }
 
-
 .searchBar {
-    display: flex;
-    align-items: center;
-    background-color: #f2f2f2;
-    width: 400px;
-    float: right;
-    line-height: 0;
-    position: relative;
-  }
-  
-  .searchBar input[type="text"] {
-    display: inline-block;
-    /* float: left; */
-    font-size: 14px;
-    height: 20px;
-    line-height: 24px;
-    color: #696e79;
-    -webkit-box-sizing: content-box;
-    box-sizing: content-box;
-    padding: 8px 10px 10px;
-    margin: 0;
-    outline: 0;
-    border: 1px solid #f5f5f6;
-    border-radius: 0 4px 4px 0;
-    border-left: 0;
-    background: #f5f5f6;
-  }
-  
-  .searchBar button{
-    box-sizing: content-box;
-    display: inline-block;
-    height: 28px;
-    width: 40px;
-    text-align: center;
-    padding: 8px 0 2px;
-    background: #f5f5f6;
-    border: 1px solid #f5f5f6;
-    border-right: none;
-    border-radius: 4px 0 0 4px;
-    position: absolute;
-    left: -41px;
-  }
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  width: 500px;
+  height: 50px;
+  float: right;
+  line-height: 0;
+  position: relative;
+}
+
+.searchBar input[type="text"] {
+  display: inline-block;
+  /* float: left; */
+  font-size: 14px;
+  line-height: 24px;
+  color: #696e79;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 8px 10px 10px;
+  margin: 0;
+  outline: 0;
+  border: 1px solid #f5f5f6;
+  border-radius: 0 4px 4px 0;
+  border-left: 0;
+  background: #f5f5f6;
+}
+
+.searchBar button {
+  box-sizing: content-box;
+  display: inline-block;
+  height: 40px;
+  width: 50px;
+  text-align: center;
+  padding: 8px 0 2px;
+  background: #f5f5f6;
+  border: 1px solid #f5f5f6;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  position: absolute;
+  left: -41px;
+}
+
+.userActions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .userActions a {
   margin-right: 1rem;
@@ -134,4 +140,3 @@ ul {
     margin-right: 0.5rem;
   }
 }
-

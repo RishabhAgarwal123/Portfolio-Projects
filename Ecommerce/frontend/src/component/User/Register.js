@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Face6Icon from '@mui/icons-material/Face6';
@@ -12,7 +12,7 @@ import Loader from '../layout/Loader/Loader';
 const Register = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const { loading } = useSelector(state => state.user);
+    const { loading, authenticated } = useSelector(state => state.user);
     const [registerData, setRegisterData] = useState({
         name: '',
         email: '',
@@ -26,21 +26,22 @@ const Register = () => {
     const registerUser = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.append('name', registerData.name);
-        formData.append('email', registerData.email);
-        formData.append('password', registerData.password);
-        formData.append('avatar', avatar);
+        formData.set('name', registerData.name);
+        formData.set('email', registerData.email);
+        formData.set('password', registerData.password);
+        formData.set('avatar', avatar);
         console.log(avatar)
+
         dispatch(userSliceActions.setLoading(true)); // Set loading to true when the login process starts
 
         try {
-            const response = await register({email, password, name, avatar}); // Assuming useLoginUserMutation is an async function
+            const response = await register(formData); // Assuming useLoginUserMutation is an async function
 
             if (response.data.success) {
                 dispatch(userSliceActions.setLoading(false)); // Set loading to false after a successful login
                 toast.success('Registered Successfully!');
                 dispatch(userSliceActions.resetState());
-                navigate('/login');
+                navigate('/account');
             } else {
                 dispatch(userSliceActions.setLoading(false)); // Set loading to false if there's an error
                 toast.error('Something went wrong');
@@ -60,10 +61,10 @@ const Register = () => {
                 file['data'] = result;
                 console.log(file)
                 setAvatarPreview(result);
+                setAvatar(result);
             }
         }
         file['name'] = event.target.files[0].name;
-        setAvatar(file);;
         reader.readAsDataURL(event.target.files[0]);
     }
 
@@ -76,7 +77,11 @@ const Register = () => {
                 [e.target.name]: e.target.value
             });
         }
-    }
+    };
+
+    useEffect(() => {
+        if (authenticated) navigate('/account');
+    }, [authenticated, navigate]);
 
     return (
         loading ? <Loader /> : <div className='body'>

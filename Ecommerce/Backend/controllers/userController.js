@@ -5,37 +5,30 @@ const sendToken = require('../utils/token');
 const sendMail = require('../utils/sendMail');
 const crypto = require('crypto');
 const cloudinary = require('cloudinary');
-// Set up multer storage for file uploads
-const multer = require('multer');
-const storage = multer.memoryStorage(); // Use memory storage for handling files in memory
-const upload = multer({ storage: storage });
 
 // Register user
 registerUser = catchAsyncError(async (req, res, next) => {
-    const newMessage = JSON.parse(req.body.toString());
-    console.log(newMessage)
-    console.log(req.body);
-    console.log(req.body.avatar);
     const { name, email, password } = req.body;
 
-    let avatar;
-    if (req.file) {
-        const myCloud = await cloudinary.uploader.upload(req.file.buffer, {
-            folder: 'Avatars',
-            width: 150,
-            crop: 'scale'
-        });
-        avatar = {
-            public_id: myCloud.public_id,
-            url: myCloud.secure_url
-        };
-    }
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+        folder: 'Avatars',
+        width: 150,
+        crop: 'scale',
+        resource_type: 'auto'
+    });
+    avatar = {
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url
+    };
 
     const user = await User.create({
         name,
         email,
         password,
-        avatar
+        avatar: {
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url 
+        }
     });
 
     // Generating token and sending 
@@ -74,6 +67,7 @@ logOut = catchAsyncError(async (req, res, next) => {
     });
     res.send({
         status: 200,
+        success: true,
         messgae: 'User logged out'
     })
 });

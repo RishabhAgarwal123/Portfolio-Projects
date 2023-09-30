@@ -50,9 +50,17 @@ export const api = createApi({
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
-                body: JSON.stringify(registerUser),
+                body: registerUser,
                 credentials: 'include'
             })
+        }),
+        logoutUser: builder.query({
+            query: () => {
+                return {
+                    url: '/api/v1/users/logout',
+                    credentials: 'include'
+                }
+            }
         })
     })
 });
@@ -62,5 +70,6 @@ export const {
     useGetProductQuery,
     useLoginUserMutation,
     useRegisterMutation,
-    useLoadUserQuery
+    useLoadUserQuery,
+    useLogoutUserQuery
 } = api;
