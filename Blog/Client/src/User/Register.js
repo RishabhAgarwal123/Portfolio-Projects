@@ -1,18 +1,38 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import Loader from '../Loader';
+import axios from 'axios';
+import { useContext } from 'react';
+import { UserContext } from '../UserContext';
 
 const Register = () => {
+    const { isLoading, setIsLoading, setUserDetail } = useContext(UserContext);
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
-    const registerUser = () => {
-        
+    const registerUser = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        try {
+            const { data } = await axios.post('/user/register', { username, email, password });
+            if (data?.success) {
+                const { user } = data;
+                setUserDetail(user);
+                toast.success('User Registered Succesfully!')
+            }
+            setIsLoading(false);
+            toast.error('User not registered!');
+        } catch (error) {
+            toast.error('Something went wrong!');
+            setIsLoading(false);
+        }
     }
 
     return (
         <>
-            <form className="form" onSubmit={registerUser}>
+            {isLoading ? <Loader /> : <form className="form" onSubmit={registerUser}>
                 <p className="form-title">Sign up to your account</p>
                 <div className="input-container">
                     <input
@@ -42,7 +62,7 @@ const Register = () => {
                     Already have an account?
                     <Link to='/login'> Sign In</Link>
                 </p>
-            </form>
+            </form>}
         </>
     )
 }

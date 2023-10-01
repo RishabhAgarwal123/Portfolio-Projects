@@ -4,14 +4,16 @@ import Post from './Post'
 import Login from './User/Login'
 import Register from './User/Register'
 import { Route, Routes } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+// import { ToastContainer } from 'react-toastify';
 import Home from './Home'
+import axios from 'axios';
 
 const App = () => {
+  axios.defaults.baseURL = 'http://localhost:4000/api';
+  axios.defaults.withCredentials = true;
   return (
     <>
-      <main>
-      <ToastContainer
+      {/* <ToastContainer
         position="top-right"
         autoClose={3000}
         hideProgressBar={false}
@@ -20,7 +22,8 @@ const App = () => {
         rtl={false}
         pauseOnFocusLoss
         draggable
-        pauseOnHover />
+        pauseOnHover /> */}
+      <main>
         <Navbar />
         <Routes>
           <Route exact path='/' element={<Home />} />

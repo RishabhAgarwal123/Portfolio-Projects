@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Enter your password'],
-        min: [8, 'Password should contain atleast 8 characters'],
+        min: [4, 'Password should contain atleast 4 characters'],
         select: false
     },
 });
@@ -27,7 +27,7 @@ const UserSchema = new mongoose.Schema({
 // Hash Passowrd
 UserSchema.pre('save', async function (next) {
     if (!this.isModified('password')) next();
-    this.password = await this.bcrypt.hash(this.password, 10);
+    this.password = await bcrypt.hash(this.password, 10);
 });
 
 // JWT token
