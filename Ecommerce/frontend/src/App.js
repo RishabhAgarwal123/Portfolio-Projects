@@ -49,7 +49,6 @@ function App() {
     })
     loadUserData();
   }, []);
-  console.log(authenticated)
 
   return (
     <>
