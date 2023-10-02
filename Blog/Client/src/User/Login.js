@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import './User.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { useContext } from 'react';
 import { UserContext } from '../UserContext';
 import Loader from '../Loader';
 
 const Login = () => {
-    const { isLoading, setIsLoading, setUserDetail } = useContext(UserContext);
+    const navigate = useNavigate();
+    const { isLoading, setIsLoading, setUserDetail, setAuthenticated } = useContext(UserContext);
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
@@ -19,16 +20,19 @@ const Login = () => {
             const {data} = await axios.post('/user/login', { email, password });
             if (data.success) {
                 const { user } = data;
-                console.log(user);
                 setUserDetail(user);
             }
             toast.success('User Logged In!');
             setIsLoading(false);
+            setAuthenticated(true);
+            navigate('home')
         } catch (error) {
             toast.error('Login failed!');
-            setIsLoading(false)
+            setIsLoading(false);
+            setAuthenticated(false);
         }
     }
+
     return (
         <>
             {

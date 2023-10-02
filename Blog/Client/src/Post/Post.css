@@ -1,0 +1,49 @@
+.form {
+  border: 1px solid black;
+  left: 17%;
+  width: 1200px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 0;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #c9c4c4;
+  margin-bottom: 20px;
+}
+
+/* Hide the default file input text */
+input[type="file"] {
+  display: none;
+}
+
+/* Style the custom file input container */
+.custom-file-input {
+  position: relative;
+  display: inline-block;
+  background-color: #fff; /* Add your desired background color */
+  padding: 10px 15px;
+  margin: 15px 0;
+  border: 1px solid #c9c4c4;
+  border-radius: 5px;
+  width: 1100px;
+  cursor: pointer;
+}
+
+/* Style the label's hover state */
+.custom-file-input:hover {
+  background-color: #fef9f9; /* Change background color on hover if desired */
+}
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.upload > img {
+  width: 100%;
+  height: 300px;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Loader from '../Loader';
 import axios from 'axios';
@@ -7,10 +7,11 @@ import { useContext } from 'react';
 import { UserContext } from '../UserContext';
 
 const Register = () => {
-    const { isLoading, setIsLoading, setUserDetail } = useContext(UserContext);
+    const { isLoading, setIsLoading, setUserDetail, setAuthenticated } = useContext(UserContext);
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const navigate = useNavigate();
 
     const registerUser = async (e) => {
         e.preventDefault();
@@ -20,6 +21,8 @@ const Register = () => {
             if (data?.success) {
                 const { user } = data;
                 setUserDetail(user);
+                setAuthenticated(true);
+                navigate('home');
                 toast.success('User Registered Succesfully!')
             }
             setIsLoading(false);

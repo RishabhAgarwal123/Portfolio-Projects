@@ -14,11 +14,11 @@ export const UserContextProvider = ({ children }) => {
     const getProfile = async () => {
         const res = await axios.get('/user/me');
         if (res.data.success) {
+            setUserDetail(res.data.user)
             setAuthenticated(true);
         } else {
             setAuthenticated(false);
         }
-        console.log(res.data);
     }
 
     useEffect(() => {

@@ -37,7 +37,7 @@ logout = catchAsyncError(async (req, res, next) => {
     res.send({
         status: 200,
         success: true,
-        message: 'user logged out'
+        message: 'User logged out'
     });
 });
 
