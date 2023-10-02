@@ -5,12 +5,25 @@ import './Post.css';
 
 const CreatePost = () => {
     const [imagePreview, setImagePreview] = useState('');
+
     const makePost = () => {
 
     }
+
+    const handleImage = (event) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                const result = reader.result;
+                setImagePreview(result);
+            }
+        }
+        reader.readAsDataURL(event.target.files[0]);
+    }
+
     return (
         <>
-            <form className='form' onSubmit={makePost}>
+            <form className='form-post' onSubmit={makePost}>
                 <input type='text' className='input' placeholder='Title' />
                 <input type='text' className='input' placeholder='Summary' />
                 <div className='upload'>
@@ -21,12 +34,12 @@ const CreatePost = () => {
                             name="avatar"
                             value={''}
                             accept="image/*"
-                            onChange={() => console.log()}
+                            onChange={(e) => handleImage(e)}
                             />
                         <span className="custom-file-label">Choose a file</span>
                     </label>
                 </div>
-                <ReactQuill />
+                <ReactQuill theme='snow' />
                 <button className='submit' style={{ marginTop: '20px'}}> Create Post</button>
             </form>
         </>

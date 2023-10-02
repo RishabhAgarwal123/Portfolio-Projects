@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { UserContext } from '../UserContext';
 
 const Register = () => {
-    const { isLoading, setIsLoading, setUserDetail, setAuthenticated } = useContext(UserContext);
+    const { isLoading, setIsLoading, setUserDetail, setAuthenticated, authenticated } = useContext(UserContext);
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -63,7 +63,7 @@ const Register = () => {
                 </button>
                 <p className="signup-link">
                     Already have an account?
-                    <Link to='/login'> Sign In</Link>
+                    <Link to='/'> Sign In</Link>
                 </p>
             </form>}
         </>
