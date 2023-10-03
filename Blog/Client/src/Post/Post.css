@@ -49,3 +49,11 @@ input[type="file"] {
   width: 100%;
   height: 300px;
 }
+
+.ql-container.ql-snow {
+  height: 250px;
+}
+.ql-editor {
+  height: 300px;
+  overflow-y: scroll;
+}
