@@ -4,6 +4,7 @@ const cors = require('cors');
 const express = require('express');
 const app = express();
 
+const post = require('./routes/postRoute');
 const user = require('./routes/userRoute');
 const errorMiddleware = require('./middleware/Error');
 
@@ -24,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/', user);
+app.use('/api/post', post);
 
 // Middleware for error
 app.use(errorMiddleware);
