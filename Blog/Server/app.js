@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Routes
 app.use('/api/', user);
-app.use('/api/post', post);
+app.use('/api/', post);
 
 // Middleware for error
 app.use(errorMiddleware);

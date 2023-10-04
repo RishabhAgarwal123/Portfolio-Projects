@@ -37,7 +37,7 @@ const App = () => {
         {authenticated && <>
             <Navbar />
           <Routes>
-            <Route exact path='/home' element={<Home />} />
+            <Route exact path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/logout' element={<Logout />} />
             <Route path='/register' element={<Register />} />

@@ -59,7 +59,6 @@ const Register = () => {
             if (reader.readyState === 2) {
                 const result = reader.result;
                 file['data'] = result;
-                console.log(file)
                 setAvatarPreview(result);
                 setAvatar(result);
             }

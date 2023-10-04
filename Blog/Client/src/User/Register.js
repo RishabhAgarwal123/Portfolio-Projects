@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { UserContext } from '../UserContext';
 
 const Register = () => {
-    const { isLoading, setIsLoading, setUserDetail, setAuthenticated, authenticated } = useContext(UserContext);
+    const { isLoading, setIsLoading, setUserDetail, setAuthenticated } = useContext(UserContext);
     const [username, setUsername] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -22,7 +22,7 @@ const Register = () => {
                 const { user } = data;
                 setUserDetail(user);
                 setAuthenticated(true);
-                navigate('home');
+                navigate('/');
                 toast.success('User Registered Succesfully!')
             }
             setIsLoading(false);
