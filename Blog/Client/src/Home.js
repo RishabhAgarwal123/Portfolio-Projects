@@ -26,11 +26,10 @@ const Home = () => {
       setIsLoading(false);
     }
   }
-
-  getPosts();
-
+  
   useEffect(() => {
     if (!authenticated) navigate('/');
+    getPosts();
   }, [authenticated, navigate]);
 
   return (

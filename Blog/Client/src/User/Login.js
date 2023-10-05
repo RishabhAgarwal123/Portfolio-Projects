@@ -25,7 +25,7 @@ const Login = () => {
             toast.success('User Logged In!');
             setIsLoading(false);
             setAuthenticated(true);
-            navigate('home')
+            navigate('/')
         } catch (error) {
             toast.error('Login failed!');
             setIsLoading(false);

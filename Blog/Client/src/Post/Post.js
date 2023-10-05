@@ -1,6 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { format } from 'date-fns';
+import { UserContext } from '../UserContext';
 
-const Post = ({ title, summary, content, image }) => {
+const Post = ({ title, summary, content, image, createdAt }) => {
+  const { userDetail } = useContext(UserContext);
+  const { username } = userDetail;
+
   return (
     <>
       <div className='post'>
@@ -10,8 +15,8 @@ const Post = ({ title, summary, content, image }) => {
         <div className='post-text'>
           <h2>{title}</h2>
           <p className='info'>
-            <a className='author' href='/'>Rishabh Agarwal</a>
-            <time>2023-09-30</time>
+            <a className='author' href='/'>{username}</a>
+            <time>{format(new Date(createdAt), 'MMM d, yyyy HH:mm')}</time>
           </p>
           <p className='summary'>{summary}</p>
         </div>

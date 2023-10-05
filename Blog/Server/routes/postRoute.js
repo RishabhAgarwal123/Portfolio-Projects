@@ -1,10 +1,10 @@
 const express = require('express');
-const { isAuthenticatedUser } = require('../middleware/authMiddleware');
 const { createPost,
     editPost,
     deletePost,
     getPosts,
     getSinglePost } = require('../controller/postController');
+const { isAuthenticatedUser } = require('../middleware/authMiddleware');
 const router = express.Router();
 
 router.route('/post/create').post(isAuthenticatedUser, createPost);
