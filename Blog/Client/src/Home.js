@@ -13,7 +13,7 @@ const Home = () => {
 
   const getPosts = async () => {
     try {
-      const { data } = await axios.get('/post/all');
+      const { data } = await axios.get('/posts/all');
       if (data.success) {
         const { posts } = data;
         setPosts(posts);
@@ -32,11 +32,15 @@ const Home = () => {
     getPosts();
   }, [authenticated, navigate]);
 
+  console.log(posts)
+
   return (
     <>
     {
       isLoading ? <Loader /> : <>
-        { posts.length !== 0 && posts.map((post) => <Post key={post._id} post={post} /> )}
+        { posts.length !== 0 && posts.map((post) => {
+          console.log(post)
+          return <Post key={post._id} post={post} />} )}
       </>
     }
       <Post />

@@ -2,14 +2,14 @@ import React, { useContext } from 'react'
 import { format } from 'date-fns';
 import { UserContext } from '../UserContext';
 
-const Post = ({ title, summary, content, image, createdAt }) => {
+const Post = (props) => {
   const { userDetail } = useContext(UserContext);
   const { username } = userDetail;
-
+  console.log(props)
   return (
     <>
       <div className='post'>
-        <div className='image'>
+        {/* <div className='image'>
           <img src={image} alt={title} />
         </div>
         <div className='post-text'>
@@ -19,9 +19,9 @@ const Post = ({ title, summary, content, image, createdAt }) => {
             <time>{format(new Date(createdAt), 'MMM d, yyyy HH:mm')}</time>
           </p>
           <p className='summary'>{summary}</p>
-        </div>
+        </div> */}
       </div>
-      <div className='post'>
+      {/* <div className='post'>
         <div className='image'>
           <img src='https://www.klippa.com/wp-content/uploads/2023/01/ChatGPT-preview.jpg' alt='Name' />
         </div>
@@ -33,7 +33,7 @@ const Post = ({ title, summary, content, image, createdAt }) => {
           </p>
           <p className='summary'>ChatGPT is a natural language processing tool driven by AI technology that allows you to have human-like conversations and much more with the chatbot. The language model can answer questions and assist you with tasks, such as composing emails, essays, and code.</p>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }

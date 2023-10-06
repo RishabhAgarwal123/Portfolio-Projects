@@ -21,16 +21,18 @@ const CreatePost = () => {
     const makePost = async (event) => {
         event.preventDefault();
         const formData = new FormData();
-        formData.set('title', title);
-        formData.set('summary', summary);
-        formData.set('content', content);
-        formData.set('file', file);
+        formData.append('title', title);
+        formData.append('summary', summary);
+        formData.append('content', content);
+        formData.append('image', file);
 
         setIsLoading(true);
         try {
-            const { data } = await axios.post('/post/create', {
-                body: formData
-            });
+            const { data } = await axios.post('http://localhost:4000/api/posts/create', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data', // Set the correct content type for FormData
+                },
+              });
 
             if (data.success) {
                 const { post } = data;
