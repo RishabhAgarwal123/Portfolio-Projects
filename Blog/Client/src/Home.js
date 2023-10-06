@@ -30,9 +30,7 @@ const Home = () => {
   useEffect(() => {
     if (!authenticated) navigate('/');
     getPosts();
-  }, [authenticated, navigate]);
-
-  console.log(posts)
+  }, [authenticated]);
 
   return (
     <>
@@ -43,10 +41,10 @@ const Home = () => {
           return <Post key={post._id} post={post} />} )}
       </>
     }
+      {/* <Post />
       <Post />
       <Post />
-      <Post />
-      <Post />
+      <Post /> */}
     </>
   )
 }

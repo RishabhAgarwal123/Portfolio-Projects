@@ -19,15 +19,14 @@ createPost = async (req, res, next) => {
         }
 
         try {
-            const { title, summary, content, author } = req.body;
+            const { title, summary, content } = req.body;
             const { originalname, filename } = req.file;
-            console.log(req.user)
-            
+
             // Rename the uploaded file with its original extension
             const ext = path.extname(originalname);
             const imageFileName = `${filename}${ext}`;
             const imagePath = path.join('uploads', imageFileName);
-            // console.log(filename, author, imagePath)
+            console.log(ext)
 
             // Creating a post
             const post = await Post.create({
@@ -65,12 +64,22 @@ editPost = catchAsyncError(async (req, res, next) => {
 
 // Get a single post
 getSinglePost = catchAsyncError(async (req, res, next) => {
-
+    const { id } = req.params;
+    const post = await Post.findById(id).populate('author', ['username']);
+    if (!post) return next(ErrorHandler(`No post found with id ${id}`, 400));
+    res.send({
+        success: true,
+        status: 200,
+        post
+    })
 });
 
 // Get All post
 getPosts = catchAsyncError(async (req, res, next) => {
-    const posts = await Post.find();
+    const posts = await Post.find()
+        .populate('author', ['username'])
+        .sort({ createdAt: -1 })
+        .limit(20);
 
     res.send({
         success: true,

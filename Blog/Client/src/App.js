@@ -10,6 +10,7 @@ import axios from 'axios';
 import { UserContext } from './UserContext'
 import Logout from './User/Logout'
 import CreatePost from './Post/CreatePost'
+import DisplayPost from './Post/DisplayPost'
 
 const App = () => {
   axios.defaults.baseURL = 'http://localhost:4000/api';
@@ -42,7 +43,7 @@ const App = () => {
             <Route path='/logout' element={<Logout />} />
             <Route path='/register' element={<Register />} />
             <Route path='/create' element={<CreatePost />}/>
-            <Route path='/post/:id' element={<Post />} />
+            <Route path='/post/:id' element={<DisplayPost />} />
           </Routes>
         </>}
       </main>

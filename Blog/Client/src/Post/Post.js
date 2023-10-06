@@ -1,39 +1,29 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { format } from 'date-fns';
-import { UserContext } from '../UserContext';
+import { Link } from 'react-router-dom';
 
 const Post = (props) => {
-  const { userDetail } = useContext(UserContext);
-  const { username } = userDetail;
-  console.log(props)
+  const { _id, title, summary, image, author, createdAt } = props.post;
+
   return (
     <>
       <div className='post'>
-        {/* <div className='image'>
-          <img src={image} alt={title} />
+        <div className='image'>
+          <Link to={`/post/${_id}`}>
+            <img src={`http://localhost:4000/${image}`} alt={title} />
+          </Link>
         </div>
         <div className='post-text'>
-          <h2>{title}</h2>
+          <Link to={`/post/${_id}`}>
+            <h2>{title}</h2>
+          </Link>
           <p className='info'>
-            <a className='author' href='/'>{username}</a>
+            <a className='author' href='/'>{author?.username}</a>
             <time>{format(new Date(createdAt), 'MMM d, yyyy HH:mm')}</time>
           </p>
           <p className='summary'>{summary}</p>
-        </div> */}
+        </div>
       </div>
-      {/* <div className='post'>
-        <div className='image'>
-          <img src='https://www.klippa.com/wp-content/uploads/2023/01/ChatGPT-preview.jpg' alt='Name' />
-        </div>
-        <div className='post-text'>
-          <h2>What is ChatGPT and why does it matter?</h2>
-          <p className='info'>
-            <a className='author' href='/'>Rishabh Agarwal</a>
-            <time>2023-09-30</time>
-          </p>
-          <p className='summary'>ChatGPT is a natural language processing tool driven by AI technology that allows you to have human-like conversations and much more with the chatbot. The language model can answer questions and assist you with tasks, such as composing emails, essays, and code.</p>
-        </div>
-      </div> */}
     </>
   )
 }

@@ -21,6 +21,6 @@ router.route('/edit').put(isAuthenticatedUser, editPost);
 router.route('/all').get(isAuthenticatedUser, getPosts);
 
 // Get a single post
-router.route('/single').get(isAuthenticatedUser, getSinglePost);
+router.route('/single/:id').get(isAuthenticatedUser, getSinglePost);
 
 module.exports = router;
