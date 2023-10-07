@@ -11,6 +11,7 @@ import { UserContext } from './UserContext'
 import Logout from './User/Logout'
 import CreatePost from './Post/CreatePost'
 import DisplayPost from './Post/DisplayPost'
+import EditPost from './Post/EditPost'
 
 const App = () => {
   axios.defaults.baseURL = 'http://localhost:4000/api';
@@ -44,6 +45,7 @@ const App = () => {
             <Route path='/register' element={<Register />} />
             <Route path='/create' element={<CreatePost />}/>
             <Route path='/post/:id' element={<DisplayPost />} />
+            <Route path='/edit/:id' exact element={<EditPost />} />
           </Routes>
         </>}
       </main>

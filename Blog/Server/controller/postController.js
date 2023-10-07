@@ -6,51 +6,48 @@ const multer = require('multer');
 const uploadMiddleware = multer({ dest: 'uploads/' })
 const upload = uploadMiddleware.single('image');
 
-const cloudinary = require('cloudinary').v2;
-
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.SECRET_KEY,
-});
-
-const uploadOptions = {
-    folder: 'Blog_Images', // Replace 'your_folder_name' with the desired folder name
-    transformation: [
-        { width: 300, height: 200, crop: 'fill' }, // Replace with your desired image transformation options
-    ],
-    resource_type: 'auto'
-};
-
 // Create a post
-const createPost = async (req, res, next) => {
-    try {
-        // Handle the file upload using multer
-        const result = await cloudinary.uploader.upload(req.file.path, uploadOptions);
+createPost = async (req, res, next) => {
+    upload(req, res, async (err) => {
+        if (err) {
+            return res.status(400).json({
+                success: false,
+                message: 'File upload error',
+            });
+        }
 
-        const { title, summary, content } = req.body;
+        try {
+            const { title, summary, content } = req.body;
+            const { originalname, filename } = req.file;
 
-        // Create a post with the Cloudinary image URL
-        const post = await Post.create({
-            title,
-            summary,
-            content,
-            image: result.secure_url, // Use the Cloudinary URL for the image
-            author: req.user._id, // Assuming you have user authentication
-        });
+            // Rename the uploaded file with its original extensionx
+            const ext = path.extname(originalname);
+            const imageFileName = `${filename}${ext}`;
+            const imagePath = path.join('uploads', imageFileName);
+            console.log(imageFileName)
 
-        res.status(201).json({
-            success: true,
-            message: 'Post created successfully',
-            post,
-        });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({
-            success: false,
-            message: 'Internal server error',
-        });
-    }
+            // Creating a post
+            const post = await Post.create({
+                title,
+                summary,
+                content,
+                image: imagePath,
+                author: req.user._id
+            });
+            // Returning success response
+            res.send({
+                success: true,
+                status: 201,
+                post,
+            });
+        } catch (error) {
+            // Handle any errors that occur during post creation
+            return res.status(500).json({
+                success: false,
+                message: 'Internal server error',
+            });
+        }
+    });
 };
 
 // Delete post
