@@ -12,7 +12,7 @@ const router = express.Router();
 router.route('/create').post(isAuthenticatedUser, createPost);
 
 // Delete post
-router.route('/delete').delete(isAuthenticatedUser, deletePost);
+router.route('/delete/:id').get(isAuthenticatedUser, deletePost);
 
 // Edit post
 router.route('/edit').put(isAuthenticatedUser, editPost);

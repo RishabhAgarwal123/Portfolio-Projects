@@ -52,7 +52,18 @@ createPost = async (req, res, next) => {
 
 // Delete post
 deletePost = catchAsyncError(async (req, res, next) => {
+    const { id } = req.params;
+    const post = Post.findById(id);
 
+    if (!post) return next(new ErrorHandler(`No post found with ID: ${id}`, 400));
+
+    await post.deleteOne();
+
+    res.send({
+        status: 200,
+        success: true,
+        message: "Post deleted successfully"
+    })
 });
 
 // Edit post
