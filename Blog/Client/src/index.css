@@ -106,6 +106,12 @@ circle {
   animation: dash4 1.5s ease-in-out infinite;
 }
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @keyframes rotate4 {
   100% {
     transform: rotate(360deg);
