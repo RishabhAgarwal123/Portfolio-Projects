@@ -7,7 +7,7 @@ import './Post.css';
 
 const DisplayPost = () => {
     const [post, setPost] = useState(null);
-    const { isLoading, setIsLoading, userDetail } = useContext(UserContext);
+    const { isLoading, setIsLoading } = useContext(UserContext);
     const { id } = useParams();
 
     const getPost = async () => {

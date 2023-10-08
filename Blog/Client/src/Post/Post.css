@@ -58,6 +58,19 @@ input[type="file"] {
   overflow-y: scroll;
 }
 
+.home-post-image {
+  max-height: 500px;
+  max-width: 500px;
+  width: auto;
+  height: auto;
+}
+
+.home-post-image-center {
+  width: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
 .image {
   max-height: 450px;
   overflow: hidden;

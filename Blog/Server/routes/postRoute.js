@@ -15,7 +15,7 @@ router.route('/create').post(isAuthenticatedUser, createPost);
 router.route('/delete/:id').get(isAuthenticatedUser, deletePost);
 
 // Edit post
-router.route('/edit').put(isAuthenticatedUser, editPost);
+router.route('/edit/:id').put(isAuthenticatedUser, editPost);
 
 // Get all posts
 router.route('/all').get(isAuthenticatedUser, getPosts);

@@ -16,8 +16,8 @@ const EditPost = () => {
     const [title, setTitle] = useState('');
     const [summary, setSummary] = useState('');
     const [content, setContent] = useState('');
-    const [imagePreview, setImagePreview] = useState('');
-    const [file, setFile] = useState('');
+    // const [imagePreview, setImagePreview] = useState('');
+    // const [file, setFile] = useState('');
     const navigate = useNavigate();
 
     const getPost = async () => {
@@ -37,41 +37,39 @@ const EditPost = () => {
         formData.append('title', title);
         formData.append('summary', summary);
         formData.append('content', content);
-        formData.append('image', file);
+        // formData.append('image', file);
 
         setIsLoading(true);
         try {
-            const { data } = await axios.post('http://localhost:4000/api/posts/create', formData, {
+            const { data } = await axios.put(`http://localhost:4000/api/posts/edit/${id}`, formData, {
                 headers: {
-                  'Content-Type': 'multipart/form-data', // Set the correct content type for FormData
+                    'Content-Type': 'application/json', // Set the correct content type for FormData
                 },
-              });
+            });
 
             if (data.success) {
-                const { post } = data;
-                console.log(post);
                 navigate('/');
-                toast.success('Post Created Successfully');
+                toast.success('Post Updated Successfully');
             }
             setIsLoading(false);
-            toast.error('Post not created!');
+            toast.error('Post not updated!');
         } catch (error) {
             toast.error('Something went wrong!');
             setIsLoading(false);
         }
     }
 
-    const handleImage = (event) => {
-        setFile(event.target.files[0])
-        const reader = new FileReader();
-        reader.onload = () => {
-            if (reader.readyState === 2) {
-                const result = reader.result;
-                setImagePreview(result);
-            }
-        }
-        reader.readAsDataURL(event.target.files[0]);
-    }
+    // const handleImage = (event) => {
+    //     setFile(event.target.files[0])
+    //     const reader = new FileReader();
+    //     reader.onload = () => {
+    //         if (reader.readyState === 2) {
+    //             const result = reader.result;
+    //             setImagePreview(result);
+    //         }
+    //     }
+    //     reader.readAsDataURL(event.target.files[0]);
+    // }
 
     useEffect(() => {
         setTitle(post?.title);
@@ -100,7 +98,7 @@ const EditPost = () => {
                     name='summary'
                     value={summary || ''}
                     onChange={(e) => setSummary(e.target.value)} />
-                <div className='upload'>
+                {/* <div className='upload'>
                     {imagePreview && <img src={imagePreview} alt='Avatar Preview' />}
                     <label className="custom-file-input">
                         <input
@@ -112,7 +110,7 @@ const EditPost = () => {
                         />
                         <span className="custom-file-label">Choose a file</span>
                     </label>
-                </div>
+                </div> */}
                 <ReactQuill
                     theme='snow'
                     modules={customModules}

@@ -37,7 +37,6 @@ const Home = () => {
     {
       isLoading ? <Loader /> : <>
         { posts.length !== 0 && posts.map((post) => {
-          console.log(post)
           return <Post key={post._id} post={post} />} )}
       </>
     }

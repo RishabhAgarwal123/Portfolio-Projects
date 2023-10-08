@@ -10,9 +10,10 @@ const Post = (props) => {
   return (
     <>
       <div className='post'>
-        <div className='image'>
+        <div className='home-post-image'>
           <Link to={`/post/${_id}`}>
-            <img src={`http://localhost:4000/${image}`} alt={title} />
+            {/* <img src={`http://localhost:4000/${image}`} alt={title} /> */}
+            <img className='home-post-image-center' src='https://e1.pxfuel.com/desktop-wallpaper/680/644/desktop-wallpaper-rudra-shiva-lord-shiva-painting-lord-pinterest-de-adiyogi-shiva.jpg' alt='Shiva' />
           </Link>
         </div>
         <div className='post-text'>

@@ -68,7 +68,24 @@ deletePost = catchAsyncError(async (req, res, next) => {
 
 // Edit post
 editPost = catchAsyncError(async (req, res, next) => {
+    const id = req.params.id;
+    const { title, summary, content } = req.body;
+    let post = await Post.findById(id);
 
+    if (!post) return next(new ErrorHandler(`No post found with the id: ${id}`, 404));
+
+    post.title = title;
+    post.summary = summary;
+    post.content = content;
+
+    post = await post.save();
+
+    res.send({
+        success: true,
+        post,
+        status: 200,
+        message: 'Post Updated Successfully'
+    })
 });
 
 // Get a single post
