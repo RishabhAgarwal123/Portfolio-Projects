@@ -35,13 +35,10 @@ const CreatePost = () => {
               });
 
             if (data.success) {
-                const { post } = data;
-                console.log(post);
                 navigate('/');
-                toast.success('Post Created Successfully');
-            }
+                toast.success(data.message);
+            } else toast.error(data.message);
             setIsLoading(false);
-            toast.error('Post not created!');
         } catch (error) {
             toast.error('Something went wrong!');
             setIsLoading(false);

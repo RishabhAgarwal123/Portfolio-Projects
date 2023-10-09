@@ -23,10 +23,9 @@ const Register = () => {
                 setUserDetail(user);
                 setAuthenticated(true);
                 navigate('/');
-                toast.success('User Registered Succesfully!')
-            }
+                toast.success('User Registered');
+            } else toast.error(data.message);
             setIsLoading(false);
-            toast.error('User not registered!');
         } catch (error) {
             toast.error('Something went wrong!');
             setIsLoading(false);

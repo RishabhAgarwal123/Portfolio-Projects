@@ -39,6 +39,7 @@ createPost = async (req, res, next) => {
                 success: true,
                 status: 201,
                 post,
+                message: 'Post Created Successfully!'
             });
         } catch (error) {
             // Handle any errors that occur during post creation
@@ -96,7 +97,8 @@ getSinglePost = catchAsyncError(async (req, res, next) => {
     res.send({
         success: true,
         status: 200,
-        post
+        post,
+        message: 'Post found successfully'
     })
 });
 
@@ -110,7 +112,8 @@ getPosts = catchAsyncError(async (req, res, next) => {
     res.send({
         success: true,
         status: 200,
-        posts
+        posts,
+        message: 'Posts found'
     })
 });
 

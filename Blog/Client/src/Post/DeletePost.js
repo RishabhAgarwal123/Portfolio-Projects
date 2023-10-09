@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { UserContext } from '../UserContext';
 import Loader from '../Loader';
+import { toast } from 'react-toastify';
 
 const DeletePost = () => {
     const { isLoading, setIsLoading } = useContext(UserContext);
@@ -10,17 +11,18 @@ const DeletePost = () => {
     const naviagte = useNavigate();
 
     const deletePost = async () => {
-    console.log('ca')
 
         setIsLoading(true)
         try {
             const { data } = await axios.get(`/posts/delete/${id}`);
             if (data.success) {
                 naviagte('/');
-            }
+                toast.success(data.message);
+            } else toast.error(data.message);
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
+            toast.error('Something went wrong!');
         }
     }
 

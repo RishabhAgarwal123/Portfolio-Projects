@@ -17,10 +17,8 @@ const Home = () => {
       if (data.success) {
         const { posts } = data;
         setPosts(posts);
-        toast.success('Post Created Successfully');
       }
       setIsLoading(false);
-      toast.error('Post not created!');
     } catch (error) {
       toast.error('Something went wrong!');
       setIsLoading(false);
@@ -40,10 +38,6 @@ const Home = () => {
           return <Post key={post._id} post={post} />} )}
       </>
     }
-      {/* <Post />
-      <Post />
-      <Post />
-      <Post /> */}
     </>
   )
 }

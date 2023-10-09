@@ -4,6 +4,7 @@ import axios from 'axios';
 import { UserContext } from '../UserContext';
 import Loader from '../Loader';
 import './Post.css';
+import { toast } from 'react-toastify';
 
 const DisplayPost = () => {
     const [post, setPost] = useState(null);
@@ -14,10 +15,14 @@ const DisplayPost = () => {
         setIsLoading(true);
         try {
             const { data } = await axios.get(`/posts/single/${id}`);
-            setPost(data.post)
+            if (data.success) {
+                setPost(data.post);
+                toast.success(data.message);
+            } else toast.error(data.message);
             setIsLoading(false);
         } catch (error) {
             setIsLoading(false);
+            toast.error('Something went wrong!');
         }
     }
 

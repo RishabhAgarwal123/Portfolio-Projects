@@ -21,11 +21,14 @@ const Login = () => {
             if (data.success) {
                 const { user } = data;
                 setUserDetail(user);
+                navigate('/')
+                setAuthenticated(true);
+                toast.success("User Logged In Success");
+            } else {
+                toast.error(data.message);
+                navigate('/')
             }
-            toast.success('User Logged In!');
             setIsLoading(false);
-            setAuthenticated(true);
-            navigate('/')
         } catch (error) {
             toast.error('Login failed!');
             setIsLoading(false);
