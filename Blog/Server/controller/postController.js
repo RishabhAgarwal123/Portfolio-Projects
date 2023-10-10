@@ -24,7 +24,6 @@ createPost = async (req, res, next) => {
             const ext = path.extname(originalname);
             const imageFileName = `${filename}${ext}`;
             const imagePath = path.join('uploads', imageFileName);
-            console.log(imageFileName)
 
             // Creating a post
             const post = await Post.create({
