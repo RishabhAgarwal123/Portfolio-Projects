@@ -127,30 +127,29 @@
         <div class="timeline__item-mark-light"></div>
         <div class="timeline__item-mark"></div>
 
-        <div class="timeline__item-content transition-large">
-          <div class="timeline__item-content__card-header">
-            <div class="timeline__item-content__card-header-left">
-              <h5>Title of section 1</h5>
-              <div class="sub-title mb-15">Template Author</div>
+        <ng-container *ngFor="let experience of experiences">
+          <div class="timeline__item-content transition-large">
+            <div class="timeline__item-content__card-header">
+              <div class="timeline__item-content__card-header-left">
+                <h5>{{experience?.company}}</h5>
+                <div class="sub-title mb-15">{{experience?.location}}</div>
+              </div>
+              <div class="timeline__item-content__card-header-right">
+                <span class="timeline__item-content__card-header-right__date"
+                  >{{experience?.time}}</span
+                >
+              </div>
             </div>
-            <div class="timeline__item-content__card-header-right">
-              <span class="timeline__item-content__card-header-right__date"
-                >Rishabh 2018 - may 2022</span
-              >
-            </div>
+            <p>
+              {{experience?.info}}
+            </p>
+            <a href="#" class="link link__color-link link__w-chevron"
+              >Diploma</a
+            >
           </div>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id
-            voluptatibus laboriosam quod, amet labore quae facilis quia quidem
-            explicabo eaque! Ea minima nihil voluptas ducimus, illum officia
-            eos fugit eveniet.
-          </p>
-          <a href="#" class="link link__color-link link__w-chevron"
-            >Diploma</a
-          >
-        </div>
+        </ng-container>
       </div>
-      <div class="timeline__item">
+      <!-- <div class="timeline__item">
         <div class="timeline__item-mark-light"></div>
         <div class="timeline__item-mark"></div>
 
@@ -230,6 +229,6 @@
             >Diploma</a
           >
         </div>
-      </div>
+      </div> -->
     </div>
 </div>

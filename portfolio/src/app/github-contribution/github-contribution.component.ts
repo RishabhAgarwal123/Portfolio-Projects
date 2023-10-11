@@ -16,7 +16,6 @@ export class GithubContributionComponent implements OnInit {
   ngOnInit() {
     // Fetch GitHub Contributions data here
     this.githubService.getContributions('RishabhAgarwal123').subscribe((data: any) => {
-      console.log(data);
       this.contributions = data;
 
       // After fetching data, generate contributions
@@ -33,7 +32,7 @@ export class GithubContributionComponent implements OnInit {
       // Check if there's a contribution for this date
       let isContribution = false;
       if (this.contributions) {
-        isContribution = this.contributions?.some((contribution: any) => {
+        isContribution = this.contributions?.length !== 0 && this.contributions?.some((contribution: any) => {
           const contributionDate = new Date(contribution.date);
           return date.toISOString() === contributionDate.toISOString();
         });
