@@ -92,10 +92,10 @@ a {
 }
 
 .sub-title {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   font-style: italic;
   font-size: 1.1rem;
-  color: rgba(100,100,102,1);
+  color: rgba(100, 100, 102, 1);
 }
 
 .link {
@@ -116,7 +116,7 @@ a {
   }
 
   &__color-link {
-    color: #07daff;;
+    color: #07daff;
 
     &:hover {
       text-shadow: 0 0 3px rgba(10, 243, 212, 0.4);
@@ -147,7 +147,7 @@ a {
     &:after {
       position: absolute;
       font-family: "Font Awesome 5 free";
-      content: '\f054';
+      content: "\f054";
       font-weight: 900;
       display: inline-block;
       font-style: normal;
@@ -155,7 +155,7 @@ a {
       text-rendering: auto;
       -webkit-font-smoothing: antialiased;
       font-size: 1rem;
-      top: .25rem;
+      top: 0.25rem;
       transform: translateX(5px);
       transition: 0.4s ease-in-out;
     }
@@ -164,10 +164,10 @@ a {
 
 .btn {
   text-transform: uppercase;
-  box-shadow: 0 1px 4px 0 rgba(15,15,20,.1);
-  color: rgba(32,32,42,1);;
-  background: #07daff;;
-  letter-spacing: .15rem;
+  box-shadow: 0 1px 4px 0 rgba(15, 15, 20, 0.1);
+  color: rgba(32, 32, 42, 1);
+  background: #07daff;
+  letter-spacing: 0.15rem;
   font-weight: 600;
   display: inline-flex;
   justify-content: center;
@@ -194,13 +194,13 @@ a {
 
   &:hover {
     transform: translateY(-2px);
-    color: rgba(30,30,40,1);
+    color: rgba(30, 30, 40, 1);
   }
 }
 
 .buttons-frame {
   & a {
-      margin-right: 1.5rem;
+    margin-right: 1.5rem;
   }
 }
 
@@ -231,17 +231,17 @@ a {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
       font-size: 1rem;
 
       & h6 {
         font-size: 1rem;
         color: rgb(7, 151, 247);
       }
-      
-      & span { 
-        font-size: .8rem;
-        color: rgba(140,140,142,1); 
+
+      & span {
+        font-size: 0.8rem;
+        color: rgba(140, 140, 142, 1);
       }
 
       &:last-child {
@@ -250,7 +250,6 @@ a {
     }
   }
 }
-
 
 h1 {
   font-size: 5.2rem;
@@ -344,5 +343,20 @@ h6 {
   100% {
     transform: scale(1);
     opacity: 0;
+  }
+}
+
+@media screen and (max-width: 921px) {
+  .scroll-frame {
+    height: calc(100vh - 18vh);
+  }
+
+  .scroll {
+    margin-top: 15rem !important;
+  }
+
+  .p-30-15 {
+    padding-top: 15px;
+    padding-bottom: 10px;
   }
 }

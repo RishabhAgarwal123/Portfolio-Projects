@@ -205,3 +205,14 @@
     }
   }
 }
+
+@media screen and (max-width: 921px) {
+  .about {
+    width: 18rem;
+
+    .header {
+      padding: .8rem;
+      height: 15rem;
+    }
+  }
+}

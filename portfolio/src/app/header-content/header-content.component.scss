@@ -1,119 +1,196 @@
 @import "../../styles/config";
 
 .language-container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .language {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  &-items {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    
-    &-items {
-        display: flex;
-        margin-bottom: 1.5rem;
-        align-items: center;
-        width: 33.33333%;
-        text-align: center;
-    }
+    margin-bottom: 1.5rem;
+    align-items: center;
+    width: 33.33333%;
+    text-align: center;
+  }
 }
 
 .circle-progress {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: $text-color-1;
-    font-size: .8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $text-color-1;
+  font-size: 0.8rem;
 }
 
 .skills-container {
-    margin-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
 .skills {
-    &__item {
-        position: relative;
+  &__item {
+    position: relative;
 
-        &-heading {
-            display: flex;
-            justify-content: space-between;
+    &-heading {
+      display: flex;
+      justify-content: space-between;
 
-            & h6 {
-                color: $text-color-1;
-            }
+      & h6 {
+        color: $text-color-1;
+      }
 
-            & span {
-                font-size: 1rem;
-            }
-        }
-
-        &-progress {
-            width: 100%;
-
-            &-progress-text {
-                width: 100%;
-                text-align: right;
-                top: -6rem !important;
-                font-size: 1.1rem;
-                color: $text-color-2 !important;
-            }
-        }
+      & span {
+        font-size: 1rem;
+      }
     }
+
+    &-progress {
+      width: 100%;
+
+      &-progress-text {
+        width: 100%;
+        text-align: right;
+        top: -6rem !important;
+        font-size: 1.1rem;
+        color: $text-color-2 !important;
+      }
+    }
+  }
 }
 
 .knowledge-list {
-    padding-left: 0;
+  padding-left: 0;
 
-    & li {
-        list-style-type: none;
-        margin-bottom: .5rem;
-        color: $text-color-2;
-        font-size: 1rem;
+  & li {
+    list-style-type: none;
+    margin-bottom: 0.5rem;
+    color: $text-color-2;
+    font-size: 1rem;
 
-        &:last-child {
-            margin-bottom: 1rem;
-        }
-
-        &:before {
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
-            content: "\f00c";
-            font-size: 1rem;
-            color: $main-color;
-            margin-right: 1rem;
-        }
+    &:last-child {
+      margin-bottom: 1rem;
     }
+
+    &:before {
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      content: "\f00c";
+      font-size: 1rem;
+      color: $main-color;
+      margin-right: 1rem;
+    }
+  }
 }
 
 .cv {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 .social {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3.5rem;
+  height: 5rem;
+  background: $info-bar-2-color-light;
+  position: absolute;
+  bottom: 0;
+  box-shadow: $shadow-2;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+
+  & a {
+    color: $text-color-2;
+    transition: $tr-sm;
+
+    &:hover {
+      text-shadow: $text-neon;
+      color: $text-color-1;
+    }
+  }
+}
+
+@media screen and (max-width: 921px) {
+  .scroll__ul-li {
+    width: 14rem;
+    h6 {
+      font-size: 0.9rem;
+    }
+    span {
+      font-size: 0.9rem;
+    }
+  }
+
+  .language {
+    width: 14rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 3.5rem;
-    height: 5rem;
-    background: $info-bar-2-color-light;
-    position: absolute;
-    bottom: 0;
-    box-shadow: $shadow-2;
-    left: 0;
-    width: 100%;
-    z-index: 999;
+    flex-wrap: wrap;
 
-    & a {
-        color: $text-color-2;
-        transition: $tr-sm;
-
-        &:hover {
-            text-shadow: $text-neon;
-            color: $text-color-1;
-        }
+    &-items {
+      margin-bottom: 1rem;
     }
+  }
+
+  .skills {
+    width: 14rem;
+    &__item {
+      &-heading {
+        & h6 {
+          color: $text-color-1;
+          font-size: 0.8rem;
+        }
+
+        & span {
+          font-size: 0.8rem;
+        }
+      }
+
+      &-progress {
+        &-progress-text {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .knowledge-list {
+    width: 14rem;
+    & li {
+      font-size: 0.8rem;
+
+      &:last-child {
+        margin-bottom: 1rem;
+      }
+
+      &:before {
+        font-size: 0.8rem;
+        margin-right: 0.8rem;
+      }
+    }
+  }
+
+  .cv {
+    width: 14rem;
+    height: 8vh;
+
+    .link {
+        font-size: .8rem;
+    }
+  }
+
+  .social {
+    padding: 0 2rem;
+    height: 3rem;
+  }
 }
