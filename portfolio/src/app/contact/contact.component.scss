@@ -20,3 +20,22 @@
     padding: 3rem;
     margin-bottom: 3rem;
 }
+
+@media screen and (max-width: 921px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-container {
+        display: flex;
+        width: 34%;
+        flex-direction: column;
+    }
+    
+    .card {
+        width: 30rem;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+}

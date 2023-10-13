@@ -359,4 +359,62 @@ h6 {
     padding-top: 15px;
     padding-bottom: 10px;
   }
+
+  .btn {
+    letter-spacing: 0.1rem;
+    font-weight: 600;
+
+    &-sm {
+      height: 2rem;
+      font-size: 0.8rem;
+      padding: 0 1.5rem;
+    }
+
+    &-md {
+      height: 2.5rem;
+      font-size: 0.8rem;
+      padding: 0 1.5rem;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      color: rgba(30, 30, 40, 1);
+    }
+  }
+
+  .buttons-frame {
+    & a {
+      margin-right: 1rem;
+      font-size: 0.8;
+    }
+  }
+
+  .link {
+    font-size: 0.8rem;
+    display: inline-block;
+    letter-spacing: 0.1rem;
+    margin-bottom: 0.8rem;
+    margin-right: 1rem;
+
+    &__w-chevron {
+      padding-right: 0.8rem;
+
+      &:after {
+        font-size: .8rem;
+      }
+    }
+  }
+
+  .section-title {
+  
+    &-text {
+      align-self: center;
+      position: relative;
+      margin-bottom: 1.5rem;
+      
+      & h4 {
+        font-size: 1.2rem;
+      }
+    }
+  }
 }

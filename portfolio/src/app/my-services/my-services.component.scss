@@ -34,3 +34,31 @@
     display: flex;
     flex-direction: column;
 }
+
+@media screen and (max-width: 921px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+    }
+    .service {
+        gap: 2rem;
+        width: 40%;
+    
+        &__box {
+            max-width: 100%;
+            margin-bottom: 1.5rem;
+    
+            &-content {
+                padding: 1.5rem;
+    
+                &-title {
+                    font-size: 1.2rem;
+                }
+    
+                &-description {
+                    font-size: .8rem;
+                }
+            }
+        }
+    }
+}
