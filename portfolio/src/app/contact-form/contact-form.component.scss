@@ -71,7 +71,7 @@
 
 @media screen and (max-width: 921px) {
     .card {
-        width: 40%;
+        width: 38%;
         padding: 2rem;
         margin-bottom: 2rem;
       }
@@ -79,7 +79,7 @@
       .contact-form label {
         height: 3rem;
         width: 3rem;
-        padding: 0 1rem;
+        padding: 0 1.5rem;
         font-size: .8rem;
         line-height: 2.5rem;
       }
@@ -92,10 +92,6 @@
       .form-field input {
         height: 3rem;
         padding-left: 4rem;
-      }
-
-      .form-field .textarea {
-        width: 3rem;
       }
       
       .form-field textarea {

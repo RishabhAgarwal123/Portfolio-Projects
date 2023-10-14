@@ -16,3 +16,10 @@
         }
     }
 }
+
+@media screen and (max-width: 921px) {
+    .row {
+        width: 40%;
+        gap: 4rem;
+    }
+}
