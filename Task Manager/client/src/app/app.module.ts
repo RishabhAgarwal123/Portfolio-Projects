@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { TaskViewComponent } from './pages/task-view/task-view.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TaskViewComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,30 @@
+// Global styles
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Nunito:wght@400;700&display=swap');
+
+$green: #27d7a1;
+$light-green: #45f69e;
+$dark-green: rgb(0, 100, 80);
+
+$turquoise: #44ddd0;
+$light: #f8f8f8;
+
+// Update bulma's global variables
+$family-sans-serif: 'Nunito', sans-serif;
+$primary: $green;
+
+$link: $light-green;
+$color: #000000;
+
+// Update bulma's component variables
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Set custom global styles will be applied to whole app
+html {
+    background: linear-gradient(to right top, $turquoise, $green);
+}
+
+html, body {
+    height: 100%;
+}
