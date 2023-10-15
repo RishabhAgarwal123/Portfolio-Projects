@@ -52,6 +52,21 @@ getAllList = catchAsyncError(async (req, res, next) => {
     });
 });
 
+getSingleList = catchAsyncError(async (req, res, next) => {
+    const id = req.params.id;
+
+    const list = await List.findById(id);
+
+    if (!list) return next(new ErrorHandler(`No list found with ID: ${id}`, 400));
+
+    res.send({
+        status: 200,
+        success: true,
+        message: 'List',
+        list
+    })
+});
+
 /**
  * Update Lists
  */
@@ -77,5 +92,6 @@ module.exports = {
     createList,
     deleteList,
     getAllList,
+    getSingleList,
     updateList,
 }
