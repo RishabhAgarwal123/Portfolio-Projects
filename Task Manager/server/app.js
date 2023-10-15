@@ -10,7 +10,7 @@ const taskRoute = require('./routes/taskRoute');
 
 const corsOptions = {
     origin: [
-        "http://localhost: 4200",
+        "http://localhost:4200",
         "http://127.0.0.1",
         "http://104.142.122.231"
     ],
@@ -20,8 +20,8 @@ const corsOptions = {
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 
 // Using routes
 app.use('/api/v1', listRoute);

@@ -56,7 +56,8 @@ getAllTask = catchAsyncError(async (req, res, next) => {
         status: 200,
         success: true,
         message: 'Tasks List',
-        tasks
+        tasks,
+        listId: id
     })
 });
 
