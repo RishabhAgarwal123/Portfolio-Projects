@@ -24,8 +24,8 @@ app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Using routes
-app.use('api/v1', listRoute);
-app.use('api/v1', taskRoute);
+app.use('/api/v1', listRoute);
+app.use('/api/v1', taskRoute);
 
 // Error middlewares
 app.use(errorMiddleware);

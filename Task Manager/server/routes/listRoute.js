@@ -5,9 +5,9 @@ const { createList,
     updateList } = require('../controllers/listController');
 const router = express.Router();
 
-router.route('/list').post(createList);
-router.route('/list/:id').delete(deleteList);
-router.route('/list').get(getAllList);
-router.route('/list/:id').patch(updateList);
+router.route('/lists').post(createList);
+router.route('/lists/:id').delete(deleteList);
+router.route('/lists').get(getAllList);
+router.route('/lists/:id').patch(updateList);
 
 module.exports = router;
