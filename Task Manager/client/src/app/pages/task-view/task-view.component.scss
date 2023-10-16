@@ -64,13 +64,24 @@
   color: $color;
 }
 
+.tasks {
+  height: 490px;
+  overflow-y: auto;
+
+  ::-webkit-scrollbar {
+    width: 10px; /* Adjust the width as needed */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $light-green;
+  }
+}
+
 .task {
   background-color: white;
   padding: 15px 20px;
   border-radius: 5px;
   margin-top: 10px;
-  height: 500px;
-  overflow: auto;
 
   &:not(.complete) {
     cursor: pointer;
@@ -87,7 +98,7 @@
 
   &.complete {
     text-decoration: line-through;
-    opacity: .5;
+    opacity: 0.5;
   }
 }
 
@@ -106,5 +117,8 @@
   & img {
     width: 20px;
     height: 20px;
+  }
+  &:hover {
+    background-color: $light-green;
   }
 }

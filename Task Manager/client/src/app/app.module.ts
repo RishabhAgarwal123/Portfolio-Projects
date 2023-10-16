@@ -11,6 +11,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewListItemComponent } from './pages/new-list-item/new-list-item.component';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
+import { reducer } from './redux/reducer/app.reducer';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NewTaskComponent } from './pages/new-task/new-task.component';
     HttpClientModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    StoreRouterConnectingModule.forRoot()
+    StoreRouterConnectingModule.forRoot(),
+    StoreModule.forRoot({ listId: reducer})
   ],
   providers: [],
   bootstrap: [AppComponent]

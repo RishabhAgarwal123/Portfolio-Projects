@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { ListResponse } from 'src/app/models/list.model';
 import { TaskResponse } from 'src/app/models/task.modet';
 import { TaskService } from 'src/app/task.service';
@@ -12,12 +13,18 @@ import { TaskService } from 'src/app/task.service';
 export class TaskViewComponent implements OnInit {
   lists: any[] = []; // Define an array to store the lists
   tasks: any[] = [];
-  activeItemIndex !: number;
+  activeItemIndex: any = 0;
   listId !: string;
-  
-  constructor(private taskService: TaskService, private router: Router) { }
+
+  constructor(private taskService: TaskService, private router: Router, private store: Store) { }
 
   ngOnInit(): void {
+    const id = localStorage.getItem('listId');
+    const index = localStorage.getItem('activeItem');
+    if (id && index) {
+      this.activeItemIndex = index;
+      this.getTask(id);
+    }
     this.getLists();
   }
 
@@ -34,10 +41,15 @@ export class TaskViewComponent implements OnInit {
     );
   }
 
-  getTaskAssociated(list: ListResponse, index: number) {
+  getTaskAssociated(list: ListResponse, index: any) {
+    localStorage.setItem('listId', list?._id);
+    localStorage.setItem('activeItem', index);
     this.activeItemIndex = index;
-    this.listId = list._id;
-    this.taskService.getTasks(list?._id).subscribe(
+    this.getTask(list?._id);
+  }
+
+  getTask(id: string) {
+    this.taskService.getTasks(id).subscribe(
       (res: TaskResponse) => {
         if (res?.success) {
           this.tasks = res?.tasks;
