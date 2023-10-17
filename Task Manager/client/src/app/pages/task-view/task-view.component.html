@@ -3,26 +3,64 @@
     <div class="sidebar has-background-white">
       <h1 class="title has-text-primary">Lists</h1>
       <div class="list-menu">
-        <a [ngClass]="{'is-active': activeItemIndex === i}" class="list-menu-items" *ngFor="let list of lists;let i = index">
+        <a
+          [ngClass]="{ 'is-active': activeItemIndex === i }"
+          class="list-menu-items"
+          *ngFor="let list of lists; let i = index"
+        >
           <p (click)="getTaskAssociated(list, i)">{{ list?.title }}</p>
         </a>
       </div>
-      <button class="button is-primary has-text-white" routerLink="/new-list-item" >
+      <button
+        class="button is-primary has-text-white"
+        routerLink="/new-list-item"
+      >
         + New List
       </button>
     </div>
     <div class="task-list-container has-background-light">
-      <h1 class="title has-text-primary">Tasks</h1>
+      <div class="top-bar">
+        <h1 class="title has-text-primary">Tasks</h1>
+        <div class="dropdown">
+          <img
+            class="settings"
+            src="../../../assets/settings.svg"
+            alt="Settings"
+            (click)="showMenu()"
+          />
+          <div *ngIf="show" role="menu">
+            <div class="dropdown-content">
+              <div class="dropdown-item">
+                <ul>
+                  <li>Update List</li>
+                  <li>Delete List</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Task elements -->
       <div class="tasks">
-        <div [ngClass]="{'complete': task.completed}" class="task" *ngFor="let task of tasks" (click)="onTaskClick(task)">
-          <p>{{task?.title}}</p>
+        <div
+          [ngClass]="{ complete: task.completed }"
+          class="task"
+          *ngFor="let task of tasks"
+          (click)="onTaskClick(task)"
+        >
+          <div class="task-actions">
+            <p class="task-title">{{ task?.title }}</p>
+            <div class="task-action">
+              <img class="task-action-icon" src="../../../assets/edit.svg" alt="Edit" />
+              <img class="task-action-icon" src="../../../assets/delete.svg" alt="Delete" />
+            </div>
+          </div>
         </div>
       </div>
 
       <button class="circle-add-button is-primary" (click)="navigate()">
-        <img src="../../../assets/plus-icon.svg" alt="Plus">
+        <img src="../../../assets/plus-icon.svg" alt="Plus" />
       </button>
     </div>
   </div>

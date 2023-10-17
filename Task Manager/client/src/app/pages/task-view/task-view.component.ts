@@ -16,6 +16,7 @@ export class TaskViewComponent implements OnInit {
   activeItemIndex: any = 0;
   listId !: string;
   listIdFromTask !: string;
+  show: Boolean = false;
 
   constructor(private taskService: TaskService, private router: Router, private store: Store) { }
 
@@ -75,5 +76,10 @@ export class TaskViewComponent implements OnInit {
 
   navigate() {
     this.router.navigate([`/new-task/${this.listId}`]);
+  }
+
+  showMenu() {
+    this.show = !this.show;
+    console.log(this.show);
   }
 }

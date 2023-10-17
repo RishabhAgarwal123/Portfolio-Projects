@@ -19,7 +19,7 @@ export class TaskService {
   }
 
   completed(task: TaskResponse) {
-    return this.webRequestService.patch<TaskResponse>(`/tasks/${task?._id}`, { completed: true, title: task?.title });
+    return this.webRequestService.patch<TaskResponse>(`/tasks/${task?._id}`, { completed: !task.completed, title: task?.title });
   }
 
   getLists() {
