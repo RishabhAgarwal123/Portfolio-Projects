@@ -63,7 +63,9 @@ export class TaskViewComponent implements OnInit {
     // Set task to complete
     this.taskService.completed(task).subscribe(
       (res: TaskResponse) => {
-        console.log(res);
+        if (res.success) {
+          this.getTask(this.listId);
+        }
       },
       (error) => {
         console.error('Error:', error);
