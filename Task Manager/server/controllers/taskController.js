@@ -86,6 +86,7 @@ updateTask = catchAsyncError(async (req, res, next) => {
     if (!task) return next(new ErrorHandler(`No task found with ID: ${id}`, 400));
 
     task.title = req.body.title;
+    task.completed = req.body.completed || task.completed;
 
     await task.save({ validateBeforeSave: false });
 

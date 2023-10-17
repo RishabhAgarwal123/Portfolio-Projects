@@ -3,5 +3,6 @@ export interface ListResponse {
     status: number,
     lists: [],
     message: string,
-    _id: string
+    _id: string,
+    title: string
 }

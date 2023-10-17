@@ -11,20 +11,18 @@ import { TaskService } from 'src/app/task.service';
   styleUrls: ['./task-view.component.scss']
 })
 export class TaskViewComponent implements OnInit {
-  lists: any[] = []; // Define an array to store the lists
+  lists: ListResponse[] = []; // Define an array to store the lists
   tasks: any[] = [];
   activeItemIndex: any = 0;
   listId !: string;
+  listIdFromTask !: string;
 
   constructor(private taskService: TaskService, private router: Router, private store: Store) { }
 
   ngOnInit(): void {
-    const id = localStorage.getItem('listId');
-    const index = localStorage.getItem('activeItem');
-    if (id && index) {
-      this.activeItemIndex = index;
-      this.getTask(id);
-    }
+    this.listId = localStorage.getItem('listId') || '';
+    this.listIdFromTask = localStorage.getItem('listIdFromTask') || '';
+    this.getTask(this.listId);
     this.getLists();
   }
 
@@ -59,6 +57,18 @@ export class TaskViewComponent implements OnInit {
         console.error('Error:', error);
       }
     );
+  }
+
+  onTaskClick(task: TaskResponse) {
+    // Set task to complete
+    this.taskService.completed(task).subscribe(
+      (res: TaskResponse) => {
+        console.log(res);
+      },
+      (error) => {
+        console.error('Error:', error);
+      }
+    )
   }
 
   navigate() {

@@ -24,7 +24,7 @@ export class WebRequestService {
     return this.http.post<T>(`${this.ROOT_URL}${uri}`, payload);
   }
 
-  patch(uri: string, payload: Object) {
-    return this.http.patch(`${this.ROOT_URL}${uri}`, payload);
+  patch<T>(uri: string, payload: Object): Observable<T> {
+    return this.http.patch<T>(`${this.ROOT_URL}${uri}`, payload);
   }
 }

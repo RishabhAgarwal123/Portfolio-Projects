@@ -16,7 +16,7 @@
 
       <!-- Task elements -->
       <div class="tasks">
-        <div class="task" *ngFor="let task of tasks">
+        <div class="task" *ngFor="let task of tasks" (click)="onTaskClick(task)">
           <p>{{task?.title}}</p>
         </div>
       </div>

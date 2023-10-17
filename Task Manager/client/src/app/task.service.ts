@@ -18,6 +18,10 @@ export class TaskService {
     return this.webRequestService.post<TaskResponse>(`/tasks/${listId}`, { title: title});
   }
 
+  completed(task: TaskResponse) {
+    return this.webRequestService.patch<TaskResponse>(`/tasks/${task?._id}`, { completed: true, title: task?.title });
+  }
+
   getLists() {
     return this.webRequestService.get<ListResponse>('/lists');
   }

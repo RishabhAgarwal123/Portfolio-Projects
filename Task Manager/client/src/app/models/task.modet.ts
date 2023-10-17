@@ -4,5 +4,12 @@ export interface TaskResponse {
     tasks: [],
     message: string
     _id: string,
-    listId: string
+    listId: string,
+    completed: boolean,
+    title: string,
+    task: {
+        listId: string,
+        completed: Boolean,
+        title: string
+    }
 }

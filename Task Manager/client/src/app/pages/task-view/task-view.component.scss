@@ -35,27 +35,28 @@
 }
 
 .list-menu {
+  height: 10px;
   display: flex;
   flex-direction: column;
   margin-top: 15px;
   flex-grow: 1;
+}
 
-  .list-menu-items {
-    display: flex;
-    align-items: center;
-    padding: 10px 15px;
-    border-radius: 5px;
-    width: 100%;
-    color: #5f5f5f;
-    margin-bottom: 5px;
+.list-menu-items {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  width: 100%;
+  color: #5f5f5f;
+  margin-bottom: 5px;
 
-    &:hover {
-      background-color: $light;
-    }
+  &:hover {
+    background-color: $light;
+  }
 
-    &.is-active {
-      background-color: $green;
-    }
+  &.is-active {
+    background-color: $green;
   }
 }
 
