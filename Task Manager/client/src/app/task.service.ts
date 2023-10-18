@@ -15,7 +15,7 @@ export class TaskService {
   }
 
   deleteList(listId: string) {
-    return this.webRequestService.delete<ListResponse>(`/lists/${listId}`, {});
+    return this.webRequestService.delete<ListResponse>(`/lists/${listId}`);
   }
   
   getLists() {
@@ -31,7 +31,7 @@ export class TaskService {
   }
 
   deleteTask(taskId: string, listId: string) {
-    return this.webRequestService.delete<TaskResponse>(`/tasks/${taskId}`, { listId: listId });
+    return this.webRequestService.delete<TaskResponse>(`/tasks/${taskId}+${listId}`);
   }
 
   completed(task: TaskResponse) {

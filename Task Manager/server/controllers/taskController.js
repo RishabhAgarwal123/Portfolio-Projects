@@ -1,7 +1,6 @@
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError = require('../middlewares/catchAsyncError');
 const Task = require('../models/taskModel');
-const List = require('../models/listModel');
 
 /**
  * Create Tasks
@@ -26,16 +25,20 @@ createTask = catchAsyncError(async (req, res, next) => {
  * Delete Tasks
  */
 deleteTask = catchAsyncError(async (req, res, next) => {
-    const id = req.params.id;
-    const listId = req.body.listId;
-    const task = await Task.findById(id);
+    const ids = req.params.id?.split('+');
+    const taskId = ids[0];
+    const listId = ids[1];
 
+    const task = await Task.findById(taskId);
     if (!task) return next(new ErrorHandler(`No task found with ID: ${id}`, 400));
 
     await task.deleteOne();
 
-    const tasks = await Task.find();
-    console.log(tasks);
+    const tasks = await Task.find({ listId: listId});
+    if (!tasks || tasks.length === 0) {
+        return next(new ErrorHandler('No tasks found for the specified list ID', 404));
+    }
+
     res.send({
         status: 200,
         success: true,

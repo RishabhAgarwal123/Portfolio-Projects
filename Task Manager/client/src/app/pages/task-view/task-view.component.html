@@ -43,10 +43,9 @@
           [ngClass]="{ complete: task.completed }"
           class="task"
           *ngFor="let task of tasks"
-          (click)="onTaskClick(task)"
         >
           <div class="task-actions">
-            <p class="task-title">{{ task?.title }}</p>
+            <p class="task-title" (click)="onTaskClick(task)">{{ task?.title }}</p>
             <div class="task-action">
               <img
                 class="task-action-icon"

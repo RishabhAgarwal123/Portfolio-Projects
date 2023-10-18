@@ -75,6 +75,7 @@ export class TaskViewComponent implements OnInit {
   }
 
   onListUpdate(list: ListResponse) {
+    this.router.navigate([`edit-list-item/${list._id}`]);
   }
 
   onListDelete(list: ListResponse) {
@@ -92,7 +93,7 @@ export class TaskViewComponent implements OnInit {
   onTaskUpdate(task: TaskResponse) {}
 
   onTaskDelete(task: TaskResponse) {
-    this.taskService.deleteTask(task._id, this.listId).subscribe(
+    this.taskService.deleteTask(task._id, task.listId).subscribe(
       (res: TaskResponse) => {
         if (res.success) this.tasks = res.tasks;
       },

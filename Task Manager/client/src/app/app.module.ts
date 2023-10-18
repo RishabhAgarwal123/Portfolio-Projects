@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NewListItemComponent } from './pages/new-list-item/new-list-item.component';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
 import { reducer } from './redux/reducer/app.reducer';
+import { EditListItemComponent } from './pages/edit-list-item/edit-list-item.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { reducer } from './redux/reducer/app.reducer';
     TaskViewComponent,
     NotificationComponent,
     NewListItemComponent,
-    NewTaskComponent
+    NewTaskComponent,
+    EditListItemComponent
   ],
   imports: [
     BrowserModule,
