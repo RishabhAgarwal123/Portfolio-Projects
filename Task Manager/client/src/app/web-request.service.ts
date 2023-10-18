@@ -16,8 +16,8 @@ export class WebRequestService {
     return this.http.get<T>(`${this.ROOT_URL}${uri}`);
   }
 
-  delete(uri: string) {
-    return this.http.delete(`${this.ROOT_URL}${uri}`);
+  delete<T>(uri: string, payload: Object) {
+    return this.http.delete<T>(`${this.ROOT_URL}${uri}`, payload);
   }
 
   post<T>(uri: string, payload: Object): Observable<T> {

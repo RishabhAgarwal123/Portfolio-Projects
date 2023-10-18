@@ -16,11 +16,13 @@
               class="task-action-icon"
               src="../../../assets/edit.svg"
               alt="Edit"
+              (click)="onListUpdate(list)"
             />
             <img
               class="task-action-icon"
               src="../../../assets/delete.svg"
               alt="Delete"
+              (click)="onListDelete(list)"
             />
           </div>
         </div>
@@ -50,11 +52,13 @@
                 class="task-action-icon"
                 src="../../../assets/edit.svg"
                 alt="Edit"
+                (click)="onTaskUpdate(task)"
               />
               <img
                 class="task-action-icon"
                 src="../../../assets/delete.svg"
                 alt="Delete"
+                (click)="onTaskDelete(task)"
               />
             </div>
           </div>

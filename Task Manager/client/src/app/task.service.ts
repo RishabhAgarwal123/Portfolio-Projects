@@ -14,16 +14,28 @@ export class TaskService {
     return this.webRequestService.post<ListResponse>('/lists', { title: title });
   }
 
+  deleteList(listId: string) {
+    return this.webRequestService.delete<ListResponse>(`/lists/${listId}`, {});
+  }
+  
+  getLists() {
+    return this.webRequestService.get<ListResponse>('/lists');
+  }
+
+  updateList(listId: string, title: string) {
+    return this.webRequestService.patch<ListResponse>(`/lists/${listId}`, { title: title });
+  }
+
   createTask(title: string, listId: string) {
     return this.webRequestService.post<TaskResponse>(`/tasks/${listId}`, { title: title});
   }
 
-  completed(task: TaskResponse) {
-    return this.webRequestService.patch<TaskResponse>(`/tasks/${task?._id}`, { completed: !task.completed, title: task?.title });
+  deleteTask(taskId: string, listId: string) {
+    return this.webRequestService.delete<TaskResponse>(`/tasks/${taskId}`, { listId: listId });
   }
 
-  getLists() {
-    return this.webRequestService.get<ListResponse>('/lists');
+  completed(task: TaskResponse) {
+    return this.webRequestService.patch<TaskResponse>(`/tasks/${task?._id}`, { completed: !task.completed, title: task?.title });
   }
 
   getTasks(id: string) {

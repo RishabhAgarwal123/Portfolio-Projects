@@ -74,12 +74,37 @@ export class TaskViewComponent implements OnInit {
     )
   }
 
+  onListUpdate(list: ListResponse) {
+  }
+
+  onListDelete(list: ListResponse) {
+    const id = list._id;
+    this.taskService.deleteList(id).subscribe(
+      (res: ListResponse) => {
+        if (res.success) {
+          this.lists = res.lists;
+        }
+      },
+      (error) => console.log(error)
+    )
+  }
+
+  onTaskUpdate(task: TaskResponse) {}
+
+  onTaskDelete(task: TaskResponse) {
+    this.taskService.deleteTask(task._id, this.listId).subscribe(
+      (res: TaskResponse) => {
+        if (res.success) this.tasks = res.tasks;
+      },
+      (error) => console.log(error)
+    )
+  }
+
   navigate() {
     this.router.navigate([`/new-task/${this.listId}`]);
   }
 
   showMenu() {
     this.show = !this.show;
-    console.log(this.show);
   }
 }
