@@ -12,7 +12,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 400px;
   padding: 42px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
@@ -28,7 +28,7 @@
 
   .top-bar {
     display: flex;
-    
+
     .title {
       flex-grow: 1;
     }
@@ -52,12 +52,14 @@
 
 .list-menu-items {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 10px 15px;
   border-radius: 5px;
   width: 100%;
   color: #5f5f5f;
   margin-bottom: 5px;
+  cursor: pointer;
 
   &:hover {
     background-color: $light;
@@ -130,33 +132,6 @@
   }
 }
 
-.settings {
-  height: 20px;
-  width: 20px;
-  border: none;
-  cursor: pointer;
-}
-
-.dropdown-trigger {
-  position: relative;
-}
-
-.dropdown-content {
-  width: 150px;
-  position: absolute;
-  bottom: -2px;
-  right: 30px;
-
-  & li {
-    padding: 5px;
-    cursor: pointer;
-
-    &:hover {
-      columns: $light;
-    }
-  }
-}
-
 .task-actions {
   display: flex;
 
@@ -174,6 +149,19 @@
       &:hover {
         color: $primary;
       }
+    }
+  }
+}
+
+.list-action {
+  display: flex;
+  align-items: center;
+  & .task-action-icon {
+    height: 25px;
+    width: 25px;
+
+    &:hover {
+      color: $primary;
     }
   }
 }
