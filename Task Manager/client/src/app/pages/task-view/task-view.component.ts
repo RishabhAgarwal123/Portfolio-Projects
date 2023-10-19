@@ -90,7 +90,9 @@ export class TaskViewComponent implements OnInit {
     )
   }
 
-  onTaskUpdate(task: TaskResponse) {}
+  onTaskUpdate(task: TaskResponse) {
+    this.router.navigate([`edit-task/${task?._id}`]);
+  }
 
   onTaskDelete(task: TaskResponse) {
     this.taskService.deleteTask(task._id, task.listId).subscribe(

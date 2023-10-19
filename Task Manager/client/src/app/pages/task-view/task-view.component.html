@@ -46,7 +46,7 @@
         >
           <div class="task-actions">
             <p class="task-title" (click)="onTaskClick(task)">{{ task?.title }}</p>
-            <div class="task-action">
+            <div class="task-action" *ngIf="!task.completed">
               <img
                 class="task-action-icon"
                 src="../../../assets/edit.svg"

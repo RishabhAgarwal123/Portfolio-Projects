@@ -1,16 +1,16 @@
 <div class="centerted-container">
   <div class="modal-box">
-    <h1 class="title">Edit list</h1>
+    <h1 class="title">Edit Task</h1>
     <input
       class="input has-background-light is-medium"
       type="text"
-      placeholder="Edit list"
-      #listTitleInput
+      placeholder="Edit task"
+      #taskTitleInput
     />
     <div class="buttons is-right">
       <button
         class="button is-primary is-medium"
-        (click)="editListItem(listTitleInput.value)"
+        (click)="editTask(taskTitleInput.value)"
       >
         Edit
       </button>

@@ -4,12 +4,14 @@ import { TaskViewComponent } from './pages/task-view/task-view.component';
 import { NewListItemComponent } from './pages/new-list-item/new-list-item.component';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
 import { EditListItemComponent } from './pages/edit-list-item/edit-list-item.component';
+import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 
 const routes: Routes = [
   { path: '', component: TaskViewComponent },
   { path: 'new-list-item', component: NewListItemComponent },
   { path: 'edit-list-item/:id', component: EditListItemComponent },
-  { path: 'new-task/:id', component: NewTaskComponent }
+  { path: 'new-task/:id', component: NewTaskComponent },
+  { path: 'edit-task/:id', component: EditTaskComponent }
 ]
 
 @NgModule({

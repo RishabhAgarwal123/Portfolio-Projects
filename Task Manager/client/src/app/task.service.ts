@@ -38,6 +38,10 @@ export class TaskService {
     return this.webRequestService.patch<TaskResponse>(`/tasks/${task?._id}`, { completed: !task.completed, title: task?.title });
   }
 
+  editTask(taskId: string, title: string) {
+    return this.webRequestService.patch<TaskResponse>(`/tasks/${taskId}`, { title: title});
+  }
+
   getTasks(id: string) {
     return this.webRequestService.get<TaskResponse>(`/tasks/${id}`);
   }

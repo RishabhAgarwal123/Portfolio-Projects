@@ -13,6 +13,7 @@ import { NewListItemComponent } from './pages/new-list-item/new-list-item.compon
 import { NewTaskComponent } from './pages/new-task/new-task.component';
 import { reducer } from './redux/reducer/app.reducer';
 import { EditListItemComponent } from './pages/edit-list-item/edit-list-item.component';
+import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { EditListItemComponent } from './pages/edit-list-item/edit-list-item.com
     NotificationComponent,
     NewListItemComponent,
     NewTaskComponent,
-    EditListItemComponent
+    EditListItemComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
