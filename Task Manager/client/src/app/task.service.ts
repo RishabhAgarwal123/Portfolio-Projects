@@ -17,6 +17,10 @@ export class TaskService {
   deleteList(listId: string) {
     return this.webRequestService.delete<ListResponse>(`/lists/${listId}`);
   }
+
+  getList(listId: string) {
+    return this.webRequestService.get<ListResponse>(`/lists/${listId}`);
+  }
   
   getLists() {
     return this.webRequestService.get<ListResponse>('/lists');
@@ -40,6 +44,10 @@ export class TaskService {
 
   editTask(taskId: string, title: string) {
     return this.webRequestService.patch<TaskResponse>(`/tasks/${taskId}`, { title: title});
+  }
+
+  getTask(taskId: string) {
+    return this.webRequestService.get<TaskResponse>(`/tasks/single/${taskId}`);
   }
 
   getTasks(id: string) {

@@ -10,12 +10,23 @@ import { TaskService } from 'src/app/task.service';
 })
 export class EditTaskComponent implements OnInit {
   taskId: string = '';
+  title: string = '';
   constructor(private route: ActivatedRoute, private router: Router, private taskService: TaskService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
       (params: Params) => this.taskId = params['id']
     );
+    if (this.taskId) {
+      this.taskService.getTask(this.taskId).subscribe(
+        (res: TaskResponse) => {
+          if (res.success) {
+            this.title = res.task.title;
+          }
+        },
+        (error) => console.log(error)
+      )
+    }
   }
 
   editTask(value: string) {

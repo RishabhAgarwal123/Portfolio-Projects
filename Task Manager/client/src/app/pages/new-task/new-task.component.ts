@@ -26,7 +26,6 @@ export class NewTaskComponent implements OnInit {
     this.taskService.createTask(title, id).subscribe(
       (res: TaskResponse) => {
         if (res?.success) {
-          console.log(res)
           localStorage.setItem('listIdFromTask', res?.task?.listId);
           this.router.navigate(['/']);
         }

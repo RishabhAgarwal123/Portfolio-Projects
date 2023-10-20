@@ -44,6 +44,7 @@ export class TaskViewComponent implements OnInit {
     localStorage.setItem('listId', list?._id);
     localStorage.setItem('activeItem', index);
     this.activeItemIndex = index;
+    this.listId = list?._id;
     this.getTask(list?._id);
   }
 

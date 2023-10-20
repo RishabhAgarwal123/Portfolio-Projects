@@ -10,12 +10,21 @@ import { TaskService } from 'src/app/task.service';
 })
 export class EditListItemComponent implements OnInit {
   listId: string = '';
+  title: string = '';
   constructor(private route: ActivatedRoute, private router: Router, private taskService: TaskService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
       (params: Params) => this.listId = params['id']
     );
+    if (this.listId) {
+      this.taskService.getList(this.listId).subscribe(
+        (res: ListResponse) => {
+          this.title = res.list.title;
+        },
+        (error) => console.log(error)
+      )
+    }
   }
 
   editListItem(value: string) {
