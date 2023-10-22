@@ -11,7 +11,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NewListItemComponent } from './pages/new-list-item/new-list-item.component';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
-import { reducer } from './redux/reducer/app.reducer';
+// import { reducer } from './redux/reducer/app.reducer';
 import { EditListItemComponent } from './pages/edit-list-item/edit-list-item.component';
 import { EditTaskComponent } from './pages/edit-task/edit-task.component';
 
@@ -32,7 +32,7 @@ import { EditTaskComponent } from './pages/edit-task/edit-task.component';
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
-    StoreModule.forRoot({ listId: reducer})
+    // StoreModule.forRoot({ listId: reducer})
   ],
   providers: [],
   bootstrap: [AppComponent]
