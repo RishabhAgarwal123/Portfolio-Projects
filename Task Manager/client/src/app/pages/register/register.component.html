@@ -3,7 +3,7 @@
     <div class="field">
       <label class="label">Name</label>
       <div class="control has-icons-left has-icons-right">
-        <input class="input is-danger" type="email" placeholder="Email name" />
+        <input class="input is-danger" type="email" formControlName="name" placeholder="Enter name" />
         <span class="icon is-small is-left">
           <i class="fas fa-envelope"></i>
         </span>
@@ -17,7 +17,12 @@
     <div class="field">
       <label class="label">Email</label>
       <div class="control has-icons-left has-icons-right">
-        <input class="input is-danger" type="email" placeholder="Email email" />
+        <input
+          class="input"
+          formControlName="email"
+          type="email"
+          placeholder="Email email"
+        />
         <span class="icon is-small is-left">
           <i class="fas fa-envelope"></i>
         </span>
@@ -25,7 +30,18 @@
           <i class="fas fa-exclamation-triangle"></i>
         </span>
       </div>
-      <p class="help is-danger">This email is invalid</p>
+      <p
+        *ngIf="registerForm.get('email')?.hasError('required')"
+        class="help is-danger"
+      >
+        This email is required
+      </p>
+      <p
+        *ngIf="registerForm.get('email')?.hasError('email')"
+        class="help is-danger"
+      >
+        This email is invalid
+      </p>
     </div>
 
     <div class="field">
@@ -35,6 +51,7 @@
           class="input is-danger"
           type="password"
           placeholder="Enter password"
+          formControlName="password"
         />
         <span class="icon is-small is-left">
           <i class="fas fa-lock"></i>
@@ -43,14 +60,25 @@
           <i class="fas fa-exclamation-triangle"></i>
         </span>
       </div>
-      <p class="help is-danger">This password is invalid</p>
+      <p
+        *ngIf="registerForm.get('password')?.hasError('required')"
+        class="help is-danger"
+      >
+        This password is required
+      </p>
+      <p
+        *ngIf="registerForm.get('password')?.hasError('minLength')"
+        class="help is-danger"
+      >
+        This password should be greater than 4
+      </p>
     </div>
 
     Already a member <a routerLink="/login">Login </a>
 
     <div class="field is-grouped">
       <div class="control">
-        <button class="button is-primary has-text-white">Register</button>
+        <button class="button is-primary has-text-white" [disabled]="!registerForm.valid">Register</button>
       </div>
       <div class="control">
         <button class="button is-link is-light">Cancel</button>
