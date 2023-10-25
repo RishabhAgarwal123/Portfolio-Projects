@@ -1,10 +1,11 @@
 <div class="centerted-container">
   <form class="form" [formGroup]="loginForm" (ngSubmit)="submit()">
+    <h1 class="title">Login </h1>
     <div class="field">
       <label class="label">Email</label>
       <div class="control has-icons-left has-icons-right">
         <input
-          class="input"
+          class="input has-background-light"
           formControlName="email"
           type="email"
           placeholder="Email email"
@@ -16,15 +17,25 @@
           <i class="fas fa-exclamation-triangle"></i>
         </span>
       </div>
-      <p *ngIf="loginForm.get('email')?.hasError('required')" class="help is-danger">This email is required</p>
-      <p *ngIf="loginForm.get('email')?.hasError('email')" class="help is-danger">This email is invalid</p>
+      <p
+        *ngIf="loginForm.get('email')?.hasError('required')"
+        class="help is-danger"
+      >
+        This email is required
+      </p>
+      <p
+        *ngIf="loginForm.get('email')?.hasError('email')"
+        class="help is-danger"
+      >
+        This email is invalid
+      </p>
     </div>
 
     <div class="field">
       <label class="label">Password</label>
       <div class="control has-icons-left has-icons-right">
         <input
-          class="input is-danger"
+          class="input has-background-light"
           type="password"
           placeholder="Enter password"
           formControlName="password"
@@ -36,13 +47,23 @@
           <i class="fas fa-exclamation-triangle"></i>
         </span>
       </div>
-      <p *ngIf="loginForm.get('password')?.hasError('required')" class="help is-danger">This password is required</p>
-      <p *ngIf="loginForm.get('password')?.hasError('minLength')" class="help is-danger">This password should be greater than 4</p>
+      <p
+        *ngIf="loginForm.get('password')?.hasError('required')"
+        class="help is-danger"
+      >
+        This password is required
+      </p>
+      <p
+        *ngIf="loginForm.get('password')?.hasError('minLength')"
+        class="help is-danger"
+      >
+        This password should be greater than 4
+      </p>
     </div>
 
     Not a member <a routerLink="/register"> Create a account</a>
 
-    <div class="field is-grouped">
+    <div class="field is-grouped is-pulled-right">
       <div class="control">
         <button
           class="button is-primary has-text-white"
