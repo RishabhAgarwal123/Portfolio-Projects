@@ -7,6 +7,7 @@ const app = express();
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const listRoute = require('./routes/listRoute');
 const taskRoute = require('./routes/taskRoute');
+const userRoute = require('./routes/userRoute');
 
 const corsOptions = {
     origin: [
@@ -26,6 +27,7 @@ app.use(cors(corsOptions));
 // Using routes
 app.use('/api/v1', listRoute);
 app.use('/api/v1', taskRoute);
+app.use('/api/v1', userRoute);
 
 // Error middlewares
 app.use(errorMiddleware);
