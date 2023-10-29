@@ -77,13 +77,16 @@ userSchema.methods.generateRefreshToken = function () {
     });
 }
 
-userSchema.methods.createSession = () => {
+userSchema.methods.createSession = function () {
     let user = this;
-    return user.generateAccessToken().then((refreshToken) => {
-        saveSessionToDatabase(user, refreshToken);
-    }).then((refreshToken) => {
-        return refreshToken;
-    }).catch((e) => Promise.reject(`Failed to save session to database.\n ${e}`));
+    return user.generateAccessToken()
+        .then((refreshToken) => {
+            return saveSessionToDatabase(user, refreshToken); // Return the result of this call
+        })
+        .then((refreshToken) => {
+            return refreshToken;
+        })
+        .catch((e) => Promise.reject(`Failed to save session to database.\n ${e}`));
 }
 
 // Static methods
@@ -112,7 +115,7 @@ userSchema.statics.findByCredentials = function (email, password) {
 }
 
 // Hashing middleware
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function (next) {
     let user = this;
     let hashRound = 10;
 
