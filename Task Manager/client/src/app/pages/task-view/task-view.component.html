@@ -38,7 +38,7 @@
       <h1 class="title has-text-primary">Tasks</h1>
 
       <!-- Task elements -->
-      <div class="tasks">
+      <div class="tasks" *ngIf="tasks.length !== 0">
         <div
           [ngClass]="{ complete: task.completed }"
           class="task"
@@ -63,6 +63,8 @@
           </div>
         </div>
       </div>
+
+      <h3 class="empty-text" *ngIf="tasks.length === 0">No Tasks Found </h3>
 
       <button class="circle-add-button is-primary" (click)="navigate()">
         <img src="../../../assets/plus-icon.svg" alt="Plus" />

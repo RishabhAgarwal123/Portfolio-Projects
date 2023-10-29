@@ -27,4 +27,11 @@ export class WebRequestService {
   patch<T>(uri: string, payload: Object): Observable<T> {
     return this.http.patch<T>(`${this.ROOT_URL}${uri}`, payload);
   }
+
+  login(email: string, password: string) {
+    return this.http.post(`${this.ROOT_URL}/users/login`, {
+      email,
+      password
+    }, { observe: 'response' })
+  }
 }
