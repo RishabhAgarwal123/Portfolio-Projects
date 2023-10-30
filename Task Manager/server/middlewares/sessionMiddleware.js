@@ -1,6 +1,20 @@
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError = require('./catchAsyncError');
 const User = require('../models/userModel');
+const jwt = require('jsonwebtoken');
+
+const isAuthenticated = catchAsyncError (async (req, res, next) => {
+    const token = req.header('x-access-token');
+
+    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
+        if (error) {
+            return new ErrorHandler('Not Authenticated', 401);
+        } else {
+            req.user_id = decoded._id;
+            next();
+        }
+    })
+});
 
 const verifySession = catchAsyncError(async (req, res, next) => {
     let refreshToken = req.header('x-refresh-token');
@@ -33,5 +47,6 @@ const verifySession = catchAsyncError(async (req, res, next) => {
 });
 
 module.exports = {
-    verifySession
+    verifySession,
+    isAuthenticated
 }
