@@ -24,6 +24,14 @@ app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors(corsOptions));
 
+app.use(function (req, res, next) {
+    res.header(
+        'Access-Control-Expose-Headers',
+        'x-access-token, x-refresh-token'
+    )
+    next();
+})
+
 // Using routes
 app.use('/api/v1', listRoute);
 app.use('/api/v1', taskRoute);

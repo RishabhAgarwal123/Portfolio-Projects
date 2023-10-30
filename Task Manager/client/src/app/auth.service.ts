@@ -12,17 +12,29 @@ export class AuthService {
   constructor(private webRequestService: WebRequestService, private router: Router) { }
 
   login(email: string, password: string) {
-    this.webRequestService.login(email, password).pipe(
+    return this.webRequestService.login(email, password).pipe(
       shareReplay(),
       tap((res: HttpResponse<any>) => {
         // Auth tokens in header of this response
-        this.setSession(res.body._id, res.headers.get('x-access-token') || '', res.headers.get('x-refresh-token') || '');
+        this.setSession(res.body.user._id, res.headers.get('x-access-token') || '', res.headers.get('x-refresh-token') || '');
       })
     );
   }
 
   logout() {
     this.removeSession();
+  }
+
+  getAccessToken() {
+    return localStorage.getItem('x-access-token');
+  }
+
+  getRefreshToken() {
+    return localStorage.getItem('x-refresh-token');
+  }
+
+  setAccessToken(accessToken: string) {
+    localStorage.setItem('x-access-token', accessToken);
   }
 
   private setSession(userId: string, accessToken: string, refeshToken: string) {
