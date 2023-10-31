@@ -44,7 +44,11 @@ deleteList = catchAsyncError(async (req, res, next) => {
  * Get all Lists
  */
 getAllList = catchAsyncError(async (req, res, next) => {
-    const lists = await List.find();
+    const lists = await List.find(
+        {
+            _userId: req.user_id
+        }
+    );
     res.send({
         status: 200,
         success: true,
