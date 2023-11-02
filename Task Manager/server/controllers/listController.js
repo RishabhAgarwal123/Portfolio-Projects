@@ -1,6 +1,7 @@
 const ErrorHandler = require('../utils/errorHandler');
 const catchAsyncError = require('../middlewares/catchAsyncError');
 const List = require('../models/listModel');
+const Task = require('../models/taskModel');
 
 /**
  * Create Lists
@@ -9,7 +10,8 @@ const List = require('../models/listModel');
 createList = catchAsyncError(async (req, res, next) => {
     const { title } = req.body;
     const list = await List.create({
-        title
+        title,
+        _userId: req.user_id
     });
 
     res.send({
@@ -27,6 +29,11 @@ deleteList = catchAsyncError(async (req, res, next) => {
     const list = await List.findById(id);
 
     if (!list) return next(new ErrorHandler(`No list found with ID: ${id}`, 400));
+
+    // Delete all tasks associated with it
+    await Task.deleteMany({
+        listId: id
+    });
 
     await list.deleteOne();
 
@@ -82,7 +89,11 @@ updateList = catchAsyncError(async (req, res, next) => {
 
     list.title = req.body.title;
 
-    await list.save({ validateBeforeSave: false });
+    list = await List.findByIdAndUpdate({id, _userId: req.user_id}, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    });
 
     res.send({
         status: 200,
