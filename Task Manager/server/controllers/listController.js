@@ -35,7 +35,10 @@ deleteList = catchAsyncError(async (req, res, next) => {
         listId: id
     });
 
-    await list.deleteOne();
+    await List.findByIdAndRemove({
+        _id: id,
+        _userId: user_id
+    });
 
     const lists = await List.find();
 
@@ -83,25 +86,22 @@ getSingleList = catchAsyncError(async (req, res, next) => {
  */
 updateList = catchAsyncError(async (req, res, next) => {
     const id = req.params.id;
-    const list = await List.findById(id);
+    let list = await List.findById(id);
 
     if (!list) return next(new ErrorHandler(`No list found with ID: ${id}`, 400));
 
     list.title = req.body.title;
 
-    list = await List.findByIdAndUpdate({id, _userId: req.user_id}, {
-        new: true,
-        runValidators: true,
-        useFindAndModify: false
-    });
+    // Save the updated list
+    list = await list.save();
 
-    res.send({
-        status: 200,
+    res.status(200).json({
         success: true,
         message: 'Update Success',
-        list
+        list,
     });
 });
+
 
 module.exports = {
     createList,
