@@ -23,8 +23,8 @@ export class TaskViewComponent implements OnInit {
   ngOnInit(): void {
     this.listId = localStorage.getItem('listId') || '';
     this.listIdFromTask = localStorage.getItem('listIdFromTask') || '';
-    this.getTask(this.listId);
     this.getLists();
+    this.getTask(this.listId);
   }
 
   getLists() {
@@ -49,16 +49,18 @@ export class TaskViewComponent implements OnInit {
   }
 
   getTask(id: string) {
-    this.taskService.getTasks(id).subscribe(
-      (res: TaskResponse) => {
-        if (res?.success) {
-          this.tasks = res?.tasks;
+    if (id) {
+      this.taskService.getTasks(id).subscribe(
+        (res: TaskResponse) => {
+          if (res?.success) {
+            this.tasks = res?.tasks;
+          }
+        },
+        (error) => {
+          console.error('Error:', error);
         }
-      },
-      (error) => {
-        console.error('Error:', error);
-      }
-    );
+      );
+    }
   }
 
   onTaskClick(task: TaskResponse) {

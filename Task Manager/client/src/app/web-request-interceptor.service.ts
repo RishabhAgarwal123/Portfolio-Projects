@@ -9,13 +9,15 @@ import { AuthService } from './auth.service';
 export class WebRequestInterceptorService implements HttpInterceptor {
 
   constructor(private authService: AuthService) { }
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     // handle the request
     request = this.addAuthHeader(request);
-
     // call next nad handle response
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          this.authService.logout();
+        }
         return throwError(error);
       })
     )

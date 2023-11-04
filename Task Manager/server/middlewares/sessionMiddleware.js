@@ -8,7 +8,8 @@ const isAuthenticated = catchAsyncError (async (req, res, next) => {
 
     jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
         if (error) {
-            return next(new ErrorHandler('Not Authenticated', 401));
+            // return next(new ErrorHandler('Not Authenticated', 401));
+            res.status(401).send(error);
         } else {
             req.user_id = decoded._id;
             next();
