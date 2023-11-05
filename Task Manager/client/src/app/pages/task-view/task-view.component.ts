@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { AuthService } from 'src/app/auth.service';
 import { ListResponse } from 'src/app/models/list.model';
 import { TaskResponse } from 'src/app/models/task.modet';
 import { TaskService } from 'src/app/task.service';
@@ -18,7 +19,7 @@ export class TaskViewComponent implements OnInit {
   listIdFromTask !: string;
   show: Boolean = false;
 
-  constructor(private taskService: TaskService, private router: Router, private store: Store) { }
+  constructor(private taskService: TaskService, private router: Router, private store: Store, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.listId = localStorage.getItem('listId') || '';
@@ -108,6 +109,10 @@ export class TaskViewComponent implements OnInit {
 
   navigate() {
     this.router.navigate([`/new-task/${this.listId}`]);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
   showMenu() {

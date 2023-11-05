@@ -9,6 +9,12 @@
   position: relative;
 }
 
+.task-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -121,6 +127,23 @@
   bottom: 35px;
   right: 35px;
   color: #ffffff;
+  cursor: pointer;
+
+  & img {
+    width: 20px;
+    height: 20px;
+  }
+  &:hover {
+    background-color: $light-green;
+  }
+}
+
+.circle-logout {
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  background: $primary;
   cursor: pointer;
 
   & img {
