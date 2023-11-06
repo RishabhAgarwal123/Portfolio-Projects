@@ -34,4 +34,12 @@ export class WebRequestService {
       password
     }, { observe: 'response' })
   }
+
+  register(name: string, email: string, password: string) {
+    return this.http.post(`${this.ROOT_URL}/users/register`, {
+      name,
+      email,
+      password
+    }, { observe: 'response'} )
+  }
 }
