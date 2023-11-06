@@ -23,6 +23,10 @@ export class WebRequestInterceptorService implements HttpInterceptor {
     )
   }
 
+  refreshAccessToken() {
+    
+  }
+
   addAuthHeader(request: HttpRequest<any>) {
     // get the access token
     const token = this.authService.getAccessToken();
