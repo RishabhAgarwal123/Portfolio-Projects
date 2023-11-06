@@ -58,11 +58,16 @@ export class AuthService {
   }
 
   getNewAccessToken() {
-    this.http.get(`${this.webRequestService.ROOT_URL}/users/me/access-token`, {
+    return this.http.get(`${this.webRequestService.ROOT_URL}/users/me/access-token`, {
       headers: {
         'x-refresh-token': this.getRefreshToken() || '',
         '_id': this.getUserId() || ''
-      }
-    })
+      },
+      observe: 'response'
+    }).pipe(
+      tap((response: HttpResponse<any>) => {
+        this.setAccessToken(response.headers.get('x-access-token') || '');
+      })
+    )
   }
 }

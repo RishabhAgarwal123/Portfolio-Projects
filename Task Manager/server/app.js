@@ -27,7 +27,7 @@ app.use(cors(corsOptions));
 app.use(function (req, res, next) {
     res.header(
         'Access-Control-Expose-Headers',
-        'x-access-token, x-refresh-token'
+        'x-access-token, x-refresh-token, _id'
     )
     next();
 })
