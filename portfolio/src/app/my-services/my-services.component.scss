@@ -3,7 +3,7 @@
 .service {
     display: inline-flex;
     justify-content: flex-start;
-    gap: 4rem;
+    gap: 2rem;
     flex-wrap: wrap;
 
     &__box {
@@ -33,6 +33,7 @@
 .row {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 }
 
 @media screen and (max-width: 921px) {
