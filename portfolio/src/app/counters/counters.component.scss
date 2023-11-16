@@ -8,7 +8,7 @@
     color: $text-color-1;
 
     &-box {
-        max-width: 60px;
+        min-width: 60px;
         &-counter {
             color: $main-color;
             font-weight: 600;

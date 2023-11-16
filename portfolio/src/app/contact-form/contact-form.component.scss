@@ -1,5 +1,9 @@
 @import "../../styles/config";
 
+.local-row {
+  width: 78%;
+}
+
 .card {
   background: $card-color;
   box-shadow: $shadow-1;

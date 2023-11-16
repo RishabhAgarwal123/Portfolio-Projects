@@ -1,4 +1,3 @@
-// github-contributions.component.ts
 import { Component, OnInit } from '@angular/core';
 import { GithubService } from './github.service';
 
@@ -9,14 +8,15 @@ import { GithubService } from './github.service';
 })
 export class GithubContributionComponent implements OnInit {
   days: { date: string, contribution: boolean }[] = [];
-  contributions!: any[]; 
+  contributions: Set<string> = new Set<string>();
 
   constructor(private githubService: GithubService) {}
 
   ngOnInit() {
     // Fetch GitHub Contributions data here
     this.githubService.getContributions('RishabhAgarwal123').subscribe((data: any) => {
-      this.contributions = data;
+      console.log(data)
+      this.contributions = new Set(data?.contributions?.map((contribution: any) => contribution.date));
 
       // After fetching data, generate contributions
       this.generateContributionsForYear(2023);
@@ -30,15 +30,10 @@ export class GithubContributionComponent implements OnInit {
       date.setDate(date.getDate() + i);
 
       // Check if there's a contribution for this date
-      let isContribution = false;
-      if (this.contributions) {
-        isContribution = this.contributions?.length !== 0 && this.contributions?.some((contribution: any) => {
-          const contributionDate = new Date(contribution.date);
-          return date.toISOString() === contributionDate.toISOString();
-        });
-      }
+      const isContribution = this.contributions.has(date.toISOString());
 
       this.days.push({ date: date.toISOString(), contribution: isContribution });
     }
+    console.log(this.days[0].date)
   }
 }

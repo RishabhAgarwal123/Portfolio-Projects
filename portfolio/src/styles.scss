@@ -69,9 +69,12 @@ body {
 }
 
 .container-fluid {
+  width: 100%;
   padding: 0 30px;
   position: relative;
   overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 a {
@@ -339,7 +342,11 @@ h6 {
   position: relative;
   width: 100%;
   padding-right: 15px;
-  padding-left: 15px;
+}
+
+.col-lg-4 {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
 }
 
 .col-6 {
@@ -418,14 +425,17 @@ h6 {
   }
 
   .section-title {
-  
+    display: flex;
+    justify-content: space-between;
+
     &-text {
       align-self: center;
       position: relative;
-      margin-bottom: 1.5rem;
+      margin-bottom: 30px;
       
       & h4 {
-        font-size: 1.2rem;
+        font-size: 17px;
+        font-weight: 600;
       }
     }
   }
@@ -435,7 +445,6 @@ h6 {
   display: flex;
   flex-wrap: wrap;
   margin-right: -15px;
-  margin-left: -15px;
 }
 
 @media (max-width: 1440px) {
@@ -456,5 +465,19 @@ h6 {
   .col-md-3 {
     flex: 0 0 25%;
     max-width: 25%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg-4 {
+      flex: 0 0 33.333%;
+      max-width: 33.333%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md-6 {
+      flex: 0 0 50%;
+      max-width: 50%;
   }
 }

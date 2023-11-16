@@ -1,15 +1,18 @@
 @import "../../styles/config";
 
+.local-row {
+    width: 78%;
+}
+
 .service {
-    display: inline-flex;
-    justify-content: flex-start;
-    gap: 2rem;
+    display: flex;
     flex-wrap: wrap;
 
     &__box {
-        max-width: 30%;
-        max-height: 25rem;
-        margin-bottom: 3rem;
+        max-width: 350px;
+        max-height: 300px;
+        height: 300px;
+        margin-bottom: 30px;
         position: relative;
         z-index: 1;
         overflow: hidden;
@@ -17,23 +20,18 @@
         background: $card-color;
 
         &-content {
-            padding: 2rem;
+            padding: 30px;
 
             &-title {
-                font-size: 1.5rem;
+                font-size: 15px;
+                color: $text-color-1;
             }
 
             &-description {
-                font-size: 1rem;
+                font-size: 12px;
             }
         }
     }
-}
-
-.row {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
 }
 
 @media screen and (max-width: 921px) {

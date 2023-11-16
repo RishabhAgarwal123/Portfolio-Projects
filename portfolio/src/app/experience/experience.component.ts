@@ -26,6 +26,16 @@ export class ExperienceComponent implements OnInit {
       info: 'Capgemini partners with companies to transform and manage their business by unlocking the value of technology. As a leading strategic partner to companies around the world, we have leveraged technology to enable business transformation for more than 50 years.'
     },
   ];
+
+  educations: any = [
+    {
+      college: 'BBD University',
+      location: 'Lucknow, UP',
+      time: 'Jul, 2014 - Jun, 2018',
+      info: 'Completed Bachelor of Technology, in Computer Science and Engineering'
+    }
+  ];
+
   constructor() { }
 
   ngOnInit(): void {

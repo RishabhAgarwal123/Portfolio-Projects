@@ -1,24 +1,22 @@
 @import "../../styles/config";
 
-.row {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.local-row {
+    width: 78%;
 }
 
 .card-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 78%;
 }
 
 .card {
     background: $card-color;
     box-shadow: $shadow-1;
-    width: 26rem;
-    padding: 3rem;
-    margin-bottom: 3rem;
+    width: 340px;
+    padding: 20px;
+    margin-bottom: 30px;
 }
 
 @media screen and (max-width: 921px) {

@@ -1,10 +1,7 @@
 @import "../../styles/config";
 
-.row {
-  display: inline-flex;
-  justify-content: space-evenly;
-  gap: 2rem;
-  width: 1000px;
+.local-row {
+  width: 76%;
 }
 
 .timeline {
@@ -13,22 +10,24 @@
   &::before {
     content: "";
     position: absolute;
-    top: 1rem;
-    right: 0.5rem;
-    height: calc(100% - 1rem);
-    width: 0.5rem;
+    top: 15px;
+    right: 5px;
+    height: calc(100% - 10px);
+    width: 5px;
     background: $deep-color;
   }
 
   &__item {
     position: relative;
     width: 100%;
+    max-height: 350px;
+
     &-mark-light {
       background: $text-color-1;
       position: absolute;
-      top: 0.4rem;
-      right: -0.4rem;
-      width: 2.3rem;
+      top: 4px;
+      right: 4px;
+      width: 23px;
       opacity: 0;
       border-radius: 50%;
       transition: $tr-md;
@@ -36,12 +35,12 @@
 
     &-mark {
       position: absolute;
-      top: 0.8rem;
+      top: 15px;
       right: 0;
-      width: 1.5rem;
-      height: 1.5rem;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      border: solid 0.3rem $main-color;
+      border: solid 3px $main-color;
       background: $content-color;
       box-shadow: $shadow-1;
     }
@@ -54,10 +53,11 @@
 
     &-content {
       position: relative;
-      margin-right: 4.5rem;
+      margin-right: 40px;
+      margin-left: 15px;
       background: $card-color;
-      padding: 3rem;
-      margin-bottom: 3rem;
+      padding: 30px;
+      margin-bottom: 30px;
       box-shadow: $shadow-1;
 
       &:after {
@@ -101,6 +101,13 @@
     & p {
       font-size: 1rem;
     }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .col-lg-6 {
+    flex: 0 0 38%;
+    max-width: 38%;
   }
 }
 
