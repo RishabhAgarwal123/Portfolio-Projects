@@ -1,12 +1,10 @@
 @import "../../styles/config";
 
 .content {
-    display: flex;
-    flex: 3;
-    padding: 2rem;
     position: relative;
     overflow: hidden;
-    height: calc(100vh - 3rem);
+    width: 100vw;
+    height: calc(100vh - 30px);
     transition: $tr-lg;
 
     &__curtain {
@@ -20,6 +18,16 @@
         opacity: 0;
         transition: $tr-lg;
     }
+
+    &__transition-fade {
+        transition: .55s ease-in-out;
+        opacity: 1;
+
+        &.scroll-frame {
+            width: 100%;
+            height: calc(100vh - 30px);
+        }
+    }
 }
 
 .top-bg {
@@ -29,7 +37,7 @@
     top: 0;
     background-image: url("../../assets/img/bg.jpg");
     background-position: center;
-    height: 40rem;
+    height: 400px;
     background-size: cover;
 
     &__overlay {

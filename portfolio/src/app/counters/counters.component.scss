@@ -1,20 +1,14 @@
 @import "../../styles/config";
 
-// .row {
-//     display: flex;
-//     padding-top: 2rem;
-//     justify-content: space-between;
-// }
-
 .counter__container {
     display: flex;
     align-items: center;
-    margin-bottom: 3rem;
+    margin-bottom: 30px;
     position: relative;
     color: $text-color-1;
 
     &-box {
-
+        max-width: 60px;
         &-counter {
             color: $main-color;
             font-weight: 600;
@@ -30,12 +24,6 @@
             font-size: 1.5rem;
         }
     }
-}
-
-.row {
-    display: flex;
-    gap: 6rem;
-    width: 100%;
 }
 
 @media screen and (max-width: 921px) {
