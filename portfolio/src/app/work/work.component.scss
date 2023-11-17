@@ -27,6 +27,8 @@
 }
 
 .work-grid {
+  display: flex;
+  flex-wrap: wrap;
   transition: $tr-lg;
   width: 100%;
 
@@ -38,13 +40,14 @@
 
   &__item {
     position: absolute;
+    max-width: 350px;
     top: 0;
     left: 0;
     float: left;
     margin-bottom: 30px;
     overflow: hidden;
     position: relative;
-    height: auto;
+    max-height: 350px;
     padding: 0 15px;
 
     &-box {
@@ -77,10 +80,10 @@
     &-description {
       position: absolute;
       z-index: 9;
-      top: 105px;
+      top: 95px;
       left: 15px;
       width: calc(100% - 29px);
-      padding: 30px;
+      padding: 20px;
       background: $card-color-light;
       box-shadow: $shadow-1;
       opacity: 0;

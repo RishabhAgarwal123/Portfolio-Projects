@@ -16,18 +16,22 @@
   </div>
   <div class="local-row p-30-0">
     <div class="work-grid work-grid-3-col work-gallery">
-      <div class="work-grid__item webTemplates">
-        <a href="" class="work-grid__item-box">
-          <img src="../../assets/img/pic-1.jpeg" alt="">
-          <span class="work-grid__item-box__hover">
-            <i class="fas fa-expand"></i>
-          </span>
-        </a>
-        <div class="work-grid__item-description">
-          <h5 class="mb-15">Project Title</h5>
-          <a href="#" class="link link__color-link link__w-chevron">Read more</a>
+      <ng-container *ngFor="let project of projects">
+        <div class="work-grid__item webTemplates">
+          <a href="" class="work-grid__item-box">
+            <img src="../../assets/img/works/thumbnail/1.jpg" alt="" />
+            <span class="work-grid__item-box__hover">
+              <i class="fas fa-expand"></i>
+            </span>
+          </a>
+          <div class="work-grid__item-description">
+            <h5 class="mb-15">{{project?.title}}</h5>
+            <a href="#" class="link link__color-link link__w-chevron"
+              >Read more</a
+            >
+          </div>
         </div>
-      </div>
+      </ng-container>
     </div>
   </div>
 </div>
