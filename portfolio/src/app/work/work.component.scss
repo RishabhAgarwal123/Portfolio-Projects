@@ -1,26 +1,117 @@
 @import "../../styles/config";
 
-.row {
-    display: flex;
-    gap: 23rem;
-    width: 1000px;
+.local-row {
+  width: 78%;
 }
 
 .section {
-    &__right {
-        padding-bottom: 3rem;
-        
-        &-filter {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 1.2rem;
-        }
+  &__right {
+    padding-bottom: 3rem;
+
+    &-filter {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.2rem;
     }
+  }
+}
+
+.work-gallery {
+  position: relative;
+}
+
+.webTemplates {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.work-grid {
+  transition: $tr-lg;
+  width: 100%;
+
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  &__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    float: left;
+    margin-bottom: 30px;
+    overflow: hidden;
+    position: relative;
+    height: auto;
+    padding: 0 15px;
+
+    &-box {
+      display: block;
+      width: 100%;
+      outline: inherit;
+      overflow: hidden;
+      box-shadow: $shadow-1;
+      position: relative;
+
+      &__hover {
+        width: 27px;
+        height: 27px;
+        box-shadow: $shadow-2;
+        border-radius: 50%;
+        position: absolute;
+        color: $text-color-1;
+        top: 30px;
+        left: 30px;
+        background: $info-bar-2-color-s-light;
+        font-size: 11px;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: $tr-md;
+      }
+    }
+
+    &-description {
+      position: absolute;
+      z-index: 9;
+      top: 105px;
+      left: 15px;
+      width: calc(100% - 29px);
+      padding: 30px;
+      background: $card-color-light;
+      box-shadow: $shadow-1;
+      opacity: 0;
+      transform: translateY(100%);
+      transition: $tr-lg;
+      animation: slideIn 0.5s ease-in-out; // Animation added
+
+      &:hover {
+        opacity: 1;
+        // transform: translateY(0); // Adjusted transform on hover
+      }
+    }
+
+    &__item:hover {
+      transform: translateY(0);
+    }
+  }
 }
 
 @media screen and (max-width: 921px) {
-    .row {
-        width: 40%;
-        gap: 4rem;
-    }
+  .row {
+    width: 40%;
+    gap: 4rem;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
