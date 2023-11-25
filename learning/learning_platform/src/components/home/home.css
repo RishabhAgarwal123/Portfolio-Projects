@@ -1,0 +1,55 @@
+.container {
+    height: 100vh;
+    padding: 5rem;
+    box-sizing: border-box;
+}
+
+.brands > svg {
+    color: gray;
+    font-weight: 400;
+    font-size: 2.5rem;
+    transition: color 0.5s;
+}
+
+.brands > svg:hover {
+    color: rgba(102, 102, 240, 0.8);
+    font-weight: 400;
+}
+
+.container2 {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container2 video {
+    border: 1px solid rgba(0, 0, 0, 0.18);
+    width: 60%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.175);
+    outline: none;
+}
+
+.vector-graphics {
+    filter: drop-shadow(0 40px 10px rgba(138, 43, 226, 0.3));
+    animation: vectorAnimation 1s infinite ease-in-out alternate-reverse;
+}
+
+@keyframes vectorAnimation {
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .container2 {
+        height: unset;
+        padding: 4vh 0;
+    }
+
+    .container2 video {
+        width: 100%;
+    }
+}
