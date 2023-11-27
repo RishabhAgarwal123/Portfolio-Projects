@@ -1,7 +1,7 @@
 import { Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, VStack, HStack } from '@chakra-ui/react';
 import { useDisclosure } from '@chakra-ui/hooks';
 import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
-import { RiMenu5Fill } from 'react-icons/ri';
+import { RiDashboardFill, RiLoginBoxLine, RiMenu5Fill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -15,7 +15,12 @@ const SideLinks = ({ url = '/', title = 'Home' }) => {
 
 const Header = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [ isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [user, setUser] = useState({ role: 'admin'} );
+
+    const handleLogout = () => {
+        setIsAuthenticated(false);
+    }
 
     return <>
         <ColorModeSwitcher />
@@ -32,7 +37,7 @@ const Header = () => {
         </Button>
 
         <Drawer placement='left' onClose={onClose} isOpen={isOpen}>
-            <DrawerOverlay backdropFilter={'blur(3px)'} />
+            <DrawerOverlay backdropFilter={'blur(1px)'} />
             <DrawerContent>
                 <DrawerHeader borderBottomWidth={'1px'}>CODE CRAFTERS</DrawerHeader>
                 <DrawerBody>
@@ -47,9 +52,27 @@ const Header = () => {
                             {
                                 isAuthenticated ? (
                                     <>
-                                        
+                                        <VStack>
+                                            <HStack>
+                                                <Link to='/profile'>
+                                                    <Button variant={'ghost'} colorScheme={'blue'}>Profile</Button>
+                                                </Link>
+                                                <Button variant={'ghost'} onClick={handleLogout}>
+                                                    <RiLoginBoxLine />
+                                                    Logout
+                                                </Button>
+                                            </HStack>
+                                            {
+                                                user && user?.role === 'admin' && <Link to='/admin/dashboard'>
+                                                    <Button colorScheme={'purple'} variant={'ghost'}>
+                                                        <RiDashboardFill style={{ margin: '4px' }} />
+                                                        Dashboard
+                                                    </Button>
+                                                </Link>
+                                            }
+                                        </VStack>
                                     </>
-                                ): (
+                                ) : (
                                     <>
                                         <Link to='/login'>
                                             <Button colorScheme={'blue'}>Sign In</Button>

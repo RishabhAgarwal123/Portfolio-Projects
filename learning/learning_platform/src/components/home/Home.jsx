@@ -19,9 +19,9 @@ const Home = () => {
           alignItems='center'
           spacing={['16', '56']}
         >
-          <VStack width={'full'} alignItems={['center', 'flex-end']}>
+          <VStack width={'full'} alignItems={['center', 'flex-end']} spacing={'5'}>
             <Heading children='GAIN EXPERT INSIGHTS' size={'2xl'}></Heading>
-            <Text children='Unlocking Knowledge, Empowering Minds: Your Gateway to Lifelong Learning'></Text>
+            <Text fontSize={'1xl'} fontFamily='cursive' textAlign={[ 'center', 'left' ]} children='Unlocking Knowledge, Empowering Minds: Your Gateway to Lifelong Learning'></Text>
             <Link to='/courses'>
               <Button size={'lg'} colorScheme={'blue'}>
                 Get Started
