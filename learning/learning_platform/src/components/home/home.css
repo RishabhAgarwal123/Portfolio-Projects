@@ -32,6 +32,16 @@
     outline: none;
 }
 
+.course {
+    width: 250px;
+    margin-bottom: 1rem;
+    transition: all 0.5s;
+}
+
+.course:hover {
+    transform: translateY(-10px);
+}
+
 .vector-graphics {
     filter: drop-shadow(0 40px 10px rgba(138, 43, 226, 0.3));
     animation: vectorAnimation 1s infinite ease-in-out alternate-reverse;
