@@ -15,7 +15,7 @@ const SideLinks = ({ url = '/', title = 'Home', onClose }) => {
 
 const Header = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [isAuthenticated, setIsAuthenticated] = useState(true);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [user, setUser] = useState({ role: 'admin'} );
 
     const handleLogout = () => {

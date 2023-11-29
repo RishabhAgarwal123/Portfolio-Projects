@@ -33,7 +33,7 @@ const Home = () => {
         </Stack>
       </div>
 
-      <Box padding={'8'} bg='gray.200'>
+      <Box padding={'8'} bg={'blackAlpha.900'}>
         <Heading textAlign={'center'} fontFamily={'body'} color={'blue.400'} children='BRAND PORTFOLIO'></Heading>
         <HStack className='brands' justifyContent={'space-evenly'} marginTop={'4'}>
           <CgGoogle />
