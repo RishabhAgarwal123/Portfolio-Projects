@@ -11,13 +11,13 @@ const Footer = () => {
             </VStack>
 
             <HStack spacing={['2', '10']} justifyContent={'center'} fontSize={'50'}>
-                <a href={'www.linkedin.com/in/rishi8a69127'} target={'_blank'}>
+                <a href={'www.linkedin.com/in/rishi8a69127'} target={'blank'}>
                     <TiSocialLinkedinCircular style={{ backgroundColor: '#0077B5' }}/>
                 </a>
-                <a href={'https://www.instagram.com/rishabh404agarwal/'} target={'_blank'}>
+                <a href={'https://www.instagram.com/rishabh404agarwal/'} target={'blank'}>
                 <TiSocialInstagramCircular style={{ background: 'linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045)' }} />
                 </a>
-                <a href={'https://github.com/RishabhAgarwal123'} target={'_blank'}>
+                <a href={'https://github.com/RishabhAgarwal123'} target={'blank'}>
                     <DiGithub style={{ backgroundColor: '#000000' }} />
                 </a>
             </HStack>
