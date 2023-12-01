@@ -3,6 +3,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { Routes, Route, Navigate } from "react-router-dom";
 import NewNote from "./NewNote";
+import { useLocalStorage } from "./utils/useLocalStorage";
 
 export type Tag = {
   id: string,
