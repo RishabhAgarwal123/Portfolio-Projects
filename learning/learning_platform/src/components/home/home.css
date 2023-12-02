@@ -24,7 +24,7 @@
     align-items: center;
 }
 
-.container2 video {
+.video {
     border: 1px solid rgba(0, 0, 0, 0.18);
     width: 60%;
     border-radius: 5px;
@@ -59,7 +59,7 @@
         padding: 4vh 0;
     }
 
-    .container2 video {
+    .video {
         width: 100%;
     }
 }

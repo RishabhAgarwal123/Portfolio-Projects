@@ -46,6 +46,7 @@ const Home = () => {
 
       <div className='container2'>
         <video 
+        className='video'
           autoPlay 
           controls 
           src='' 
