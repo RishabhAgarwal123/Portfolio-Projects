@@ -15,8 +15,10 @@ import Subscribe from './components/Payment/Subscribe'
 import NotFound from './components/Layout/Not Found/NotFound'
 import PaymentFail from './components/Payment/PaymentFail'
 import PaymentSuccess from './components/Payment/PaymentSuccess'
+import CourseDetail from './components/Course Page/CourseDetail'
 
 const App = () => {
+  window.addEventListener('contextmenu', (e) => e.preventDefault());
   return (
     <Router>
       <Header/ >
@@ -24,6 +26,7 @@ const App = () => {
         <Route path='/' element={<Home/>}/>
         <Route path='/about' element={<About />} />
         <Route path='/courses' element={<Courses/>}/>
+        <Route path='/course/:id' element={<CourseDetail />}/>
         <Route path='/contact' element={<Contact />} />
         <Route path='/forgetpassword' element={<ForgetPassword/>}/>
         <Route path='/login' element={<Login />} />
