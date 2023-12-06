@@ -16,6 +16,7 @@ import NotFound from './components/Layout/Not Found/NotFound'
 import PaymentFail from './components/Payment/PaymentFail'
 import PaymentSuccess from './components/Payment/PaymentSuccess'
 import CourseDetail from './components/Course Page/CourseDetail'
+import Profile from './components/Profile/Profile'
 
 const App = () => {
   window.addEventListener('contextmenu', (e) => e.preventDefault());
@@ -32,6 +33,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/paymentfail' element={<PaymentFail />} />
         <Route path='/paymentsuccess' element={<PaymentSuccess />} />
+        <Route path='/profile' element={<Profile />} />
         <Route path='/register' element={<Register />} />
         <Route path='/request' element={<Request />} />
         <Route path='/resetpassword/:token' element={<ResetPassword />} />
