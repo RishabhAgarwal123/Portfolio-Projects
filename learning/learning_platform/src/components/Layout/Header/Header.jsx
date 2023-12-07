@@ -15,7 +15,7 @@ const SideLinks = ({ url = '/', title = 'Home', onClose }) => {
 
 const Header = () => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(true);
     const [user, setUser] = useState({ role: 'admin'} );
 
     const handleLogout = () => {
@@ -33,6 +33,7 @@ const Header = () => {
             top={'6'}
             left={'6'}
             rounded='full'
+            zIndex={'overlay'}
             position={'fixed'}>
             <RiMenu5Fill />
         </Button>
