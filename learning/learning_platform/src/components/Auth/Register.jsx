@@ -9,7 +9,7 @@ export const fileUploadCSS = {
     border: 'none',
     height: '100%',
     color: '#A0AEC0',
-    backgroundColor: '#1A202C'
+    backgroundColor: 'white'
 }
 
 const fileUploadStyles = {
