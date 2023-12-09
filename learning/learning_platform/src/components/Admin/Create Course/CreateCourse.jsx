@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Container, VStack, Heading, Input, Select, Image, Box, FormLabel, Button, Grid } from '@chakra-ui/react';
+import { Container, VStack, Heading, Input, Select, Image, Button, Grid } from '@chakra-ui/react';
 import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
 import { fileUploadCSS } from '../../Auth/Register';
