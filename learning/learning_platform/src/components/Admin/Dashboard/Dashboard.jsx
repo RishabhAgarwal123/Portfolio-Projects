@@ -4,6 +4,7 @@ import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
 import { RiArrowDownLine, RiArrowUpLine } from 'react-icons/ri';
 import { FaSquare } from 'react-icons/fa';
+import { DoughnutChart, LineChart } from './Chart';
 
 const Dashboard = () => {
     return <Grid css={{ cursor: `url(${cursor}), default` }} minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
@@ -23,7 +24,7 @@ const Dashboard = () => {
                 boxShadow={'-2px 0 10px rgba(107, 70, 193, .5)'}
             >
                 <Heading textAlign={['center', 'left']} size={'md'} children={'Views Graph'} pt={['8', '0']} ml={['0', '16']} />
-                {/* Line grapg here */}
+                <LineChart />
             </Box>
             <Grid templateColumns={['1fr', '2fr 1fr']}>
                 <Box p={'4'}>
@@ -45,7 +46,7 @@ const Dashboard = () => {
 
                 <Box p={['0', '16']} boxSizing={'border-box'} py={'4'}>
                     <Heading textAlign={'center'} size={'md'} mb={'4'} children={'Users'} />
-                    {/* Dougnt Graph */}
+                    <DoughnutChart />
                 </Box>
             </Grid>
         </Box>
