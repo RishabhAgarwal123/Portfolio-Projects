@@ -76,7 +76,7 @@ const CreateCourse = () => {
             required
             accept="image/*"
             type={'file'}
-            css={{ "&::file-selector-button": { ...fileUploadCSS, color: 'purple'} }}
+            css={{ "&::file-selector-button": { ...fileUploadCSS, color: 'purple' } }}
             focusBorderColor={'purple.300'}
             onChange={imageHandler}
           />
