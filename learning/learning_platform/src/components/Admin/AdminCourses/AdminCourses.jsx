@@ -94,7 +94,7 @@ const AdminCourses = () => {
         isOpen={isOpen}
         id={'wggdhhd'}
         courseTitle={'React'}
-        lectures={[]}
+        lectures={[1, 2,3 ,4 ,5,6, 6,7 ]}
         onClose={onClose} />
     </Box>
     <Sidebar></Sidebar>

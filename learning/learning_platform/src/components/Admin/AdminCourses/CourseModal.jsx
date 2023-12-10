@@ -1,13 +1,35 @@
-import React from 'react'
-import { Box, Text, Button, Heading, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalFooter, ModalHeader, Grid, Stack } from '@chakra-ui/react';
+import React, { useState } from 'react'
+import { Box, Text, Button, VStack, Input, Heading, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalFooter, ModalHeader, Grid, Stack } from '@chakra-ui/react';
 import { RiDeleteBin7Fill } from 'react-icons/ri';
+import { fileUploadCSS } from '../../Auth/Register';
 
 const CourseModal = ({ isOpen, onClose, id, deleteHandler, courseTitle, addLecture, lectures }) => {
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+    const [video, setVideo] = useState('');
+    const [videoPreview, setVideoPreview] = useState('');
+
     const closeModal = () => {
+        setVideo('');
+        setVideoPreview('');
+        setTitle('');
+        setDescription('');
         onClose();
     }
 
-    return <Modal isOpen={isOpen} onClose={closeModal}>
+    const videoHandler = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+
+        reader.readAsDataURL(file);
+
+        reader.onloadend = () => {
+            setVideoPreview(reader.result);
+            setVideo(file);
+        }
+    }
+
+    return <Modal isOpen={isOpen} onClose={closeModal} size={'full'} scrollBehavior={'inside'}>
         <ModalOverlay backdropFilter={'blur(10px)'} />
         <ModalContent>
             <ModalHeader>{courseTitle}</ModalHeader>
@@ -20,14 +42,53 @@ const CourseModal = ({ isOpen, onClose, id, deleteHandler, courseTitle, addLectu
                             <Heading children={`#${id}`} size={'sm'} opacity={'0.4'} />
                         </Box>
                         <Heading children={'Lectures'} size={'lg'} />
-                        <VideoCard
-                            title={'React Intro'}
-                            description={'Let get start with intro of react basics'}
-                            num={1}
-                            lectureId={'fdgdfg'}
-                            courseId={id}
-                            deleteHandler={deleteHandler}
-                        />
+                        {lectures?.map((lecture, index) => {
+                            return <VideoCard
+                                key={index}
+                                title={'React Intro'}
+                                description={'Let get start with intro of react basics'}
+                                num={index + 1}
+                                lectureId={'fdgdfg'}
+                                courseId={id}
+                                deleteHandler={deleteHandler}
+                            />
+                        })}
+                    </Box>
+                    <Box>
+                        <form onSubmit={(e) => addLecture(e, id, title, description, video)}>
+                            <VStack spacing={'4'}>
+                                <Heading children={'Add Lecture'} size={'md'} />
+                                <Input
+                                    required
+                                    id='title'
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    placeholder={'Course Title'}
+                                    focusBorderColor={'purple.300'}
+                                    type={'text'}
+                                />
+                                <Input
+                                    required
+                                    id='description'
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    placeholder={'Course Description'}
+                                    focusBorderColor={'purple.300'}
+                                    type={'text'}
+                                />
+                                <Input
+                                    required
+                                    accept="video/mp4"
+                                    type={'file'}
+                                    css={{ "&::file-selector-button": { ...fileUploadCSS, color: 'purple' } }}
+                                    focusBorderColor={'purple.300'}
+                                    onChange={videoHandler}
+                                />
+                                {videoPreview && <video src={videoPreview} controlsList={'nodownload'} controls>
+                                </video>}
+                                <Button w={'full'} colorScheme={'purple'} type={'submit'} >Add Lecture</Button>
+                            </VStack>
+                        </form>
                     </Box>
                 </Grid>
             </ModalBody>

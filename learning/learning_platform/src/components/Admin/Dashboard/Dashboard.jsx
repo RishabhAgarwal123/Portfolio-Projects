@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, VStack, HStack, Heading, Input, Box, FormLabel, Button, Grid, Text, Stack, Progress } from '@chakra-ui/react';
+import { HStack, Heading, Box, Grid, Text, Stack, Progress } from '@chakra-ui/react';
 import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
 import { RiArrowDownLine, RiArrowUpLine } from 'react-icons/ri';
