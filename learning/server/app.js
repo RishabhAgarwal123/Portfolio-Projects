@@ -1,14 +1,15 @@
 import express from 'express';
 import { config } from 'dotenv'
-import { Course } from './models/courseModel.js';
-import { User } from './models/userModel.js';
+import user from './routes/userRoute.js';
+import course from "./routes/courseRoute.js";
 
 config({
     path: './config/config.env'
 });
 
 const app = express();
-app.use('/api/v1', Course);
-app.use('/api/v1', User);
+
+app.use('/api/v1', course);
+app.use('/api/v1', user);
 
 export default app;
