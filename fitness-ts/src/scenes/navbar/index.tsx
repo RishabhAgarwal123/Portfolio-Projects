@@ -33,7 +33,7 @@ const index = ({ selectedPage, setSelectedPage, isTopOfPage }: Props) => {
                                 selectedPage={selectedPage}
                                 setSelectedPage={setSelectedPage}
                             />
-                            <Link page={'Benefit'}
+                            <Link page={'Benefits'}
                                 selectedPage={selectedPage}
                                 setSelectedPage={setSelectedPage}
                             />
@@ -77,7 +77,7 @@ const index = ({ selectedPage, setSelectedPage, isTopOfPage }: Props) => {
                         selectedPage={selectedPage}
                         setSelectedPage={setSelectedPage}
                     />
-                    <Link page={'Benefit'}
+                    <Link page={'Benefits'}
                         selectedPage={selectedPage}
                         setSelectedPage={setSelectedPage}
                     />
