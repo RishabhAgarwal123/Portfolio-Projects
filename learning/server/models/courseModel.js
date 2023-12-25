@@ -12,27 +12,29 @@ const schema = new mongoose.Schema({
         required: [true, "Please enter description"],
         minLength: [20, 'Description must be of minimum 20 characters'],
     },
-    lectures: {
-        title: {
-            type: String,
-            required: [true, 'Please enter a title'],
-        },
-        description: {
-            type: String,
-            required: [true, "Please enter description"],
-            minLength: [20, 'Description must be of minimum 20 characters'],
-        },
-        video: {
-            public_id: {
+    lectures: [
+        {
+            title: {
                 type: String,
-                required: true
+                required: [true, 'Please enter a title'],
             },
-            url: {
+            description: {
                 type: String,
-                required: true
+                required: [true, "Please enter description"],
+                minLength: [20, 'Description must be of minimum 20 characters'],
+            },
+            video: {
+                public_id: {
+                    type: String,
+                    required: true
+                },
+                url: {
+                    type: String,
+                    required: true
+                }
             }
         }
-    },
+    ],
     poster: {
         public_id: {
             type: String,
