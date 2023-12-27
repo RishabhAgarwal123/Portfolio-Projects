@@ -30,5 +30,26 @@ export const createUser = catchAsyncError (async (req, res, next) => {
 });
 
 export const loginUser = catchAsyncError (async (req, res, next) => {
+    const { email, password } = req.body;
 
+    if (!email || !password) return next(new ErrorHandler('Please provide all details', 400));
+
+    const user = await User.findOne({ email}).select('+password');
+
+    if (!user) next(new ErrorHandler(`Incorrect email or password`, 401));
+
+    const isMatch = await user.comparePassword(password);
+
+    if (!isMatch) next(new ErrorHandler(`Incorrect email or password`, 401));
+
+    sendToken(res, user, `${user.name} Logged In Successfully`, 200);
+});
+
+export const logout = catchAsyncError (async (req, res, next) => {
+    res.status(200).cookie('token', {
+        expires: new Date(Date.now())
+    }).json({
+        success: true,
+        message: "User logged Out Successfully"
+    })
 });
