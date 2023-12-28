@@ -53,3 +53,13 @@ export const logout = catchAsyncError (async (req, res, next) => {
         message: "User logged Out Successfully"
     })
 });
+
+export const getProfile = catchAsyncError (async (req, res, next) => {
+    const user = await User.findById(req.user._id);
+
+    res.status(200).json({
+        success: true,
+        message: 'User Found',
+        user: user
+    })
+});
