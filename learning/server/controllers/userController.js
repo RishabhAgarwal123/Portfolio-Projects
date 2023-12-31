@@ -1,5 +1,6 @@
 import { catchAsyncError } from "../middlewares/CatchAsyncError/catchAsyncError.js";
-import { User } from "../models/userModel.js"
+import { User } from "../models/userModel.js";
+import { Course } from "../models/courseModel.js";
 import ErrorHandler from "../utils/errorHandler/errorHandler.js";
 import { sendMail } from "../utils/sendMail/sendMail.js";
 import { sendToken } from "../utils/sendToken/sendToken.js";
@@ -159,3 +160,47 @@ export const resetPassword = catchAsyncError (async (req, res, next) => {
         message: 'Password Changed Successfully',
     });
 })
+
+export const addToPlaylist = catchAsyncError (async (req, res, next) => {
+    const user = await User.findById(req.user._id);
+    const course = await Course.findById(req.body.id);
+
+    if (!course) return next(new ErrorHandler('Invalid Course Id', 400));
+
+    const itemExist = user.playlist.find((item) => {
+        if (item.course.toString() === course._id.toString()) return true;
+    })
+
+    if (itemExist) return next(new ErrorHandler('Course Already Exists', 409));
+
+    user.playlist.push({
+        course: course._id,
+        poster: course.poster.url,
+    });
+
+    await user.save();
+
+    res.status(200).json({
+        success: true,
+        message: 'Added To Playlist'
+    })
+});
+
+export const removeFromPlaylist = catchAsyncError (async (req, res, next) => {
+    const user = await User.findById(req.user._id);
+    const course = await Course.findById(req.query.id);
+
+    if (!course) return next(new ErrorHandler('Invalid Course Id', 400));
+
+    const newPlaylist = user.playlist.filter((item) => {
+        if (item.course.toString() !== course._id.toString()) return item;
+    });
+
+    user.playlist = newPlaylist;
+    await user.save();
+
+    res.status(200).json({
+        success: true,
+        message: 'Removed From Playlist'
+    })
+});
