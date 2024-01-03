@@ -1,6 +1,8 @@
 import { catchAsyncError } from "../middlewares/CatchAsyncError/catchAsyncError.js";
 import { Course } from "../models/courseModel.js"
+import getDataUri from "../utils/dataUri/dataUri.js";
 import ErrorHandler from "../utils/errorHandler/errorHandler.js";
+import cloudinary from 'cloudinary';
 
 export const getAllCourses = catchAsyncError(async (req, res, next) => {
     const courses = await Course.find().select("-lectures");
@@ -12,7 +14,10 @@ export const getAllCourses = catchAsyncError(async (req, res, next) => {
 
 export const createCourse = catchAsyncError(async (req, res, next) => {
     const { title, description, category, createdBy } = req.body;
-    // const file = req.file;
+    const file = req.file;
+
+    const fileUri = getDataUri(file);
+    const myCloud = await cloudinary.v2.uploader.upload(fileUri.content);
 
     if (!title || !description || !category || !createdBy)
         return next(new ErrorHandler('Please add all fields', 400));
@@ -23,8 +28,8 @@ export const createCourse = catchAsyncError(async (req, res, next) => {
         category,
         createdBy,
         poster: {
-            public_id: 'temp',
-            url: 'tmep'
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url
         }
     });
     res.status(201).json({
@@ -49,8 +54,34 @@ export const getCourseLecture = catchAsyncError(async (req, res, next) => {
     })
 });
 
-export const getCourseDetail = catchAsyncError(async (req, res, next) => {
+export const addLecture = catchAsyncError(async (req, res, next) => {
+    const { id } = req.params;
+    const { title, description } = req.body;
+    // const file = req.file;
 
+    const course = await Course.findById(id);
+
+    if (!course) return next(new ErrorHandler('Course Not Found',  404));
+
+    // Upload file here
+    course.lectures.push({
+        title,
+        description,
+        video: {
+            public_id: 'temp',
+            url: 'url'
+        }
+    });
+
+    course.numOfVideos = course.lectures?.length;
+
+    await course.save();
+
+    res.status(200).json({
+        success: true,
+        message: 'Lecture Added Successfully',
+        lectures: course.lectures
+    })
 });
 
 export const getCourseDetail = catchAsyncError(async (req, res, next) => {
