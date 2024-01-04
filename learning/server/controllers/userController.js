@@ -5,10 +5,12 @@ import ErrorHandler from "../utils/errorHandler/errorHandler.js";
 import { sendMail } from "../utils/sendMail/sendMail.js";
 import { sendToken } from "../utils/sendToken/sendToken.js";
 import crypto from 'crypto';
+import getDataUri from "../utils/dataUri/dataUri.js";
+import cloudinary from 'cloudinary';
 
 export const createUser = catchAsyncError (async (req, res, next) => {
     const { name, email, password } = req.body;
-    // const file = req.file
+    const file = req.file
 
     if (!name || !email || !password) return next(new ErrorHandler('Please provide all details', 400));
 
@@ -17,6 +19,8 @@ export const createUser = catchAsyncError (async (req, res, next) => {
     if (user) next(new ErrorHandler(`User cannot be created user with emailId ${user.email} already exists`, 409));
 
     // Upload file on cloudinary
+    const fileUri = getDataUri(file);
+    const myCloud = await cloudinary.v2.uploader.upload(fileUri.content);
 
     // Create user
     user = await User.create({
@@ -24,8 +28,8 @@ export const createUser = catchAsyncError (async (req, res, next) => {
         email,
         password,
         avatar: {
-            public_id: 'temp',
-            url: 'temp'
+            public_id: myCloud.public_id,
+            url: myCloud.secure_url
         }
     });
 
@@ -108,10 +112,25 @@ export const updateProfile = catchAsyncError (async (req, res, next) => {
 });
 
 export const updateProfilePicture = catchAsyncError (async (req, res, next) => {
-    // Clodinary to do
+    // Upload file on cloudinary
+    const user = await User.findById(req.user._id)
+    const file = req.file
+    const fileUri = getDataUri(file);
+    const myCloud = await cloudinary.v2.uploader.upload(fileUri.content);
+
+    await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+
+    user.avatar = {
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url
+    }
+
+    await user.save();
+
     res.status(200).json({
         success: true,
-        message: 'Profile Picture Updated Successfully'
+        message: 'Profile Picture Updated Successfully',
+        user
     });
 });
 
