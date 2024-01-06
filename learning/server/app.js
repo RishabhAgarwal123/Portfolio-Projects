@@ -2,6 +2,7 @@ import express from 'express';
 import { config } from 'dotenv'
 import user from './routes/userRoute.js';
 import course from "./routes/courseRoute.js";
+import payment from './routes/paymentRoute.js';
 import ErrorMiddleware from './middlewares/Error/errorMiddleware.js'
 import cookieParser from 'cookie-parser';
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 app.use('/api/v1', course);
 app.use('/api/v1', user);
+app.use('/api/v1', payment);
 
 app.use(ErrorMiddleware);
 
