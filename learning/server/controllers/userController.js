@@ -7,14 +7,15 @@ import { sendToken } from "../utils/sendToken/sendToken.js";
 import crypto from 'crypto';
 import getDataUri from "../utils/dataUri/dataUri.js";
 import cloudinary from 'cloudinary';
+import { Stats } from "../models/statsModel.js";
 
-export const createUser = catchAsyncError (async (req, res, next) => {
+export const createUser = catchAsyncError(async (req, res, next) => {
     const { name, email, password } = req.body;
     const file = req.file
 
     if (!name || !email || !password) return next(new ErrorHandler('Please provide all details', 400));
 
-    let user = await User.findOne({ email});
+    let user = await User.findOne({ email });
 
     if (user) next(new ErrorHandler(`User cannot be created user with emailId ${user.email} already exists`, 409));
 
@@ -36,12 +37,12 @@ export const createUser = catchAsyncError (async (req, res, next) => {
     sendToken(res, user, 'User Registered Successfully', 201);
 });
 
-export const loginUser = catchAsyncError (async (req, res, next) => {
+export const loginUser = catchAsyncError(async (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) return next(new ErrorHandler('Please provide all details', 400));
 
-    const user = await User.findOne({ email}).select('+password');
+    const user = await User.findOne({ email }).select('+password');
 
     if (!user) next(new ErrorHandler(`Incorrect email or password`, 401));
 
@@ -52,7 +53,7 @@ export const loginUser = catchAsyncError (async (req, res, next) => {
     sendToken(res, user, `${user.name} Logged In Successfully`, 200);
 });
 
-export const logout = catchAsyncError (async (req, res, next) => {
+export const logout = catchAsyncError(async (req, res, next) => {
     res.status(200).cookie('token', {
         expires: new Date(Date.now())
     }).json({
@@ -61,7 +62,7 @@ export const logout = catchAsyncError (async (req, res, next) => {
     })
 });
 
-export const getProfile = catchAsyncError (async (req, res, next) => {
+export const getProfile = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user._id);
 
     res.status(200).json({
@@ -71,7 +72,7 @@ export const getProfile = catchAsyncError (async (req, res, next) => {
     })
 });
 
-export const updatePassword = catchAsyncError (async (req, res, next) => {
+export const updatePassword = catchAsyncError(async (req, res, next) => {
     const { oldPassword, newPassword } = req.body;
     if (!oldPassword || !newPassword) return next(new ErrorHandler('Please provide all details', 400));
 
@@ -94,7 +95,7 @@ export const updatePassword = catchAsyncError (async (req, res, next) => {
     });
 });
 
-export const updateProfile = catchAsyncError (async (req, res, next) => {
+export const updateProfile = catchAsyncError(async (req, res, next) => {
     const { name, email } = req.body;
 
     const user = await User.findById(req.user._id);
@@ -111,7 +112,7 @@ export const updateProfile = catchAsyncError (async (req, res, next) => {
     });
 });
 
-export const updateProfilePicture = catchAsyncError (async (req, res, next) => {
+export const updateProfilePicture = catchAsyncError(async (req, res, next) => {
     // Upload file on cloudinary
     const user = await User.findById(req.user._id)
     const file = req.file
@@ -134,11 +135,11 @@ export const updateProfilePicture = catchAsyncError (async (req, res, next) => {
     });
 });
 
-export const forgetPassword = catchAsyncError (async (req, res, next) => {
+export const forgetPassword = catchAsyncError(async (req, res, next) => {
     const { email } = req.body;
-    const user = await User.findOne({ email});
+    const user = await User.findOne({ email });
 
-    if (!user) return next (new ErrorHandler(`No user with this ${email} is registered`, 400));
+    if (!user) return next(new ErrorHandler(`No user with this ${email} is registered`, 400));
 
     const resetToken = await user.getResetToken();
 
@@ -155,7 +156,7 @@ export const forgetPassword = catchAsyncError (async (req, res, next) => {
     });
 })
 
-export const resetPassword = catchAsyncError (async (req, res, next) => {
+export const resetPassword = catchAsyncError(async (req, res, next) => {
     const { token } = req.params;
     const resetPasswordToken = crypto.createHash('sha256').update(token).digest('hex');
 
@@ -180,7 +181,7 @@ export const resetPassword = catchAsyncError (async (req, res, next) => {
     });
 })
 
-export const addToPlaylist = catchAsyncError (async (req, res, next) => {
+export const addToPlaylist = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user._id);
     const course = await Course.findById(req.body.id);
 
@@ -205,7 +206,7 @@ export const addToPlaylist = catchAsyncError (async (req, res, next) => {
     })
 });
 
-export const removeFromPlaylist = catchAsyncError (async (req, res, next) => {
+export const removeFromPlaylist = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user._id);
     const course = await Course.findById(req.query.id);
 
@@ -225,7 +226,7 @@ export const removeFromPlaylist = catchAsyncError (async (req, res, next) => {
 });
 
 // Admin routes
-export const getAllUsers = catchAsyncError (async (req, res, next) => {
+export const getAllUsers = catchAsyncError(async (req, res, next) => {
     const users = await User.find({});
 
     res.status(200).json({
@@ -235,7 +236,7 @@ export const getAllUsers = catchAsyncError (async (req, res, next) => {
     })
 })
 
-export const updateRole = catchAsyncError (async (req, res, next) => {
+export const updateRole = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.params.id);
 
     if (!user) return next(new ErrorHandler(`No found with this id ${user.email}`, 404));
@@ -252,7 +253,7 @@ export const updateRole = catchAsyncError (async (req, res, next) => {
     })
 })
 
-export const deleteUser = catchAsyncError (async (req, res, next) => {
+export const deleteUser = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.params.id).lean();
 
     if (!user) return next(new ErrorHandler(`No found with this id ${user.email}`, 404));
@@ -261,7 +262,7 @@ export const deleteUser = catchAsyncError (async (req, res, next) => {
 
     // Cancel Subscription
 
-    await User.deleteOne({_id: req.params.id});
+    await User.deleteOne({ _id: req.params.id });
 
     res.status(200).json({
         success: true,
@@ -269,14 +270,14 @@ export const deleteUser = catchAsyncError (async (req, res, next) => {
     })
 })
 
-export const deleteMyProfile = catchAsyncError (async (req, res, next) => {
+export const deleteMyProfile = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user._id);
 
     await cloudinary.v2.uploader.destroy(user.avatar.public_id);
 
     // Cancel Subscription
 
-    await User.deleteOne({_id: req.params.id});
+    await User.deleteOne({ _id: req.params.id });
 
     res.status(200).cookie("token", null, {
         expires: new Date.now()
@@ -285,3 +286,15 @@ export const deleteMyProfile = catchAsyncError (async (req, res, next) => {
         message: 'User Deleted Successfully',
     })
 })
+
+User.watch().on('change', async () => {
+    const stats = await Stats.find({}).sort({ createdAt: 'desc' }).limit(1);
+
+    const subscription = await User.find({ 'subscription.status': 'active' });
+
+    stats[0].subscription = subscription.length;
+    stats[0].users = await User.countDocuments();
+    stats[0].createdAt = new Date(Date.now());
+
+    await stats[0].save();
+});

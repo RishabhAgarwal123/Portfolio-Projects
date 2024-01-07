@@ -1,6 +1,6 @@
 import express from 'express';
-import { contactForm, courseRequestForm } from '../controllers/otherController.js';
-import { authorizeAdmin, isAuthenticated, getAdminDashboardDetails } from '../middlewares/Auth/auth.js';
+import { contactForm, courseRequestForm, getAdminDashboardDetails } from '../controllers/otherController.js';
+import { authorizeAdmin, isAuthenticated } from '../middlewares/Auth/auth.js';
 
 const router = express.Router();
 
