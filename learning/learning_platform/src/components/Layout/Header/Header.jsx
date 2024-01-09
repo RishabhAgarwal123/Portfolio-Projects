@@ -3,7 +3,6 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
 import { RiDashboardFill, RiLoginBoxLine, RiMenu5Fill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 const SideLinks = ({ url = '/', title = 'Home', onClose }) => {
     return <Link to={url} onClick={onClose}>
@@ -13,13 +12,10 @@ const SideLinks = ({ url = '/', title = 'Home', onClose }) => {
     </Link>
 }
 
-const Header = () => {
+const Header = ( { isAuthenticated = false, user }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-    const [user, setUser] = useState({ role: 'admin'} );
 
     const handleLogout = () => {
-        setIsAuthenticated(false);
         onClose();
     }
 
