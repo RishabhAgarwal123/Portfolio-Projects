@@ -25,7 +25,8 @@ import AdminCourses from './components/Admin/AdminCourses/AdminCourses'
 import Users from './components/Admin/Users/Users'
 import { useDispatch, useSelector } from 'react-redux';
 import toast, { Toaster } from 'react-hot-toast';
-import { getMyProfile } from './redux/actions/user'
+import { getMyProfile } from './redux/actions/user';
+import { ProtectedRoute } from 'protected-route-react';
 
 const App = () => {
   window.addEventListener('contextmenu', (e) => e.preventDefault());
@@ -59,11 +60,18 @@ const App = () => {
         <Route path='/course/:id' element={<CourseDetail />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/forgetpassword' element={<ForgetPassword />} />
-        <Route path='/login' element={<Login />} />
+        <Route path='/login' element={<ProtectedRoute isAuthenticated={!isAuthenticated} redirect='/profile'>
+          <Login />
+        </ProtectedRoute>} />
         <Route path='/paymentfail' element={<PaymentFail />} />
         <Route path='/paymentsuccess' element={<PaymentSuccess />} />
-        <Route path='/profile' element={<Profile />} />
-        <Route path='/register' element={<Register />} />
+        <Route path='/profile' element={<ProtectedRoute isAuthenticated={isAuthenticated} >
+          <Profile />
+        </ProtectedRoute>
+        } />
+        <Route path='/register' element={<ProtectedRoute isAuthenticated={!isAuthenticated} redirect='/profile'>
+          <Register />
+        </ProtectedRoute>} />
         <Route path='/request' element={<Request />} />
         <Route path='/resetpassword/:token' element={<ResetPassword />} />
         <Route path='/subscribe' element={<Subscribe />} />

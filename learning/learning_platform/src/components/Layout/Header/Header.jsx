@@ -3,6 +3,8 @@ import { useDisclosure } from '@chakra-ui/hooks';
 import { ColorModeSwitcher } from '../../../ColorModeSwitcher';
 import { RiDashboardFill, RiLoginBoxLine, RiMenu5Fill } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../redux/actions/user';
 
 const SideLinks = ({ url = '/', title = 'Home', onClose }) => {
     return <Link to={url} onClick={onClose}>
@@ -13,9 +15,11 @@ const SideLinks = ({ url = '/', title = 'Home', onClose }) => {
 }
 
 const Header = ( { isAuthenticated = false, user }) => {
+    const dispatch = useDispatch();
     const { isOpen, onOpen, onClose } = useDisclosure();
 
     const handleLogout = () => {
+        dispatch(logout());
         onClose();
     }
 
