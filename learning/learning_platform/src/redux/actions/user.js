@@ -46,3 +46,22 @@ export const logout = () => async (dispatch) => {
         dispatch({ type: 'logoutFail', payload: error?.response?.data?.message });
     }
 }
+
+export const register = (formData) => async (dispatch) => {
+    try {
+        dispatch({ type: 'registerRequest' });
+        console.log(formData)
+        const { data } = await axios.post(`${server}/register`, {
+            formData
+        }, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            },
+            withCredentials: true,
+        });
+        dispatch({ type: 'registerSuccess', payload: data });
+    } catch (error) {
+        console.log(error)
+        dispatch({ type: 'registerFail', payload: error?.response?.data?.message });
+    }
+}

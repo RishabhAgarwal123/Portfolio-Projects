@@ -1,6 +1,8 @@
 import { Container, VStack, Heading, Input, Box, FormLabel, Button, Avatar } from '@chakra-ui/react';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { register } from '../../redux/actions/user';
 
 export const fileUploadCSS = {
     cursor: 'pointer',
@@ -13,10 +15,11 @@ export const fileUploadCSS = {
 }
 
 const fileUploadStyles = {
-    "&::file-selector-button": fileUploadCSS 
+    "&::file-selector-button": fileUploadCSS
 }
 
 const Register = () => {
+    const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [imagePreview, setImagePreview] = useState('');
     const [image, setImage] = useState('');
@@ -35,10 +38,24 @@ const Register = () => {
         }
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const myForm = new FormData();
+        console.log(name, image);
+
+        myForm.append('name', name);
+        myForm.append('email', email);
+        myForm.append('password', password);
+        myForm.append('file', image);
+
+        console.log(myForm);
+        dispatch(register(myForm));
+    };
+
     return <Container h={'100vh'}>
         <VStack h={'full'} justifyContent={'center'} spacing={'10'}>
             <Heading children={'Become A Member'} />
-            <form style={{ width: '100%' }}>
+            <form onSubmit={(e) => handleSubmit(e)} style={{ width: '100%' }}>
                 <Box my={'4'} display={'flex'} justifyContent={'center'}>
                     <Avatar src={imagePreview} size={'2xl'} />
                 </Box>
@@ -95,7 +112,7 @@ const Register = () => {
                     />
                 </Box>
 
-                <Button my={'4'} type={'submit'} colorScheme={'blue'}> Sign In</Button>
+                <Button my={'4'} type={'submit'} colorScheme={'blue'}> Sign Up</Button>
 
                 <Box my={'2'}>
                     Already a member? <Link to="/login">
