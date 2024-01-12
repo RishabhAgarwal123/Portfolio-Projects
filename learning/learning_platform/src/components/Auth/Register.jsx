@@ -38,17 +38,15 @@ const Register = () => {
         }
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         const myForm = new FormData();
-        console.log(name, image);
 
         myForm.append('name', name);
         myForm.append('email', email);
         myForm.append('password', password);
         myForm.append('file', image);
 
-        console.log(myForm);
         dispatch(register(myForm));
     };
 
