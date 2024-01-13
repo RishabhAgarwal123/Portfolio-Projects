@@ -26,7 +26,7 @@ export const getMyProfile = () => async (dispatch) => {
         const { data } = await axios.get(`${server}/me`, {
             withCredentials: true,
         });
-        if (data?.success) dispatch({ type: 'loadUserSuccess', payload: data?.user });
+        if (data?.success && data?.user) dispatch({ type: 'loadUserSuccess', payload: data?.user });
         else dispatch({ type: 'loadUserFail', payload: data?.message });
     } catch (error) {
         console.log(error)

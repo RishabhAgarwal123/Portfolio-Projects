@@ -4,23 +4,8 @@ import { Link } from 'react-router-dom'
 import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCSS } from '../Auth/Register'
 
-const Profile = () => {
+const Profile = ({ user }) => {
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const user = {
-    name: 'Rishabh Agarwal',
-    email: 'rishi@gmail.com',
-    createdAt: String(new Date().toISOString()),
-    role: 'User',
-    subscription: {
-      status: 'active'
-    },
-    playlist: [
-      { course: '1212', poster: 'https://cdn.pixabay.com/photo/2020/05/05/12/12/coffee-5132832_1280.jpg' },
-      { course: '1214', poster: 'https://cdn.pixabay.com/photo/2020/05/05/12/12/coffee-5132832_1280.jpg' },
-      { course: '1213', poster: 'https://cdn.pixabay.com/photo/2020/05/05/12/12/coffee-5132832_1280.jpg' },
-      { course: '1216', poster: 'https://cdn.pixabay.com/photo/2020/05/05/12/12/coffee-5132832_1280.jpg' },
-    ]
-  }
 
   const removeFromPlaylist = (id) => {
     console.log(id);
@@ -34,29 +19,29 @@ const Profile = () => {
     <Heading children={'Profile'} m={'8'} />
     <Stack justifyContent={'flex-start'} direction={['column', 'row']} alignItems={'center'} spacing={['8', '16']} padding={'8'}>
       <VStack>
-        <Avatar boxSize={'48'} />
+        <Avatar boxSize={'48'} src={user?.avatar?.url} />
         <Button colorScheme={'blue'} variant={'ghost'} onClick={onOpen}>Change Photo</Button>
       </VStack>
 
       <VStack spacing={'4'} alignItems={['center', 'flex-start']}>
         <HStack>
           <Text children={'Name'} fontWeight={'bold'} />
-          <Text children={user.name} />
+          <Text children={user?.name} />
         </HStack>
 
         <HStack>
           <Text children={'Email'} fontWeight={'bold'} />
-          <Text children={user.email} />
+          <Text children={user?.email} />
         </HStack>
 
         <HStack>
           <Text children={'Date'} fontWeight={'bold'} />
-          <Text children={user.createdAt?.split('T')[0]} />
+          <Text children={user?.createdAt?.split('T')[0]} />
         </HStack>
 
-        {user.role !== 'Admin' && <HStack>
+        {user?.role !== 'Admin' && <HStack>
           <Text children={'Subscription'} fontWeight={'bold'} />
-          {user.subscription.status === 'active'
+          {user?.subscription?.status === 'active'
             ? <Button color={'blue.500'} variant={'unstyled'}>Cancel Subscription</Button>
             : <Link to='/subscribe'>
               <Button colorScheme={'blue'}>Subscribe</Button>
@@ -77,9 +62,9 @@ const Profile = () => {
 
     <Heading children={'Playlist'} size={'md'} my={'8'} />
     {
-      user.playlist?.length !== 0 && <Stack direction={['column', 'row']} alignItems={'center'} flexWrap='wrap' p={'4'}>
+      user?.playlist?.length !== 0 && <Stack direction={['column', 'row']} alignItems={'center'} flexWrap='wrap' p={'4'}>
         {
-          user.playlist?.map((item) => {
+          user?.playlist?.map((item) => {
             return <VStack w={'48'} m={'2'} key={item.course}>
               <Image boxSize={'full'} objectFit={'contain'} src={item.poster} />
               <HStack>
