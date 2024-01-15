@@ -3,8 +3,11 @@ import { Avatar, useDisclosure, Button, Container, Heading, Stack, HStack, VStac
 import { Link } from 'react-router-dom'
 import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCSS } from '../Auth/Register'
+import { useDispatch } from 'react-redux';
+import { updateProfilePicture } from '../../redux/actions/profile'
 
 const Profile = ({ user }) => {
+  const dispatch = useDispatch();
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   const removeFromPlaylist = (id) => {
@@ -13,6 +16,11 @@ const Profile = ({ user }) => {
 
   const changeImageSubmitHandler = (e, image) => {
     e.preventDefault();
+    const myForm = new FormData();
+    
+    myForm.append('file', image);
+
+    dispatch(updateProfilePicture(myForm));
   }
 
   return <Container minH={'100vh'} maxW={'container.lg'} py={'8'}>

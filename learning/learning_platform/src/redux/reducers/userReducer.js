@@ -62,4 +62,46 @@ export const userReducer = createReducer({}, {
         state.isAuthenticated = false;
         state.error = action.paylaod;
     }
-})
+});
+
+export const profileReducer = createReducer({}, {
+    changePasswordRequest: (state) => {
+        state.loading = true;
+    },
+    changePasswordSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.paylaod;
+    },
+    changePasswordFail: (state, action) => {
+        state.loading = false;
+        state.error = action.paylaod;
+    },
+    updateProfileRequest: (state) => {
+        state.loading = true;
+    },
+    updateProfileSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.paylaod;
+    },
+    updateProfileFail: (state, action) => {
+        state.loading = false;
+        state.error = action.paylaod;
+    },
+    updateProfilePictureRequest: (state) => {
+        state.loading = true;
+    },
+    updateProfilePictureSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.paylaod;
+    },
+    updateProfilePictureFail: (state, action) => {
+        state.loading = false;
+        state.error = action.paylaod;
+    },
+    clearError: (state) => {
+        state.error = null;
+    },
+    clearMessage: (state) => {
+        state.message = null;
+    },
+});
