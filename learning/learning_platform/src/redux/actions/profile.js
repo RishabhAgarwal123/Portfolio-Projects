@@ -12,7 +12,7 @@ export const changePassword = (oldPassword, newPassword) => async (dispatch) => 
         });
         dispatch({ type: 'changePasswordSuccess', payload: data?.message });
     } catch (error) {
-        console.log(error)
+        console.log(error.response)
         dispatch({ type: 'changePasswordFail', payload: error?.response?.data?.message });
     }
 }
