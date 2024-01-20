@@ -49,3 +49,10 @@
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .container__app-component {
+    display: flex;
+    flex-direction: column;
+  }
+}

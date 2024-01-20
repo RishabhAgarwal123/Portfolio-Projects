@@ -14,7 +14,7 @@ export class GithubService {
 // https://github-contributions-api.jogruber.de/v4/GITHUB_USERNAME?y=all # default
 
   getContributions(username: string) {
-    const apiUrl = `https://github-contributions-api.jogruber.de/v4/${username}?y=2023`;
+    const apiUrl = `https://github-contributions-api.jogruber.de/v4/${username}?y=2024`;
     return this.http.get(apiUrl);
   }
 }

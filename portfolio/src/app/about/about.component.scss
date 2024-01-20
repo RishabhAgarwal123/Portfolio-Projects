@@ -207,6 +207,11 @@
   }
 }
 
+.icon {
+  height: 50px;
+  width: 50px;
+}
+
 @media screen and (max-width: 921px) {
   .about {
     width: 18rem;
@@ -215,5 +220,51 @@
       padding: .8rem;
       height: 15rem;
     }
+  }
+}
+
+/* Add this CSS for mobile responsiveness */
+@media only screen and (max-width: 600px) {
+  .about {
+    width: 100%;
+  }
+
+  .about__frame {
+    flex-direction: column;
+  }
+
+  .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 60px; /* Adjust as needed based on your layout */
+    left: 0;
+    background-color: #333;
+    width: 100%;
+    padding: 10px;
+    display: none;
+  }
+
+  .mobile-menu-content a {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 10px;
+  }
+
+  .about__frame-bar-header-btn {
+    display: block;
+  }
+
+  .fa-bars {
+    display: block;
+  }
+
+  .fa-ellipsis-v {
+    display: none;
+  }
+
+  /* Show the menu content when the button is clicked */
+  .mobile-menu {
+    display: block;
   }
 }
