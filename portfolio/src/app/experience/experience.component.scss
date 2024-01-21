@@ -150,8 +150,28 @@
       }
 
       & p {
-        font-size: 1rem;
+        font-size: .8rem;
       }
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .local-row {
+    width: 100%;
+  }
+
+  .timeline__item {
+    width: 100%;
+  }
+
+  .timeline__item-content {
+    height: 350px;
+    font-size: .5rem;
+    overflow-y: auto;
+  }
+
+  .sub-title, .timeline__item-content__card-header-right__date {
+    font-size: .5rem;
   }
 }

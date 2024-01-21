@@ -1,49 +1,53 @@
 @import "../../styles/config";
 
 .content {
-    position: relative;
-    overflow: hidden;
-    width: 100vw;
-    height: calc(100vh - 20px);
+  position: relative;
+  overflow: hidden;
+  width: 100vw;
+  height: calc(100vh - 20px);
+  transition: $tr-lg;
+
+  &__curtain {
+    background: $content-color-s-light;
+    position: absolute;
+    z-index: 9;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
     transition: $tr-lg;
+  }
 
-    &__curtain {
-        background: $content-color-s-light;
-        position: absolute;
-        z-index: 9;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-        opacity: 0;
-        transition: $tr-lg;
+  &__transition-fade {
+    transition: 0.55s ease-in-out;
+    opacity: 1;
+
+    &.scroll-frame {
+      width: 100%;
+      height: calc(100vh - 30px);
     }
-
-    &__transition-fade {
-        transition: .55s ease-in-out;
-        opacity: 1;
-
-        &.scroll-frame {
-            width: 100%;
-            height: calc(100vh - 30px);
-        }
-    }
+  }
 }
 
 .top-bg {
-    overflow: hidden;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    background-image: url("../../assets/img/bg.jpg");
-    background-position: center;
-    height: 400px;
-    background-size: cover;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  background-image: url("../../assets/img/bg.jpg");
+  background-position: center;
+  height: 400px;
+  background-size: cover;
 
-    &__overlay {
-        position: relative;
-        height: 100%;
-        width: 100%;
-        background-image: $top-bg-gradient;
-    }
+  &__overlay {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-image: $top-bg-gradient;
+  }
+}
+
+@media screen and (max-width: 600px) {
+    
 }

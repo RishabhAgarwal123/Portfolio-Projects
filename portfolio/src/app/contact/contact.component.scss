@@ -37,3 +37,19 @@
         margin-bottom: 1.5rem;
     }
 }
+
+@media screen and (max-width: 600px) {
+    .local-row {
+        width: 100%;
+    }
+
+    .card {
+        width: 20rem;
+    }
+
+    .card-container {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+}

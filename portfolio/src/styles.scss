@@ -481,3 +481,18 @@ h6 {
       max-width: 50%;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .col-lg-12 {
+    padding-right: 0;
+  }
+
+  .row {
+    width: 100%;
+    padding-right: 20px;
+  }
+
+  .scroll-frame {
+    height: calc(100vh - 5vh);
+  }
+}

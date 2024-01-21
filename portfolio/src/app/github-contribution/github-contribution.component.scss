@@ -13,6 +13,31 @@
     15px
   ); /* Adjust the number of columns and box size as needed */
   gap: 5.3px; /* Adjust the gap between boxes as needed */
+
+  @media screen and (max-width: 600px) {
+    grid-template-columns: repeat(29, 15px); 
+    gap: 3px; 
+  }
+
+  @media screen and (max-width: 560px) {
+    grid-template-columns: repeat(27, 15px); 
+    gap: 3px; 
+  }
+
+  @media screen and (max-width: 520px) {
+    grid-template-columns: repeat(25, 15px); 
+    gap: 3px; 
+  }
+
+  @media screen and (max-width: 480px) {
+    grid-template-columns: repeat(22, 15px); 
+    gap: 3px; 
+  }
+
+  @media screen and (max-width: 375px) {
+    grid-template-columns: repeat(17, 15px); 
+    gap: 3px; 
+  }
 }
 
 .contribution-box {
@@ -21,3 +46,11 @@
   border: 1px solid #8c8c8e;
   cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+  .local-row {
+    width: 100%;
+  }
+}
+
+
