@@ -6,7 +6,6 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent {
-  showMobileMenu: boolean = false;
   isMobile: boolean = false;
 
   @HostListener('window:resize', ['$event'])
@@ -19,11 +18,14 @@ export class AboutComponent {
   }
 
   toggleMobileMenu() {
-    this.showMobileMenu = !this.showMobileMenu;
+    this.isMobile = !this.isMobile;
   }
 
   private detectScreenSize() {
     this.isMobile = window.innerWidth <= 600; // Adjust the threshold based on your requirements
-    console.log(this.isMobile)
+  }
+
+  handleChildButtonClick(data: boolean) {
+    this.isMobile = data;
   }
 }

@@ -210,3 +210,13 @@
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .header {
+    width: 100%;
+  }
+
+  .icon {
+    width: 30px;
+  }
+}

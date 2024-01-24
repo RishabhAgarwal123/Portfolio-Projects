@@ -194,3 +194,85 @@
     height: 3rem;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .scroll__ul-li {
+    width: 100%;
+    h6 {
+      font-size: 0.9rem;
+    }
+    span {
+      font-size: 0.9rem;
+    }
+  }
+
+  .language-items {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .language {
+    width: 14rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &-items {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .skills {
+    width: 100%;
+    &__item {
+      &-heading {
+        & h6 {
+          color: $text-color-1;
+          font-size: 0.8rem;
+        }
+
+        & span {
+          font-size: 0.8rem;
+        }
+      }
+
+      &-progress {
+        &-progress-text {
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .knowledge-list {
+    width: 14rem;
+    & li {
+      font-size: 0.8rem;
+
+      &:last-child {
+        margin-bottom: 1rem;
+      }
+
+      &:before {
+        font-size: 0.8rem;
+        margin-right: 0.8rem;
+      }
+    }
+  }
+
+  .cv {
+    width: 14rem;
+    height: 8vh;
+
+    .link {
+        font-size: .8rem;
+    }
+  }
+
+  .social {
+    padding: 0 2rem;
+    height: 3rem;
+  }
+}

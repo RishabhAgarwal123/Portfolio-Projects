@@ -18,6 +18,10 @@ export class AppComponent {
     this.detectScreenSize();
   }
 
+  toggleMobileMenu() {
+    this.isMobile = !this.isMobile;
+  }
+
   private detectScreenSize() {
     this.isMobile = window.innerWidth <= 600; // Adjust the threshold based on your requirements
   }

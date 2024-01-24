@@ -24,6 +24,10 @@
     border-radius: 5px;
     overflow: hidden;
 
+    @media only screen and (max-width: 600px) {
+      width: 300px
+    }
+
     &-bar {
       height: 100%;
       background-color: $text-color-4;

@@ -1,15 +1,7 @@
 <div class="about" *ngIf="!isMobile">
   <div class="about__frame">
-    <div class="about__frame-bar-header">
-      <a href="#" class="about__frame-bar-header-btn" (click)="toggleMobileMenu()">
-        <img src="../../assets/img/ham.svg" alt="Ham">
-      </a>
-    </div>
-    <div>
-    </div>
     <div class="header">
       <div class="header__avatar">
-        <img src="../../assets/img/ham.svg" alt="Ham" class="icon">
         <a href="../../assets/img/pic-1.jpeg" class="header__avatar-photo">
           <img src="../../assets/img/pic-1.jpeg" alt="Avatar" />
           <i class="fas fa-expand"></i>
@@ -22,6 +14,18 @@
       <div class="header-sm-text">Front-end Developer</div>
     </div>
     <app-header></app-header>
+    <app-header-content></app-header-content>
+  </div>
+</div>
+
+<div *ngIf="isMobile">
+  <header class="mobile-header">
+    <a href="#" class="mobile-menu" (click)="toggleMobileMenu()">
+      <img src="../../assets/img/ham.svg" alt="Ham" class="icon" />
+    </a>
+  </header>
+  <div class="mobile-content">
+    <app-header (buttonClickEvent)="handleChildButtonClick($event)" [isMobileData]="isMobile"></app-header>
     <app-header-content></app-header-content>
   </div>
 </div>
