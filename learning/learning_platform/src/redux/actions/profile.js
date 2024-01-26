@@ -36,7 +36,7 @@ export const updateProfile = (name, email) => async (dispatch) => {
 export const updateProfilePicture = (formData) => async (dispatch) => {
     try {
         dispatch({ type: 'updateProfilePictureRequest' });
-        const { data } = await axios.post(`${server}/updateprofilepicture`, formData, {
+        const { data } = await axios.put(`${server}/updateprofilepicture`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },

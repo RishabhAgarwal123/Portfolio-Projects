@@ -83,7 +83,7 @@ const App = () => {
               <Subscribe />
             </ProtectedRoute>} />
             <Route path='/updateprofile' element={<ProtectedRoute isAuthenticated={isAuthenticated}>
-              <UpdateProfile />
+              <UpdateProfile user={user} />
             </ProtectedRoute>} />
             {/* Admin Routes */}
             <Route path='/admin/dashboard' element={<ProtectedRoute

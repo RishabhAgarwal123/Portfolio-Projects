@@ -1,34 +1,50 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Avatar, useDisclosure, Button, Container, Heading, Stack, HStack, VStack, Text, Input, Image, Modal, ModalOverlay, ModalContent, ModalCloseButton, ModalBody, ModalFooter, ModalHeader } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCSS } from '../Auth/Register'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateProfilePicture } from '../../redux/actions/profile'
+import { getMyProfile } from '../../redux/actions/user'
+import toast from 'react-hot-toast'
+import Loader from '../Layout/Loader/Loader'
 
 const Profile = ({ user }) => {
   const dispatch = useDispatch();
+  const { loading, message, error } = useSelector(state => state?.profile);
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   const removeFromPlaylist = (id) => {
     console.log(id);
   }
 
-  const changeImageSubmitHandler = (e, image) => {
+  const changeImageSubmitHandler = async (e, image) => {
     e.preventDefault();
     const myForm = new FormData();
     
     myForm.append('file', image);
 
-    dispatch(updateProfilePicture(myForm));
+    await dispatch(updateProfilePicture(myForm));
+    dispatch(getMyProfile());
   }
 
-  return <Container minH={'100vh'} maxW={'container.lg'} py={'8'}>
+  useEffect(() => {
+    if (error) {
+        toast.error(error);
+        dispatch({ type: 'clearError' });
+    }
+    if (message) {
+        toast.success(message);
+        dispatch({ type: 'clearMessage' });
+    }
+}, [dispatch, message, error]);
+
+  return loading ? <Loader /> : <Container minH={'100vh'} maxW={'container.lg'} py={'8'}>
     <Heading children={'Profile'} m={'8'} />
     <Stack justifyContent={'flex-start'} direction={['column', 'row']} alignItems={'center'} spacing={['8', '16']} padding={'8'}>
       <VStack>
         <Avatar boxSize={'48'} src={user?.avatar?.url} />
-        <Button colorScheme={'blue'} variant={'ghost'} onClick={onOpen}>Change Photo</Button>
+        <Button isLoading={loading} colorScheme={'blue'} variant={'ghost'} onClick={onOpen}>Change Photo</Button>
       </VStack>
 
       <VStack spacing={'4'} alignItems={['center', 'flex-start']}>
@@ -90,13 +106,13 @@ const Profile = ({ user }) => {
       </Stack>
     }
 
-    <ChangeProfilePic isOpen={isOpen} onClose={onClose} changeImageSubmitHandler={changeImageSubmitHandler} />
+    <ChangeProfilePic isOpen={isOpen} onClose={onClose} changeImageSubmitHandler={changeImageSubmitHandler} loading={loading} />
   </Container>
 }
 
 export default Profile;
 
-function ChangeProfilePic({ isOpen, onClose, changeImageSubmitHandler }) {
+function ChangeProfilePic({ isOpen, onClose, changeImageSubmitHandler, loading }) {
   const [imagePreview, setImagePreview] = useState('');
   const [image, setImage] = useState('');
 
@@ -134,7 +150,7 @@ function ChangeProfilePic({ isOpen, onClose, changeImageSubmitHandler }) {
                 css={{ "&::file-selector-button": fileUploadCSS }}
                 onChange={imageHandler}
               />
-              <Button w={'full'} colorScheme={'blue'} type={'submit'}>Change</Button>
+              <Button isLoading={loading} w={'full'} colorScheme={'blue'} type={'submit'}>Change</Button>
             </VStack>
           </form>
         </Container>
