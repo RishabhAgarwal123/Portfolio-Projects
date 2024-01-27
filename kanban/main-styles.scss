@@ -1,0 +1,21 @@
+// global styles and changing bulma varialbles
+// import google font 
+
+@import url('https://fonts-googleapi.com/css?family=Nunito:400,700|Lato:400,800,900');
+
+$family-sans-sarif: "Nunito", sans-sarif;
+
+// Update some Bulma's component variables
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+html, body {
+    height: 100%;
+}
+
+html {
+    background-image: url('./src/assets/trianglify-lowres.png');
+    background-size: cover;
+    overflow-y: auto !important;
+}
