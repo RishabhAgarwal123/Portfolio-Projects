@@ -64,7 +64,9 @@ const App = () => {
             <Route path='/courses' element={<Courses />} />
             <Route path='/course/:id' element={<CourseDetail />} />
             <Route path='/contact' element={<Contact />} />
-            <Route path='/forgetpassword' element={<ForgetPassword />} />
+            <Route path='/forgetpassword' element={<ProtectedRoute isAuthenticated={!isAuthenticated} redirect='/profile'>
+              <ForgetPassword />
+            </ProtectedRoute>} />
             <Route path='/login' element={<ProtectedRoute isAuthenticated={!isAuthenticated} redirect='/profile'>
               <Login />
             </ProtectedRoute>} />
@@ -78,7 +80,9 @@ const App = () => {
               <Register />
             </ProtectedRoute>} />
             <Route path='/request' element={<Request />} />
-            <Route path='/resetpassword/:token' element={<ResetPassword />} />
+            <Route path='/resetpassword/:token' element={<ProtectedRoute isAuthenticated={!isAuthenticated} redirect='/profile'>
+              <ResetPassword />
+            </ProtectedRoute>} />
             <Route path='/subscribe' element={<ProtectedRoute isAuthenticated={isAuthenticated}>
               <Subscribe />
             </ProtectedRoute>} />

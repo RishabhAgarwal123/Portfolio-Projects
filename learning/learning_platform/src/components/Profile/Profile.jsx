@@ -39,7 +39,7 @@ const Profile = ({ user }) => {
     }
 }, [dispatch, message, error]);
 
-  return loading ? <Loader /> : <Container minH={'100vh'} maxW={'container.lg'} py={'8'}>
+  return loading ? <Loader /> : <Container minH={'100vh'} maxW={'container.lg'} py={'8'} display="flex" flexDirection='column' alignItems="center">
     <Heading children={'Profile'} m={'8'} />
     <Stack justifyContent={'flex-start'} direction={['column', 'row']} alignItems={'center'} spacing={['8', '16']} padding={'8'}>
       <VStack>
