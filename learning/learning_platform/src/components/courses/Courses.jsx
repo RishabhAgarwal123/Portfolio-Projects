@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllCourses } from '../../redux/actions/course';
 import toast from 'react-hot-toast';
 import Loader from '../Layout/Loader/Loader';
+import { addToPlaylist } from '../../redux/actions/profile';
+import { getMyProfile } from '../../redux/actions/user';
 
 const categories = [
     'Data Structures & Algorithms',
@@ -19,12 +21,13 @@ const categories = [
 
 const Courses = () => {
     const dispatch = useDispatch();
-    const { loading, courses, error } = useSelector(state => state.courses);
+    const { loading, courses, error, message } = useSelector(state => state.courses);
     const [category, setCategory] = useState('');
     const [keyword, setKeyword] = useState('');
 
-    const addToPlaylistHandler = (id) => {
-        console.log(id);
+    const addToPlaylistHandler = async (id) => {
+        await dispatch(addToPlaylist(id));
+        dispatch(getMyProfile());
     }
 
     useEffect(() => {
@@ -34,7 +37,11 @@ const Courses = () => {
             toast.error(error);
             dispatch({ type: 'clearError' });
         }
-    }, [category, keyword, dispatch, error]);
+        if (message) {
+            toast.success(message);
+            dispatch({ type: 'clearMessage' });
+        }
+    }, [category, keyword, dispatch, error, message]);
 
     return loading ? <Loader /> : <Container minH={'95vh'} maxW={'container.lg'} paddingY={'8'}>
         <Heading children='Courses Catalog' m={'8'} />
@@ -76,6 +83,7 @@ const Courses = () => {
                         lectureCount={course?.numOfVideos}
                         title={course?.title}
                         views={course?.views}
+                        loading={loading}
                     />
                 )): <Heading children={'No Courses Found!'} opacity={'0.5'} mt={'4'} />
             }

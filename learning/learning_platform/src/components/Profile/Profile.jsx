@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { RiDeleteBin7Fill } from 'react-icons/ri'
 import { fileUploadCSS } from '../Auth/Register'
 import { useDispatch, useSelector } from 'react-redux';
-import { updateProfilePicture } from '../../redux/actions/profile'
+import { removeFromPlaylist, updateProfilePicture } from '../../redux/actions/profile'
 import { getMyProfile } from '../../redux/actions/user'
 import toast from 'react-hot-toast'
 import Loader from '../Layout/Loader/Loader'
@@ -14,14 +14,15 @@ const Profile = ({ user }) => {
   const { loading, message, error } = useSelector(state => state?.profile);
   const { isOpen, onClose, onOpen } = useDisclosure();
 
-  const removeFromPlaylist = (id) => {
-    console.log(id);
+  const removeFromPlaylists = async (id) => {
+    await dispatch(removeFromPlaylist(id));
+    dispatch(getMyProfile());
   }
 
   const changeImageSubmitHandler = async (e, image) => {
     e.preventDefault();
     const myForm = new FormData();
-    
+
     myForm.append('file', image);
 
     await dispatch(updateProfilePicture(myForm));
@@ -30,14 +31,14 @@ const Profile = ({ user }) => {
 
   useEffect(() => {
     if (error) {
-        toast.error(error);
-        dispatch({ type: 'clearError' });
+      toast.error(error);
+      dispatch({ type: 'clearError' });
     }
     if (message) {
-        toast.success(message);
-        dispatch({ type: 'clearMessage' });
+      toast.success(message);
+      dispatch({ type: 'clearMessage' });
     }
-}, [dispatch, message, error]);
+  }, [dispatch, message, error]);
 
   return loading ? <Loader /> : <Container minH={'100vh'} maxW={'container.lg'} py={'8'} display="flex" flexDirection='column' alignItems="center">
     <Heading children={'Profile'} m={'8'} />
@@ -96,7 +97,7 @@ const Profile = ({ user }) => {
                   <Button variant={'ghost'} colorScheme={'blue'}>Watch Now</Button>
                 </Link>
 
-                <Button onClick={() => removeFromPlaylist(item.course)}>
+                <Button isLoading={loading} onClick={() => removeFromPlaylists(item.course)}>
                   <RiDeleteBin7Fill />
                 </Button>
               </HStack>

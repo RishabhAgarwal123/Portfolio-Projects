@@ -12,7 +12,6 @@ export const changePassword = (oldPassword, newPassword) => async (dispatch) => 
         });
         dispatch({ type: 'changePasswordSuccess', payload: data?.message });
     } catch (error) {
-        console.log(error.response)
         dispatch({ type: 'changePasswordFail', payload: error?.response?.data?.message });
     }
 }
@@ -28,7 +27,6 @@ export const forgetPassword = (email) => async (dispatch) => {
         });
         dispatch({ type: 'forgetPasswordSuccess', payload: data?.message });
     } catch (error) {
-        console.log(error.response)
         dispatch({ type: 'forgetPasswordFail', payload: error?.response?.data?.message });
     }
 }
@@ -44,7 +42,6 @@ export const resetPassword = (token, password) => async (dispatch) => {
         });
         dispatch({ type: 'resetPasswordSuccess', payload: data?.message });
     } catch (error) {
-        console.log(error.response)
         dispatch({ type: 'resetPasswordFail', payload: error?.response?.data?.message });
     }
 }
@@ -60,7 +57,6 @@ export const updateProfile = (name, email) => async (dispatch) => {
         });
         dispatch({ type: 'updateProfileSuccess', payload: data?.message });
     } catch (error) {
-        console.log(error)
         dispatch({ type: 'updateProfileFail', payload: error?.response?.data?.message });
     }
 }
@@ -76,7 +72,33 @@ export const updateProfilePicture = (formData) => async (dispatch) => {
         });
         dispatch({ type: 'updateProfilePictureSuccess', payload: data?.message });
     } catch (error) {
-        console.log(error)
         dispatch({ type: 'updateProfilePictureFail', payload: error?.response?.data?.message });
+    }
+}
+
+export const addToPlaylist = (courseId) => async (dispatch) => {
+    try {
+        dispatch({ type: 'addToPlaylistRequest' });
+        const { data } = await axios.post(`${server}/addtoplaylist`, { id: courseId }, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            withCredentials: true,
+        });
+        dispatch({ type: 'addToPlaylistSuccess', payload: data?.message });
+    } catch (error) {
+        dispatch({ type: 'addToPlaylistFail', payload: error?.response?.data?.message });
+    }
+}
+
+export const removeFromPlaylist = (courseId) => async (dispatch) => {
+    try {
+        dispatch({ type: 'removeFromPlaylistRequest' });
+        const { data } = await axios.delete(`${server}/removefromplaylist?id=${courseId}`, {
+            withCredentials: true,
+        });
+        dispatch({ type: 'removeFromPlaylistSuccess', payload: data?.message });
+    } catch (error) {
+        dispatch({ type: 'removeFromPlaylistFail', payload: error?.response?.data?.message });
     }
 }
