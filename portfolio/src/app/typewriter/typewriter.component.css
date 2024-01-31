@@ -1,0 +1,58 @@
+.type__container {
+  font-size: 1.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 0.15em solid #07daff;
+  /* Cursor effect */
+  -webkit-animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+          animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+.type__container-text {
+  display: inline-block;
+}
+
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #07daff;
+  }
+}
+
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #07daff;
+  }
+}
+
+@media screen and (max-width: 921px) {
+  .type__container {
+    font-size: 1rem;
+  }
+}
+/*# sourceMappingURL=typewriter.component.css.map */

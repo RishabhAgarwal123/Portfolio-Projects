@@ -1,0 +1,21 @@
+/*
+$main-color: #FFC107
+$main-color: #f44336;
+$main-color: #4CAF50;
+$main-color: #64B5F6;
+*/
+.progress-container {
+  width: 100%;
+  height: .5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #20202a;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #07daff;
+  -webkit-transition: width 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+}
+/*# sourceMappingURL=progress.component.css.map */

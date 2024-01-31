@@ -1,0 +1,292 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Nunito:wght@400;700&display=swap");
+html {
+  background: -webkit-gradient(linear, left bottom, right top, from(#44ddd0), to(#27d7a1));
+  background: linear-gradient(to right top, #44ddd0, #27d7a1);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.centerted-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.modal-box {
+  min-height: 180px;
+  width: 100%;
+  max-width: 600px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 35px;
+}
+
+.button {
+  margin-top: 20px;
+}
+
+.title {
+  font-family: 'Lato';
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.task-manager-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  max-height: 680px;
+  position: relative;
+}
+
+.task-view {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sidebar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 400px;
+  padding: 42px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.task-list-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 42px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.task-list-container .top-bar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.task-list-container .top-bar .title {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.title {
+  font-family: "Lato";
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.list-menu {
+  height: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.list-menu-items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  width: 100%;
+  color: #5f5f5f;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.list-menu-items:hover {
+  background-color: #f8f8f8;
+}
+
+.list-menu-items.is-active {
+  background-color: #27d7a1;
+}
+
+.button {
+  background-color: #27d7a1;
+  color: #000000;
+}
+
+.tasks {
+  height: 490px;
+  overflow-y: auto;
+}
+
+.tasks ::-webkit-scrollbar {
+  width: 10px;
+  /* Adjust the width as needed */
+}
+
+.tasks ::-webkit-scrollbar-thumb {
+  background-color: #45f69e;
+}
+
+.task {
+  background-color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  -webkit-transition: -webkit-box-shadow 0.2s ease, -webkit-transform 0.2s ease;
+  transition: -webkit-box-shadow 0.2s ease, -webkit-transform 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, -webkit-box-shadow 0.2s ease, -webkit-transform 0.2s ease;
+}
+
+.task:active {
+  -webkit-transform: scale(0.95);
+          transform: scale(0.95);
+}
+
+.task:hover {
+  -webkit-box-shadow: 0 0 0 2px #e4dfdf;
+          box-shadow: 0 0 0 2px #e4dfdf;
+}
+
+.task.complete {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.circle-add-button {
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  background: #27d7a1;
+  position: absolute;
+  bottom: 35px;
+  right: 35px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.circle-add-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.circle-add-button:hover {
+  background-color: #45f69e;
+}
+
+.circle-logout {
+  height: 50px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  background: #27d7a1;
+  cursor: pointer;
+}
+
+.circle-logout img {
+  width: 20px;
+  height: 20px;
+}
+
+.circle-logout:hover {
+  background-color: #45f69e;
+}
+
+.task-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.task-actions .task-title {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.task-actions .task-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.task-actions .task-action .task-action-icon {
+  height: 30px;
+  width: 30px;
+}
+
+.task-actions .task-action .task-action-icon:hover {
+  color: #27d7a1;
+}
+
+.list-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.list-action .task-action-icon {
+  height: 25px;
+  width: 25px;
+}
+
+.empty-text {
+  text-align: center;
+  font-size: 20px;
+  color: #b49b9b;
+  font-weight: bold;
+}
+/*# sourceMappingURL=task-view.component.css.map */

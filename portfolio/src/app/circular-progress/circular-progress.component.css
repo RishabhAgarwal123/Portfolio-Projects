@@ -1,0 +1,91 @@
+/*
+$main-color: #FFC107
+$main-color: #f44336;
+$main-color: #4CAF50;
+$main-color: #64B5F6;
+*/
+.circle-progress-container {
+  width: 8rem;
+  height: 8rem;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1rem;
+}
+
+.circle-background {
+  fill: none;
+  stroke: #20202a;
+  stroke-width: 12;
+  stroke-dasharray: 339;
+  stroke-dashoffset: 0;
+  -webkit-transition: stroke-dashoffset 0.3s ease-in-out;
+  transition: stroke-dashoffset 0.3s ease-in-out;
+}
+
+.circle-fill {
+  fill: none;
+  stroke: #07daff;
+  stroke-width: 8;
+  stroke-linecap: round;
+  stroke-dasharray: 339;
+  stroke-dashoffset: 339;
+  -webkit-transition: stroke-dashoffset 0.3s ease-in-out;
+  transition: stroke-dashoffset 0.3s ease-in-out;
+}
+
+.progress-text {
+  font-size: 1rem;
+  text-anchor: middle;
+  fill: #8c8c8e;
+}
+
+@media screen and (max-width: 921px) {
+  .circle-progress-container {
+    width: 8rem;
+    height: 8rem;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    font-size: 1rem;
+  }
+  .circle-background {
+    fill: none;
+    stroke: #20202a;
+    stroke-width: 12;
+    stroke-dasharray: 339;
+    stroke-dashoffset: 0;
+    -webkit-transition: stroke-dashoffset 0.3s ease-in-out;
+    transition: stroke-dashoffset 0.3s ease-in-out;
+  }
+  .circle-fill {
+    fill: none;
+    stroke: #07daff;
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 339;
+    stroke-dashoffset: 339;
+    -webkit-transition: stroke-dashoffset 0.3s ease-in-out;
+    transition: stroke-dashoffset 0.3s ease-in-out;
+  }
+  .progress-text {
+    font-size: 1rem;
+    text-anchor: middle;
+    fill: #8c8c8e;
+  }
+}
+/*# sourceMappingURL=circular-progress.component.css.map */

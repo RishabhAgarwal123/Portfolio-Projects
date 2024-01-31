@@ -1,0 +1,115 @@
+.navbar {
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  color: #15023a;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+}
+
+.navbar .wrapper {
+  padding: 6px 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.navbar .wrapper .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.navbar .wrapper .left .logo {
+  font-size: 40px;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+  margin-right: 40px;
+}
+
+.navbar .wrapper .left .navbar__left-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 30px;
+}
+
+@media (max-width: 768px) {
+  .navbar .wrapper .left .navbar__left-container {
+    display: none;
+  }
+}
+
+.navbar .wrapper .left .navbar__left-container .icon {
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+.navbar .wrapper .left .navbar__left-container span {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.navbar .wrapper .right .ham {
+  width: 32px;
+  height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: pointer;
+}
+
+.navbar .wrapper .right .ham span {
+  width: 100%;
+  height: 3px;
+  background-color: #15023a;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+}
+
+.navbar.active {
+  background-color: #15023a;
+  color: #fff;
+}
+
+.navbar.active .ham span:first-child {
+  background-color: #fff;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.navbar.active .ham span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar.active .ham span:last-child {
+  background-color: #fff;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+/*# sourceMappingURL=Navbar.css.map */

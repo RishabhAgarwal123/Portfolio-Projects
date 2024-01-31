@@ -1,0 +1,53 @@
+.menu {
+  width: 300px;
+  height: 100vh;
+  background-color: #15023a;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 2s ease;
+  transition: all 2s ease;
+}
+
+.menu.active {
+  right: 0;
+}
+
+.menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 35px;
+  font-weight: 300;
+  color: #fff;
+  width: 60%;
+}
+
+.menu ul li {
+  margin-bottom: 25px;
+}
+
+.menu ul li a {
+  text-decoration: none;
+  font-size: inherit;
+  color: inherit;
+}
+
+.menu ul li:hover {
+  font-weight: 700;
+}
+/*# sourceMappingURL=Menu.css.map */

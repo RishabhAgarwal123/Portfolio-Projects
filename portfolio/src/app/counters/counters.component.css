@@ -1,0 +1,104 @@
+/*
+$main-color: #FFC107
+$main-color: #f44336;
+$main-color: #4CAF50;
+$main-color: #64B5F6;
+*/
+.counter__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+  color: #0797f7;
+}
+
+.counter__container-box {
+  min-width: 60px;
+}
+
+.counter__container-box-counter {
+  color: #07daff;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+}
+
+.counter__container-box-plus {
+  color: #07daff;
+  margin-left: .1rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 921px) {
+  .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    gap: .1rem;
+    width: 40%;
+  }
+  .counter__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 1rem;
+  }
+  .counter__container-box-counter {
+    font-size: 1rem;
+  }
+  .counter__container-box-plus {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .row {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    width: 100%;
+  }
+  .counter__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 50rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-bottom: 1rem;
+  }
+  .counter__container-box-counter {
+    font-size: 1rem;
+  }
+  .counter__container-box-plus {
+    font-size: 1rem;
+  }
+}
+/*# sourceMappingURL=counters.component.css.map */

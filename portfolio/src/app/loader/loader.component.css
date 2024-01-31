@@ -1,0 +1,57 @@
+/*
+$main-color: #FFC107
+$main-color: #f44336;
+$main-color: #4CAF50;
+$main-color: #64B5F6;
+*/
+.loader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 99;
+}
+
+.loader-name {
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: #0797f7;
+  margin-bottom: 10px;
+}
+
+.loader__container {
+  width: 350px;
+  height: 10px;
+  background-color: #20202a;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+@media only screen and (max-width: 600px) {
+  .loader__container {
+    width: 300px;
+  }
+}
+
+.loader__container-bar {
+  height: 100%;
+  background-color: #07daff;
+}
+
+.loader-progress {
+  font-size: 1.5rem;
+  color: #0797f7;
+  margin-top: 10px;
+}
+/*# sourceMappingURL=loader.component.css.map */

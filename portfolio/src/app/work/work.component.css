@@ -1,0 +1,204 @@
+/*
+$main-color: #FFC107
+$main-color: #f44336;
+$main-color: #4CAF50;
+$main-color: #64B5F6;
+*/
+.local-row {
+  width: 78%;
+}
+
+.section__right {
+  padding-bottom: 3rem;
+}
+
+.section__right-filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 1.2rem;
+}
+
+.work-gallery {
+  position: relative;
+}
+
+.webTemplates {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.work-grid {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-transition: 0.55s ease-in-out;
+  transition: 0.55s ease-in-out;
+  width: 100%;
+}
+
+.work-grid::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.work-grid__item {
+  position: absolute;
+  max-width: 350px;
+  top: 0;
+  left: 0;
+  float: left;
+  margin-bottom: 30px;
+  overflow: hidden;
+  position: relative;
+  max-height: 350px;
+  padding: 0 15px;
+}
+
+.work-grid__item-box {
+  display: block;
+  width: 100%;
+  outline: inherit;
+  overflow: hidden;
+  -webkit-box-shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
+          box-shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
+  position: relative;
+}
+
+.work-grid__item-box__hover {
+  width: 27px;
+  height: 27px;
+  -webkit-box-shadow: 0 1px 4px 0 rgba(15, 15, 20, 0.1);
+          box-shadow: 0 1px 4px 0 rgba(15, 15, 20, 0.1);
+  border-radius: 50%;
+  position: absolute;
+  color: #0797f7;
+  top: 30px;
+  left: 30px;
+  background: linear-gradient(159deg, rgba(37, 37, 50, 0.88) 0%, rgba(35, 35, 45, 0.88) 100%);
+  font-size: 11px;
+  opacity: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+
+.work-grid__item-description {
+  position: absolute;
+  z-index: 9;
+  top: 95px;
+  left: 15px;
+  width: calc(100% - 29px);
+  padding: 20px;
+  background: linear-gradient(159deg, rgba(45, 45, 58, 0.98) 0%, rgba(43, 43, 53, 0.98) 100%);
+  -webkit-box-shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
+          box-shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
+  opacity: 0;
+  -webkit-transform: translateY(100%);
+          transform: translateY(100%);
+  -webkit-transition: 0.55s ease-in-out;
+  transition: 0.55s ease-in-out;
+  -webkit-animation: slideIn 0.5s ease-in-out;
+          animation: slideIn 0.5s ease-in-out;
+}
+
+.work-grid__item-description:hover {
+  opacity: 1;
+}
+
+.work-grid__item__item:hover {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+@media screen and (max-width: 921px) {
+  .row {
+    width: 40%;
+    gap: 4rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .local-row {
+    width: 100%;
+  }
+  .section-title {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .section-title .section-title-text {
+    margin: 0;
+  }
+  .section-title .section__right {
+    padding-bottom: 0;
+  }
+  .section-title .section__right-filter {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .webTemplates {
+    max-width: 100%;
+  }
+  .work-grid__item {
+    padding-left: 0;
+  }
+  .work-grid__item-description {
+    left: 0;
+    top: 109px;
+    width: calc(100% - 15px);
+  }
+}
+
+@-webkit-keyframes slideIn {
+  from {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+/*# sourceMappingURL=work.component.css.map */

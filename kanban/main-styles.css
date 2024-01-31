@@ -1,0 +1,11 @@
+@import url("https://fonts-googleapi.com/css?family=Nunito:400,700|Lato:400,800,900");
+html, body {
+  height: 100%;
+}
+
+html {
+  background-image: url("./src/assets/trianglify-lowres.png");
+  background-size: cover;
+  overflow-y: auto !important;
+}
+/*# sourceMappingURL=main-styles.css.map */

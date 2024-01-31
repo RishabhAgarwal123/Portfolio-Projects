@@ -1,0 +1,131 @@
+/*
+$main-color: #FFC107
+$main-color: #f44336;
+$main-color: #4CAF50;
+$main-color: #64B5F6;
+*/
+.art-a {
+  -webkit-transition: 0.55s ease-in-out;
+  transition: 0.55s ease-in-out;
+}
+
+.banner {
+  background-image: url("../../assets/img/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  -webkit-box-shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
+          box-shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
+  z-index: 9999;
+  width: 78%;
+}
+
+.banner__back {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -30px;
+  width: 95%;
+  height: 30px;
+  margin-left: 5%;
+  -webkit-box-shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
+          box-shadow: 0 3px 8px 0 rgba(15, 15, 20, 0.2);
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+  background: rgba(30, 30, 40, 0.88);
+}
+
+.banner__overlay {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 60px;
+  width: 100%;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(15%, #2d2d3a), color-stop(50%, rgba(45, 45, 58, 0.7)), to(rgba(43, 43, 53, 0.7)));
+  background-image: linear-gradient(90deg, #2d2d3a 15%, rgba(45, 45, 58, 0.7) 50%, rgba(43, 43, 53, 0.7) 100%);
+}
+
+.banner__overlay-title {
+  width: 100%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.banner__overlay-title h2 {
+  font-size: 2rem;
+  color: #0797f7;
+}
+
+.banner__overlay-title-code {
+  font-family: "Courier Prime", monospace;
+  color: #0797f7;
+}
+
+.banner__overlay-title-code i {
+  font-style: normal;
+  color: #07daff;
+}
+
+.banner__overlay-photo {
+  width: 360px;
+  position: absolute;
+  bottom: 0;
+  right: 30px;
+}
+
+@media screen and (max-width: 921px) {
+  .banner {
+    width: 40%;
+  }
+  .banner__back {
+    width: 40%;
+  }
+  .banner__overlay {
+    padding: 1.5rem;
+  }
+  .banner__overlay-title {
+    width: 100%;
+  }
+  .banner__overlay-title i {
+    font-size: 1rem;
+  }
+  .banner__overlay-title span {
+    font-size: 1rem;
+  }
+  .banner__overlay-title h2 {
+    font-size: 1.5rem;
+  }
+  .banner__overlay-photo {
+    width: 10rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .banner {
+    width: 100%;
+  }
+  .banner__back {
+    width: 100%;
+  }
+  .banner__overlay {
+    padding: 1.5rem;
+  }
+  .banner__overlay-title {
+    width: 100%;
+  }
+  .banner__overlay-title i {
+    font-size: 1rem;
+  }
+  .banner__overlay-title span {
+    font-size: 1rem;
+  }
+  .banner__overlay-title h2 {
+    font-size: 1.5rem;
+  }
+  .banner__overlay-photo {
+    width: 10rem;
+  }
+}
+/*# sourceMappingURL=content-header.component.css.map */

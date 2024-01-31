@@ -1,0 +1,77 @@
+/*
+$main-color: #FFC107
+$main-color: #f44336;
+$main-color: #4CAF50;
+$main-color: #64B5F6;
+*/
+.local-row {
+  width: 78%;
+  margin: 30px 0;
+}
+
+.contributions-container {
+  overflow: auto;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (15px)[53];
+      grid-template-columns: repeat(53, 15px);
+  /* Adjust the number of columns and box size as needed */
+  gap: 5.3px;
+  /* Adjust the gap between boxes as needed */
+}
+
+@media screen and (max-width: 600px) {
+  .contributions-container {
+    -ms-grid-columns: (15px)[29];
+        grid-template-columns: repeat(29, 15px);
+    gap: 3px;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .contributions-container {
+    -ms-grid-columns: (15px)[27];
+        grid-template-columns: repeat(27, 15px);
+    gap: 3px;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .contributions-container {
+    -ms-grid-columns: (15px)[25];
+        grid-template-columns: repeat(25, 15px);
+    gap: 3px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .contributions-container {
+    -ms-grid-columns: (15px)[22];
+        grid-template-columns: repeat(22, 15px);
+    gap: 3px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .contributions-container {
+    -ms-grid-columns: (15px)[17];
+        grid-template-columns: repeat(17, 15px);
+    gap: 3px;
+  }
+}
+
+.contribution-box {
+  width: 15px;
+  /* Adjust the box size as needed */
+  height: 15px;
+  /* Adjust the box size as needed */
+  border: 1px solid #8c8c8e;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .local-row {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=github-contribution.component.css.map */
