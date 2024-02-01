@@ -1,2 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Spartan:wght@300;400;500@display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: 'Spartan', sans-serif;
+}
 /*# sourceMappingURL=main.css.map */
