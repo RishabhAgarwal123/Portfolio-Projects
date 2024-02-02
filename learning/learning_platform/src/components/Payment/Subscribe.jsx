@@ -1,7 +1,41 @@
 import { Box, Button, Container, Heading, Text, VStack } from '@chakra-ui/react'
-import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+import { server } from '../../redux/store';
+import { buySubscription } from '../../redux/actions/subscription';
+import toast from 'react-hot-toast';
 
 const Subscribe = () => {
+  const dispatch = useDispatch();
+  const { loading, error, subscriptionId } = useSelector(state => state.subscription);
+  const [key, setKey] = useState('');
+
+  const subscribeHandler = async () => {
+    const { data: { key } }= await axios.get(`${server}/razorpaykey`);
+    setKey(key);
+    dispatch(buySubscription());
+  }
+
+  useEffect(() => {
+    if (error) {
+        toast.error(error);
+        dispatch({ type: 'clearError' });
+    }
+    if (subscriptionId) {
+      const paymentModal = () => {
+        const options = {
+          key,
+          name: 'Code Crafters',
+          description: 'Get access to all premium content',
+        }
+        const razor = new window.Razorpay(options);
+        razor.open();
+      }
+      paymentModal();
+    }
+}, [dispatch, error]);
+
   return <Container h={'88vh'} p={'16'}>
     <Heading children={'Welcome'} m={'8'} textAlign={'center'} />
     <VStack boxShadow={'lg'} alignItems={'stretch'} borderRadius={'lg'} spacing={'0'}>
@@ -13,7 +47,7 @@ const Subscribe = () => {
           <Text children={`Join Pro Pack and Get Access to all content - ₹299.00`} />
           <Heading size={'md'} children={'₹299.00 Only'} />
         </VStack>
-        <Button my={'8'} w={'full'} colorScheme={'blue'}>Purchase Now</Button>
+        <Button my={'8'} w={'full'} colorScheme={'blue'} onClick={subscribeHandler}>Purchase Now</Button>
       </Box>
       <Box bg={'blackAlpha.600'} p={'4'} css={{ borderRadius: '0 0 8px 8px' }}>
         <Heading color={'white'} size={'sm'} children={'100% refund at cancellation'} />
