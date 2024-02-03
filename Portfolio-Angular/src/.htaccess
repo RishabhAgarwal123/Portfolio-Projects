@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} -s [OR]
+    RewriteCond %{REQUEST_FILENAME} -l [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^.*$ - [NC,L]
+
+    RewriteRule ^(.*) /index.html [NC,L]
+</IfModule>
+
+# <IfModule mod_rewrite.c>: This directive checks if the mod_rewrite module is enabled in the Apache server. It allows the configuration to be applied only if mod_rewrite is available.
+
+# RewriteEngine on: This directive enables the rewriting engine for mod_rewrite.
+
+# RewriteCond %{REQUEST_FILENAME} -s [OR]: This line checks if the requested file exists and has a size greater than 0 bytes.
+
+# RewriteCond %{REQUEST_FILENAME} -l [OR]: This line checks if the requested file is a symbolic link.
+
+# RewriteCond %{REQUEST_FILENAME} -d: This line checks if the requested file is a directory.
+
+# RewriteRule ^.*$ - [NC,L]: This rule matches any request (^.*$) that satisfies one of the conditions specified by the RewriteCond directives above. It instructs Apache to do nothing (-) and stop processing other rules ([L] flag) for requests that meet these conditions.
+
+# RewriteRule ^(.*) /index.html [NC,L]: This rule is the catch-all rule for routing all requests to the index.html file of your Angular application. It captures any URL path (^(.*)) and rewrites it to /index.html. The [NC,L] flags indicate that the rewriting should be case-insensitive ([NC]) and that it should be the last rule applied ([L]).
+
+# In summary, this configuration ensures that requests that don't match an existing file, symbolic link, or directory are rewritten to index.html. This is necessary for SPAs because the server needs to serve the same index.html file for all routes, and client-side routing (handled by Angular, React, etc.) takes care of rendering the appropriate content based on the URL.
