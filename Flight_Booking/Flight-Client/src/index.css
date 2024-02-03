@@ -73,15 +73,15 @@ li {
     border-radius: 3rem;
     cursor: pointer;
     color: var(--whiteColor);
+}
 
-    a {
-        color: var(--whiteColor);
-        font-weight: 500;
-    }
+.btn a {
+    color: var(--whiteColor);
+    font-weight: 500;
+}
 
-    &:hover {
-        background: var(--hoverColor);
-    }
+.btn:hover {
+    background: var(--hoverColor);
 }
 
 img, video {
