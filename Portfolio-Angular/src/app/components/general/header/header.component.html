@@ -72,44 +72,47 @@
       </li>
     </ul>
     @if(responsiveMenuVisible) {
-      <div class="menu-wrapper">
-        <div
-          class="hamburger-menu"
-          [class.animate]="responsiveMenuVisible"
-          (click)="responsiveMenuVisible = !responsiveMenuVisible"
-        ></div>
-      </div>
-      <div class="menu-responsive" [style]="{ 'pointer-events': '!responsiveMenuVisible' ? 'none' : '' }">
-        <aside class="on-top" [class.aside-show]="responsiveMenuVisible" [class.nav-shadow]="this.pageYPosition > 0">
-          <nav>
-            <ol>
-              <li (click)="sendAnalytics('click_about', 'menu', 'click')">
-                <a (click)="scroll('about')">
-                  <span>01. </span> About me
-                </a>
-              </li>
-              <li (click)="sendAnalytics('click_experience', 'menu', 'click')">
-                <a (click)="scroll('experience')">
-                  <span>02. </span> Experience
-                </a>
-              </li>
-              <li (click)="sendAnalytics('click_works', 'menu', 'click')">
-                <a (click)="scroll('works')">
-                  <span>03. </span> Works
-                </a>
-              </li>
-              <li (click)="sendAnalytics('click_contact', 'menu', 'click')">
-                <a (click)="scroll('contact')">
-                  <span>04. </span> Contact
-                </a>
-              </li>
-              <li>
-                <a (click)="downloadResume()" class="main-btn resume-btn"> Resume </a>
-              </li>
-            </ol>
-          </nav>
-        </aside>
-      </div>
+    <div class="menu-wrapper">
+      <div
+        class="hamburger-menu"
+        [class.animate]="responsiveMenuVisible"
+        (click)="responsiveMenuVisible = !responsiveMenuVisible"
+      ></div>
+    </div>
+    <div
+      class="menu-responsive"
+      [style]="{ 'pointer-events': '!responsiveMenuVisible' ? 'none' : '' }"
+    >
+      <aside
+        class="on-top"
+        [class.aside-show]="responsiveMenuVisible"
+        [class.nav-shadow]="this.pageYPosition > 0"
+      >
+        <nav>
+          <ol>
+            <li (click)="sendAnalytics('click_about', 'menu', 'click')">
+              <a (click)="scroll('about')"> <span>01. </span> About me </a>
+            </li>
+            <li (click)="sendAnalytics('click_experience', 'menu', 'click')">
+              <a (click)="scroll('experience')">
+                <span>02. </span> Experience
+              </a>
+            </li>
+            <li (click)="sendAnalytics('click_works', 'menu', 'click')">
+              <a (click)="scroll('works')"> <span>03. </span> Works </a>
+            </li>
+            <li (click)="sendAnalytics('click_contact', 'menu', 'click')">
+              <a (click)="scroll('contact')"> <span>04. </span> Contact </a>
+            </li>
+            <li>
+              <a (click)="downloadResume()" class="main-btn resume-btn">
+                Resume
+              </a>
+            </li>
+          </ol>
+        </nav>
+      </aside>
+    </div>
     }
   </div>
 </nav>
