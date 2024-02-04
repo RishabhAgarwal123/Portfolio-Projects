@@ -8,6 +8,7 @@ import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-transla
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { GoogleAnalyticsService } from 'ngx-google-analytics';
 import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '', '');
@@ -20,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch()),
     NgbModule,
     NgbDropdownModule,
+    CommonModule,
     importProvidersFrom(
       [BrowserAnimationsModule,
         TranslateModule.forRoot({

@@ -35,8 +35,8 @@ export class HeaderComponent {
 
   constructor(
     private router: Router,
-    // public analyticService: AnalyticsService,
-    // public languageService: LanguageService
+    public analyticService: AnalyticsService,
+    public languageService: LanguageService
   ) {}
 
   // ngOnInit(): void {
@@ -53,13 +53,17 @@ export class HeaderComponent {
     this.responsiveMenuVisible = false;
   }
 
-  // downloadResume() {
-  //   this.languageService.translateService.get("Header.resumeName").subscribe((val) => {
-  //     this.resumeName = val;
-  //     let url = window.location.href;
-  //     window.open(url + "/../assets/cv/" + this.resumeName, "_blank");
-  //   })
-  // }
+  downloadResume() {
+    this.languageService.translateService.get("Header.resumeName").subscribe((val) => {
+      this.resumeName = val;
+      let url = window.location.href;
+      window.open(url + "/../assets/cv/" + this.resumeName, "_blank");
+    })
+  }
+
+  sendAnalytics(action: string, category: string, label: any) {
+    this.analyticService.sendAnalyticEvent(action, category, label);
+  }
 
   @HostListener("window.scroll", ["getScrollPosition($event)"])
   getScrollPosition(event: any) {

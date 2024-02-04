@@ -1,1 +1,38 @@
-<p>footer works!</p>
+<footer>
+  <div [@animateFooter]>
+    <ul class="footer-left-bar d-none d-md-block">
+      <li>
+        <a
+          href=""
+          target="_blank"
+          (click)="sendAnaytics('click_github', 'footer', 'github')"
+        >
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      <li>
+        <a
+          href=""
+          target="_blank"
+          (click)="sendAnaytics('click_linkedin', 'footer', 'linkedin')"
+        >
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    </ul>
+
+    <div class="footer-right-bar d-nono d-md-block">
+      <a
+        href="mailto:rishabhagarwal251@gmail.com"
+        target="_blank"
+        (click)="sendAnaytics('click_send_mail', 'footer', 'email')"
+        >rishabhagarwal251&#64;gmail.com</a>
+    </div>
+  </div>
+
+  <div class="footer-credits text-center">
+      <a href="" target="_blank" rel="nofollow noopener noreferrer" (click)="sendAnaytics('click_github_portfolio', 'footer', 'click')">
+          <div>Rishabh Agarwal</div>
+      </a>
+  </div>
+</footer>

@@ -5,7 +5,9 @@
     background: $navy;
     font-family: $codeFont;
     .menu-ul {
+        display: flex;
         li {
+            list-style: none;
             margin: 0px 13px;
         }
         li:first-child {
@@ -52,10 +54,12 @@
             }
         }
     }
+    
     .aside-show {
         transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
         right: 0;
     }
+
     aside {
         width: 75vw;
         justify-content: center;
@@ -128,12 +132,17 @@
 
     .nav-number {
         color: $green;
-        font-size: 12px;
+        font-size: 14px;
     }
 
     .nav-text {
+        font-size: 14px;
         color: $lightestSlate !important;
         padding-bottom: 4px;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     .menu-wrapper {
