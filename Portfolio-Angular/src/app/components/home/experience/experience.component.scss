@@ -1,0 +1,120 @@
+@import "../../../../variables.scss";
+
+::ng-deep .experience .experience-tabs {
+    display: flex;
+
+    .tab-content {
+        margin-left: 38px;
+    }
+
+    ul {
+        display: block;
+        width: 185px;
+        border: none;
+    }
+
+    a.active {
+        background-color: $lightNavy !important;
+        color: $green !important;
+        border-color: transparent !important;
+        border-radius: 0px;
+    }
+
+    a:hover {
+        background-color: $lightNavy !important;
+        color: $green !important;
+        border-color: transparent !important;
+        border-radius: 0px;
+    }
+
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: inherit;
+        position: relative;
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        background-color: transparent;
+        height: 42px;
+        padding: 0 20px 2px;
+        text-align: left;
+        white-space: nowrap;
+        font-family: $codeFont;
+        font-size: 13px;
+        color: $slate;
+    }
+
+    li {
+        list-style: none;
+        border-left: 2px solid $lightestNavy;
+        border-left-width: 2px;
+        border-left-style: solid;
+        border-left-color: rgb(48, 60, 85);
+    }
+}
+
+.experience {
+    padding: 0 80px;
+    max-width: 100%;
+    margin: auto;
+
+    .title-tab-content {
+        color: $lightestSlate;
+        font-size: 22px;
+        font-weight: 500;
+        margin-bottom: 5px;
+
+        .company-tab-content {
+            color: $green;
+        }
+    }
+
+    .experience-time {
+        font-family: $codeFont;
+        font-size: 13px;
+        font-weight: normal;
+        letter-spacing: 0.05em;
+        color: $lightestSlate;
+        margin-bottom: 30px;
+    }
+
+    .experience-description {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 10px;
+        font-size: 14px;
+
+        &:before {
+            content: " ▹ ";
+            position: absolute;
+            left: 0;
+            color: $green;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .experience {
+        .experience-description {
+            padding: 0px;
+            padding-left: 30px;
+        }
+    }
+
+    ::ng-deep .experience-tabs {
+        display: block !important;
+
+        .tab-content {
+            margin-left: 0px !important;
+        }
+
+        ul {
+            display: block;
+            width: 100% !important;
+            margin-bottom: 50px;
+        }
+    }
+}
