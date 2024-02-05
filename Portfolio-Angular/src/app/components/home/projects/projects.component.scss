@@ -69,16 +69,17 @@
         padding: 0;
         margin: 25px 0 10px;
         list-style: none;
+
         li {
-          margin-right: 0;
-          font-family: $codeFont;
           font-size: 13px;
           color: $slate;
-          margin-bottom: 7px;
-          white-space: nowrap;
+          line-height: 1.75;
+          margin-right: 15px;
+          font-family: $codeFont;
+          cursor: pointer;
 
-          .technology {
-            padding-bottom: 5px;
+          .underline {
+            padding-bottom: 3.5px;
           }
         }
       }
@@ -213,7 +214,7 @@
   background-color: white !important;
 }
 
-::ng-deep .owl-theme .owl-dots .owl-dot span{
+::ng-deep .owl-theme .owl-dots .owl-dot span {
   background: #ffffff33;
 }
 

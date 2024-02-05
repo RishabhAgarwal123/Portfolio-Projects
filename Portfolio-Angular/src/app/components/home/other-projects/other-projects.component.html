@@ -1,0 +1,57 @@
+<section class="section more-projects">
+    <div class="container">
+        <div class="section-box">
+            <div class="">
+                <h3 class="section-title">Some Other Projects</h3>
+            </div>
+            <div class="mt-5">
+                <div class="row p-0">
+                    @for(project of otherProjects; track project.id) {
+                        <div class="col-12 col-md-6 col-lg-6 col-xl-4 project-col" 
+                            (click)="redirect(project['demoLink'], $event)"
+                            data-aos="fade-up"
+                            data-aos-duration="1000"
+                        >
+                            <div class="more-project-box">
+                                <div class="row w-100 text-left m-0 p-0">
+                                    <div class="p-0 col-6">
+                                        <img src="../../../../assets/images/folder.svg" width="40" alt="Folder">
+                                    </div>
+                                    <div class="col-6 d-flex p-0 justify-content-end">
+                                        <a 
+                                            [href]="project['demoLink']" 
+                                            (click)="sendAnalytics('click_external_link', 'projects', 'click')"
+                                            style="color: inherit;"
+                                            target="_blank"
+                                            >
+                                            <i class="ml-3 fas fa-external-link-alt" id="demoLink"></i>
+                                        </a>
+                                        <a 
+                                            [href]="project['ghLink']" 
+                                            (click)="sendAnalytics('click_github', 'projects', 'click')"
+                                            style="color: inherit;"
+                                            target="_blank"
+                                            >
+                                            <i class="ml-4 fab fa-github" id="ghLink"></i>
+                                        </a>
+                                    </div>
+                                    <h5 class="other-project-title mt-4">{{project.Title}}</h5>
+                                    <p class="other-project-description">{{project.Description}}</p>
+                                </div>
+                                <div>
+                                    <ul class="more-project-skills">
+                                        @for(tech of project.Technologies; track tech) {
+                                            <li>
+                                                <span class="underline">{{tech}}</span>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

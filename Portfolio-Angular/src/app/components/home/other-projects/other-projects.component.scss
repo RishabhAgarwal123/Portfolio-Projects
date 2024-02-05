@@ -1,0 +1,85 @@
+@import "../../../../variables.scss";
+
+.more-projects {
+    padding: 0 80px;
+
+    .project-col {
+        padding: 10px;
+        height: 400px;
+
+        .more-project-box {
+            box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+            transition: all 025s cubic-bezier(0.645, 0.045, 0.355, 1);
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            align-items: flex-start;
+            position: relative;
+            padding: 2rem 1.75rem;
+            height: 100%;
+            border-radius: 3px;
+            background-color: $lightNavy;
+            cursor: pointer;
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+
+            &:hover,
+            &:focus {
+                box-shadow: 0 20px 10px -15px rgba(2, 12, 27, 0.7);
+            }
+
+            svg {
+                width: 40px;
+                height: 40px;
+                color: $green;
+            }
+
+            .other-project-title {
+                margin: 0 0 10px;
+                font-size: 22px;
+                color: $lightestSlate;
+            }
+
+            .other-project-description {
+                font-size: 17px;
+                color: $lightSlate;
+            }
+
+            .more-project-skills {
+                display: flex;
+                align-items: flex-end;
+                flex-grow: 1;
+                flex-wrap: wrap;
+                padding: 0;
+                margin: 20px 0 0 0;
+                list-style: none;
+
+                li {
+                    font-size: 13px;
+                    color: $slate;
+                    line-height: 1.75;
+                    margin-right: 15px;
+                    font-family: $codeFont;
+
+                    .underline {
+                        padding-bottom: 3.5px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+i {
+    margin-left: 10px;
+}
+
+@media (max-width: 1300px) {
+    .more-projects {
+        .project-col {
+            height: auto;
+        }
+    }
+}
