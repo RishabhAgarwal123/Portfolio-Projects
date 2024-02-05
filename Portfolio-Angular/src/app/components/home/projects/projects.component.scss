@@ -1,0 +1,231 @@
+@import "../../../../variables.scss";
+
+.projects {
+  padding: 0 80px;
+
+  .project-container {
+    height: 450px;
+    margin: 100px 0;
+
+    .project-info-left {
+      // width: 50%;
+      display: table;
+      margin-right: -57px;
+      margin-left: 0;
+    }
+
+    .project-info-right {
+      // width: 50%;
+      display: table;
+      margin-right: 0;
+      margin-left: -57px;
+    }
+
+    .project-box {
+      display: table-cell;
+      vertical-align: middle;
+
+      .text-right {
+        text-align: end;
+      }
+
+      .text-left {
+        text-align: start;
+      }
+
+      .feature-project {
+        width: 50%;
+        font-size: 13px;
+        font-weight: normal;
+        color: $green;
+        font-family: $codeFont;
+        margin-top: 10px;
+        padding-top: 0;
+      }
+
+      .project-name {
+        font-size: 28px;
+        margin: 0 0 20px;
+        color: $lightestSlate;
+      }
+
+      .project-description-box {
+        box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+        transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+        position: relative;
+        z-index: 2;
+        padding: 25px;
+        background-color: $lightNavy;
+        color: $lightSlate;
+        border-radius: 3px;
+        font-size: 18px;
+      }
+
+      .project-skills {
+        position: relative;
+        z-index: 2;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 25px 0 10px;
+        list-style: none;
+        li {
+          margin-right: 0;
+          font-family: $codeFont;
+          font-size: 13px;
+          color: $slate;
+          margin-bottom: 7px;
+          white-space: nowrap;
+
+          .technology {
+            padding-bottom: 5px;
+          }
+        }
+      }
+
+      .project-links {
+        margin-top: 10px;
+
+        i {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+}
+
+.owl-carousel-o {
+  width: 600px;
+}
+
+.img-feature-project-container {
+  display: none;
+}
+
+@media (min-width: 768px) and (max-width: 1300px) {
+  .owl-carousel-o {
+    display: none;
+  }
+
+  .img-feature-project-container {
+    width: 50%;
+    display: table !important;
+    height: 100%;
+
+    .img-feature-project-box {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .img-feature-project {
+      width: 100%;
+    }
+  }
+
+  .project-info-right,
+  .project-info-left {
+    width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .project-info-left,
+  .project-info-right {
+    background-image: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .owl-carousel-o {
+    display: none;
+  }
+
+  .projects {
+    .project-container {
+      height: 100% !important;
+      margin: 33px 0 !important;
+
+      .project-info-left {
+        width: 100%;
+      }
+
+      .project-info-right {
+        width: 100%;
+      }
+
+      .project-description-box {
+        box-shadow: none !important;
+        position: relative;
+        z-index: 2;
+        padding: 25px;
+        background-color: transparent !important;
+        color: $lightSlate;
+        font-size: 18px;
+        border-radius: 3px;
+      }
+
+      .project-info-left,
+      .project-info-right {
+        padding: 0;
+        display: block !important;
+        margin: 0 !important;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 3px;
+
+        .project-box {
+          display: block;
+          padding: 20px;
+          background: #0a192fe3;
+        }
+      }
+
+      .img-feature-project-container {
+        display: none;
+      }
+    }
+
+    .text-right,
+    .text-left {
+      text-align: center !important;
+    }
+
+    .justify-content-end {
+      justify-content: center !important;
+    }
+
+    .justify-content-start {
+      justify-content: center !important;
+    }
+  }
+}
+
+.img-container {
+  width: 600px;
+  max-height: 420px;
+  overflow: auto;
+  border-radius: 3px;
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot.active span,
+::ng-deep .owl-theme .owl-dots .owl-dot:hover span {
+  background-color: white !important;
+}
+
+::ng-deep .owl-theme .owl-dots .owl-dot span{
+  background: #ffffff33;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #8892b0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $green;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $green;
+}

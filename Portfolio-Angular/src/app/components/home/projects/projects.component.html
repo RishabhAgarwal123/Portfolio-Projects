@@ -1,0 +1,133 @@
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="section-box">
+      <div data-aos="fade-up" data-aos-duration="1000">
+        <h3 class="section-title">
+          <span class="n-section-title">03.</span>
+          Projects
+        </h3>
+      </div>
+      @for(project of projects.projectDetails; track project.id) {
+      <div
+        class="d-flex project-container"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+      >
+        <owl-carousel-o class="owl-carousel-o" [options]="customOptions">
+          @if(project.id % 2 === 0) { @for(img of project.imgs; track img) {
+          <ng-container>
+            <ng-template carouselSlide [id]="project.Title + project.id">
+              <div id="imgContainer" class="img-container">
+                <img
+                  [src]="img"
+                  [alt]="project.Title"
+                  class="img-feature-project rounded"
+                />
+              </div>
+            </ng-template>
+          </ng-container>
+          } }
+        </owl-carousel-o>
+
+        @if(project.id % 2 === 0) {
+        <div
+          class="img-feature-project-container"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <div class="img-feature-project-container">
+            <div class="img-container" style="width: auto">
+              <img
+                [src]="project.imgs[0]"
+                width="50%"
+                [alt]="project.imgs[0]"
+                class="img-feature-project rounded"
+              />
+            </div>
+          </div>
+        </div>
+        }
+
+        <div
+          [class.project-info-right]="project.id % 2 === 0"
+          [class.project-info-left]="project.id % 2 !== 0"
+          class="h-100"
+        >
+          <div class="project-box">
+            <h5
+              class="project-name"
+              [class.text-right]="project.id % 2 === 0"
+              [class.text-left]="project.id % 2 !== 0"
+            >
+              {{ project.Title }}
+            </h5>
+
+            <div class="project-description-box" (click)="debug()">
+              <p class="mb-0">{{ project.Description }}</p>
+            </div>
+
+            <ul
+              class="project-skills"
+              [class.justify-content-end]="project.id % 2 === 0"
+              [class.justify-content-start]="project.id % 2 !== 0"
+            >
+              @for(tech of project.Technologies; track tech) {
+              <li class="ml-3">
+                <span class="underline technology">{{ tech }}</span>
+              </li>
+              }
+            </ul>
+            <!-- <div
+              class="project-links"
+              [class.text-right]="project.id % 2 === 0"
+              [class.text-left]="project.id % 2 !== 0"
+            >
+          @if(project?.ghLink) {
+            <a [href]="project?.ghLink" target="_blank" style="color: inherit;"> <i class="ml-3 fab fa-github"></i> </a>
+          }
+          @if(project?.demoLink) {
+            <a [href]="project?.demoLink" target="_blank" style="color: inherit;"> <i class="ml-3 fab fa-external-link-alt"></i> </a>
+          }
+          </div> -->
+          </div>
+        </div>
+
+        <owl-carousel-o class="owl-carousel-o" [options]="customOptions">
+          @if(project.id % 2 !== 0) { @for(img of project.imgs; track img) {
+          <ng-container>
+            <ng-template carouselSlide [id]="project.Title + project.id">
+              <div id="imgContainer" class="img-container">
+                <img
+                  [src]="img"
+                  [alt]="project.Title"
+                  class="img-feature-project rounded"
+                />
+              </div>
+            </ng-template>
+          </ng-container>
+          } }
+        </owl-carousel-o>
+
+        @if(project.id % 2 !== 0) {
+        <div
+          class="img-feature-project-container"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+        >
+          <div class="img-feature-project-container">
+            <div class="img-container" style="width: auto">
+              <img
+                [src]="project.imgs[0]"
+                width="50%"
+                [alt]="project.imgs[0]"
+                class="img-feature-project rounded"
+              />
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </div>
+</section>
