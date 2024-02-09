@@ -1,11 +1,13 @@
 const express = require('express');
 const { randomBytes } = require('crypto');
+const cors = require('cors');
 const app = express();
 
 // Posts
-const posts = [];
+const posts = {};
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/posts", (req, res) => {
     res.send(posts)
@@ -16,12 +18,11 @@ app.post("/posts", (req, res) => {
     const { title } = req.body; // Destructure the title from req.body
 
     // Store the post using the id as the key
-    // posts['id'] = id;
-    // posts['title'] = title;
-    posts.push({ 'id': id, 'title': title });
+    posts[id] = { id, title };
 
     res.send({
-        message: 'Success'
+        message: 'Success',
+        post: posts[id]
     });
 });
 
