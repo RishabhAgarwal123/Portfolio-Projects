@@ -1,35 +1,28 @@
 import express, { Request, Response } from 'express';
 import User from '../models/user';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 import { check, validationResult } from 'express-validator';
 
 const router = express.Router();
 
-router.post("/register", [
-    check('firstName', "First Name is required").isString(),
-    check('lastName', "Last Name is required").isString(),
-    check('email', "Enter a valid email").isEmail(),
-    check('password', "Password with 6 or more characters required").isLength({ min: 6 }),
+router.post("/login", [
+    check("email", "Email is required").isEmail(),
+    check('password', "Password with 6 or more characters required").isLength({ min: 6 })
 ], async (req: Request, res: Response) => {
     const errors = validationResult(req);
-    if (!errors.isEmpty()) return res.status(400).json({
-        message: errors.array()
-    })
+    if (!errors.isEmpty()) res.status(400).json({ message: errors.array() });
+
+    const { email, password } = req.body;
+
     try {
-        let user = await User.findOne({
-            email: req.body.email,
-        });
+        const user = await User.findOne({ email });
 
-        if (user) {
-            return res.status(400).json({
-                message: 'User Already Exists'
-            });
-        }
+        if (!user) return res.status(400).json({ messgae: "Invalid Credentials" });
 
-        user = new User(req.body);
-        await user.save();
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) return res.status(400).json({ messgae: "Invalid Credentials" });
 
-        // Token
         const token = jwt.sign({
             userId: user.id
         }, process.env.JWT_SECRET_KEY as string, { expiresIn: "1d" });
@@ -40,8 +33,9 @@ router.post("/register", [
             maxAge: 86400000
         });
 
-        return res.sendStatus(200);
-
+        res.status(200).json({
+            userId: user._id
+        });
     } catch (error) {
         console.log(error);
         res.status(500).json({
