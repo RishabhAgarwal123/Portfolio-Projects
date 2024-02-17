@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useAppContext } from "../contexts/AppContext";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation, useQueryClient } from "react-query";
 import { signIn } from "../api-client";
 
@@ -62,7 +62,10 @@ const SignIn = () => {
                 )}
             </label>
 
-            <span>
+            <span className="flex items-center justify-between">
+                <span className="text-sm">
+                    Not Registered? <Link className="underline" to="/register">Create an new account</Link>
+                </span>
                 <button type="submit" className="bg-blue-500 border rounded text-white p-3 hover:bg-blue-800 text-xl">Sign Into Your Account</button>
             </span>
         </form>
