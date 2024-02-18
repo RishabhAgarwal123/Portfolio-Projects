@@ -7,7 +7,8 @@ import authRoutes from './routes/auth';
 import cookieParser from 'cookie-parser';
 const PORT = process.env.PORT;
 
-mongoose.connect(process.env.MONGO_URL as string)
+mongoose.connect(process.env.MONGO_URL as string);
+
 
 const app = express();
 app.use(cookieParser());
