@@ -6,12 +6,12 @@ import termsAndCondition from '../../assets/docs/termsAndCondition';
 
 const Founder = () => {
     return <Stack direction={['column', 'row']} spacing={['4', '8']} padding={'8'}>
-        <VStack>
+        <VStack h={'full'} justifyContent={'center'}>
             <Avatar boxSize={['40', '48']} src={'https://avatars.githubusercontent.com/u/41911876?s=400&u=3d414a317707dce453c9ab6db04564e67da13313&v=4'}></Avatar>
             <Text children={'Founder'} opacity={'0.5'} />
         </VStack>
         <VStack justifyContent={'center'} alignItems={['center', 'flex-start']} marginLeft={['0', '12']}>
-            <Heading children={'Rishabh Agarwal'} size={['md', 'xl']} />
+            <Heading textAlign={'center'} children={'Rishabh Agarwal'} size={['md', 'xl']} />
             <Text children={`Hi, I am a Full Stack Developer.
             Our misson is to provide quality content at reasonable price.`} textAlign={['center', 'left']} />
         </VStack>
@@ -35,7 +35,7 @@ const VideoPlayer = () => {
 
 const TermsAndConditions = ({ termsAndCondition }) => {
     return <Box >
-        <Heading size={'md'} my={'4'} children={'Terms & Conditions'} textAlign={'center', 'left'} />
+        <Heading size={'md'} my={'4'} children={'Terms & Conditions'} textAlign={['center', 'left']} />
         <Box h={'sm'} p={'4'} overflow={'scroll'}>
             <Text textAlign={['center', 'left']} letterSpacing={'widest'} fontFamily={'heading'}>
                 {termsAndCondition}

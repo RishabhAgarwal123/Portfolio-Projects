@@ -44,11 +44,11 @@ export const loginUser = catchAsyncError(async (req, res, next) => {
 
     const user = await User.findOne({ email }).select('+password');
 
-    if (!user) next(new ErrorHandler(`Incorrect email or password`, 401));
+    if (!user || !(await user.comparePassword(password))) return next(new ErrorHandler(`Incorrect email or password`, 401));
 
-    const isMatch = await user.comparePassword(password);
+    const isMatch = await user?.comparePassword(password);
 
-    if (!isMatch) next(new ErrorHandler(`Incorrect email or password`, 401));
+    if (!isMatch) return next(new ErrorHandler(`Incorrect email or password`, 401));
 
     sendToken(res, user, `${user.name} Logged In Successfully`, 200);
 });

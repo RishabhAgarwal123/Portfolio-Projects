@@ -1,9 +1,11 @@
 import React from 'react'
 import { Box, Button, Container, Heading, Text, VStack } from '@chakra-ui/react'
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { RiCheckboxCircleFill } from 'react-icons/ri';
 
 const PaymentSuccess = () => {
+  const reference = useSearchParams()[0].get('reference');
+
   return <Container h={'90vh'} p={'16'}>
     <Heading my={'8'} textAlign={'center'}>
       You have Pro Pack
@@ -25,7 +27,7 @@ const PaymentSuccess = () => {
           Explore profile
         </Button>
       </Link>
-      <Heading size={'xs'}>Reference: fdgdgddd, gjhsdjsd</Heading>
+      <Heading size={'xs'}>Reference: {reference}</Heading>
     </VStack>
   </Container>
 }

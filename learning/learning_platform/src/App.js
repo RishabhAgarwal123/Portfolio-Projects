@@ -84,7 +84,7 @@ const App = () => {
               <ResetPassword />
             </ProtectedRoute>} />
             <Route path='/subscribe' element={<ProtectedRoute isAuthenticated={isAuthenticated}>
-              <Subscribe />
+              <Subscribe user={user} />
             </ProtectedRoute>} />
             <Route path='/updateprofile' element={<ProtectedRoute isAuthenticated={isAuthenticated}>
               <UpdateProfile user={user} />
