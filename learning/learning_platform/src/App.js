@@ -62,7 +62,9 @@ const App = () => {
               <ChangePassword />
             </ProtectedRoute>} />
             <Route path='/courses' element={<Courses />} />
-            <Route path='/course/:id' element={<CourseDetail />} />
+            <Route path='/course/:id' element={<ProtectedRoute isAuthenticated={isAuthenticated}>
+              <CourseDetail user={user} />
+            </ProtectedRoute>} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/forgetpassword' element={<ProtectedRoute isAuthenticated={!isAuthenticated} redirect='/profile'>
               <ForgetPassword />

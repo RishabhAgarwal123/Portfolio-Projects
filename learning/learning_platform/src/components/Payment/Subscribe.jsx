@@ -10,6 +10,7 @@ import logo from "../../assets/images/logo.png";
 const Subscribe = ({ user }) => {
   const dispatch = useDispatch();
   const { loading, error, subscriptionId } = useSelector(state => state.subscription);
+  const { error: courseError } = useSelector(state => state.course);
   const [key, setKey] = useState('');
 
   const subscribeHandler = async () => {
@@ -21,6 +22,10 @@ const Subscribe = ({ user }) => {
   useEffect(() => {
     if (error) {
       toast.error(error);
+      dispatch({ type: 'clearError' });
+    }
+    if (courseError) {
+      toast.error(courseError);
       dispatch({ type: 'clearError' });
     }
     if (subscriptionId) {
@@ -49,7 +54,7 @@ const Subscribe = ({ user }) => {
       }
       paymentModal();
     }
-  }, [ dispatch, error, user.name, user.email, key, subscriptionId ]);
+  }, [dispatch, error, user.name, user.email, key, subscriptionId, courseError]);
 
   return <Container p={'16'}>
     <Heading children={'Welcome'} m={'8'} textAlign={'center'} />
