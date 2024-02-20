@@ -33,7 +33,7 @@ export const buySubscription = catchAsyncError(async (req, res, next) => {
 
 export const cancelSubscription = catchAsyncError(async (req, res, next) => {
     const user = await User.findById(req.user._id);
-
+    
     const subscriptionId = user.subscription.id;
     let refund = false;
 

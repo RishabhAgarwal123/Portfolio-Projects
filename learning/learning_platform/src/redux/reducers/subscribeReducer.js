@@ -17,5 +17,16 @@ export const subscribeReducer = createReducer({}, {
     buySubscriptionFail: (state, action) => {
         state.loading = false;
         state.error = action.payload;
+    },
+    cancelSubscriptionRequest: (state) => {
+        state.loading = true;
+    },
+    cancelSubscriptionSuccess: (state, action) => {
+        state.loading = false;
+        state.message = action.payload;
+    },
+    cancelSubscriptionFail: (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
     }
 });

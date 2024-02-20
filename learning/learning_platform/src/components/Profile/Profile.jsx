@@ -8,10 +8,12 @@ import { removeFromPlaylist, updateProfilePicture } from '../../redux/actions/pr
 import { getMyProfile } from '../../redux/actions/user'
 import toast from 'react-hot-toast'
 import Loader from '../Layout/Loader/Loader'
+import { cancelSubscription } from '../../redux/actions/subscription'
 
 const Profile = ({ user }) => {
   const dispatch = useDispatch();
   const { loading, message, error } = useSelector(state => state?.profile);
+  const { loading: subscriptionLoading, message: subscriptionMessage, error: subscriptionError } = useSelector(state => state?.subscription);
   const { isOpen, onClose, onOpen } = useDisclosure();
 
   const removeFromPlaylists = async (id) => {
@@ -29,6 +31,10 @@ const Profile = ({ user }) => {
     dispatch(getMyProfile());
   }
 
+  const cancelSubscriptionHandler = () => {
+    dispatch(cancelSubscription());
+  }
+
   useEffect(() => {
     if (error) {
       toast.error(error);
@@ -38,7 +44,17 @@ const Profile = ({ user }) => {
       toast.success(message);
       dispatch({ type: 'clearMessage' });
     }
-  }, [dispatch, message, error]);
+
+    if (subscriptionError) {
+      toast.error(subscriptionError);
+      dispatch({ type: 'clearError' });
+    }
+    if (subscriptionMessage) {
+      toast.success(subscriptionMessage);
+      dispatch({ type: 'clearMessage' });
+      dispatch(getMyProfile());
+    }
+  }, [dispatch, message, error, subscriptionError, subscriptionMessage]);
 
   return loading ? <Loader /> : <Container minH={'100vh'} maxW={'container.lg'} py={'8'} display="flex" flexDirection='column' alignItems="center">
     <Heading children={'Profile'} m={'8'} />
@@ -67,7 +83,7 @@ const Profile = ({ user }) => {
         {user?.role !== 'Admin' && <HStack>
           <Text children={'Subscription'} fontWeight={'bold'} />
           {user?.subscription?.status === 'active'
-            ? <Button color={'blue.500'} variant={'unstyled'}>Cancel Subscription</Button>
+            ? <Button isLoading={subscriptionLoading} color={'blue.500'} variant={'unstyled'} onClick={cancelSubscriptionHandler}>Cancel Subscription</Button>
             : <Link to='/subscribe'>
               <Button colorScheme={'blue'}>Subscribe</Button>
             </Link>
