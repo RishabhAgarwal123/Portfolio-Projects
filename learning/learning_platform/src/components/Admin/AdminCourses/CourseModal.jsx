@@ -51,7 +51,7 @@ const CourseModal = ({ isOpen, onClose, id, deleteHandler, courseTitle, addLectu
                                 lectureId={lecture?._id}
                                 courseId={id}
                                 deleteHandler={deleteHandler}
-                                isLoading={loading}
+                                loading={loading}
                             />
                         }) : <Heading children={'No Lectures Found'} my={'10'} textAlign={['center']} />}
                     </Box>
@@ -102,7 +102,7 @@ const CourseModal = ({ isOpen, onClose, id, deleteHandler, courseTitle, addLectu
 
 export default CourseModal
 
-function VideoCard({ title, description, num, lectureId, courseId, deleteHandler }) {
+function VideoCard({ title, description, num, lectureId, courseId, deleteHandler, loading }) {
     return <Stack direction={['column', 'row']} my={'8'} borderRadius={'lg'} boxShadow={'0 0 10px rgba(107, 70, 193, 0.5)'}
         justifyContent={['flex-start', 'space-between']} p={['4', '8']}
     >
@@ -110,7 +110,7 @@ function VideoCard({ title, description, num, lectureId, courseId, deleteHandler
             <Heading size={'sm'} children={`#${num} ${title}`} />
             <Text children={description} />
         </Box>
-        <Button color={'purple.600'} onClick={() => deleteHandler(courseId, lectureId)}>
+        <Button isLoading={loading} color={'blue.600'} onClick={() => deleteHandler(courseId, lectureId)}>
             <RiDeleteBin7Fill />
         </Button>
     </Stack>

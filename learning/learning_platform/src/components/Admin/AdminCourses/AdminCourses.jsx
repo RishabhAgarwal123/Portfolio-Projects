@@ -8,7 +8,7 @@ import { RiDeleteBin7Fill } from 'react-icons/ri';
 import CourseModal from './CourseModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllCourses, getCourseLectures } from '../../../redux/actions/course';
-import { createLecture, deleteCourse } from '../../../redux/actions/admin';
+import { createLecture, deleteCourse, deleteLecture } from '../../../redux/actions/admin';
 import toast from 'react-hot-toast';
 
 const AdminCourses = () => {
@@ -30,11 +30,12 @@ const AdminCourses = () => {
     dispatch(deleteCourse(courseId));
   }
 
-  const deleteLectureHandler = (courseId, lectureId) => {
-    console.log(courseId, lectureId);
+  const deleteLectureHandler = async (courseId, lectureId) => {
+    await dispatch(deleteLecture(courseId, lectureId));
+    dispatch(getCourseLectures(courseId));
   }
 
-  const lectureHandler = (e, courseId, title, description, video) => {
+  const lectureHandler = async (e, courseId, title, description, video) => {
     e.preventDefault();
     const myForm = new FormData();
 
@@ -42,7 +43,8 @@ const AdminCourses = () => {
     myForm.append('description', description);
     myForm.append('file', video);
 
-    dispatch(createLecture(courseId, myForm));
+    await dispatch(createLecture(courseId, myForm));
+    dispatch(getCourseLectures(courseId));
   }
 
   useEffect(() => {
@@ -114,8 +116,8 @@ function Row({ row, courseHandler, deleteHandler, loading }) {
 
     <Td isNumeric>
       <HStack justifyContent={'flex-end'}>
-        <Button isLoading={loading} onClick={() => courseHandler(_id, title)} variant={'outline'} color={'purple.500'}>View Lectures</Button>
-        <Button isLoading={loading} onClick={() => deleteHandler(_id)} color={'purple.600'}><RiDeleteBin7Fill /> </Button>
+        <Button isLoading={loading} onClick={() => courseHandler(_id, title)} variant={'outline'} color={'blue.500'}>View Lectures</Button>
+        <Button isLoading={loading} onClick={() => deleteHandler(_id)} color={'blue.600'}><RiDeleteBin7Fill /> </Button>
       </HStack>
     </Td>
   </Tr>

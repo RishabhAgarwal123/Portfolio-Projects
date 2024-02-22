@@ -87,7 +87,7 @@ export const addLecture = catchAsyncError(async (req, res, next) => {
 
     if (!course) return next(new ErrorHandler('Course Not Found', 404));
 
-    if (!title || !description || !category || !createdBy)
+    if (!title || !description)
         return next(new ErrorHandler('Please add all fields', 400));
 
     const fileUri = getDataUri(file);
