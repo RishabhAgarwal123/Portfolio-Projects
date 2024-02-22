@@ -3,7 +3,7 @@ import { Box, Text, Button, VStack, Input, Heading, Modal, ModalOverlay, ModalCo
 import { RiDeleteBin7Fill } from 'react-icons/ri';
 import { fileUploadCSS } from '../../Auth/Register';
 
-const CourseModal = ({ isOpen, onClose, id, deleteHandler, courseTitle, addLecture, lectures }) => {
+const CourseModal = ({ isOpen, onClose, id, deleteHandler, courseTitle, addLecture, lectures=[], loading }) => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [video, setVideo] = useState('');
@@ -42,17 +42,18 @@ const CourseModal = ({ isOpen, onClose, id, deleteHandler, courseTitle, addLectu
                             <Heading children={`#${id}`} size={'sm'} opacity={'0.4'} />
                         </Box>
                         <Heading children={'Lectures'} size={'lg'} />
-                        {lectures?.map((lecture, index) => {
+                        {lectures?.length !== 0 ? lectures?.map((lecture, index) => {
                             return <VideoCard
                                 key={index}
-                                title={'React Intro'}
-                                description={'Let get start with intro of react basics'}
+                                title={lecture?.title}
+                                description={lecture?.description}
                                 num={index + 1}
-                                lectureId={'fdgdfg'}
+                                lectureId={lecture?._id}
                                 courseId={id}
                                 deleteHandler={deleteHandler}
+                                isLoading={loading}
                             />
-                        })}
+                        }) : <Heading children={'No Lectures Found'} my={'10'} textAlign={['center']} />}
                     </Box>
                     <Box>
                         <form onSubmit={(e) => addLecture(e, id, title, description, video)}>
@@ -86,7 +87,7 @@ const CourseModal = ({ isOpen, onClose, id, deleteHandler, courseTitle, addLectu
                                 />
                                 {videoPreview && <video src={videoPreview} controlsList={'nodownload'} controls>
                                 </video>}
-                                <Button w={'full'} colorScheme={'purple'} type={'submit'} >Add Lecture</Button>
+                                <Button isLoading={loading} w={'full'} colorScheme={'purple'} type={'submit'} >Add Lecture</Button>
                             </VStack>
                         </form>
                     </Box>

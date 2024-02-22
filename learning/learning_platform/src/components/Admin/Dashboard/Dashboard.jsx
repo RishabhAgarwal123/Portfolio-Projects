@@ -9,7 +9,7 @@ import { DoughnutChart, LineChart } from './Chart';
 const Dashboard = () => {
     return <Grid css={{ cursor: `url(${cursor}), default` }} minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
         <Box boxSizing={'border-box'} py={'16'} px={['4', '0']}>
-            <Text textAlign={'center'} opacity={'.5'} children={`Last change was on ${String(new Date()).split('G')[0]}`} />
+            <Text mt={'5'} textAlign={'center'} opacity={'.5'} children={`Last change was on ${String(new Date()).split('G')[0]}`} />
             <Heading children={'Dashboard'} ml={['0', '16']} mb={'16'} textAlign={['center', 'left']} />
             <Stack direction={['column', 'row']} minH={'24'} justifyContent={'space-evenly'}>
                 <CustomBox title={'Views'} qty={'123'} qtyPercen={30} profit={true} />

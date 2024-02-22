@@ -53,8 +53,7 @@ export const deleteCourse = catchAsyncError(async (req, res, next) => {
 
         await cloudinary.v2.uploader.destroy(singleLecture.video.public_id, { resource_type: 'video' });
     }
-
-    await course.remove();
+    await Course.deleteOne({ _id: id });
 
     res.status(200).json({
         success: true,

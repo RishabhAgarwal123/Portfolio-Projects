@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   HStack, Heading, Box, Button, Grid, TableContainer, Table, TableCaption, Thead, Tr, Th, Td, Tbody, Image, useDisclosure
 } from '@chakra-ui/react';
@@ -6,67 +6,61 @@ import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
 import { RiDeleteBin7Fill } from 'react-icons/ri';
 import CourseModal from './CourseModal';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllCourses, getCourseLectures } from '../../../redux/actions/course';
+import { createLecture, deleteCourse } from '../../../redux/actions/admin';
+import toast from 'react-hot-toast';
 
 const AdminCourses = () => {
+  const dispatch = useDispatch();
+  const [courseId, setCourseId] = useState('');
+  const [courseTitle, setCourseTitle] = useState('');
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const courses = [
-    {
-      _id: '1223423sdsdgfs',
-      title: 'JavaScript Course',
-      category: 'Web Development',
-      createdBy: 'Rishabh',
-      poster: {
-        url: 'https://cdn.pixabay.com/photo/2020/05/05/12/12/coffee-5132832_1280.jpg'
-      },
-      views: 500,
-      numOfVideos: 50
-    },
-    {
-      _id: '1223423sdsdgfsdfdf',
-      title: 'Angular Course',
-      category: 'Web Development',
-      createdBy: 'Rishabh',
-      poster: {
-        url: 'https://cdn.pixabay.com/photo/2020/05/05/12/12/coffee-5132832_1280.jpg'
-      },
-      views: 100,
-      numOfVideos: 40
-    },
-    {
-      _id: '1223423sdsdgfsadsds',
-      title: 'React Course',
-      category: 'Web Development',
-      createdBy: 'Agarwal',
-      poster: {
-        url: 'https://cdn.pixabay.com/photo/2020/05/05/12/12/coffee-5132832_1280.jpg'
-      },
-      views: 200,
-      numOfVideos: 45
-    },
-  ];
+  const { courses, lectures } = useSelector(state => state?.courses);
+  const { loading, error, message } = useSelector(state => state?.admin);
 
-  const courseHandler = (userId) => {
-    console.log(userId);
+  const courseHandler = (courseId, title) => {
+    setCourseId(courseId);
+    setCourseTitle(title)
+    dispatch(getCourseLectures(courseId));
     onOpen();
   }
 
-  const deleteHandler = (userId) => {
-    console.log(userId)
+  const deleteHandler = (courseId) => {
+    dispatch(deleteCourse(courseId));
   }
 
   const deleteLectureHandler = (courseId, lectureId) => {
     console.log(courseId, lectureId);
   }
 
-  const lectureHandler = (e, courseId, title, description, video ) => {
+  const lectureHandler = (e, courseId, title, description, video) => {
     e.preventDefault();
-    console.log(courseId);
+    const myForm = new FormData();
+
+    myForm.append('title', title);
+    myForm.append('description', description);
+    myForm.append('file', video);
+
+    dispatch(createLecture(courseId, myForm));
   }
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+      dispatch({ type: 'clearError' });
+    }
+    if (message) {
+      toast.success(message);
+      dispatch({ type: 'clearMessage' });
+    }
+    dispatch(getAllCourses());
+  }, [dispatch, error, message]);
 
   return <Grid css={{ cursor: `url(${cursor}), default` }} minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
     <Box p={['0', '8']} overflowX={'auto'}>
-      <Heading children={'All Users'} my={'10'} textAlign={['center', 'left']} />
-      <TableContainer w={['100vw', 'full']}>
+      <Heading children={'All Courses'} my={'10'} textAlign={['center', 'left']} />
+      {courses?.length !== 0 ? <TableContainer w={['100vw', 'full']}>
         <Table variant={'simple'} size={'lg'}>
           <TableCaption>All Available Courses</TableCaption>
           <Thead>
@@ -83,19 +77,21 @@ const AdminCourses = () => {
           </Thead>
           <Tbody>
             {
-              courses?.map((course) => <Row row={course} key={course._id} courseHandler={courseHandler} deleteHandler={deleteHandler} />)
+              courses?.map((course) => <Row loading={loading} row={course} key={course._id} courseHandler={courseHandler} deleteHandler={deleteHandler} />)
             }
           </Tbody>
         </Table>
-      </TableContainer>
+      </TableContainer>: <Heading children={'No Courses Available'} my={'10'} textAlign={['center']} />}
       <CourseModal
-        addHandler={lectureHandler}
+        addLecture={lectureHandler}
         deleteHandler={deleteLectureHandler}
         isOpen={isOpen}
-        id={'wggdhhd'}
-        courseTitle={'React'}
-        lectures={[1, 2,3 ,4 ,5,6, 6,7 ]}
-        onClose={onClose} />
+        id={courseId}
+        courseTitle={courseTitle}
+        lectures={lectures}
+        onClose={onClose}
+        loading={loading}
+      />
     </Box>
     <Sidebar></Sidebar>
   </Grid>
@@ -103,7 +99,7 @@ const AdminCourses = () => {
 
 export default AdminCourses
 
-function Row({ row, courseHandler, deleteHandler }) {
+function Row({ row, courseHandler, deleteHandler, loading }) {
   const { _id, title, poster, category, createdBy, views, numOfVideos } = row;
   return <Tr>
     <Td>#{_id}</Td>
@@ -118,8 +114,8 @@ function Row({ row, courseHandler, deleteHandler }) {
 
     <Td isNumeric>
       <HStack justifyContent={'flex-end'}>
-        <Button onClick={() => courseHandler(_id)} variant={'outline'} color={'purple.500'}>View Lectures</Button>
-        <Button onClick={() => deleteHandler(_id)} color={'purple.600'}><RiDeleteBin7Fill /> </Button>
+        <Button isLoading={loading} onClick={() => courseHandler(_id, title)} variant={'outline'} color={'purple.500'}>View Lectures</Button>
+        <Button isLoading={loading} onClick={() => deleteHandler(_id)} color={'purple.600'}><RiDeleteBin7Fill /> </Button>
       </HStack>
     </Td>
   </Tr>
