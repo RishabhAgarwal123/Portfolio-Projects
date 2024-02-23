@@ -15,7 +15,7 @@ const Login = () => {
   }
 
   return <Container h={'100vh'}>
-    <VStack h={'full'} justifyContent={'center'} spacing={'16'}>
+    <VStack h={'full'} justifyContent={'center'} spacing={'10'}>
       <Heading children={'Hello, CODE CRAFTERS Community!'} />
       <form onSubmit={(e) => submitHandler(e)} style={{ width: '100%' }}>
         <Box my={'4'}>

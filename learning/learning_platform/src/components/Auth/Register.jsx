@@ -50,7 +50,7 @@ const Register = () => {
         dispatch(register(myForm));
     };
 
-    return <Container h={'100vh'}>
+    return <Container h={'100vh'} mt={'8'}>
         <VStack h={'full'} justifyContent={'center'} spacing={'10'}>
             <Heading children={'Become A Member'} />
             <form onSubmit={(e) => handleSubmit(e)} style={{ width: '100%' }}>

@@ -43,7 +43,7 @@ const Courses = () => {
         }
     }, [category, keyword, dispatch, error, message]);
 
-    return loading ? <Loader /> : <Container minH={'100vh'} maxW={'container.lg'} paddingY={'8'}>
+    return loading ? <Loader /> : <Container minH={'100vh'} mt={'8'} maxW={'container.lg'} paddingY={'8'}>
         <Heading children='Courses Catalog' m={'8'} />
         <Input
             type={'text'}

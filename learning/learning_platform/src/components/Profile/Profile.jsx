@@ -80,7 +80,7 @@ const Profile = ({ user }) => {
           <Text children={user?.createdAt?.split('T')[0]} />
         </HStack>
 
-        {user?.role !== 'Admin' && <HStack>
+        {(user?.role !== 'admin' && user?.playlist?.length !== 0) && <HStack>
           <Text children={'Subscription'} fontWeight={'bold'} />
           {user?.subscription?.status === 'active'
             ? <Button isLoading={subscriptionLoading} color={'blue.500'} variant={'unstyled'} onClick={cancelSubscriptionHandler}>Cancel Subscription</Button>
@@ -101,26 +101,29 @@ const Profile = ({ user }) => {
       </VStack>
     </Stack>
 
-    <Heading children={'Playlist'} size={'md'} my={'8'} />
     {
-      user?.playlist?.length !== 0 && <Stack direction={['column', 'row']} alignItems={'center'} flexWrap='wrap' p={'4'}>
-        {
-          user?.playlist?.map((item) => {
-            return <VStack w={'48'} m={'2'} key={item.course}>
-              <Image boxSize={'full'} objectFit={'contain'} src={item.poster} />
-              <HStack>
-                <Link to={`/course/${item.course}`}>
-                  <Button variant={'ghost'} colorScheme={'blue'}>Watch Now</Button>
-                </Link>
+      user?.playlist?.length !== 0 &&
+      <>
+        <Heading children={'Playlist'} size={'md'} my={'8'} />
+        <Stack direction={['column', 'row']} alignItems={'center'} flexWrap='wrap' p={'4'}>
+          {
+            user?.playlist?.map((item) => {
+              return <VStack w={'48'} m={'2'} key={item.course}>
+                <Image boxSize={'full'} objectFit={'contain'} src={item.poster} />
+                <HStack>
+                  <Link to={`/course/${item.course}`}>
+                    <Button variant={'ghost'} colorScheme={'blue'}>Watch Now</Button>
+                  </Link>
 
-                <Button isLoading={loading} onClick={() => removeFromPlaylists(item.course)}>
-                  <RiDeleteBin7Fill />
-                </Button>
-              </HStack>
-            </VStack>
-          })
-        }
-      </Stack>
+                  <Button isLoading={loading} onClick={() => removeFromPlaylists(item.course)}>
+                    <RiDeleteBin7Fill />
+                  </Button>
+                </HStack>
+              </VStack>
+            })
+          }
+        </Stack>
+      </>
     }
 
     <ChangeProfilePic isOpen={isOpen} onClose={onClose} changeImageSubmitHandler={changeImageSubmitHandler} loading={loading} />

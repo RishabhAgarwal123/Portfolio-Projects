@@ -9,8 +9,8 @@ import logo from "../../assets/images/logo.png";
 
 const Subscribe = ({ user }) => {
   const dispatch = useDispatch();
-  const { loading, error, subscriptionId } = useSelector(state => state.subscription);
-  const { error: courseError } = useSelector(state => state.course);
+  const { error: courseError } = useSelector(state => state?.courses);
+  const { loading, error, subscriptionId } = useSelector(state => state?.subscription);
   const [key, setKey] = useState('');
 
   const subscribeHandler = async () => {
@@ -56,7 +56,7 @@ const Subscribe = ({ user }) => {
     }
   }, [dispatch, error, user.name, user.email, key, subscriptionId, courseError]);
 
-  return <Container p={'16'}>
+  return <Container p={'16'} height={'100vh'}>
     <Heading children={'Welcome'} m={'8'} textAlign={'center'} />
     <VStack boxShadow={'lg'} alignItems={'stretch'} borderRadius={'lg'} spacing={'0'}>
       <Box bg={'blue.400'} p={'4'} css={{ borderRadius: '8px 8px 0 0' }}>
@@ -67,7 +67,7 @@ const Subscribe = ({ user }) => {
           <Text children={`Join Pro Pack and Get Access to all content - ₹299.00`} />
           <Heading size={'md'} children={'₹299.00 Only'} />
         </VStack>
-        <Button isLoading={loading} my={'8'} w={'full'} colorScheme={'blue'} onClick={subscribeHandler}>Purchase Now</Button>
+        <Button isLoading={loading}  my={'8'} w={'full'} colorScheme={'blue'} onClick={subscribeHandler}>Purchase Now</Button>
       </Box>
       <Box bg={'blackAlpha.600'} p={'4'} css={{ borderRadius: '0 0 8px 8px' }}>
         <Heading color={'white'} size={'sm'} children={'100% refund at cancellation'} />
