@@ -1,20 +1,53 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { HStack, Heading, Box, Grid, Text, Stack, Progress } from '@chakra-ui/react';
 import cursor from '../../../assets/images/cursor.png';
 import Sidebar from '../Sidebar';
 import { RiArrowDownLine, RiArrowUpLine } from 'react-icons/ri';
 import { FaSquare } from 'react-icons/fa';
 import { DoughnutChart, LineChart } from './Chart';
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { getDashboardDetails } from '../../../redux/actions/admin';
+import Loader from '../../Layout/Loader/Loader';
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
+    const dispatch = useDispatch();
+    const {
+        loading,
+        error,
+        message,
+        stats,
+        subscriptionCount,
+        subscriptionIncreased,
+        subscriptionPercentage,
+        usersCount,
+        usersIncreased,
+        usersPercentage,
+        viewsCount,
+        viewsIncreased,
+        viewsPercentage, } = useSelector(state => state.admin)
+
+    useEffect(() => {
+        if (error) {
+            toast.error(error);
+            dispatch({ type: 'clearError' });
+        }
+        if (message) {
+            toast.success(message);
+            dispatch({ type: 'clearMessage' });
+        }
+        dispatch(getDashboardDetails());
+    }, [dispatch, error, message]);
+
     return <Grid css={{ cursor: `url(${cursor}), default` }} minH={'100vh'} templateColumns={['1fr', '5fr 1fr']}>
-        <Box boxSizing={'border-box'} py={'16'} px={['4', '0']}>
-            <Text mt={'5'} textAlign={'center'} opacity={'.5'} children={`Last change was on ${String(new Date()).split('G')[0]}`} />
+        {loading || !stats ? <Loader /> : <Box boxSizing={'border-box'} py={'16'} px={['4', '0']}>
+            <Text mt={'5'} textAlign={'center'} opacity={'.5'} children={`Last change was on ${String(new Date(stats[11]?.createdAt)).split('G')[0]}`} />
             <Heading children={'Dashboard'} ml={['0', '16']} mb={'16'} textAlign={['center', 'left']} />
             <Stack direction={['column', 'row']} minH={'24'} justifyContent={'space-evenly'}>
-                <CustomBox title={'Views'} qty={'123'} qtyPercen={30} profit={true} />
-                <CustomBox title={'Users'} qty={'33'} qtyPercen={50} profit={true} />
-                <CustomBox title={'Subscription'} qty={'36'} qtyPercen={20} profit={false} />
+                <CustomBox title={'Views'} qty={viewsCount} qtyPercen={viewsPercentage} profit={viewsIncreased} />
+                <CustomBox title={'Users'} qty={usersCount} qtyPercen={usersPercentage} profit={usersIncreased} />
+                <CustomBox title={'Subscription'} qty={subscriptionCount} qtyPercen={subscriptionPercentage} profit={subscriptionIncreased} />
             </Stack>
             <Box
                 m={['0', '16']}
@@ -24,15 +57,15 @@ const Dashboard = () => {
                 boxShadow={'-2px 0 10px rgba(107, 70, 193, .5)'}
             >
                 <Heading textAlign={['center', 'left']} size={'md'} children={'Views Graph'} pt={['8', '0']} ml={['0', '16']} />
-                <LineChart />
+                <LineChart views={stats?.map((stat) => stat?.views)} />
             </Box>
             <Grid templateColumns={['1fr', '2fr 1fr']}>
                 <Box p={'4'}>
                     <Heading textAlign={['center', 'left']} size={'md'} children={'Progress Bar'} my={'8'} ml={['0', '16']} />
                     <Box>
-                        <Bar title={'Views'} value={130} profit={true} />
-                        <Bar title={'Users'} value={50} profit={true} />
-                        <Bar title={'Subscription'} value={20} profit={false} />
+                        <Bar title={'Views'} value={viewsPercentage} profit={viewsIncreased} />
+                        <Bar title={'Users'} value={usersPercentage} profit={usersIncreased} />
+                        <Bar title={'Subscription'} value={subscriptionPercentage} profit={subscriptionIncreased} />
                         <Box justifyContent={'center'} textAlign={'center'} display={'flex'}>
                             <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
                                 <FaSquare color={'green'} /> <Text children={'Profit'} ml={'1'} />
@@ -46,10 +79,10 @@ const Dashboard = () => {
 
                 <Box p={['0', '16']} boxSizing={'border-box'} py={'4'}>
                     <Heading textAlign={'center'} size={'md'} mb={'4'} children={'Users'} />
-                    <DoughnutChart />
+                    <DoughnutChart users={[subscriptionCount, usersCount - subscriptionCount]} />
                 </Box>
             </Grid>
-        </Box>
+        </Box>}
         <Sidebar></Sidebar>
     </Grid>
 }

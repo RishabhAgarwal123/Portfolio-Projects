@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { adminReducer } from './reducers/adminReducer';
 import { courseReducer } from './reducers/courseReducer';
+import { otherReducer } from './reducers/otherReducer';
 import { subscribeReducer } from './reducers/subscribeReducer';
 import { profileReducer, userReducer } from './reducers/userReducer';
 
@@ -10,7 +11,8 @@ const store = configureStore({
         profile: profileReducer,
         courses: courseReducer,
         subscription: subscribeReducer,
-        admin: adminReducer
+        admin: adminReducer,
+        other: otherReducer
     }
 });
 

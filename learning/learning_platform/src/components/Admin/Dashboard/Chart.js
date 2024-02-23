@@ -6,7 +6,7 @@ ChartJS.register(
     CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, ArcElement, Legend
 )
 
-export const LineChart = () => {
+export const LineChart = ({ views = [] }) => {
     const labels = getLastYearMonth();
     const options = {
         responsive: true,
@@ -25,7 +25,7 @@ export const LineChart = () => {
         datasets: [
             {
                 label: 'Views',
-                data: [6, 10, 12, 10, 15],
+                data: views,
                 borderColor: 'rgba(107, 70, 193, 0.5)',
                 backgroundColor: '#6b46c1'
             }
@@ -34,14 +34,14 @@ export const LineChart = () => {
     return <Line options={options} data={data} />
 }
 
-export const DoughnutChart = () => {
+export const DoughnutChart = ({ users = [] }) => {
     const labels = ['Subscribed', 'Not Subscribed'];
     const data = {
         labels,
         datasets: [
             {
                 label: 'Users',
-                data: [25, 45],
+                data: users,
                 borderColor: ['rgb(62, 12, 171)', 'rgb(214, 43, 129)'],
                 backgroundColor: ['rgba(62, 12, 171, .3)', 'rgba(214, 43, 129, .3)'],
                 borderWidth: 1
@@ -57,19 +57,20 @@ function getLastYearMonth() {
         'January', 'February', 'March', 'April', 'May', 'June', 'July',
         'August', 'September', 'October', 'November', 'December'
     ];
-    const currentMonth = new Date().getMonth();
-    const remain = 11 - currentMonth;
 
-    for (let i = currentMonth; i < months.length; i--) {
-        const element = months[i];
-        labels.unshift(element);
-        if (i === 0) break;
-    }
+    // Get the current month index (0-indexed)
+    const currentMonthIndex = new Date().getMonth();
 
-    for (let i = 11; i > remain; i--) {
-        if (i === currentMonth) break;
-        const element = months[i];
-        labels.unshift(element);
+    // Start from the month before the current month
+    let monthIndex = currentMonthIndex - 1;
+
+    // Loop backwards for 12 months
+    for (let i = 0; i < 12; i++) {
+        if (monthIndex < 0) {
+            monthIndex = 11; // Wrap around to December if monthIndex becomes negative
+        }
+        labels.unshift(months[monthIndex]); // Add the month to the beginning of the labels array
+        monthIndex--; // Move to the previous month
     }
 
     return labels;
