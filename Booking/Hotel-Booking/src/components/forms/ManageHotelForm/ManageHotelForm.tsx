@@ -18,15 +18,15 @@ export type HotelFormData = {
 }
 
 const ManageHotelForm = () => {
-  const formMethods = useForm<HotelFormData>();
+  const methods = useForm();
 
   return (
-    <FormProvider {...formMethods}>
+    <FormProvider {...methods}>
       <form>
         <DetailsSection />
       </form>
     </FormProvider>
-  )
+  );
 }
 
 export default ManageHotelForm
