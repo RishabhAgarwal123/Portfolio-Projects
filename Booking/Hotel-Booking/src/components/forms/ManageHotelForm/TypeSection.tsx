@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
-import { hotelTypes } from "../../../config/hotel-options-config";
 import { HotelFormData } from "./ManageHotelForm";
+import { hotelTypes } from "../../../config/hotel-options-config";
 
 const TypeSection = () => {
     const { register, watch, formState: { errors } } = useFormContext<HotelFormData>();
@@ -8,7 +8,7 @@ const TypeSection = () => {
     const style = 'cursor-pointer text-sm rounded-full px-4 py-2 font-semibold'
 
     return (
-        <div className="mt-8">
+        <div>
             <h2 className="text-2xl font-bold mb-3">Hotel Type</h2>
             <div className="grid grid-cols-5 gap-2">
                 {hotelTypes?.map((type, index) => (
@@ -28,7 +28,7 @@ const TypeSection = () => {
                     </label>
                 ))}
                 {errors.type && (
-                    <span className="text-red-500">{errors.type.message}</span>
+                    <span className="text-red-500 text-sm font-bold">{errors.type.message}</span>
                 )}
             </div>
         </div>
