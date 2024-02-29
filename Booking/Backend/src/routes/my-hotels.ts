@@ -21,6 +21,7 @@ router.post('/', verifyToken, [
     body('city').notEmpty().withMessage('City is required'),
     body('country').notEmpty().withMessage('Country is required'),
     body('description').notEmpty().withMessage('Description is required'),
+    body('starRating').notEmpty().withMessage('Rating is required'),
     body('type').notEmpty().withMessage('Type is required'),
     body('pricePerNight').notEmpty().isNumeric().withMessage('Price Per Night is required and must be a number'),
     body('facilites').notEmpty().isArray().withMessage('Facilites is required'),
