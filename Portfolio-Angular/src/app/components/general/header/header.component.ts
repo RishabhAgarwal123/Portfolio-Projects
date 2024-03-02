@@ -1,13 +1,16 @@
 import { transition, trigger, query, style, stagger, animate } from '@angular/animations';
+import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
 import { AnalyticsService } from '../../../services/analytics/analytics.service';
 import { LanguageService } from '../../../services/language.service';
 
 @Component({
   standalone: true,
   selector: 'app-header',
+  imports: [CommonModule, RouterOutlet, NgbNavModule],
   templateUrl: './header.component.html',
   styleUrls: ["./header.component.scss"],
   animations: [

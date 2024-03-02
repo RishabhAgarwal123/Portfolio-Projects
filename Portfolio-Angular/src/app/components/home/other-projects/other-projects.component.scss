@@ -1,8 +1,6 @@
 @import "../../../../variables.scss";
 
 .more-projects {
-    padding: 0 80px;
-
     .project-col {
         padding: 10px;
         height: 400px;
@@ -74,6 +72,12 @@
 
 i {
     margin-left: 10px;
+}
+
+@media (min-width: 768px) { 
+    .more-projects {
+        padding: 0 80px;
+    }
 }
 
 @media (max-width: 1300px) {

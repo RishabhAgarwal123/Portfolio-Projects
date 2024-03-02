@@ -6,12 +6,18 @@
   <div class="header-container">
     <div class="logo fade-enter-done" tabindex="-1">
       <a href="/" aria-label="home">
-        <img src="../../../../assets/images/AvatarImage-1.png" width="45" alt="Logo">
+        <div class="logo-container">
+          <img
+            src="../../../../assets/images/AvatarImage-1.png"
+            width="45"
+            alt="Logo"
+          />
+        </div>
       </a>
     </div>
-    <ul ngbNav class="menu-ul">
+    <ul ngbNav #nav="ngbNav" class="menu-ul">
       <li ngbNavItem (click)="sendAnalytics('click_about', 'menu', 'click')">
-        <a (click)="scroll('about')">
+        <a ngbNavLink (click)="scroll('about')">
           <span class="nav-number">01. </span>
           <span class="underline nav-text">About me</span>
         </a>
@@ -21,46 +27,45 @@
         ngbNavItem
         (click)="sendAnalytics('click_experience', 'menu', 'click')"
       >
-        <a (click)="scroll('experience')">
+        <a ngbNavLink (click)="scroll('experience')">
           <span class="nav-number">02. </span>
           <span class="underline nav-text">Experience</span>
         </a>
         <ng-template ngbNavContent>Second Content</ng-template>
       </li>
       <li ngbNavItem (click)="sendAnalytics('click_works', 'menu', 'click')">
-        <a (click)="scroll('projects')">
+        <a ngbNavLink (click)="scroll('projects')">
           <span class="nav-number">03. </span>
           <span class="underline nav-text">Works</span>
         </a>
         <ng-template ngbNavContent>Third Content</ng-template>
       </li>
       <li ngbNavItem (click)="sendAnalytics('click_contact', 'menu', 'click')">
-        <a (click)="scroll('contact')">
+        <a ngbNavLink (click)="scroll('contact')">
           <span class="nav-number">04. </span>
           <span class="underline nav-text">Contact</span>
         </a>
         <ng-template ngbNavContent>Fourth Content</ng-template>
       </li>
       <li ngbNavItem>
-        <a (click)="downloadResume()" class="main-btn resume-btn"> Resume </a>
+        <a ngbNavLink (click)="downloadResume()" class="main-btn resume-btn"> Resume </a>
       </li>
     </ul>
-    @if(responsiveMenuVisible) {
     <div class="menu-wrapper">
       <div
-        class="hamburger-menu"
-        [class.animate]="responsiveMenuVisible"
-        (click)="responsiveMenuVisible = !responsiveMenuVisible"
+      [class.animate]="responsiveMenuVisible"
+      (click)="responsiveMenuVisible = !responsiveMenuVisible"
+      class="hamburger-menu"
       ></div>
     </div>
     <div
       class="menu-responsive"
-      [style]="{ 'pointer-events': '!responsiveMenuVisible' ? 'none' : '' }"
     >
+    <!-- [ngStyle]="{ 'pointer-events': '!responsiveMenuVisible' ? 'none' : '' }" -->
       <aside
-        class="on-top"
-        [class.aside-show]="responsiveMenuVisible"
-        [class.nav-shadow]="this.pageYPosition > 0"
+      [class.aside-show]="responsiveMenuVisible"
+      [class.nav-shadow]="this.pageYPosition > 0"
+      class="on-top"
       >
         <nav>
           <ol>
@@ -87,6 +92,5 @@
         </nav>
       </aside>
     </div>
-    }
   </div>
 </nav>

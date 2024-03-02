@@ -1,3 +1,33 @@
 main {
     padding: 0 80px;
 }
+
+@media (max-width: 550px) {
+    main {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: 500px) {
+    main {
+        padding: 0 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    main {
+        padding: 0 30px;
+    }
+}
+
+@media (max-width: 300px) {
+    main {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 200px) {
+    main {
+        padding: 0 10px;
+    }
+}

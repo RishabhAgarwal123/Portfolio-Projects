@@ -10,7 +10,6 @@
         .section-box-banner {
             display: table-cell;
             vertical-align: middle;
-            padding: 0px 80px;
 
             .content {
                 margin-top: 98px;
@@ -66,5 +65,11 @@
                 height: 43px;
             }
         }
+    }
+}
+
+@media (min-width: 768px) { 
+    .section-box-banner {
+        padding: 0 80px;
     }
 }

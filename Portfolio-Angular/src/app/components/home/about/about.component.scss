@@ -1,8 +1,6 @@
 @import "../../../../variables.scss";
 
 .about {
-    padding: 0 80px;
-
     .about-description {
         margin-top: 30px;
         max-width: 480px;
@@ -173,6 +171,12 @@ svg,
     mix-blend-mode: normal;
 }
 
+@media (min-width: 768px) { 
+    .about {
+        padding: 0 80px;
+    }
+}
+
 @media (min-width: 992px) and (max-width: 1300px) {
     .about-img-container {
         margin-left: auto;
@@ -196,19 +200,19 @@ svg,
     }
 }
 
-@media (max-width: 500px) {
-    .about {
-        .about-img-container {
-            width: 100%;
+// @media (max-width: 500px) {
+//     .about {
+//         .about-img-container {
+//             width: 100%;
 
-            img {
-                width: 180px;
-                height: 180px;
-            }
+//             img {
+//                 width: 180px;
+//                 height: 180px;
+//             }
 
-            &:after {
-                display: none;
-            }
-        }
-    }
-}
+//             &:after {
+//                 display: none;
+//             }
+//         }
+//     }
+// }

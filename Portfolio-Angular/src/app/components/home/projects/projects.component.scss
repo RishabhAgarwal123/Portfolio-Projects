@@ -1,7 +1,6 @@
 @import "../../../../variables.scss";
 
 .projects {
-  padding: 0 80px;
 
   .project-container {
     height: 450px;
@@ -133,6 +132,12 @@
   .project-info-left,
   .project-info-right {
     background-image: none !important;
+  }
+}
+
+@media (min-width: 768px) { 
+  .projects {
+      padding: 0 80px;
   }
 }
 
