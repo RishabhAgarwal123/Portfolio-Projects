@@ -1,5 +1,7 @@
 
+import { useEffect } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
+import { HotelType } from '../../../../../Backend/src/models/hotel';
 import DetailsSection from './DetailsSection';
 import Facilities from './Facilities';
 import Guests from './Guests';
@@ -22,16 +24,20 @@ export type HotelFormData = {
 }
 
 type Props = {
+  hotel?: HotelType,
   onSave: (hotelFormData: FormData) => void,
-  isLoading: boolean,
+  isLoading: boolean
 }
 
-const ManageHotelForm = ({ onSave, isLoading }: Props) => {
+const ManageHotelForm = ({ onSave, isLoading, hotel}: Props) => {
   const methods = useForm<HotelFormData>();
-  const { handleSubmit } = methods;
-
+  const { handleSubmit, reset } = methods;
+ 
   const onSubmit = handleSubmit((formDataJson: HotelFormData) => {
     const formData = new FormData();
+    if (hotel) {
+      formData.append("hotelId", hotel._id);
+    }
     formData.append('name', formDataJson.name);
     formData.append('city', formDataJson.city);
     formData.append('country', formDataJson.country);
@@ -46,12 +52,21 @@ const ManageHotelForm = ({ onSave, isLoading }: Props) => {
       formData.append(`facilities[${index}]`, facility);
     })
 
+    if (formDataJson.imageUrls) {
+      formDataJson.imageUrls.forEach((url, index) => {
+        formData.append(`imagesUrls[${index}]`, url);
+      })
+    }
+
     Array.from(formDataJson.imageFiles).forEach((imageFile) => {
       formData.append(`imageFiles`, imageFile);
     })
     onSave(formData)
-    console.log(formData);
   });
+
+  useEffect(() => {
+    reset(hotel);
+  }, [hotel, reset]);
 
   return (
     <FormProvider {...methods}>
@@ -63,7 +78,7 @@ const ManageHotelForm = ({ onSave, isLoading }: Props) => {
         <ImagesSection />
         <span className="flex justify-end">
           <button type="submit" disabled={isLoading} className="bg-blue-600 text-white p-3 font-bold hover:bg-blue-500 text-xl disable:bg-gray-500">
-            { isLoading ? 'Adding Hotel...': 'Add Hotel'}
+            {isLoading ? `Saving Hotel...` : 'Save Hotel'}
           </button>
         </span>
       </form>
