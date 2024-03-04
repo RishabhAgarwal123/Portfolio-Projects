@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import userRoutes from './routes/users';
 import authRoutes from './routes/auth';
 import myHotelRoutes from './routes/my-hotels';
+import hotelRoutes from './routes/hotels';
 import cookieParser from 'cookie-parser';
 import { v2 as cloudinary } from 'cloudinary';
 const PORT = process.env.PORT;
@@ -29,6 +30,7 @@ app.use(cors({
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/my-hotels", myHotelRoutes);
+app.use("/api/hotels", hotelRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server is running at localhost: ${PORT}`);
