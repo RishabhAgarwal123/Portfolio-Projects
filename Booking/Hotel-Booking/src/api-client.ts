@@ -1,4 +1,4 @@
-import { HotelType } from "../../Backend/src/shared/types";
+import { HotelSearchResponse, HotelType } from "../../Backend/src/shared/types";
 import { RegisterForm } from "./pages/Register";
 import { SignInForm } from "./pages/SignIn";
 
@@ -112,6 +112,37 @@ export const editMyHotel = async (hotelFormData: FormData) => {
         credentials: 'include',
         body: hotelFormData, // Directly use FormData without modification
     });
+    const responseBody = await response.json();
+
+    if (!response.ok) {
+        throw new Error(responseBody.message);
+    }
+
+    return responseBody;
+}
+
+export type SearchParams = {
+    destination?: string;
+    checkIn?: string;
+    checkOut?: string;
+    adultCount?: string;
+    childCount?: string;
+    page?: string;
+}
+
+export const searchHotels = async ({ destination, checkIn, checkOut, adultCount, childCount, page }: SearchParams): Promise<HotelSearchResponse> => {
+    const queryParams = new URLSearchParams();
+    queryParams.append("destination", destination || '');
+    queryParams.append("checkIn", checkIn || '');
+    queryParams.append("checkOut", checkOut || '');
+    queryParams.append("adultCount", adultCount || '');
+    queryParams.append("childCount", childCount || '');
+    queryParams.append("page", page || '');
+
+    const response = await fetch(`${API_BASE_URL}/api/hotels/search?${queryParams}`, {
+        method: 'GET',
+    });
+
     const responseBody = await response.json();
 
     if (!response.ok) {
