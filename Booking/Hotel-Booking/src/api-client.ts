@@ -128,9 +128,14 @@ export type SearchParams = {
     adultCount?: string;
     childCount?: string;
     page?: string;
+    facilities?: string[],
+    types?: string[],
+    stars?: string[],
+    maxPrice?: string,
+    sortOption?: string
 }
 
-export const searchHotels = async ({ destination, checkIn, checkOut, adultCount, childCount, page }: SearchParams): Promise<HotelSearchResponse> => {
+export const searchHotels = async ({ destination, checkIn, checkOut, adultCount, childCount, page, maxPrice, facilities, types, stars, sortOption }: SearchParams): Promise<HotelSearchResponse> => {
     const queryParams = new URLSearchParams();
     queryParams.append("destination", destination || '');
     queryParams.append("checkIn", checkIn || '');
@@ -138,6 +143,13 @@ export const searchHotels = async ({ destination, checkIn, checkOut, adultCount,
     queryParams.append("adultCount", adultCount || '');
     queryParams.append("childCount", childCount || '');
     queryParams.append("page", page || '');
+
+    queryParams.append('maxPrice', maxPrice || '');
+    queryParams.append('sortOption', sortOption || '');
+
+    facilities?.forEach((facility) => queryParams.append("facilities", facility));
+    types?.forEach((type) => queryParams.append("types", type));
+    stars?.forEach((star) => queryParams.append("stars", star));
 
     const response = await fetch(`${API_BASE_URL}/api/hotels/search?${queryParams}`, {
         method: 'GET',
