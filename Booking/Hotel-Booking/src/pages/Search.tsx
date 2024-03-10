@@ -7,6 +7,7 @@ import Pagination from "../components/Pagination";
 import StarRatingFilter from "../components/StarRatingFilter";
 import HotelTypesFilter from "../components/HotelTypesFilter";
 import FacilitiesFilter from "../components/FacilitiesFilter";
+import PriceFilter from "../components/PriceFilter";
 
 const Search = () => {
     const search = useSearchContext();
@@ -14,6 +15,8 @@ const Search = () => {
     const [selectedStars, setSelectedStars] = useState<string[]>([]);
     const [selectedHotelTypes, setSelectedHotelTypes] = useState<string[]>([]);
     const [selectedFacilities, setSelectedFacilities] = useState<string[]>([]);
+    const [selectedPrice, setSelectedPrice] = useState<number | undefined>();
+    const [sortOption, setSortOption] = useState<string>('');
 
     const searchParams = {
         destination: search.destination,
@@ -24,7 +27,9 @@ const Search = () => {
         page: page.toString(),
         stars: selectedStars,
         types: selectedHotelTypes,
-        facilities: selectedFacilities
+        facilities: selectedFacilities,
+        maxPrice: selectedPrice?.toString(),
+        sortOption: sortOption
     }
 
     const { data: hotelData } = useQuery(["searchHotels", searchParams], () => apiClient.searchHotels(searchParams))
@@ -60,24 +65,30 @@ const Search = () => {
                     <StarRatingFilter selectedStars={selectedStars} onChange={handleStarChange} />
                     <HotelTypesFilter selectedTypes={selectedHotelTypes} onChange={handleHotelChange} />
                     <FacilitiesFilter selectedFacilities={selectedFacilities} onChange={handleFacilityChange} />
+                    <PriceFilter selectedPrice={selectedPrice} onChange={(value?: number) => setSelectedPrice(value)} />
                 </div>
             </div>
             <div className="flex flex-col gap-5">
                 <div className="flex justify-between items-center">
                     <span className="text-xl font-bold">
-                        {hotelData?.pagination?.totalPages} Hotels Found
+                        {hotelData?.data?.length} Hotels Found
                         {search.destination ? ` in ${search.destination}` : ""}
                     </span>
-                    {/* Sort options */}
+                    <select className="p-2 border rounded-md" value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+                        <option value="">Sort By</option>
+                        <option value="starRating">Star Rating</option>
+                        <option value="pricePerNightAsc">Price Per Night (low to high)</option>
+                        <option value="pricePerNightDesc">Price Per Night (high to low)</option>
+                    </select>
                 </div>
                 {
                     hotelData?.data?.map((hotel, index) => (
                         <SearchResultsCard key={index} hotel={hotel} />
                     ))
                 }
-                <div>
+                {hotelData && hotelData?.data?.length > 0 && <div>
                     <Pagination page={hotelData?.pagination.page || 1} pages={hotelData?.pagination.pages || 1} onPageChange={setPage} />
-                </div>
+                </div>}
             </div>
         </div>
     )
