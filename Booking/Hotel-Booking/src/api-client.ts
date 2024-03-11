@@ -163,3 +163,17 @@ export const searchHotels = async ({ destination, checkIn, checkOut, adultCount,
 
     return responseBody;
 }
+
+export const getHotelById = async (hotelId: string) => {
+    const response = await fetch(`${API_BASE_URL}/api/hotels/${hotelId}`, {
+        method: 'GET',
+    });
+
+    const responseBody = await response.json();
+
+    if (!response.ok) {
+        throw new Error(responseBody.message);
+    }
+
+    return responseBody;
+}
