@@ -1,0 +1,13 @@
+.border {
+    border: 1px solid black;
+}
+
+.div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+input {
+    margin: 0 10px 10px 10px;
+}
