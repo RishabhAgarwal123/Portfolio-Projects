@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <title>Interview Learning JavaScript Questions</title>
-  </head>
-  <body>
+</head>
+
+<body>
+    <h1>Interview Questions</h1>
     <div class="border">
-      <div class="div">
-        <h4>1. Debouncing:</h4>
-        <span>
-          Debouncing is nothing more just limiting the rate with which a
-          function is executed or called this function is generally going to be
-          a expensive function.
-        </span>
-      </div>
-      <input type="text" onkeyup="debounceFunction()" placeholder="This is debounce box"> 
+        <!-- Debouncing -->
+        <div class="div">
+            <h4>1. Debouncing:</h4>
+            <span>
+                Debouncing is nothing more just limiting the rate with which a
+                function is executed or called this function is generally going to be
+                a expensive function.
+            </span>
+        </div>
+        <input type="text" onkeyup="debounceFunction()" placeholder="This is debounce box">
+    </div>
+    <!-- Throttling -->
+    <div class="border">
+        <div class="div" id="throttle">
+            <h4>2. Throttling:</h4>
+            <span>
+                Throttling is also just calling a expensive function and limiting the rate of execution of that function. 
+                It is just calling the function within some time intervals in between.
+            </span>
+            <p style="margin: 0;">It can be tested by moving cursor inside the Throttling box will provide the x and y co-ordincates</p>
+        </div>
+    </div>
     </div>
     <script src="./deboune.js" defer></script>
-  </body>
+    <script src="./throttle.js" defer></script>
+</body>
+
 </html>
