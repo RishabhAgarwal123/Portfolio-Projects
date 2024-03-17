@@ -35,7 +35,7 @@ function expensiveFuntion() {
     }, 500);
 }
 
-function debounce(expensiveFunctionAsCallback, delay, firstCall) {
+function debounce(expensiveFunctionAsCallback, delay, firstCall = false) {
     let timer;
     return function (...args) {
         let firstCallStart = !timer && firstCall === true;

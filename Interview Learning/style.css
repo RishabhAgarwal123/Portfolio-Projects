@@ -15,6 +15,7 @@ h1 {
 
 .div {
     display: flex;
+    padding-left: 10px;
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
