@@ -10,10 +10,28 @@
 
   <body>
     <h1>Interview Questions</h1>
+
+    <!-- Throttling -->
+    <div class="border">
+      <div class="div" id="throttle">
+        <h4>1. Throttling:</h4>
+        <span>
+          Throttling is also just calling a expensive function and limiting the
+          rate of execution of that function. It is just calling the function
+          within some time intervals in between.
+        </span>
+        <p style="margin: 0">
+          It can be tested by moving cursor inside the Throttling box will
+          provide the x and y co-ordinates
+        </p>
+      </div>
+    </div>
+
+    <!-- Debouncing -->
     <div class="border">
       <!-- Debouncing -->
       <div class="div">
-        <h4>1. Debouncing:</h4>
+        <h4>2. Debouncing:</h4>
         <span>
           Debouncing is nothing more just limiting the rate with which a
           function is executed or called this function is generally going to be
@@ -26,22 +44,6 @@
         placeholder="This is debounce box"
       />
       <button id="btn">Check for Debouncing</button>
-    </div>
-
-    <!-- Throttling -->
-    <div class="border">
-      <div class="div" id="throttle">
-        <h4>2. Throttling:</h4>
-        <span>
-          Throttling is also just calling a expensive function and limiting the
-          rate of execution of that function. It is just calling the function
-          within some time intervals in between.
-        </span>
-        <p style="margin: 0">
-          It can be tested by moving cursor inside the Throttling box will
-          provide the x and y co-ordinates
-        </p>
-      </div>
     </div>
 
     <!-- Currying -->
@@ -97,6 +99,7 @@
       </div>
     </div>
 
+    <!-- this methods call, apply, bind -->
     <div class="border">
       <div class="div" style="cursor: pointer">
         <h4>4. This Methods:</h4>
@@ -106,6 +109,17 @@
       </div>
     </div>
 
+    <!-- Array methods -->
+    <div class="border">
+      <div class="div" style="cursor: pointer">
+        <h4>5. Array Methods:</h4>
+        <button id="map">Map</button>
+        <button id="filter">Filter</button>
+        <button id="reduce">Reduce</button>
+      </div>
+    </div>
+
+    <script src="./arrayMethods.js" defer></script>
     <script src="./deboune1.js" defer></script>
     <script src="./debounce2.js" defer></script>
     <script src="./currying.js" defer></script>
