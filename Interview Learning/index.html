@@ -11,123 +11,320 @@
   <body>
     <h1>Interview Questions</h1>
 
-    <!-- Throttling -->
-    <div class="border">
-      <div class="div" id="throttle">
-        <h4>1. Throttling:</h4>
-        <span>
-          Throttling is also just calling a expensive function and limiting the
-          rate of execution of that function. It is just calling the function
-          within some time intervals in between.
-        </span>
-        <p style="margin: 0">
-          It can be tested by moving cursor inside the Throttling box will
-          provide the x and y co-ordinates
-        </p>
+    <div class="content">
+      <!-- Throttling -->
+      <div class="border">
+        <div class="div" id="throttle">
+          <h4>1. Throttling:</h4>
+          <span>
+            Throttling is also just calling a expensive function and limiting
+            the rate of execution of that function. It is just calling the
+            function within some time intervals in between.
+          </span>
+          <p style="margin: 0">
+            It can be tested by moving cursor inside the Throttling box will
+            provide the x and y co-ordinates
+          </p>
+        </div>
       </div>
-    </div>
 
-    <!-- Debouncing -->
-    <div class="border">
       <!-- Debouncing -->
-      <div class="div">
-        <h4>2. Debouncing:</h4>
-        <span>
-          Debouncing is nothing more just limiting the rate with which a
-          function is executed or called this function is generally going to be
-          a expensive function.
-        </span>
+      <div class="border">
+        <!-- Debouncing -->
+        <div class="div">
+          <h4>2. Debouncing:</h4>
+          <span>
+            Debouncing is nothing more just limiting the rate with which a
+            function is executed or called this function is generally going to
+            be a expensive function.
+          </span>
+        </div>
+        <input
+          type="text"
+          onkeyup="debounceFunction()"
+          placeholder="This is debounce box"
+        />
+        <button id="btn">Check for Debouncing</button>
       </div>
-      <input
-        type="text"
-        onkeyup="debounceFunction()"
-        placeholder="This is debounce box"
-      />
-      <button id="btn">Check for Debouncing</button>
-    </div>
 
-    <!-- Currying -->
-    <div class="border">
-      <div class="div" id="throttle" style="cursor: pointer">
-        <h4>3. Currying:</h4>
-        <span id="curry">
-          Currying is a concept in computer science and functional programming
-          where a function that takes multiple arguments is transformed into a
-          sequence of functions, each taking a single argument.
-        </span>
-        <span
-          >On click in this box a console will print with example of Currying.
-          example: sum(a)(b)(c)().</span
-        >
+      <!-- Currying -->
+      <div class="border">
+        <div class="div" id="throttle" style="cursor: pointer">
+          <h4>3. Currying:</h4>
+          <span id="curry">
+            Currying is a concept in computer science and functional programming
+            where a function that takes multiple arguments is transformed into a
+            sequence of functions, each taking a single argument.
+          </span>
+          <span
+            >On click in this box a console will print with example of Currying.
+            example: sum(a)(b)(c)().</span
+          >
+        </div>
       </div>
-    </div>
 
-    <!-- Flattening -->
-    <div class="border">
-      <div class="div" id="throttle" style="cursor: pointer">
-        <h4>4. Flattening:</h4>
-        <button
-          id="flat_1_5"
-          title="Flatten With Depth Recursively and Iteratively. Implement a function that can flatten a given array with nested sub-arrays.The function should accept two parameters: the first parameter is the array to be flattened, and the second parameter is the depth of the nested sub-arrays to be flattened.Implement the same function both recursively and iteratively."
-        >
-          Flatten1.5
-        </button>
-        <button
-          id="flat_2"
-          title="Flattening an object in JavaScript. Write a function that takes an object as input and flattens it so that there are no nested objects. The function should return an object with all the key-value pairs of the input object, where any nested objects are flattened to a single level. If a key has a value of null or undefined, it should still be included in the output object. Below are some input and expected output examples: "
-        >
-          Flatten2
-        </button>
-        <button
-          id="flat_3"
-          title="Flattening a Nested Object Structure in JavaScript. Imagine you're building a frontend application that needs to display a hierarchical list of items. Each item can have children, forming a nested structure. However, you want to display these items in a flat list without losing their relationships. Your task is to create a function that takes a nested structure as input and returns a flattened array of objects, preserving the original order of items."
-        >
-          Flatten3
-        </button>
-        <button
-          flat_3_5
-          title="Flatten III.5 is a follow-up of Flatten III. Now that you have built a flatting function, we would like you to build to additional functions getBatch() and getValueList()"
-        >
-          Flatten3.5
-        </button>
-        <button
-          id="flat_4"
-          title="Flatten Any Input (Objects, Arrays, Primitives). Write a function that takes an arbitrarily nested object or array and returns a flattened version of it."
-        >
-          Flatten4
-        </button>
+      <!-- Flattening -->
+      <div class="border">
+        <div class="div" id="throttle" style="cursor: pointer">
+          <h4>4. Flattening:</h4>
+          <button
+            id="flat_1_5"
+            title="Flatten With Depth Recursively and Iteratively. Implement a function that can flatten a given array with nested sub-arrays.The function should accept two parameters: the first parameter is the array to be flattened, and the second parameter is the depth of the nested sub-arrays to be flattened.Implement the same function both recursively and iteratively."
+          >
+            Flatten1.5
+          </button>
+          <button
+            id="flat_2"
+            title="Flattening an object in JavaScript. Write a function that takes an object as input and flattens it so that there are no nested objects. The function should return an object with all the key-value pairs of the input object, where any nested objects are flattened to a single level. If a key has a value of null or undefined, it should still be included in the output object. Below are some input and expected output examples: "
+          >
+            Flatten2
+          </button>
+          <button
+            id="flat_3"
+            title="Flattening a Nested Object Structure in JavaScript. Imagine you're building a frontend application that needs to display a hierarchical list of items. Each item can have children, forming a nested structure. However, you want to display these items in a flat list without losing their relationships. Your task is to create a function that takes a nested structure as input and returns a flattened array of objects, preserving the original order of items."
+          >
+            Flatten3
+          </button>
+          <button
+            flat_3_5
+            title="Flatten III.5 is a follow-up of Flatten III. Now that you have built a flatting function, we would like you to build to additional functions getBatch() and getValueList()"
+          >
+            Flatten3.5
+          </button>
+          <button
+            id="flat_4"
+            title="Flatten Any Input (Objects, Arrays, Primitives). Write a function that takes an arbitrarily nested object or array and returns a flattened version of it."
+          >
+            Flatten4
+          </button>
+        </div>
       </div>
-    </div>
 
-    <!-- this methods call, apply, bind -->
-    <div class="border">
-      <div class="div" style="cursor: pointer">
-        <h4>5. This Methods:</h4>
-        <button id="call">Call</button>
-        <button id="apply">Apply</button>
-        <button id="bind">Bind</button>
+      <!-- this methods call, apply, bind -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>5. This Methods:</h4>
+          <button id="call">Call</button>
+          <button id="apply">Apply</button>
+          <button id="bind">Bind</button>
+        </div>
       </div>
-    </div>
 
-    <!-- Array methods -->
-    <div class="border">
-      <div class="div" style="cursor: pointer">
-        <h4>6. Array Methods:</h4>
-        <button id="map">Map</button>
-        <button id="filter">Filter</button>
-        <button id="reduce">Reduce</button>
+      <!-- Array methods -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>6. Array Methods:</h4>
+          <button id="map">Map</button>
+          <button id="filter">Filter</button>
+          <button id="reduce">Reduce</button>
+        </div>
       </div>
-    </div>
 
-    <!-- Promise methods -->
-    <div class="border">
-      <div class="div" style="cursor: pointer">
-        <h4>7. Promise Methods:</h4>
-        <button id="promisify">Promisify</button>
-        <button id="race">Promise.race</button>
-        <button id="any">Promise.any</button>
-        <button id="all">Promise.all</button>
-        <button id="allSettled">Promise.allSettled</button>
+      <!-- Promise methods -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>7. Promise Methods:</h4>
+          <button id="promisify">Promisify</button>
+          <button id="race">Promise.race</button>
+          <button id="any">Promise.any</button>
+          <button id="all">Promise.all</button>
+          <button id="allSettled">Promise.allSettled</button>
+        </div>
+      </div>
+
+      <!-- Algorithms -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>8. DSA:</h4>
+          <button id="duplicateChar">First Duplicate Character</button>
+          <button id="objectPath">Object Path By Key</button>
+          <button id="any">Promise.any</button>
+          <button id="all">Promise.all</button>
+          <button id="allSettled">Promise.allSettled</button>
+        </div>
+      </div>
+
+      <!-- Pseudo Classes -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>9. Pseudo Classes:</h4>
+          <span>
+            Pseudo-classes are keywords that can be added to selectors in CSS to
+            target elements based on their state or position in the document
+            tree. They allow you to style elements in dynamic ways that go
+            beyond simply selecting elements based on their tag names, IDs, or
+            classes.
+          </span>
+        </div>
+        <ul class="pseudo">
+          <li>
+            :active - Selects an element while it is being activated by the
+            user.
+          </li>
+          <li>
+            :checked - Selects input elements that are checked (e.g.,
+            checkboxes, radio buttons).
+          </li>
+          <li>:default - Selects the default among a group of options.</li>
+          <li>:disabled - Selects input elements that are disabled.</li>
+          <li>:empty - Selects elements that have no children.</li>
+          <li>:enabled - Selects input elements that are enabled.</li>
+          <li>:first - Selects the first matched element of a selector.</li>
+          <li>
+            :first-child - Selects an element if it is the first child of its
+            parent.
+          </li>
+          <li>
+            :first-of-type - Selects the first element of its type within its
+            parent element.
+          </li>
+          <li>:focus - Selects an element when it gains focus.</li>
+          <li>:hover - Selects an element when the user hovers over it.</li>
+          <li>
+            :indeterminate - Selects input elements that are in an indeterminate
+            state (e.g., checkboxes).
+          </li>
+          <li>
+            :in-range - Selects input elements with a value within a specified
+            range.
+          </li>
+          <li>:invalid - Selects input elements with an invalid value.</li>
+          <li>
+            :lang() - Selects elements based on the value of their lang
+            attribute.
+          </li>
+          <li>
+            :last-child - Selects an element if it is the last child of its
+            parent.
+          </li>
+          <li>
+            :last-of-type - Selects the last element of its type within its
+            parent element.
+          </li>
+          <li>:link - Selects links that have not yet been visited.</li>
+          <li>:not() - Selects elements that do not match a given selector.</li>
+          <li>
+            :nth-child() - Selects an element if it is the nth child of its
+            parent.
+          </li>
+          <li>
+            :nth-last-child() - Selects an element if it is the nth child of its
+            parent, counting from the end.
+          </li>
+          <li>
+            :nth-last-of-type() - Selects an element if it is the nth child of
+            its parent of a specific type, counting from the end.
+          </li>
+          <li>
+            :nth-of-type() - Selects an element if it is the nth child of its
+            parent of a specific type.
+          </li>
+          <li>
+            :only-child - Selects an element if it is the only child of its
+            parent.
+          </li>
+          <li>
+            :only-of-type - Selects an element if it is the only element of its
+            type within its parent element.
+          </li>
+          <li>:optional - Selects input elements that are not required.</li>
+          <li>
+            :out-of-range - Selects input elements with a value outside a
+            specified range.
+          </li>
+          <li>:read-only - Selects input elements that are read-only.</li>
+          <li>:read-write - Selects input elements that are not read-only.</li>
+          <li>:required - Selects input elements that are required.</li>
+          <li>:root - Selects the root element of the document.</li>
+          <li>
+            :target - Selects the target element (the one whose ID matches the
+            fragment identifier of the URL).
+          </li>
+          <li>:valid - Selects input elements with a valid value.</li>
+          <li>:visited - Selects links that have been visited by the user.</li>
+        </ul>
+      </div>
+
+      <!-- Pseudo Elements -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>10. Pseudo Elements:</h4>
+          <span>
+            Pseudo-elements are similar to pseudo-classes, but they allow you to
+            style specific parts of an element rather than the whole element
+            itself. Here's a list of commonly used pseudo-elements in CSS along
+            with their definitions:
+          </span>
+        </div>
+        <ul class="pseudo">
+          <li>
+            ::after - Represents a virtual element that is inserted after the
+            content of an element.
+          </li>
+          <li>
+            ::before - Represents a virtual element that is inserted before the
+            content of an element.
+          </li>
+          <li>
+            ::first-letter - Selects the first letter of the first line of a
+            block-level element.
+          </li>
+          <li>
+            ::first-line - Selects the first line of a block-level element.
+          </li>
+          <li>
+            ::selection - Represents a portion of an element that is selected by
+            the user.
+          </li>
+          <li>
+            ::placeholder - Represents placeholder text in an input field or
+            textarea element.
+          </li>
+          <li>::marker - Represents the list item marker of an element.</li>
+          <li>
+            ::backdrop - Represents the background of the entire page, behind
+            any other elements.
+          </li>
+          <li>
+            ::spelling-error - Represents a word that the browser's spell
+            checker has identified as misspelled.
+          </li>
+          <li>::grammar-error - Represents a grammatical error in a text.</li>
+          <li>
+            ::placeholder-shown - Represents an input element when its
+            placeholder text is visible.
+          </li>
+          <li>
+            ::before-input - Represents the contents of an input element before
+            the user inputs any value.
+          </li>
+          <li>
+            ::after-input - Represents the contents of an input element after
+            the user inputs a value.
+          </li>
+          <li>
+            ::cue - Represents the marker of a cue in a media element (e.g., a
+            video or audio player).
+          </li>
+          <li>
+            ::file-selector-button - Represents the button used to open the file
+            selector dialog in an input element with type="file".
+          </li>
+          <li>::outside - Represents the area outside an element's border.</li>
+          <li>::inside - Represents the area inside an element's border.</li>
+          <li>
+            ::content - Represents the content of an element generated using the
+            content property in CSS.
+          </li>
+          <li>
+            ::region - Represents a container that may be generated by a CSS
+            Regions module.
+          </li>
+          <li>
+            ::part() - Represents a part of a shadow host element that has been
+            defined using the part attribute.
+          </li>
+        </ul>
       </div>
     </div>
 
@@ -144,5 +341,7 @@
     <script src="./Flattening/flatten3.js" defer></script>
     <script src="./Flattening/flatten3.5.js" defer></script>
     <script src="./Flattening/flatten4.js" defer></script>
+    <script src="./Questions/FirstDuplicateLetter.js" defer></script>
+    <script src="./Questions/ObjectPathByKey.js" defer></script>
   </body>
 </html>

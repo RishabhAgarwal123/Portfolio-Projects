@@ -1,4 +1,5 @@
 body {
+    padding-top: 40px;
     height: 100vh;
     scroll-behavior: smooth;
     overflow-y: auto;
@@ -6,6 +7,19 @@ body {
 
 h1 {
     text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: #f2f2f2;;
+}
+
+.content {
+    height: 2000px; /* Just for demonstration */
+    padding: 20px;
+    font-size: 18px;
+    line-height: 1.5;
 }
 
 h4 {
@@ -31,4 +45,29 @@ input {
 
 button {
     cursor: pointer;
+}
+
+ul {
+    text-decoration: none;
+} 
+
+li {
+    text-decoration: none;
+}
+
+.hover:hover {
+    color: red;
+}
+
+.button:active {
+    background-color: green;
+}
+
+.input:focus {
+    border-color: green;
+}
+
+.pseudo {
+    height: 200px;
+    overflow-y: auto;
 }
