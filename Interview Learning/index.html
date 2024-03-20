@@ -147,7 +147,7 @@
 
       <!-- Pseudo Classes -->
       <div class="border">
-        <div class="div" style="cursor: pointer">
+        <div class="div">
           <h4>9. Pseudo Classes:</h4>
           <span>
             Pseudo-classes are keywords that can be added to selectors in CSS to
@@ -248,7 +248,7 @@
 
       <!-- Pseudo Elements -->
       <div class="border">
-        <div class="div" style="cursor: pointer">
+        <div class="div">
           <h4>10. Pseudo Elements:</h4>
           <span>
             Pseudo-elements are similar to pseudo-classes, but they allow you to
@@ -327,6 +327,69 @@
           </li>
         </ul>
       </div>
+
+      <!-- Execution Context -->
+      <div class="border">
+        <div class="div">
+          <h4>11. Execution Context:</h4>
+          <div class="pseudo">
+            An execution context in JavaScript is an abstract concept that
+            defines the environment in which JavaScript code is executed. It
+            includes the variables, functions, and other data structures that
+            are accessible during the execution of a piece of code.
+            Understanding execution context is crucial for understanding how
+            JavaScript code behaves.
+            <br />
+            There are three types of execution contexts in JavaScript: <br />
+            <ol>
+              <li>
+                <strong>Global Execution Context:</strong> This is the default
+                or outermost execution context. It is created when a script is
+                executed and remains active until the script finishes. In a web
+                browser, the global execution context represents the window
+                object. Variables and functions declared outside of any function
+                are attached to the global object (window in browsers).
+              </li>
+              <li>
+                <strong>Function Execution Context:</strong> Every time a
+                function is called, a new execution context is created for that
+                function. This context includes the function's arguments, local
+                variables, and a reference to the outer lexical environment (the
+                environment in which the function was declared). When the
+                function completes execution, its execution context is popped
+                off the call stack. Eval Function
+              </li>
+              <li>
+                <strong>Execution Context:</strong> The eval function in
+                JavaScript is used to execute code stored in a string. When eval
+                is called, a new execution context is created for the evaluated
+                code. However, due to security and performance concerns, it's
+                generally recommended to avoid using eval whenever possible.
+              </li>
+            </ol>
+            Reference: <a
+              href="https://www.freecodecamp.org/news/how-javascript-works-behind-the-scene-javascript-execution-context/"
+              target="_blank"
+            >
+            freecodecamp 
+          </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Delegations -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>8. Event Delegation:</h4>
+          <ul style="display: flex; gap: 10px; list-style-type: none;" id="item-list">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+        </ul>
+        </div>
+      </div>
     </div>
 
     <script src="./arrayMethods.js" defer></script>
@@ -337,6 +400,7 @@
     <script src="./throttle1.js" defer></script>
     <script src="./throttle2.js" defer></script>
     <script src="./thisMethods.js" defer></script>
+    <script src="./eventDelegation.js" defer></script>
     <script src="./Flattening/flatten1.5.js" defer></script>
     <script src="./Flattening/flatten2.js" defer></script>
     <script src="./Flattening/flatten3.js" defer></script>
