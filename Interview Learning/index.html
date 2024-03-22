@@ -14,17 +14,20 @@
     <div class="content">
       <!-- Throttling -->
       <div class="border">
-        <div class="div" id="throttle">
+        <div class="div">
           <h4>1. Throttling:</h4>
           <span>
             Throttling is also just calling a expensive function and limiting
             the rate of execution of that function. It is just calling the
             function within some time intervals in between.
           </span>
-          <p style="margin: 0">
+          <p style="margin: 0" id="throttle">
             It can be tested by moving cursor inside the Throttling box will
             provide the x and y co-ordinates
-          </p>
+          </p><br>
+          <button style="cursor: pointer;" id="throttle3">
+            Implement throttle() with leading & trailing option
+          </button>
         </div>
       </div>
 
@@ -447,6 +450,7 @@
     <script src="./currying.js" defer></script>
     <script src="./throttle1.js" defer></script>
     <script src="./throttle2.js" defer></script>
+    <script src="./throttle3.js" defer></script>
     <script src="./thisMethods.js" defer></script>
     <script src="./eventDelegation.js" defer></script>
     <script src="./eventTarget.js" defer></script>
