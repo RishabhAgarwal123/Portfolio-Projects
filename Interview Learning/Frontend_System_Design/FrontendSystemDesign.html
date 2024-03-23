@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div>
+      <button class="accordion">
+        <strong>1. Requirements: Laying the Foundation</strong
+        ><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        R - Requirements: Laying the Foundation In the realm of Frontend System
+        Design, the first step is understanding and defining the requirements of
+        the system. These requirements serve as the foundation upon which you'll
+        build a robust frontend. They can be broadly categorized into functional
+        and non-functional requirements.
+        <img src="./images/Requirements.png" alt="Requirements" />
+        <h3>Functional Requirement</h3>
+        <p>
+          Functional requirements are the essential elements that the product
+          cannot function without. They dictate the core features and
+          functionalities of the system, ensuring that users can complete the
+          fundamental tasks effectively. Here are some key aspects to consider:
+        </p>
+        <ul>
+          <li>
+            <strong>Core Features vs. Good-to-Have</strong>
+            <ul>
+              <li>
+                <strong>Identify the Core Flows:</strong> Begin by discerning
+                the primary actions users need to perform within your
+                application. These are the core features that should always work
+                seamlessly.
+              </li>
+              <li>
+                <strong>Good-to-Have Features:</strong> Beyond the essentials,
+                there are often numerous additional features that enhance the
+                user experience. For instance, in a social media application
+                like Facebook, think about the various post formats users might
+                want, such as text-based posts, photo uploads, video uploads,
+                polls, location check-ins, and more.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Device and Platform Support</strong>
+            <ul>
+              <li>
+                <strong>Device and Platform Considerations:</strong> Determine
+                which devices and platforms your application needs to support.
+                Will it be accessible on desktops, tablets, and mobile devices?
+                Ensuring a consistent user experience across various platforms
+                is crucial.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Offline Support</strong>
+            <ul>
+              <li>
+                <strong>Offline Functionality:</strong> Assess whether your
+                application requires offline support. Depending on the nature of
+                your product, users may need to interact with it even when they
+                have no internet connectivity.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>User Demographics</strong>
+            <ul>
+              <li>
+                <strong>User Personas:</strong> Define the main users of your
+                product. Understanding your target audience's needs,
+                preferences, and pain points is vital for designing a
+                user-centric frontend.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h3>Non-Functional Requirements</h3>
+        <p>
+          In addition to functional requirements, non-functional requirements
+          are enhancements that improve the product but are not strictly
+          essential for its basic usability. These often focus on aspects such
+          as performance, scalability, security, user experience, and more:
+        </p>
+        <ul>
+          <li>
+            <strong>Performance</strong>
+            <ul>
+              <li>
+                <strong>Performance Metrics:</strong> Specify performance
+                requirements, including how fast pages should load, how
+                responsive user interactions must be, and acceptable latency
+                thresholds.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Security</strong>
+            <ul>
+              <li>
+                <strong>Security Measures:</strong> Consider security
+                requirements, which encompass safeguarding user data,
+                implementing authentication and authorization mechanisms, and
+                protecting against common vulnerabilities like Cross-Site
+                Scripting (XSS) and SQL Injection.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Availability</strong>
+            <ul>
+              <li>
+                <strong>Availability Goals:</strong> Define availability
+                requirements, including uptime targets and strategies for
+                mitigating downtime, such as load balancing and redundancy.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Observability</strong>
+            <ul>
+              <li>
+                <strong>Monitoring and Observability:</strong> Plan for
+                observability by integrating tools and techniques for monitoring
+                application health, logging, and error tracking.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Tracking</strong>
+            <ul>
+              <li>
+                <strong>Analytics and Tracking:</strong> Establish tracking
+                mechanisms to gather user data and insights, which can inform
+                future enhancements and improvements.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Accessibility (A11y)</strong>
+            <ul>
+              <li>
+                <strong>Accessibility Standards:</strong> Ensure that your
+                frontend adheres to accessibility standards (A11y) to make your
+                application usable by individuals with disabilities.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Internationalization</strong>
+            <ul>
+              <li>
+                <strong>Global Reach:</strong> If applicable, think about
+                internationalization to support users from diverse regions with
+                different languages and cultural preferences.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>Volume</strong>
+            <ul>
+              <li>
+                <strong>Scalability and Volume Handling:</strong> Consider how
+                your application will handle increased volumes of data or
+                traffic and implement strategies for scaling when necessary.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          By meticulously defining both functional and non-functional
+          requirements, you lay a strong foundation for your frontend system
+          design. These requirements act as guiding principles throughout the
+          development process, ensuring that your system meets user expectations
+          and industry standards.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>2. Architecture</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <h1>Architecture and High-Level Design</h1>
+        <p>
+          In the realm of Frontend System Design interviews, having a
+          well-structured architectural design is crucial for building scalable
+          and maintainable frontend applications. This section explores the
+          architectural components and design considerations that form the
+          backbone of your frontend system.
+        </p>
+        <img src="./images/Architecture.png" alt="Architecture" />
+        <h2>Components of the Architecture</h2>
+        <p>
+          To begin, let's break down the key components of a frontend
+          architecture:
+        </p>
+
+        <ul>
+          <li>
+            <strong>Server</strong>
+            <p>
+              In Frontend System Design interviews, it's common to treat the
+              server as a black box. This means you can assume that it exposes
+              APIs accessible via HTTP or WebSockets. The server is responsible
+              for handling requests, processing data, and sending responses to
+              the client.
+            </p>
+          </li>
+          <li>
+            <strong>View</strong>
+            <p>
+              The view represents the user interface and what the user sees on
+              their screen. It typically contains smaller subviews within it,
+              creating a hierarchical structure. The view may also contain
+              client-side-only state, which is data that doesn't need to be
+              shared with the server but is crucial for the user interface's
+              functionality.
+            </p>
+          </li>
+          <li>
+            <strong>Controller</strong>
+            <p>
+              The controller is the module responsible for responding to user
+              interactions and processing data from the store or model in a
+              format that the view expects. In smaller applications with minimal
+              data flow between modules, a controller may not be necessary.
+              However, it becomes essential in larger, more complex systems,
+              where it acts as an interactions controller, managing
+              communication between various components.
+            </p>
+          </li>
+          <li>
+            <strong>Model/Client Store</strong>
+            <p>
+              The model or client store is where your application's data
+              resides. Stores hold data that will be presented to the user
+              through views. In the context of a Frontend System Design
+              interview, you can consider stores to be app-wide. In real-world
+              applications, you might have multiple stores, potentially nested
+              within one another to manage different types of data.
+            </p>
+          </li>
+        </ul>
+
+        <h2>Separation of Concerns</h2>
+        <p>
+          A fundamental principle in frontend architecture is the separation of
+          concerns. Each component should serve a modular purpose and
+          encapsulate a specific set of functionality and data. Consider the
+          following aspects:
+        </p>
+
+        <ul>
+          <li>
+            <strong>Component Purpose</strong>
+            <p>
+              Define the primary purpose of each component. For example, the
+              server's purpose is data retrieval and processing, while the
+              view's purpose is user interface rendering.
+            </p>
+          </li>
+          <li>
+            <strong>Data Management</strong>
+            <p>
+              Determine what data each component should contain. For instance,
+              the model or client store holds application data, while the view
+              may contain user interface state.
+            </p>
+          </li>
+          <li>
+            <strong>Inter-component Communication</strong>
+            <p>
+              Explore how each component can serve the rest of the system.
+              Identify how they interact and exchange data to ensure smooth
+              operation.
+            </p>
+          </li>
+        </ul>
+
+        <h2>Computation Location</h2>
+        <p>
+          A critical architectural decision revolves around where computation
+          should occur. For example, when filtering search results or
+          calculating the total amount for a shopping cart, should the work be
+          done on the server or the client? This decision is both
+          question-dependent and context-dependent, and it has trade-offs:
+        </p>
+
+        <ul>
+          <li>
+            <strong>Server-Side Computation</strong>
+            <p>
+              Offloading computation to the server reduces the workload on
+              client devices. However, it may increase network traffic and
+              latency.
+            </p>
+          </li>
+          <li>
+            <strong>Client-Side Computation</strong>
+            <p>
+              Performing computation on the client can enhance responsiveness
+              but may demand more processing power and memory from the user's
+              device.
+            </p>
+          </li>
+        </ul>
+
+        <p>
+          The choice between server-side and client-side computation depends on
+          factors like the specific use case, user experience goals, and system
+          performance requirements.
+        </p>
+
+        <p>
+          By understanding these architectural components and design
+          considerations, you'll be better equipped to tackle Frontend System
+          Design interviews. Remember that a well-thought-out architecture forms
+          the backbone of any successful frontend system, enabling scalability,
+          maintainability, and a seamless user experience.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>3. Data Model</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <h2>Data Model: Managing Client-Only Data</h2>
+        <p>
+          In frontend system design, a crucial aspect is the management of
+          client-only data, which encompasses information that resides
+          exclusively on the client side and does not need to be transmitted to
+          the server for database storage. Client data can be further
+          categorized into two distinct types:
+        </p>
+        <img src="./images/DataModel.png" alt="Data Model" />
+        <h3>Data to be Persisted</h3>
+        <p>
+          The first category of client-only data includes information that is
+          meant to be persisted or stored in the server's database. This type of
+          data typically originates from user interactions and input. Key points
+          to consider:
+        </p>
+        <ul>
+          <li>
+            User Input Data: This category includes data entered by users into
+            various form fields or input elements on your application. Examples
+            may range from user profiles, posts, comments, to product reviews.
+          </li>
+          <li>
+            Server Interaction: For this data to be useful in the long term, it
+            needs to be sent to the server, processed, and saved in the
+            database. Proper validation, sanitization, and security measures
+            should be applied before persisting it.
+          </li>
+          <li>
+            Data Fields Identification: When designing your frontend system,
+            it's crucial to identify which data fields fall into this category.
+            Clearly distinguish between data originating from the server and
+            data generated by user interactions on the client side.
+          </li>
+        </ul>
+
+        <h3>Ephemeral Data</h3>
+        <p>
+          The second category of client-only data is referred to as ephemeral
+          data. This type of data represents temporary state information that
+          has a short lifespan and is not intended for long-term storage. Common
+          examples include:
+        </p>
+        <ul>
+          <li>
+            Form Validation State: Information about whether a user's input in a
+            form is valid or not. This data helps in providing real-time
+            feedback to users but is not needed beyond the current session.
+          </li>
+          <li>
+            Current User Interface State: Data that tracks the current state of
+            the user interface, such as the active tab, expanded or collapsed
+            sections, or temporary user preferences. These details enhance the
+            user experience but don't require persistence.
+          </li>
+          <li>
+            Session-Specific Data: Data tied to a specific browsing session,
+            which is typically acceptable to lose when the user closes the
+            browser tab. Examples may include shopping cart contents, temporary
+            drafts, or session-specific preferences.
+          </li>
+        </ul>
+
+        <h3>Data Fields Identification</h3>
+        <p>
+          When designing your frontend application, it's crucial to identify
+          each data field's nature—whether it originates from the server, falls
+          under the category of data to be persisted, or is considered
+          ephemeral. This clarity not only ensures proper handling and storage
+          but also aids in designing efficient data management strategies.
+        </p>
+
+        <p>
+          In summary, effective management of client-only data is an integral
+          part of frontend system design. By categorizing data into those to be
+          persisted and ephemeral, you can make informed decisions about how to
+          handle, store, and validate information to create a seamless and
+          user-friendly application experience.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>4. Interface Design</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>5. Optimization</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>6. Design Auto Complete Component</strong
+        ><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>7. Design Google Calender</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>8. Design Asana</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>9. Server Side Rendering vs Client Side Rendering</strong
+        ><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>10. Frontend Security</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <h2>Frontend Security Best Practices</h2>
+        <p>
+          Frontend security is crucial for protecting web applications from
+          various types of attacks and vulnerabilities. Here are some of the
+          main frontend security features and practices to consider:
+        </p>
+        <h3>Cross-Site Scripting (XSS) Protection:</h3>
+        <ul>
+          <li>
+            Content Security Policy (CSP): Implement CSP headers to restrict the
+            sources from which resources can be loaded, preventing XSS attacks
+            by disallowing the execution of malicious scripts.
+          </li>
+          <li>
+            Input Validation and Sanitization: Validate and sanitize user inputs
+            to ensure they do not contain malicious scripts.
+          </li>
+          <li>
+            Escape Characters: Encode special characters in user-generated
+            content to prevent them from being interpreted as executable code.
+          </li>
+        </ul>
+
+        <h3>Cross-Site Request Forgery (CSRF) Protection:</h3>
+        <ul>
+          <li>
+            CSRF Tokens: Implement anti-CSRF tokens to ensure that requests
+            originate from legitimate and authenticated users.
+          </li>
+          <li>
+            Same-Site Cookies: Use the SameSite attribute to prevent cookies
+            from being sent in cross-origin requests, which can help mitigate
+            CSRF attacks.
+          </li>
+        </ul>
+
+        <h3>Clickjacking Protection:</h3>
+        <ul>
+          <li>
+            X-Frame-Options Header: Set the X-Frame-Options header to deny or
+            allow specific domains to embed your site in an iframe, preventing
+            clickjacking attacks.
+          </li>
+        </ul>
+
+        <h3>Secure Communications:</h3>
+        <ul>
+          <li>
+            HTTPS: Ensure that your site uses HTTPS to encrypt data in transit
+            and protect against eavesdropping and man-in-the-middle attacks.
+          </li>
+        </ul>
+
+        <h3>Authentication and Authorization:</h3>
+        <ul>
+          <li>
+            Strong Password Policies: Enforce strong password requirements to
+            protect user accounts.
+          </li>
+          <li>
+            Multi-Factor Authentication (MFA): Implement MFA to add an extra
+            layer of security for user authentication.
+          </li>
+          <li>
+            Role-Based Access Control (RBAC): Use RBAC to ensure that users only
+            have access to the resources and functionalities they are authorized
+            to use.
+          </li>
+        </ul>
+
+        <h3>Session Management:</h3>
+        <ul>
+          <li>
+            Session Timeout: Set session timeouts to automatically log out
+            inactive users and prevent session hijacking.
+          </li>
+          <li>
+            Session Tokens: Use secure, random session tokens and regenerate
+            them after a successful login.
+          </li>
+        </ul>
+
+        <h3>Content Security:</h3>
+        <ul>
+          <li>
+            Content-Type Headers: Properly set Content-Type headers to prevent
+            browsers from interpreting content in unexpected ways.
+          </li>
+          <li>
+            File Upload Security: If your application allows file uploads,
+            validate file types and implement proper security measures to
+            prevent malicious uploads.
+          </li>
+        </ul>
+
+        <h3>Error Handling:</h3>
+        <ul>
+          <li>
+            Custom Error Messages: Avoid revealing sensitive information in
+            error messages. Provide generic error messages to users and log
+            detailed error information for developers.
+          </li>
+          <li>
+            404 Handling: Customize error pages to avoid leaking information
+            about the underlying technology stack.
+          </li>
+        </ul>
+
+        <h3>Dependency Scanning:</h3>
+        <ul>
+          <li>
+            Regularly Update Dependencies: Keep frontend libraries and
+            frameworks up-to-date to patch security vulnerabilities.
+          </li>
+          <li>
+            Dependency Scanning Tools: Use tools that scan your project's
+            dependencies for known vulnerabilities.
+          </li>
+        </ul>
+
+        <h3>Content Security Policies (CSP):</h3>
+        <ul>
+          <li>
+            Strict Mode: Consider implementing CSP in strict mode to limit which
+            resources can be loaded by your application.
+          </li>
+        </ul>
+
+        <p>
+          Remember that security is an ongoing process. Regularly updating and
+          patching your frontend code, staying informed about emerging threats,
+          and conducting security audits are essential practices to maintain a
+          secure frontend.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>11. XSS vs CORS</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <h3>XSS vs CORS</h3>
+        <p>
+          XSS (Cross-Site Scripting) and CORS (Cross-Origin Resource Sharing)
+          are both security mechanisms, but they address different types of
+          security concerns in web applications.
+        </p>
+        <h2>XSS (Cross-Site Scripting)</h2>
+        <p>
+          XSS is a vulnerability that occurs when an attacker injects malicious
+          scripts into a web page viewed by other users. These scripts can then
+          be executed in the context of the victim's browser, potentially
+          leading to the theft of sensitive information or the manipulation of
+          web content.
+        </p>
+
+        <h3>Types of XSS:</h3>
+        <ul>
+          <li>
+            <strong>Stored XSS:</strong> The malicious script is permanently
+            stored on a website's server and served to users when they visit a
+            particular page.
+          </li>
+          <li>
+            <strong>Reflected XSS:</strong> The malicious script is embedded in
+            a URL and executed when the victim clicks on a malicious link.
+          </li>
+          <li>
+            <strong>DOM-based XSS:</strong> The vulnerability arises within the
+            Document Object Model (DOM) of a web page, often as a result of
+            manipulating JavaScript code that interacts with the DOM.
+          </li>
+        </ul>
+
+        <h3>Prevention of XSS:</h3>
+        <ul>
+          <li>
+            Input Validation and Sanitization: Validate and sanitize user inputs
+            to ensure they do not contain malicious scripts.
+          </li>
+          <li>
+            Content Security Policy (CSP): Implement CSP headers to restrict the
+            sources from which resources can be loaded, preventing the execution
+            of malicious scripts.
+          </li>
+          <li>
+            Escape Characters: Encode special characters in user-generated
+            content to prevent them from being interpreted as executable code.
+          </li>
+        </ul>
+
+        <h2>CORS (Cross-Origin Resource Sharing)</h2>
+        <p>
+          CORS is a security feature implemented by web browsers that controls
+          which resources (e.g., fonts, scripts, or images) a web page can
+          request from another domain. It's designed to prevent a web page from
+          making requests to a different domain without explicit permission.
+        </p>
+
+        <h3>Key Aspects of CORS:</h3>
+        <ul>
+          <li>
+            <strong>Same-Origin Policy (SOP):</strong> By default, web browsers
+            follow the same-origin policy, which means that a web page can only
+            request resources from the same domain, port, and protocol.
+          </li>
+          <li>
+            <strong>Cross-Origin Requests:</strong> When a web page attempts to
+            make a request to a different domain (cross-origin), the browser
+            enforces CORS policies to determine whether the request is allowed.
+          </li>
+          <li>
+            <strong>CORS Headers:</strong>
+            <ul>
+              <li>
+                Access-Control-Allow-Origin: Specifies which domains are allowed
+                to access a resource.
+              </li>
+              <li>
+                Access-Control-Allow-Methods: Specifies which HTTP methods are
+                allowed when making a request.
+              </li>
+              <li>
+                Access-Control-Allow-Headers: Specifies which headers can be
+                included in the request.
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>CORS Pre-flight Requests:</strong> For certain types of
+            requests (e.g., those with custom headers or using certain methods
+            like PUT or DELETE), the browser sends a pre-flight request (an HTTP
+            OPTIONS request) to the server to check if the actual request is
+            permitted.
+          </li>
+        </ul>
+
+        <h3>CORS vs XSS:</h3>
+        <p>
+          XSS is a vulnerability that attackers exploit to inject malicious
+          scripts into web pages, potentially compromising user data or
+          executing unwanted actions. CORS, on the other hand, is a security
+          feature implemented by web browsers to control which resources a web
+          page can request from a different domain, preventing unauthorized
+          cross-origin requests.
+        </p>
+
+        <p>
+          In summary, XSS is an attack vector, while CORS is a security feature
+          that helps prevent unauthorized cross-origin requests. Both are
+          important considerations for building secure web applications.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>12. Preventing XSS</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <h2>Preventing XSS (Cross-Site Scripting)</h2>
+        <p>
+          Preventing XSS (Cross-Site Scripting) involves implementing various
+          security measures to ensure that user inputs are properly sanitized
+          and that malicious scripts cannot be executed on a web page. Here are
+          some key strategies with examples:
+        </p>
+
+        <ol>
+          <li>
+            <h3>Input Validation and Sanitization:</h3>
+            <p>
+              Validate and sanitize user inputs to ensure they do not contain
+              malicious scripts. This can be done both on the client side and
+              server side.
+            </p>
+            <h4>Example (Client-side Validation):</h4>
+            <pre><code>// Client-side validation using regular expressions
+function validateInput(input) {
+  const regex = /^[a-zA-Z0-9\s]+$/; // Allow letters, numbers, and spaces
+  return regex.test(input);
+}
+const userInput = document.getElementById('user-input').value;
+if (!validateInput(userInput)) {
+  alert('Invalid input. Please enter alphanumeric characters only.');
+}</code></pre>
+            <h4>Example (Server-side Validation in Node.js):</h4>
+            <pre><code>// Server-side validation using Express.js
+app.post('/submitForm', (req, res) => {
+  const userInput = req.body.userInput;
+  const regex = /^[a-zA-Z0-9\s]+$/;
+  if (!regex.test(userInput)) {
+    return res.status(400).send('Invalid input. Please enter alphanumeric characters only.');
+  }
+  // Process the valid input
+  // ...
+});</code></pre>
+          </li>
+          <li>
+            <h3>Content Security Policy (CSP):</h3>
+            <p>
+              Implement CSP headers to restrict the sources from which resources
+              can be loaded, preventing the execution of malicious scripts.
+            </p>
+            <h4>Example (Setting CSP Headers in HTTP Response):</h4>
+            <pre><code>// Express.js middleware to set CSP header
+app.use((req, res, next) => {
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self' cdn.example.com");
+  next();
+});</code></pre>
+          </li>
+          <li>
+            <h3>Escape Characters:</h3>
+            <p>
+              Encode special characters in user-generated content to prevent
+              them from being interpreted as executable code.
+            </p>
+            <h4>Example (Using a Library like DOMPurify):</h4>
+            <pre><code>const userInput = '<img src="x" onerror="alert(\'XSS Attack!\')">';
+const sanitizedHTML = DOMPurify.sanitize(userInput);
+// Render the sanitized HTML in the document
+document.getElementById('output').innerHTML = sanitizedHTML;</code></pre>
+          </li>
+          <li>
+            <h3>Use Frameworks with Built-in XSS Protection:</h3>
+            <p>
+              Some modern web frameworks (e.g., React, Angular) have built-in
+              features that help prevent XSS attacks. For instance, React uses
+              JSX to escape potentially dangerous content by default.
+            </p>
+            <h4>Example (React JSX):</h4>
+            <pre><code>const userInput = '<img src="x" onerror="alert(\'XSS Attack!\')">';
+const output = &lt;div&gt;{userInput}&lt;/div&gt;; // User input is escaped by JSX</code></pre>
+          </li>
+          <li>
+            <h3>Avoid Using eval():</h3>
+            <p>
+              Avoid using eval() to execute arbitrary code, as it can
+              potentially execute malicious scripts.
+            </p>
+            <h4>Example (Avoiding eval()):</h4>
+            <pre><code>const userInput = 'alert(\'XSS Attack!\')';
+// Bad practice - Avoid using eval()
+eval(userInput);</code></pre>
+          </li>
+          <li>
+            <h3>Secure Headers:</h3>
+            <p>
+              Set HTTP headers to enhance security. For example, using the
+              X-Content-Type-Options header to prevent MIME-sniffing.
+            </p>
+            <h4>Example (Setting HTTP Headers):</h4>
+            <pre><code>// Express.js middleware to set secure headers
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  next();
+});</code></pre>
+          </li>
+        </ol>
+
+        <p>
+          These are just some examples of how to prevent XSS attacks. It's
+          important to incorporate a combination of these strategies based on
+          your application's requirements and technology stack. Additionally,
+          keeping up with best practices and security updates in the web
+          development community is crucial for maintaining a secure application.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>13. Image Caching Strategies</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <h2>Caching Strategies for Web Images</h2>
+        <p>
+          Caching strategies for loading images on the web are essential for
+          optimizing website performance and user experience. Here are some
+          common caching strategies:
+        </p>
+
+        <ol>
+          <li>
+            <h3>Browser Caching:</h3>
+            <p>
+              Leverage the browser's built-in caching mechanism to store images
+              locally. Set appropriate HTTP caching headers to control how long
+              the browser should cache the images.
+            </p>
+          </li>
+          <li>
+            <h3>Content Delivery Networks (CDNs):</h3>
+            <p>
+              Use a Content Delivery Network to distribute images to servers
+              located closer to users, reducing latency.
+            </p>
+          </li>
+          <li>
+            <h3>Lazy Loading:</h3>
+            <p>
+              Delay the loading of offscreen images until the user scrolls down
+              to them to improve initial page load times.
+            </p>
+          </li>
+          <li>
+            <h3>Responsive Images:</h3>
+            <p>
+              Provide multiple image sizes and resolutions to serve the most
+              appropriate image based on the user's device and screen size.
+            </p>
+          </li>
+          <li>
+            <h3>Image Sprites:</h3>
+            <p>
+              Combine multiple small images into a single larger image to reduce
+              the number of HTTP requests.
+            </p>
+          </li>
+          <li>
+            <h3>Data URIs:</h3>
+            <p>
+              Convert small images into data URIs and embed them directly into
+              the HTML or CSS to reduce the number of HTTP requests.
+            </p>
+          </li>
+          <li>
+            <h3>HTTP/2 or HTTP/3:</h3>
+            <p>
+              Take advantage of multiplexing to reduce latency when using HTTP/2
+              or HTTP/3.
+            </p>
+          </li>
+          <li>
+            <h3>Image Format Optimization:</h3>
+            <p>
+              Choose appropriate image formats and compress images to reduce
+              file sizes without compromising quality.
+            </p>
+          </li>
+          <li>
+            <h3>Cache-Control Headers:</h3>
+            <p>
+              Set Cache-Control headers on the server to specify caching
+              policies for images.
+            </p>
+          </li>
+          <li>
+            <h3>Versioning or Hashing:</h3>
+            <p>
+              Append a version number or hash to the image URL to ensure
+              browsers request the updated version when the image changes.
+            </p>
+          </li>
+          <li>
+            <h3>Service Workers:</h3>
+            <p>
+              Implement advanced caching strategies with service workers for
+              offline caching or dynamic caching.
+            </p>
+          </li>
+          <li>
+            <h3>CDN Edge Caching:</h3>
+            <p>
+              Utilize CDN edge caching to further reduce the load on your origin
+              server.
+            </p>
+          </li>
+        </ol>
+
+        <p>
+          Remember to analyze the specific needs of your application and user
+          base to determine which combination of caching strategies will be most
+          effective. Additionally, regularly monitor and measure the impact of
+          your caching strategies to ensure they continue to provide optimal
+          performance.
+        </p>
+
+        <h2>Enabling Browser Caching</h2>
+        <p>
+          Enabling browser caching for your website involves configuring your
+          web server to include appropriate HTTP headers that instruct browsers
+          on how long they should store specific resources (like images) in
+          their cache. Here are the steps you can take:
+        </p>
+
+        <ol>
+          <li>
+            <h3>Set Cache-Control Headers:</h3>
+            <p>
+              The Cache-Control header is used to specify caching policies. You
+              can set this header to control how long browsers should cache your
+              images.
+            </p>
+            <pre><code>&lt;FilesMatch "\.(jpg|jpeg|png|gif|ico)$"&gt;
+  Header set Cache-Control "max-age=31536000, public"
+&lt;/FilesMatch&gt;</code></pre>
+          </li>
+          <li>
+            <h3>Set Expires Header:</h3>
+            <p>
+              The Expires header specifies an absolute date and time at which
+              the resource expires. This can be used in combination with
+              Cache-Control.
+            </p>
+            <pre><code>&lt;FilesMatch "\.(jpg|jpeg|png|gif|ico)$"&gt;
+  Header set Expires "Thu, 31 Dec 2037 23:59:59 GMT"
+&lt;/FilesMatch&gt;</code></pre>
+          </li>
+          <li>
+            <h3>Implement Versioning or Hashing:</h3>
+            <p>
+              Append a version number or a hash to the image URLs to ensure
+              browsers request the updated version when the image changes.
+            </p>
+          </li>
+          <li>
+            <h3>Consider Using a Content Delivery Network (CDN):</h3>
+            <p>
+              A CDN can automatically handle many caching configurations for you
+              and distribute your content across multiple servers globally.
+            </p>
+          </li>
+          <li>
+            <h3>Test Your Configuration:</h3>
+            <p>
+              After making these changes, it's important to test to ensure that
+              the caching headers are being applied correctly.
+            </p>
+          </li>
+          <li>
+            <h3>Monitor and Adjust:</h3>
+            <p>
+              Regularly monitor your website's performance and make adjustments
+              as needed.
+            </p>
+          </li>
+        </ol>
+
+        <p>
+          Remember to strike a balance between caching for performance and
+          ensuring timely updates when necessary.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>14. Broadcast Channels</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>15. IndexedDB</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>16. Core Web Vitals</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>17. Accessibility</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>18. Aria Roles</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>19. Network requests</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong
+          >20. Polling Vs Web Sockets VS Server Side Events Cheat Sheet</strong
+        ><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>21. Image Optimizations Strategies</strong
+        ><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>22. Apollo Cache</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>23. Normalized vs Non Normalized Data Structures</strong
+        ><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+          nisi ut aliquip ex ea commodo consequat.
+        </p>
+      </div>
+    </div>
+    <script src="./main.js" defer></script>
+  </body>
+</html>

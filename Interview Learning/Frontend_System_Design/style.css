@@ -1,0 +1,53 @@
+.accordion {
+  background-color: #f9f9f9;
+  color: #333;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  height: auto;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 16px;
+  transition: 0.4s;
+  position: relative; /* Ensure relative positioning for the arrow */
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  height: auto;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+/* CSS for arrow icon */
+.arrow {
+  position: absolute;
+  top: 50%;
+  right: 18px; /* Adjust as needed */
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #333;
+  transition: transform 0.4s;
+}
+
+/* Rotate arrow when accordion is active */
+.active .arrow {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+iframe {
+  width: 100%;
+  height: auto;
+}
+
+img {
+  width: 100%;
+  height: auto; /* This property ensures that the image maintains its aspect ratio */
+  max-width: 100%; /* Ensures the image does not exceed its original size */
+}
