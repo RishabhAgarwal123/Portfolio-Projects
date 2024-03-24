@@ -416,9 +416,261 @@
         <strong>4. Interface Design</strong><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h1>Interface Design</h1>
+        <h2>Interface Definition and API Design: Making Informed Choices</h2>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          In the world of frontend system design, one of the critical decisions
+          you'll face is defining the interfaces through which different
+          components communicate and exchange data. These interfaces, or APIs
+          (Application Programming Interfaces), can take various forms, each
+          with its own trade-offs. Let's explore the options and their pros and
+          cons:
+        </p>
+        <img
+          style="height: 200px; width: 200px"
+          src="./images/Htttp1vsHttp2.png"
+          alt="Http1 vs Http2"
+        />
+        <h2>Polling</h2>
+        <img
+          style="height: 200px; width: 200px"
+          src="./images/Polling.png"
+          alt="Polling"
+        />
+        <h1>Polling vs. Long Polling: Pros and Cons</h1>
+        <h2>Traditional Polling</h2>
+        <h3>Pros:</h3>
+        <ul>
+          <li>
+            Simplicity: Polling involves making periodic requests to the server,
+            which is straightforward to implement.
+          </li>
+          <li>
+            Easy to Load Balance: Distributing requests across multiple servers
+            is relatively simple.
+          </li>
+          <li>
+            HTTP/2 Compatibility: It can work over HTTP/2, benefiting from its
+            features.
+          </li>
+        </ul>
+        <h3>Cons:</h3>
+        <ul>
+          <li>
+            Long Latency: Polling may lead to delays in data updates as it
+            relies on predefined time intervals.
+          </li>
+          <li>
+            Connection Timeouts: Frequent polling can result in connection
+            timeouts and increased server load.
+          </li>
+          <li>
+            Traffic Overhead: Continuously sending requests, even when there's
+            no new data, can create unnecessary traffic.
+          </li>
+        </ul>
+        <h2>Long Polling</h2>
+        <h3>Pros:</h3>
+        <p>Shares many pros with traditional polling.</p>
+        <h3>Cons:</h3>
+        <ul>
+          <li>
+            Long Latency: Similar to polling, it can still suffer from delays in
+            data updates.
+          </li>
+          <li>
+            Connection Timeouts: It inherits the risk of connection timeouts.
+          </li>
+          <li>
+            Traffic Overhead: Continuous requests, potentially with long waits
+            for responses, can lead to traffic overhead.
+          </li>
+        </ul>
+        <h2>Web Sockets</h2>
+        <img
+          style="height: 200px; width: 200px"
+          src="./images/WebSockets.png"
+          alt="Web Sockets"
+        />
+        <h1>WebSocket Pros and Cons</h1>
+        <h2>Pros:</h2>
+        <ul>
+          <li>
+            Duplex Communication: WebSockets offer bidirectional communication,
+            enabling real-time data exchange.
+          </li>
+          <li>
+            Speed: They provide a super-fast communication channel, ideal for
+            applications requiring low-latency updates.
+          </li>
+          <li>
+            Single TCP Connection: Maintains a single TCP connection with the
+            server, reducing overhead.
+          </li>
+          <li>
+            Harder to Load-Balance: Unlike HTTP, WebSockets can be challenging
+            to load balance efficiently.
+          </li>
+        </ul>
+        <h2>Cons:</h2>
+        <ul>
+          <li>
+            Resource-Intensive: Keeping WebSocket connections open can be
+            resource-intensive, especially on the client side.
+          </li>
+          <li>
+            Server Load: Poorly configured servers may struggle to handle a
+            large number of open WebSocket connections.
+          </li>
+          <li>
+            Firewall/Proxies: Some network configurations may cause issues with
+            WebSocket connections.
+          </li>
+        </ul>
+        <h2>Server Sent Events</h2>
+        <img
+          style="height: 200px; width: 200px"
+          src="./images/SSE.png"
+          alt="Server Sent Events"
+        />
+        <h1>Server-Sent Events (SSE) Pros and Cons</h1>
+        <h2>Pros:</h2>
+        <ul>
+          <li>
+            HTTP/2 Benefits: SSE benefits from HTTP/2 features such as gzipping
+            and multiplexing.
+          </li>
+          <li>
+            Efficiency: SSE only sends necessary information as text, conserving
+            resources.
+          </li>
+          <li>Easy to Load Balance: SSE can be efficiently load balanced.</li>
+        </ul>
+        <h2>Cons:</h2>
+        <ul>
+          <li>
+            Unidirectional: SSE allows only server-to-client communication,
+            making it unsuitable for scenarios requiring bidirectional data
+            exchange.
+          </li>
+          <li>
+            Limited Data Types: SSE primarily deals with text data and lacks
+            support for more complex data structures.
+          </li>
+        </ul>
+        <h2>Rest API</h2>
+        <img
+          style="height: 200px; width: 200px"
+          src="./images/RestApi.png"
+          alt="Rest API"
+        />
+        <h1>Pros and Cons of REST APIs</h1>
+        <h2>Pros:</h2>
+        <ul>
+          <li>
+            HTTP/2 Compatibility: REST APIs can leverage HTTP/2, benefiting from
+            its performance enhancements.
+          </li>
+          <li>
+            Simplicity: RESTful architecture is well-understood and relatively
+            simple to implement.
+          </li>
+          <li>
+            Easy to Load Balance: Distributing REST requests across multiple
+            servers is straightforward.
+          </li>
+        </ul>
+        <h2>Cons:</h2>
+        <ul>
+          <li>
+            Latency: REST APIs can suffer from latency, particularly in
+            scenarios where frequent updates are required.
+          </li>
+          <li>
+            Connection Timeouts: As with polling, connection timeouts can be an
+            issue.
+          </li>
+          <li>
+            Traffic Overhead: RESTful requests can introduce traffic overhead,
+            especially when requesting large amounts of data.
+          </li>
+        </ul>
+        <h2>GraphQL</h2>
+        <img
+          style="height: 200px; width: 200px"
+          src="./images/GraphQL.png"
+          alt="GraphQL"
+        />
+        <h1>Pros and Cons of GraphQL</h1>
+        <h2>Pros:</h2>
+        <ul>
+          <li>
+            Modern API: GraphQL offers a more modern approach to API design,
+            allowing clients to request exactly the data they need.
+          </li>
+          <li>
+            Type Safety: GraphQL's type system enhances API safety and reduces
+            errors.
+          </li>
+          <li>
+            Advanced Caching: GraphQL clients can implement advanced caching
+            strategies for improved performance.
+          </li>
+        </ul>
+        <h2>Cons:</h2>
+        <ul>
+          <li>
+            Potential for Latency: Depending on the complexity of the queries
+            and the server's configuration, GraphQL requests can experience
+            latency.
+          </li>
+          <li>
+            Connection Timeouts: Like REST, GraphQL may encounter connection
+            timeouts.
+          </li>
+          <li>
+            Traffic Overhead: GraphQL queries can be verbose, leading to
+            potential traffic overhead.
+          </li>
+        </ul>
+        <h2>Common Aspects of APIs</h2>
+        <img src="./images/ApiAspects.png" alt="Common Aspects API" />
+        <p>
+          Regardless of the chosen API type, all APIs share some common
+          considerations:
+        </p>
+        <ul>
+          <li>
+            <strong>Type of Request:</strong> Define the types of requests the
+            API can handle (e.g., GET, POST), including their purpose and
+            expected outcomes.
+          </li>
+          <li>
+            <strong>Status Codes and Error Handling:</strong> Establish clear
+            status codes and error-handling procedures to ensure robust and
+            predictable interactions.
+          </li>
+          <li>
+            <strong>Throttling and Debouncing:</strong> Implement throttling and
+            debouncing mechanisms to manage the frequency and volume of API
+            requests.
+          </li>
+          <li>
+            <strong>Pagination:</strong> If applicable, design pagination
+            strategies to efficiently retrieve and display large datasets.
+          </li>
+        </ul>
+        <h2>API for UI Component System Design</h2>
+        <p>
+          When designing a UI component, the "Interface" section of your design
+          should cover customization options for the component, much like the
+          props in React components. Discuss how users can configure and
+          interact with the component to meet their specific needs and
+          expectations. In conclusion, the choice of API design depends on your
+          specific project requirements, including factors like real-time needs,
+          latency tolerance, and complexity. By understanding the trade-offs
+          associated with each option, you can make informed decisions to create
+          efficient, responsive, and user-friendly frontend systems.
         </p>
       </div>
 
@@ -426,9 +678,248 @@
         <strong>5. Optimization</strong><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h1>Optimizations and Deep Dive in Frontend System Design</h1>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          In the world of frontend system design, achieving optimal performance,
+          ensuring network efficiency, and providing a seamless user experience
+          are paramount. Here's a deep dive into various aspects of optimization
+          and best practices:
+        </p>
+        <h2>Performance</h2>
+        <h3>Network</h3>
+        <img src="./images/Network.png" alt="Network" />
+        <ul>
+          <li>
+            <strong>Compression:</strong> Utilize techniques like gzip or
+            request headers like Accept-Encoding: br to reduce network payload
+            size, leading to faster load times.
+          </li>
+          <li>
+            <strong>Caching:</strong> Implement caching strategies to store and
+            reuse responses, reducing the need for redundant network requests.
+          </li>
+          <li>
+            <strong>Debounce / Throttle:</strong> Rate-limit network requests
+            using debounce or throttle mechanisms to prevent excessive server
+            loads.
+          </li>
+          <li>
+            <strong>Batching Requests:</strong> Group related requests and send
+            them together to minimize the number of network calls.
+          </li>
+          <li>
+            <strong>Image Optimizations:</strong> Optimize image size and
+            quality to reduce page load times. Consider using responsive images
+            to load the appropriate size for different devices.
+          </li>
+          <li>
+            <strong>HTTP/2:</strong> Take advantage of HTTP/2's features, such
+            as multiplexing and header compression, to enhance network
+            performance.
+          </li>
+          <li>
+            <strong>Bundle Splitting:</strong>
+            <ul>
+              <li>
+                <strong>Vendor Bundles:</strong> Separate vendor libraries and
+                dependencies into a distinct bundle to take advantage of browser
+                caching for common libraries.
+              </li>
+              <li>
+                <strong>App Bundle:</strong> Organize your application code into
+                a main bundle to improve initial loading times.
+              </li>
+              <li>
+                <strong>Lazy Loading:</strong> Split your code into smaller,
+                lazily loaded bundles that are only fetched when needed to
+                reduce the initial load size.
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <h3>Rendering</h3>
+        <img src="./images/Rendering.png" alt="Rendering" />
+        <ul>
+          <li>
+            <strong>Above-the-Fold Content:</strong> Prioritize rendering
+            content that is immediately visible to users (above the fold) to
+            provide a perceived performance boost.
+          </li>
+          <li>
+            <strong>Critical Resource Prioritization:</strong> Load critical
+            resources (CSS, JavaScript) early, while deferring non-critical
+            resources to improve page loading speed.
+          </li>
+          <li>
+            <strong>Tree Shaking:</strong> Implement tree shaking to eliminate
+            dead code and reduce the size of your JavaScript bundles.
+          </li>
+          <li>
+            <strong>Unused Bundle Elimination:</strong> Ensure that unused
+            bundles are not included in the final build to optimize resource
+            loading.
+          </li>
+          <li>
+            <strong>TTI (Time to Interactive):</strong> Focus on improving the
+            time it takes for your application to become interactive and
+            responsive to user input.
+          </li>
+          <li>
+            <strong>First Contentful Paint (FCP):</strong> Optimize for FCP,
+            which is the moment when the browser renders the first bit of
+            content from the DOM, indicating to the user that the page is
+            loading.
+          </li>
+          <li>
+            <strong>DOM Tree Optimization:</strong> For long lists or tables,
+            use virtualization to render only the visible elements, improving
+            both rendering and user experience.
+          </li>
+          <li>
+            <strong>Replacing Nodes:</strong> Instead of creating new DOM nodes,
+            consider updating existing ones with data to reduce unnecessary
+            overhead.
+          </li>
+        </ul>
+        <h3>Server-Side Rendering</h3>
+        <h4>JavaScript Optimization</h4>
+        <ul>
+          <li>
+            Avoid blocking the main thread with time-consuming JavaScript
+            operations. Utilize web workers for CPU-intensive tasks to maintain
+            a responsive UI.
+          </li>
+        </ul>
+        <h4>Style Guide</h4>
+        <ul>
+          <li>
+            Adhere to coding style guides and best practices to ensure
+            maintainability and code quality.
+          </li>
+        </ul>
+        <h4>Global Environment</h4>
+        <ul>
+          <li>
+            Be cautious about modifying the global environment to prevent
+            unintended side effects and conflicts.
+          </li>
+        </ul>
+        <h4>JS Preloading</h4>
+        <ul>
+          <li>
+            Use resource preloading techniques to load JavaScript files
+            asynchronously and improve page performance.
+          </li>
+        </ul>
+        <h4>Selective Imports</h4>
+        <ul>
+          <li>
+            Import only the functions and modules you need instead of including
+            entire files to reduce unnecessary code execution.
+          </li>
+        </ul>
+        <h3>CSS</h3>
+        <ul>
+          <li>
+            Avoid Reflows: Reflows can be expensive in terms of performance. Aim
+            to minimize them by optimizing your CSS.
+          </li>
+          <li>
+            Prefer CSS animations over JavaScript animations whenever possible,
+            as they are often more efficient.
+          </li>
+          <li>
+            Use straightforward and simple class names in your CSS to keep your
+            styles maintainable.
+          </li>
+        </ul>
+        <h3>Application Cache</h3>
+        <ul>
+          <li>
+            Implement a caching strategy for CSS, JavaScript, and images to
+            reduce network requests and enhance page load times.
+          </li>
+        </ul>
+        <h3>User Experience</h3>
+        <h4>Mobile-Friendly Design</h4>
+        <ul>
+          <li>
+            Ensure that your application is responsive and mobile-friendly,
+            considering various screen sizes and orientations.
+          </li>
+          <li>
+            Implement loaders, error states, and empty states to provide
+            informative feedback to users.
+          </li>
+          <li>
+            Handle rendering images of different dimensions gracefully to
+            maintain a cohesive user experience.
+          </li>
+        </ul>
+        <h4>Network</h4>
+        <ul>
+          <li>
+            Handle various network states, such as success, pending, and error
+            states, to guide users through different stages of interactions.
+          </li>
+          <li>
+            Prevent race conditions by managing concurrent requests, and avoid
+            duplicate requests, especially after user actions like form
+            submissions.
+          </li>
+          <li>
+            Consolidate requests by using techniques like debounce, throttle, or
+            rate limiting to minimize server load.
+          </li>
+          <li>
+            Leverage caching effectively to reuse previous responses and reduce
+            the need for network round trips.
+          </li>
+        </ul>
+        <h3>Accessibility (a11y)</h3>
+        <img src="./images/Accessibility.png" alt="Accessibility (a11y)" />
+        <h1>Accessibility and Design Best Practices</h1>
+
+        <h2>1. Implement Keyboard Navigation Features</h2>
+        <p>
+          Include a list of shortcuts and ensure tappable items are accessible
+          via keyboard input.
+        </p>
+
+        <h2>2. Use Semantic HTML5 Elements</h2>
+        <p>
+          Add ARIA roles, states, and properties to enhance accessibility for
+          users with disabilities.
+        </p>
+
+        <h2>3. Ensure Proper Color Contrast</h2>
+        <p>Consider supporting dark mode for improved readability.</p>
+
+        <h2>4. Design with Various Text Sizes and Multilingual Support</h2>
+        <p>
+          Consider different text sizes and multilingual support for a broader
+          user base.
+        </p>
+
+        <h2>5. Test for Cross-Device Compatibility and Edge Cases</h2>
+        <p>
+          Ensure your application functions seamlessly across different devices
+          and handles edge cases effectively.
+        </p>
+        <h3>Security</h3>
+        <img src="./images/Security.png" alt="Security" />
+        <ul>
+          <li>
+            Protect your application against cross-site forgery attacks (CSRF)
+            by following OWASP's XSS prevention guidelines.
+          </li>
+        </ul>
+        <p>
+          These deep-dive optimizations and best practices should serve as a
+          solid foundation for designing frontend systems that are performant,
+          user-friendly, accessible, and secure. Remember that the specific
+          optimizations you choose will depend on your project's unique
+          requirements and constraints.
         </p>
       </div>
 
@@ -468,9 +959,107 @@
         ><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h1>Server Side Rendering vs Client Side Rendering</h1>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          Server-side rendering (SSR) and client-side rendering (CSR) are two
+          different approaches to rendering web applications, and they each have
+          their own set of advantages and disadvantages. Below, I'll outline the
+          pros and cons of both Server-side rendering and Client-side rendering
+          in the context of React.
+        </p>
+
+        <h2>Server-side Rendering (SSR):</h2>
+        <h3>Pros:</h3>
+        <ul>
+          <li>
+            Initial Page Load: SSR sends a fully rendered page to the client,
+            which means that the user can see content sooner because the server
+            generates the HTML on the initial request.
+          </li>
+          <li>
+            SEO-Friendly: Search engines can easily crawl and index the content
+            because the page is delivered with all the necessary markup. This is
+            particularly important for content-heavy applications.
+          </li>
+          <li>
+            Performance for Low-Powered Devices: SSR can perform better on
+            low-powered devices or slow network connections because the server
+            sends pre-rendered HTML.
+          </li>
+          <li>
+            Graceful Degradation: If JavaScript fails on the client-side, SSR
+            provides a fallback mechanism, ensuring that the user still sees
+            content.
+          </li>
+        </ul>
+        <h3>Cons:</h3>
+        <ul>
+          <li>
+            Server Load: SSR can put a higher load on the server because it's
+            responsible for rendering the page for each request.
+          </li>
+          <li>
+            Complexity: Implementing SSR can be more complex, especially if you
+            have a complex application that relies heavily on client-side
+            interactivity.
+          </li>
+          <li>
+            Slower Interactivity: While the initial page load may be faster,
+            subsequent interactions may be slower because the client has to make
+            additional requests to the server.
+          </li>
+        </ul>
+
+        <h2>Client-side Rendering (CSR):</h2>
+        <h3>Pros:</h3>
+        <ul>
+          <li>
+            Faster Interactivity: Once the initial JavaScript bundle is loaded,
+            subsequent interactions can be very fast because the client can
+            update the DOM without needing to go back to the server.
+          </li>
+          <li>
+            Reduced Server Load: The server is primarily responsible for sending
+            the initial JavaScript bundle and data. After that, the client
+            handles rendering.
+          </li>
+          <li>
+            Rich Client Interactions: CSR is great for applications that rely
+            heavily on client-side interactions, as it provides a more dynamic
+            and interactive experience.
+          </li>
+        </ul>
+        <h3>Cons:</h3>
+        <ul>
+          <li>
+            Slower Initial Page Load: The initial load time can be slower
+            because the client needs to fetch the JavaScript bundle and then
+            render the page on the client-side.
+          </li>
+          <li>
+            SEO Challenges: Search engines may have a harder time crawling and
+            indexing content because the initial HTML is often minimal and the
+            actual content is populated by JavaScript.
+          </li>
+          <li>
+            Limited Performance on Low-Powered Devices: CSR can be less
+            performant on low-powered devices or slow network connections, as
+            they have to do more work on the client-side.
+          </li>
+          <li>
+            Potential for Flicker: In some cases, there can be a noticeable
+            flicker or delay as the client-side JavaScript renders the page.
+          </li>
+        </ul>
+
+        <h2>Summary:</h2>
+        <p>
+          Choosing between SSR and CSR depends on the specific requirements of
+          your application. If you have a content-heavy site that requires good
+          SEO, SSR might be the better choice. However, for highly interactive
+          applications where speed of interaction is crucial, CSR may be more
+          suitable. In many cases, a hybrid approach (like Next.js with its
+          ability to do both SSR and CSR) can provide the best of both worlds.
         </p>
       </div>
 
@@ -1022,9 +1611,108 @@ app.use((req, res, next) => {
         <strong>14. Broadcast Channels</strong><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h2>BroadcastChannel API</h2>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          BroadcastChannel is a Web API that provides a simple way for different
+          windows or tabs from the same origin to communicate with each other.
+          It allows you to send messages between different browsing contexts,
+          such as different tabs or windows of the same browser.
+        </p>
+
+        <h3>Creation of a Channel:</h3>
+        <p>
+          You create a BroadcastChannel object by specifying a channel name.
+          This name acts as an identifier for the communication channel.
+        </p>
+
+        <h3>Sending Messages:</h3>
+        <p>
+          You can send messages using the <code>postMessage()</code> method of
+          the BroadcastChannel object. This allows you to send data to all
+          connected channels.
+        </p>
+
+        <h3>Receiving Messages:</h3>
+        <p>
+          Each channel that has the same name can listen for messages using the
+          <code>onmessage</code> event handler.
+        </p>
+
+        <h3>Example Usage:</h3>
+        <p>
+          Let's say you have two tabs open in your browser, and you want to
+          enable communication between them using a BroadcastChannel.
+        </p>
+
+        <h4>Tab 1 (Sender):</h4>
+        <pre><code>
+          const channel = new BroadcastChannel('myChannel');
+            document.querySelector('button').addEventListener('click', () => {
+              const message = document.querySelector('input').value;
+              channel.postMessage(message);
+            });
+        </code></pre>
+
+        <p>
+          In this example, we create a new BroadcastChannel named 'myChannel'.
+          When the button is clicked, it sends the value of an input field as a
+          message through the channel.
+        </p>
+
+        <h4>Tab 2 (Receiver):</h4>
+        <pre><code>
+          const channel = new BroadcastChannel('myChannel');
+          channel.onmessage = function(event) {
+            const message = event.data;
+            console.log('Received message:', message);
+          };
+        </code></pre>
+
+        <p>
+          In this example, we create a BroadcastChannel with the same name
+          ('myChannel'). We then listen for messages using the
+          <code>onmessage</code> event handler. When a message is received, we
+          extract the data from the event and log it to the console.
+        </p>
+
+        <h3>How it Works:</h3>
+        <ul>
+          <li>
+            When Tab 1 sends a message using
+            <code>channel.postMessage(message)</code>, Tab 2 receives it through
+            <code>channel.onmessage</code>.
+          </li>
+          <li>
+            Both tabs use the same channel name ('myChannel') to establish a
+            connection.
+          </li>
+          <li>
+            Any message sent through the channel is received by all listening
+            channels with the same name.
+          </li>
+        </ul>
+
+        <h3>Important Considerations:</h3>
+        <ul>
+          <li>
+            The communicating tabs need to be from the same origin (i.e., same
+            protocol, domain, and port) due to same-origin policy restrictions.
+          </li>
+          <li>
+            Messages sent through a BroadcastChannel are serialized, so they
+            should be JSON-serializable data.
+          </li>
+          <li>
+            Channels persist as long as at least one script holds a reference to
+            them. When all references are released, the channel is closed.
+          </li>
+        </ul>
+
+        <p>
+          BroadcastChannel is useful for scenarios where you need real-time
+          communication between different browsing contexts within your web
+          application, such as multiplayer games, collaborative tools, or any
+          situation where you want to sync data across multiple windows or tabs.
         </p>
       </div>
 
@@ -1032,9 +1720,163 @@ app.use((req, res, next) => {
         <strong>15. IndexedDB</strong><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h2>IndexedDB Overview</h2>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          IndexedDB is a low-level, client-side storage API provided by modern
+          web browsers. It allows web applications to store significant amounts
+          of structured data in a user's browser and retrieve it later, even
+          when the user is offline.
+        </p>
+
+        <h3>Key Characteristics and Features:</h3>
+        <ol>
+          <li>
+            <strong>Structured Data Storage:</strong> IndexedDB is an
+            object-oriented database, allowing structured data storage using
+            key-value pairs, similar to tables in a traditional relational
+            database.
+          </li>
+          <li>
+            <strong>Asynchronous API:</strong> Operations in IndexedDB are
+            asynchronous, requiring callback functions to handle completion.
+          </li>
+          <li>
+            <strong>High Storage Capacity:</strong> IndexedDB can handle large
+            amounts of data efficiently.
+          </li>
+          <li>
+            <strong>No Same-Origin Policy Restrictions:</strong> Unlike many
+            other web APIs, IndexedDB does not enforce the same-origin policy,
+            enabling access from multiple origins.
+          </li>
+          <li>
+            <strong>Transaction-Based:</strong> All interactions with IndexedDB
+            occur within transactions, ensuring atomicity and consistency.
+          </li>
+          <li>
+            <strong>Supports Indexing:</strong> Indexes can be created on object
+            properties for efficient querying.
+          </li>
+          <li>
+            <strong>Offline Access:</strong> Useful for building offline-capable
+            web applications by caching data on the client-side.
+          </li>
+          <li>
+            <strong>Security and Privacy:</strong> Data stored in IndexedDB is
+            specific to the origin, maintaining privacy and security.
+          </li>
+          <li>
+            <strong>Browser Support:</strong> IndexedDB is supported by most
+            modern browsers.
+          </li>
+        </ol>
+
+        <h3>Use Cases:</h3>
+        <ul>
+          <li>Storing large amounts of structured data on the client-side.</li>
+          <li>Building offline-capable web applications.</li>
+          <li>Caching resources for improved performance.</li>
+          <li>Implementing complex client-side data management.</li>
+        </ul>
+
+        <h3>Limitations:</h3>
+        <ul>
+          <li>
+            IndexedDB has a steeper learning curve compared to simpler storage
+            mechanisms like localStorage.
+          </li>
+          <li>
+            Requires careful management of asynchronous operations and
+            transactions.
+          </li>
+          <li>
+            May not be fully supported by older browsers or browsers with
+            limited support.
+          </li>
+        </ul>
+
+        <p>
+          Overall, IndexedDB is a powerful tool for client-side data storage and
+          retrieval, providing web developers with the means to build
+          sophisticated web applications that can function effectively both
+          online and offline.
+        </p>
+
+        <h3>JavaScript Example:</h3>
+        <pre><code>
+          // Step 1: Open a database
+              const dbName = 'myDatabase';
+              const request = indexedDB.open(dbName, 1);
+
+              let db;
+
+              request.onerror = function(event) {
+                console.error('Error opening database:', event.target.errorCode);
+              };
+
+              request.onsuccess = function(event) {
+                db = event.target.result;
+                console.log('Database opened successfully');
+              };
+
+              request.onupgradeneeded = function(event) {
+                db = event.target.result;
+
+                // Step 2: Create an object store (like a table in a database)
+                const objectStore = db.createObjectStore('customers', { keyPath: 'id' });
+
+                // Step 3: Define indexes (optional)
+                objectStore.createIndex('name', 'name', { unique: false });
+                objectStore.createIndex('email', 'email', { unique: true });
+
+                // Step 4: Add some data
+                objectStore.add({ id: 1, name: 'John Doe', email: 'john@example.com' });
+                objectStore.add({ id: 2, name: 'Jane Smith', email: 'jane@example.com' });
+
+                console.log('Object store created and data added');
+              };
+
+              // Step 5: Read data from the database
+              function readData() {
+                const transaction = db.transaction(['customers'], 'readonly');
+                const objectStore = transaction.objectStore('customers');
+                const request = objectStore.get(1);
+
+                request.onsuccess = function(event) {
+                  const customer = event.target.result;
+                  console.log('Customer:', customer);
+                };
+
+                transaction.oncomplete = function() {
+                  console.log('Transaction completed');
+                };
+              }
+
+              // Usage
+              readData();
+        </code></pre>
+
+        <p><strong>Explanation:</strong></p>
+        <ul>
+          <li>
+            <strong>Open Database:</strong> Opens or creates a database named
+            'myDatabase'.
+          </li>
+          <li>
+            <strong>Upgrade Needed Event:</strong> Triggers when the database is
+            created or needs an upgrade, creating an object store named
+            'customers' and adding data.
+          </li>
+          <li>
+            <strong>Read Data:</strong> Reads a customer with an ID of 1 from
+            the 'customers' object store.
+          </li>
+        </ul>
+
+        <p>
+          Please note that this is a simplified example. In real-world
+          applications, error handling, transaction management, security, and
+          additional features should be considered.
         </p>
       </div>
 
@@ -1042,9 +1884,124 @@ app.use((req, res, next) => {
         <strong>16. Core Web Vitals</strong><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h2>Core Web Vitals</h2>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          Core Web Vitals are a set of user-centered performance metrics
+          introduced by Google to help web developers and site owners measure
+          and improve the user experience on their websites. They focus on
+          aspects of web performance that directly impact user perception and
+          satisfaction.
+        </p>
+
+        <h3>1. Largest Contentful Paint (LCP)</h3>
+        <p>
+          <strong>Definition:</strong> LCP measures the perceived loading
+          performance of a web page. It specifically looks at the time it takes
+          for the largest visible element (usually an image, video, or
+          block-level element) to fully render on the page.
+        </p>
+        <p>
+          <strong>Ideal Benchmark:</strong> To provide a good user experience,
+          LCP should occur within the first 2.5 seconds of the page starting to
+          load.
+        </p>
+        <p><strong>Improvement Tips:</strong></p>
+        <ul>
+          <li>
+            Optimize and prioritize the loading of large elements like images
+            and videos.
+          </li>
+          <li>Use efficient image formats.</li>
+          <li>Minimize render-blocking resources.</li>
+        </ul>
+
+        <h3>2. First Input Delay (FID)</h3>
+        <p>
+          <strong>Definition:</strong> FID measures the responsiveness of a web
+          page. It gauges the time between a user's first interaction (like
+          clicking a button or link) and the browser's response to that
+          interaction.
+        </p>
+        <p>
+          <strong>Ideal Benchmark:</strong> To provide a good user experience,
+          FID should be less than 100 milliseconds.
+        </p>
+        <p><strong>Improvement Tips:</strong></p>
+        <ul>
+          <li>Minimize JavaScript execution time.</li>
+          <li>Avoid long tasks that might block the main thread.</li>
+          <li>Optimize third-party scripts and resources.</li>
+        </ul>
+
+        <h3>3. Cumulative Layout Shift (CLS)</h3>
+        <p>
+          <strong>Definition:</strong> CLS measures the visual stability of a
+          web page. It quantifies how much the content of a page shifts around
+          during loading. This can be caused by elements loading asynchronously
+          or dynamically, potentially leading to a frustrating user experience.
+        </p>
+        <p>
+          <strong>Ideal Benchmark:</strong> To provide a good user experience,
+          CLS should have a score of less than 0.1.
+        </p>
+        <p><strong>Improvement Tips:</strong></p>
+        <ul>
+          <li>
+            Provide dimensions for media elements like images and videos to
+            prevent layout shifts.
+          </li>
+          <li>
+            Avoid inserting new content above existing content unless in direct
+            response to a user action.
+          </li>
+        </ul>
+
+        <h2>How to Measure Core Web Vitals:</h2>
+        <p>
+          You can measure Core Web Vitals using various tools provided by
+          Google:
+        </p>
+        <ul>
+          <li>
+            Google PageSpeed Insights: This tool provides a score for both
+            mobile and desktop experiences, along with detailed suggestions for
+            improvement.
+          </li>
+          <li>
+            Google Search Console: It offers reports on how your site's pages
+            are performing in terms of Core Web Vitals.
+          </li>
+          <li>
+            Chrome DevTools: You can use the Lighthouse panel in DevTools to run
+            audits on any web page.
+          </li>
+        </ul>
+
+        <h2>Importance of Core Web Vitals:</h2>
+        <ul>
+          <li>
+            <strong>SEO Ranking Factor:</strong> Google considers Core Web
+            Vitals as a factor in its search ranking algorithm. Sites that
+            provide a better user experience are more likely to rank higher in
+            search results.
+          </li>
+          <li>
+            <strong>User Experience:</strong> Good Core Web Vitals scores lead
+            to faster, more responsive, and more visually stable web pages,
+            resulting in improved user satisfaction.
+          </li>
+          <li>
+            <strong>Reduced Bounce Rates:</strong> Users are less likely to
+            leave a page if it loads quickly and responds promptly to their
+            interactions.
+          </li>
+        </ul>
+
+        <p>
+          Remember that the web landscape is always evolving, and it's important
+          to stay updated with the latest recommendations and guidelines from
+          Google to ensure your website provides the best user experience
+          possible.
         </p>
       </div>
 
@@ -1052,19 +2009,339 @@ app.use((req, res, next) => {
         <strong>17. Accessibility</strong><span class="arrow"></span>
       </button>
       <div class="panel">
-        <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
-        </p>
+        <h1>Accessibility Concerns for Frontend Development</h1>
+        <ul style="list-style: none">
+          <li>
+            <strong>1. Semantic HTML:</strong>
+            Use appropriate HTML elements (e.g., &lt;nav&gt;, &lt;main&gt;,
+            &lt;section&gt;, &lt;article&gt;, &lt;header&gt;, &lt;footer&gt;,
+            &lt;aside&gt;) to convey the structure and purpose of content.
+          </li>
+          <li>
+            <strong>2. Use ARIA Roles and Attributes:</strong>
+            Use ARIA (Accessible Rich Internet Applications) roles and
+            attributes to enhance the accessibility of custom UI components and
+            dynamic content.
+          </li>
+          <li>
+            <strong>3. Provide Descriptive Text for Images:</strong>
+            Use alt attributes on images to provide descriptive text for users
+            who can't see them. Avoid using empty or redundant alt attributes.
+          </li>
+          <li>
+            <strong>4. Keyboard Navigation:</strong>
+            Ensure that all interactive elements, including links, buttons, and
+            form controls, are accessible and usable using only a keyboard.
+          </li>
+          <li>
+            <strong>5. Focus Styles:</strong>
+            Provide clear and visible focus styles for interactive elements.
+            Avoid removing or hiding the default focus indicator.
+          </li>
+          <li>
+            <strong>6. Skip to Content Link:</strong>
+            Include a "skip to content" link at the beginning of the page to
+            allow keyboard users to bypass repetitive navigation menus and go
+            straight to the main content.
+          </li>
+          <li>
+            <strong>7. Form Accessibility:</strong>
+            Label form elements properly using &lt;label&gt; elements or ARIA
+            labels. Use appropriate input types and ensure form validation is
+            clear and understandable.
+          </li>
+          <li>
+            <strong>8. Headings and Document Structure:</strong>
+            Use a logical heading structure (H1, H2, H3, etc.) to provide a
+            clear outline of the content. Avoid using headings for styling
+            purposes.
+          </li>
+          <li>
+            <strong>9. Color Contrast:</strong>
+            Ensure that text has sufficient contrast against its background to
+            make it readable for users with visual impairments.
+          </li>
+          <li>
+            <strong>10. Video and Audio Accessibility:</strong>
+            Provide captions and transcripts for videos. Offer alternative
+            content or descriptions for non-text content.
+          </li>
+          <li>
+            <strong>11. Avoid Autoplaying Media:</strong>
+            Avoid autoplaying audio or video content, as it can be disorienting
+            for some users.
+          </li>
+          <li>
+            <strong>12. Use Native HTML Features:</strong>
+            Use native HTML elements and features wherever possible, as they are
+            generally more accessible than custom implementations.
+          </li>
+          <li>
+            <strong>13. Testing with Screen Readers:</strong>
+            Regularly test your website with screen reader software to ensure
+            it's navigable and understandable for users who rely on screen
+            readers.
+          </li>
+          <li>
+            <strong>14. Avoid JavaScript-Only Interactions:</strong>
+            Ensure that critical functionality is accessible without relying
+            solely on JavaScript. Provide alternative methods for users who may
+            not have JavaScript enabled.
+          </li>
+          <li>
+            <strong>15. Error Handling:</strong>
+            Provide clear and descriptive error messages for form submissions or
+            other interactive elements.
+          </li>
+          <li>
+            <strong>16. Responsive Design:</strong>
+            Ensure that your website is responsive and works well on different
+            devices and screen sizes.
+          </li>
+          <li>
+            <strong>17. Testing Tools:</strong>
+            Use accessibility testing tools and browser extensions to identify
+            and fix accessibility issues.
+          </li>
+        </ul>
       </div>
 
       <button class="accordion">
         <strong>18. Aria Roles</strong><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h1>Accessibility Concerns for Frontend Development</h1>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          ARIA roles are used to provide additional information to assistive
+          technologies (such as screen readers) about the purpose and behavior
+          of elements on a web page. This helps users with disabilities,
+          particularly those who may not be able to interact with a page using a
+          traditional mouse or visual interface.
+        </p>
+        <p>
+          Here's an explanation of how some common ARIA roles are used for
+          accessibility:
+        </p>
+        <ul>
+          <li>
+            <strong>role="button":</strong> Indicates that an element functions
+            as a button.
+            <p>
+              <strong>Accessibility Benefit:</strong> Screen readers will
+              announce the element as a button, allowing users to understand
+              that it's interactive and can be activated.
+            </p>
+          </li>
+          <li>
+            <strong>role="link":</strong> Indicates that an element functions as
+            a hyperlink.
+            <p>
+              <strong>Accessibility Benefit:</strong> Screen readers will
+              announce the element as a link, letting users know that it leads
+              to another page or resource.
+            </p>
+          </li>
+          <li>
+            <strong>role="heading":</strong> Specifies the heading level of an
+            element.
+            <p>
+              <strong>Accessibility Benefit:</strong> Screen readers use
+              headings to create a hierarchical structure for the content,
+              aiding users in understanding the organization and flow of the
+              page.
+            </p>
+          </li>
+          <li>
+            <strong>role="navigation":</strong> Denotes a navigation region
+            within a page.
+            <p>
+              <strong>Accessibility Benefit:</strong> Screen readers can
+              identify navigation sections, helping users quickly locate menus
+              or links to different parts of the website.
+            </p>
+          </li>
+          <li>
+            <strong>role="checkbox":</strong> Represents a checkbox input.
+            <p>
+              <strong>Accessibility Benefit:</strong> Screen readers will
+              recognize the element as a checkbox, allowing users to interact
+              with it and understand its state (checked or unchecked).
+            </p>
+          </li>
+          <li>
+            <strong>role="menu" and role="menuitem":</strong> Define a menu and
+            its individual items.
+            <p>
+              <strong>Accessibility Benefit:</strong> Screen readers will
+              identify menus and their items, making it easier for users to
+              navigate and select options.
+            </p>
+          </li>
+          <li>
+            <strong>role="alert":</strong> Indicates that an element contains
+            important and time-sensitive information.
+            <p>
+              <strong>Accessibility Benefit:</strong> Screen readers will
+              announce alerts, ensuring that users are immediately aware of
+              critical messages or notifications.
+            </p>
+          </li>
+        </ul>
+        <p><strong>How ARIA Attributes Enhance Accessibility:</strong></p>
+        <ul>
+          <li>
+            <strong>aria-label and aria-labelledby:</strong> Provide an
+            accessible name for an element, ensuring that assistive technologies
+            can convey the purpose or label of the element to the user.
+          </li>
+          <li>
+            <strong>aria-describedby:</strong> Points to additional information
+            that describes the element, giving users more context or
+            instructions.
+          </li>
+          <li>
+            <strong>aria-hidden:</strong> Indicates whether an element should be
+            hidden from assistive technologies, allowing developers to manage
+            what is presented to users with disabilities.
+          </li>
+          <li>
+            <strong>aria-disabled:</strong> Indicates that an element is not
+            interactive and cannot be activated, ensuring that users understand
+            when an element is not usable.
+          </li>
+          <li>
+            <strong>aria-haspopup and aria-expanded:</strong> Indicate the
+            presence of a popup menu and its current state (open or closed),
+            providing users with information about interactive elements.
+          </li>
+          <li>
+            <strong>aria-live:</strong> Specifies that an element will be
+            automatically updated with live information, making dynamic content
+            accessible to users.
+          </li>
+          <li>
+            <strong>aria-pressed:</strong> Indicates the current state of a
+            toggle button (e.g., pressed or not pressed), helping users
+            understand the current setting.
+          </li>
+        </ul>
+        <p>
+          By using ARIA roles and attributes effectively, developers can create
+          a more inclusive web experience for all users, especially those who
+          rely on assistive technologies to access and navigate websites.
+        </p>
+        <p>
+          Here are some of the most common ARIA roles and attributes along with
+          examples of how to use them:
+        </p>
+        <ul>
+          <li>
+            <strong>ARIA Roles:</strong>
+            <ul>
+              <li>
+                <strong>role="button":</strong> Indicates that an element
+                functions as a button.
+                <div role="button" tabindex="0">Click me</div>
+              </li>
+              <li>
+                <strong>role="link":</strong> Indicates that an element
+                functions as a hyperlink.
+                <div role="link" tabindex="0">Visit our homepage</div>
+              </li>
+              <li>
+                <strong>role="heading":</strong> Specifies the heading level of
+                an element.
+                <div role="heading" aria-level="2">Subheading</div>
+              </li>
+              <li>
+                <strong>role="navigation":</strong> Denotes a navigation region
+                within a page.
+                <nav role="navigation">
+                  <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                  </ul>
+                </nav>
+              </li>
+              <li>
+                <strong>role="checkbox":</strong> Represents a checkbox input.
+                <div role="checkbox" aria-checked="true" tabindex="0">
+                  Checked
+                </div>
+              </li>
+              <li>
+                <strong>role="menu" and role="menuitem":</strong> Define a menu
+                and its individual items.
+                <div role="menu">
+                  <div role="menuitem" tabindex="0">Option 1</div>
+                  <div role="menuitem" tabindex="0">Option 2</div>
+                </div>
+              </li>
+              <li>
+                <strong>role="alert":</strong> Indicates that an element
+                contains important and time-sensitive information.
+                <div role="alert">
+                  Error: Please enter a valid email address
+                </div>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <strong>ARIA Attributes:</strong>
+            <ul>
+              <li>
+                <strong>aria-label and aria-labelledby:</strong> Provide an
+                accessible name for an element.
+                <button aria-label="Close">X</button>
+                <div id="section-heading">Section Title</div>
+                <section aria-labelledby="section-heading">
+                  <!-- Section content -->
+                </section>
+              </li>
+              <li>
+                <strong>aria-describedby:</strong> Points to additional
+                information that describes the element.
+                <input type="text" aria-describedby="help-text" />
+                <div id="help-text">Please enter your username</div>
+              </li>
+              <li>
+                <strong>aria-hidden:</strong> Indicates whether an element
+                should be hidden from assistive technologies.
+                <div aria-hidden="true">Hidden content</div>
+              </li>
+              <li>
+                <strong>aria-disabled:</strong> Indicates that an element is not
+                interactive and cannot be activated.
+                <button aria-disabled="true">Disabled Button</button>
+              </li>
+              <li>
+                <strong>aria-haspopup and aria-expanded:</strong> Indicates that
+                an element has a popup menu and whether it is expanded.
+                <button aria-haspopup="true" aria-expanded="false">
+                  Show Menu
+                </button>
+              </li>
+              <li>
+                <strong>aria-live:</strong> Specifies that an element will be
+                automatically updated with live information.
+                <div aria-live="polite">New message received</div>
+              </li>
+              <li>
+                <strong>aria-pressed:</strong> Indicates the current state of a
+                toggle button (e.g., pressed or not pressed).
+                <button aria-pressed="false">Toggle</button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+        <p>
+          These are just a few examples of how ARIA roles and attributes can be
+          used to enhance the accessibility of web content. It's important to
+          choose the appropriate roles and attributes based on the functionality
+          and purpose of your elements. Always refer to the ARIA specification
+          and consider testing with assistive technologies to ensure your
+          content is properly accessible.
         </p>
       </div>
 
@@ -1072,10 +2349,99 @@ app.use((req, res, next) => {
         <strong>19. Network requests</strong><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h1>Data Fetching Strategies</h1>
+        <h2>1. Network Only:</h2>
+        <p><strong>Pros:</strong></p>
+        <ul>
+          <li>
+            Fresh Data: This option ensures that you always get the latest data
+            directly from the server. It's suitable for situations where
+            real-time or the most up-to-date information is critical.
+          </li>
+        </ul>
+        <p><strong>Cons:</strong></p>
+        <ul>
+          <li>
+            Latency: It can introduce latency, especially if the network
+            connection is slow or the server is experiencing high load. The user
+            might experience delays in receiving data.
+          </li>
+          <li>
+            Potential for Failure: If there are network issues or the server is
+            down, the request will fail, and the user might not receive any data
+            at all.
+          </li>
+        </ul>
+        <h2>2. Network and Cache:</h2>
+        <p><strong>Pros:</strong></p>
+        <ul>
+          <li>
+            Balanced Approach: This option strikes a balance between using
+            cached data for speed and fetching new data from the network for
+            freshness.
+          </li>
+          <li>
+            Improved Performance: If the data is already in the cache, you can
+            provide an immediate response to the user while also ensuring that
+            fresher data is fetched in the background.
+          </li>
+        </ul>
+        <p><strong>Cons:</strong></p>
+        <ul>
+          <li>
+            Potential for Stale Data: Depending on how often the cache is
+            refreshed or how long data is cached, there's a possibility that the
+            data might be slightly outdated.
+          </li>
+          <li>
+            Complex Caching Logic: Implementing a cache can add complexity to
+            your application, especially when dealing with cache expiration,
+            invalidation, and synchronization.
+          </li>
+        </ul>
+        <h2>3. Cache Only:</h2>
+        <p><strong>Pros:</strong></p>
+        <ul>
+          <li>
+            Instantaneous Response: If the data is available in the cache, the
+            response is immediate, providing a very fast user experience.
+          </li>
+        </ul>
+        <p><strong>Cons:</strong></p>
+        <ul>
+          <li>
+            Risk of Stale Data: If the data in the cache is outdated or
+            nonexistent, the user might not receive the information they need.
+          </li>
+          <li>
+            Dependence on Cache: This option can lead to a dependency on the
+            cache, potentially neglecting the possibility of getting fresh data
+            from the network.
+          </li>
+        </ul>
+        <h2>Summary:</h2>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          Choosing the right strategy depends on the specific requirements of
+          your application. Here are some general guidelines:
         </p>
+        <ul>
+          <li>
+            <strong>Network Only:</strong> Use when real-time data is crucial,
+            and latency is acceptable. Examples include live feeds or real-time
+            monitoring systems.
+          </li>
+          <li>
+            <strong>Network and Cache:</strong> This is a good middle-ground
+            approach for most applications. It balances performance and
+            freshness of data. Use this for applications where both speed and
+            accuracy are important.
+          </li>
+          <li>
+            <strong>Cache Only:</strong> Use when you have a reliable cache and
+            you want to provide an extremely fast response to the user. This can
+            be suitable for applications where data doesn't change frequently.
+          </li>
+        </ul>
       </div>
 
       <button class="accordion">
@@ -1084,9 +2450,169 @@ app.use((req, res, next) => {
         ><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h1>Polling Vs Web Sockets VS Server Side Events Cheat Sheet</h1>
+        <h2>Polling/Long Polling:</h2>
+        <p><strong>Pros:</strong></p>
+        <ul>
+          <li>Simplicity, Compatibility</li>
+          <li>Less real-time</li>
+        </ul>
+        <p><strong>Cons:</strong></p>
+        <ul>
+          <li>High Latency</li>
+          <li>Server Load</li>
+        </ul>
+        <h2>Regular HTTP:</h2>
+        <p><strong>Pros:</strong></p>
+        <ul>
+          <li>Stateless, Caching</li>
+          <li>Easy Debugging</li>
+        </ul>
+        <p><strong>Cons:</strong></p>
+        <ul>
+          <li>No Real-time</li>
+          <li>Request Overhead</li>
+        </ul>
+        <h2>Web Sockets:</h2>
+        <p><strong>Pros:</strong></p>
+        <ul>
+          <li>Real-time, Bi-directional</li>
+          <li>Low Latency</li>
+        </ul>
+        <p><strong>Cons:</strong></p>
+        <ul>
+          <li>More Complex</li>
+          <li>Firewall Issues</li>
+        </ul>
+        <h2>Server Side Events:</h2>
+        <p><strong>Pros:</strong></p>
+        <ul>
+          <li>Simplicity, Server Push</li>
+          <li>One-way</li>
+        </ul>
+        <p><strong>Cons:</strong></p>
+        <ul>
+          <li>Limited Browser Support</li>
+          <li>Less Flexible</li>
+        </ul>
+        <h2>Pros of Server-Sent Events (SSE):</h2>
+        <ul>
+          <li>
+            Simplicity: SSE is relatively easy to set up and use. It's a
+            straightforward API that allows the server to send updates to the
+            client over a single HTTP connection.
+          </li>
+          <li>
+            Server Push: SSE enables the server to push data to the client
+            without the client needing to constantly poll the server for
+            updates. This can lead to more efficient use of resources and
+            reduced server load.
+          </li>
+          <li>
+            One-Way Communication: SSE is primarily designed for one-way
+            communication from the server to the client. This simplicity can be
+            an advantage in scenarios where bidirectional communication isn't
+            necessary.
+          </li>
+          <li>
+            Automatic Reconnection: If the connection is lost (e.g., due to
+            network issues), the browser will automatically attempt to
+            reconnect, ensuring a more robust and reliable connection.
+          </li>
+          <li>
+            Text-Based Protocol: SSE uses a text-based protocol, making it easy
+            to debug and understand the communication between the server and the
+            client.
+          </li>
+        </ul>
+        <h2>Cons of Server-Sent Events (SSE):</h2>
+        <ul>
+          <li>
+            Limited Browser Support: While SSE is supported by most modern
+            browsers, it may not be compatible with older or less common
+            browsers. This can limit its use in environments where broader
+            compatibility is required.
+          </li>
+          <li>
+            One-Way Communication: SSE is primarily designed for one-way
+            communication. If you need to support bidirectional communication
+            (e.g., for chat applications), other technologies like Websockets
+            might be more suitable.
+          </li>
+          <li>
+            Less Flexible than Websockets: SSE is designed specifically for
+            server-to-client communication. It lacks the flexibility of
+            Websockets, which can be used for more complex real-time
+            applications that require both server-to-client and client-to-server
+            communication.
+          </li>
+          <li>
+            Limited Error Handling: SSE has limited built-in error handling
+            capabilities. For more advanced error handling and recovery
+            strategies, additional logic may need to be implemented on top of
+            SSE.
+          </li>
+        </ul>
+        <h2>Firewall Issues with Websockets:</h2>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          Firewalls can be configured to block certain network traffic, and
+          Websockets operate on a different protocol than regular HTTP requests.
+          This difference can sometimes lead to issues with firewalls blocking
+          Websocket connections. To address this, administrators might need to
+          adjust firewall settings to allow Websockets traffic or use protocols
+          like Websocket Secure (WSS) over port 443, which is commonly allowed
+          through firewalls.
+        </p>
+        <h2>Authentication with Websockets:</h2>
+        <p>
+          Websockets don't inherently handle authentication, but you can
+          implement authentication mechanisms for Websocket connections. One
+          common approach is to use JWTs (JSON Web Tokens). When a client
+          establishes a Websocket connection, it can send an authentication
+          request with a JWT in a custom Websocket header. The server can then
+          verify the JWT to authenticate the client. Alternatively, you can
+          authenticate clients through a regular HTTP request before upgrading
+          the connection to a Websocket.
+        </p>
+        <h2>Websockets and HTTP:</h2>
+        <p>
+          Websockets are a separate protocol from HTTP, even though they
+          typically operate over the same ports (HTTP on port 80 and HTTPS on
+          port 443). While HTTP is request-response based and stateless,
+          Websockets provide full-duplex, bidirectional communication, making
+          them suitable for real-time applications.
+        </p>
+        <h2>Load Balancing Websockets:</h2>
+        <p>
+          Load balancing Websockets can be more challenging than load balancing
+          HTTP requests due to the persistent, stateful nature of Websocket
+          connections. Here are a few strategies:
+        </p>
+        <ul>
+          <li>
+            Sticky Sessions: Some load balancers support sticky sessions, where
+            all Websocket requests from a particular client are routed to the
+            same server. This maintains the connection state on one server.
+          </li>
+          <li>
+            Websocket-aware Load Balancers: Use load balancers that are
+            specifically designed to handle Websockets. These load balancers are
+            aware of the Websocket protocol and can manage connections
+            accordingly.
+          </li>
+          <li>
+            Separate Endpoints: Consider separating HTTP traffic from Websocket
+            traffic and using different load balancing strategies for each. For
+            example, you might use round-robin for HTTP and sticky sessions for
+            Websockets.
+          </li>
+        </ul>
+        <p>
+          It's important to choose a load balancing strategy that suits your
+          application's needs and the capabilities of your infrastructure.
+          Additionally, consider using a robust Websocket library or framework
+          that provides built-in support for scaling and handling load balancing
+          complexities.
         </p>
       </div>
 
@@ -1095,9 +2621,83 @@ app.use((req, res, next) => {
         ><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h1>Comprehensive Image Optimization Strategies for Web</h1>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          Images are the lifeblood of web content, but they can also be a
+          double-edged sword. When used improperly, they can significantly slow
+          down web page load times and compromise user experience. In this
+          comprehensive guide, we will explore various image optimization
+          strategies to help you strike the perfect balance between visual
+          appeal and performance. We will delve deeper into the following
+          techniques:
+        </p>
+        <ol>
+          <li>Progressive Image Loading</li>
+          <li>Using the srcset Attribute</li>
+          <li>Lazy Loading</li>
+          <li>Utilizing Microservices for Dynamic Image Sizing</li>
+        </ol>
+
+        <h2>1. Progressive Image Loading</h2>
+        <p>
+          <strong>Why It Matters:</strong> Traditional image loading can cause a
+          "loading lag" that frustrates users. Progressive loading provides a
+          more responsive and engaging experience, as users can see a
+          preliminary version of the image while the high-resolution version
+          loads in the background.
+        </p>
+        <h3>Implementation:</h3>
+        <pre><code>&lt;img src="thumbnail.jpg" alt="High-Resolution Image" loading="lazy"&gt;</code></pre>
+
+        <h2>2. Using the srcset Attribute</h2>
+        <p><strong>Benefits of srcset:</strong></p>
+        <ul>
+          <li>Responsive Images</li>
+          <li>Improved Performance</li>
+          <li>Better User Experience</li>
+          <li>Accessibility</li>
+        </ul>
+        <h3>Implementation:</h3>
+        <pre><code>&lt;img src="default.jpg" alt="Default Image" srcset="small.jpg 300w, medium.jpg 600w, large.jpg 1024w"&gt;</code></pre>
+
+        <h2>3. Lazy Loading</h2>
+        <p>
+          <strong>Why It Matters:</strong> For content-heavy web pages, lazy
+          loading can be a game-changer. It prioritizes the loading of images
+          that users are likely to see immediately, improving the initial page
+          load experience.
+        </p>
+        <h3>Implementation:</h3>
+        <pre><code>&lt;img src="placeholder.jpg" data-src="image-to-lazy-load.jpg" alt="Lazy Loaded Image" loading="lazy"&gt;</code></pre>
+
+        <h2>4. Utilizing Microservices for Dynamic Image Sizing</h2>
+        <p>
+          <strong>Why It Matters:</strong> This approach minimizes image storage
+          requirements and optimizes bandwidth usage. Users receive images
+          tailored to their devices, ensuring efficient image delivery.
+        </p>
+        <h3>Implementation:</h3>
+        <pre><code>
+          // Microservice logic (simplified)
+            app.get('/images/:imageName', (req, res) => {
+                const imageName = req.params.imageName;
+                const desiredWidth = req.query.width;
+                const desiredHeight = req.query.height;
+                // Logic to fetch and resize the image
+                ...
+                // Serve the resized image
+                res.sendFile(resizedImagePath);
+            });</code></pre>
+
+        <h2>Conclusion</h2>
+        <p>
+          Effective image optimization is crucial for web performance, user
+          experience, and accessibility. Employing techniques like progressive
+          loading, srcset attributes, lazy loading, and microservices for
+          dynamic sizing can significantly enhance your web application's speed
+          and responsiveness. The key is to find the right balance between image
+          quality and performance to create a seamless and enjoyable browsing
+          experience for your users.
         </p>
       </div>
 
@@ -1105,9 +2705,112 @@ app.use((req, res, next) => {
         <strong>22. Apollo Cache</strong><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h1>Apollo Cache</h1>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          Apollo Client, a popular GraphQL client, offers a robust caching
+          system to help applications cache data effectively. The cache helps
+          avoid unnecessary network requests, making your application faster and
+          more responsive. Here are some notable features and techniques related
+          to client-side caching with Apollo:
+        </p>
+
+        <h2>InMemoryCache:</h2>
+        <p>
+          This is the default caching mechanism provided by Apollo Client. As
+          the name suggests, it keeps a normalized data store in memory. This
+          normalization ensures that each piece of data is stored only once,
+          which prevents redundancy and improves cache lookup performance.
+        </p>
+
+        <h2>Normalized Cache:</h2>
+        <p>
+          Apollo Client normalizes cache by splitting the results into
+          individual objects by their unique identifiers and storing them in a
+          flattened structure. This way, if a piece of data is referenced in
+          multiple places, it only needs to be updated in one place in the
+          cache.
+        </p>
+
+        <h2>Cache Redirects:</h2>
+        <p>
+          Using cache redirects, you can tell the Apollo Client's cache how to
+          provide data for queries that aren't cached directly. This is useful
+          when the data needed by a query might already exist in the cache but
+          under a different query.
+        </p>
+
+        <h2>Field Policies:</h2>
+        <p>
+          Field policies define custom logic for reading and merging values for
+          specific fields in your cache. They can be used to provide custom
+          caching behavior, pagination handling, and more.
+        </p>
+
+        <h2>Cache Eviction:</h2>
+        <p>
+          Apollo Client provides methods to remove specific data from the cache.
+          You can use this to manage cache size or ensure that stale data is
+          removed when necessary.
+        </p>
+
+        <h2>Garbage Collection:</h2>
+        <p>
+          Introduced in Apollo Client 3, garbage collection helps remove data
+          from the cache that is no longer being used. This keeps the cache size
+          in check and ensures that memory usage remains optimal.
+        </p>
+
+        <h2>Persisted Cache:</h2>
+        <p>
+          While InMemoryCache is the default, there's an additional package
+          called apollo3-cache-persist that lets you persist your cache to local
+          storage (or another storage provider). This means users can retain
+          data even after closing and reopening the application, leading to
+          faster load times.
+        </p>
+
+        <h2>Optimistic UI:</h2>
+        <p>
+          With Apollo Client, you can provide an "optimistic response" when
+          performing mutations (changes). This means the UI will instantly
+          reflect the changes, and once the server responds, the cache gets
+          updated with the actual data. This provides a faster, more responsive
+          user experience.
+        </p>
+
+        <h2>Fetch Policies:</h2>
+        <p>
+          Apollo Client offers several fetch policies that determine how a query
+          interacts with the cache:
+        </p>
+        <ul>
+          <li>
+            <strong>cache-first:</strong> Default. It tries to get data from the
+            cache first. If not found, fetches from the network.
+          </li>
+          <li>
+            <strong>cache-and-network:</strong> Returns data from cache first,
+            but still makes a network request to update any potential changes.
+          </li>
+          <li>
+            <strong>network-only:</strong> Bypasses cache and always requests
+            from the network.
+          </li>
+          <li>
+            <strong>cache-only:</strong> Only gets data from the cache, never
+            touches the network.
+          </li>
+          <li>
+            <strong>no-cache:</strong> Fetches from the network and doesn't
+            store the result in the cache.
+          </li>
+        </ul>
+
+        <p>
+          These are just some of the features related to Apollo Client's caching
+          capabilities. Properly tuning and leveraging these features can
+          greatly enhance the performance and user experience of a GraphQL-based
+          application.
         </p>
       </div>
 
@@ -1116,9 +2819,140 @@ app.use((req, res, next) => {
         ><span class="arrow"></span>
       </button>
       <div class="panel">
+        <h1>Normalized vs Non-Normalized Data Structures</h1>
         <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
+          Let's delve into the idea of normalized vs. non-normalized cache using
+          a simple example. Assume we're building a blogging application and
+          fetching data about blog posts and their authors.
+        </p>
+
+        <h2>Data from Server</h2>
+        <p>
+          Here's a sample of what the data might look like when fetched from the
+          server:
+        </p>
+
+        <pre><code>
+    {
+      "posts": [
+        {
+          "id": "1",
+          "title": "My First Post",
+          "author": {
+            "id": "a1",
+            "name": "Alice"
+          }
+        },
+        {
+          "id": "2",
+          "title": "Another Day, Another Post",
+          "author": {
+            "id": "a1",
+            "name": "Alice"
+          }
+        }
+      ]
+    }
+        </code></pre>
+
+        <h2>Non-Normalized Cache</h2>
+        <p>
+          If you were to cache this data without normalization, you'd basically
+          store it as-is, mirroring the structure of the data received. The
+          cache might look identical to the above JSON:
+        </p>
+
+        <pre><code>
+    {
+      "posts": [
+        {
+          "id": "1",
+          "title": "My First Post",
+          "author": {
+            "id": "a1",
+            "name": "Alice"
+          }
+        },
+        {
+          "id": "2",
+          "title": "Another Day, Another Post",
+          "author": {
+            "id": "a1",
+            "name": "Alice"
+          }
+        }
+      ]
+    }
+        </code></pre>
+
+        <p>
+          The problem here is that the data for the author "Alice" is
+          duplicated. If Alice changes her name, for instance, you'd have to
+          update it in multiple places in the cache, which isn't efficient.
+        </p>
+
+        <h2>Normalized Cache</h2>
+        <p>
+          A normalized cache would flatten the data and store each entity by its
+          unique identifier. Using the same data, here's what a normalized cache
+          might look like:
+        </p>
+
+        <pre><code>
+    {
+      "Post": {
+        "1": {
+          "id": "1",
+          "title": "My First Post",
+          "authorId": "a1"
+        },
+        "2": {
+          "id": "2",
+          "title": "Another Day, Another Post",
+          "authorId": "a1"
+        }
+      },
+      "Author": {
+        "a1": {
+          "id": "a1",
+          "name": "Alice"
+        }
+      }
+    }
+        </code></pre>
+
+        <p>In this normalized structure:</p>
+        <ul>
+          <li>Each type of entity (Post and Author) has its own section.</li>
+          <li>Each entity is stored by its unique identifier.</li>
+          <li>
+            Relationships between entities are represented with IDs (like
+            "authorId": "a1") rather than nested objects.
+          </li>
+        </ul>
+
+        <p>The benefits of this approach become clear as the data grows:</p>
+        <ul>
+          <li>
+            No Redundancy: Each piece of data is stored only once, so there's no
+            duplication. This makes updates straightforward.
+          </li>
+          <li>
+            Space Efficiency: For large datasets with many repeating entities,
+            normalization can save a significant amount of memory.
+          </li>
+          <li>
+            Consistency: Since each piece of data exists in only one place,
+            there's less risk of data inconsistency.
+          </li>
+        </ul>
+
+        <p>
+          However, it's also worth noting that normalization can be a bit more
+          complex to implement, especially when reading or writing to the cache.
+          You'll need to reconstruct the desired shape of the data from the flat
+          structure when reading from the cache. Thankfully, libraries like
+          Apollo Client handle a lot of this complexity for you.
         </p>
       </div>
     </div>
