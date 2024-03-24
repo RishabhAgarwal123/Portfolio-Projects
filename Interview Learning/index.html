@@ -24,8 +24,9 @@
           <p style="margin: 0" id="throttle">
             It can be tested by moving cursor inside the Throttling box will
             provide the x and y co-ordinates
-          </p><br>
-          <button style="cursor: pointer;" id="throttle3">
+          </p>
+          <br />
+          <button style="cursor: pointer" id="throttle3">
             Implement throttle() with leading & trailing option
           </button>
         </div>
@@ -49,7 +50,9 @@
         />
         <button id="btn">Check for Debouncing</button>
         <button id="btnDebounce3">Debounce 3</button>
-        <button id="btnDebounce4">Debounce with leading and trailing options</button>
+        <button id="btnDebounce4">
+          Debounce with leading and trailing options
+        </button>
       </div>
 
       <!-- Currying -->
@@ -94,7 +97,7 @@
             id="flat_3"
             title="Flattening a Nested Object Structure in JavaScript. Imagine you're building a frontend application that needs to display a hierarchical list of items. Each item can have children, forming a nested structure. However, you want to display these items in a flat list without losing their relationships. Your task is to create a function that takes a nested structure as input and returns a flattened array of objects, preserving the original order of items."
           >
-          Flattening a Nested Object Structure in JavaScript
+            Flattening a Nested Object Structure in JavaScript
           </button>
           <button
             id="flat_3_5"
@@ -107,6 +110,9 @@
             title="Flatten Any Input (Objects, Arrays, Primitives). Write a function that takes an arbitrarily nested object or array and returns a flattened version of it."
           >
             Flatten4
+          </button>
+          <button id="flat_5" title="Flattening a Nested Object with Prefix">
+            Flattening a Nested Object with Prefix
           </button>
         </div>
       </div>
@@ -454,11 +460,49 @@
 
       <!-- Frontend System Design -->
       <div class="border">
-        <div style="cursor: pointer; height: 100vw;">
+        <div style="cursor: pointer; height: 1300px">
           <h4>18. Frontend System Design:</h4>
-          <iframe width="100%" height="100%" src="./Frontend_System_Design/FrontendSystemDesign.html" frameborder="0"></iframe>
+          <iframe
+            width="100%"
+            height="100%"
+            src="./Frontend_System_Design/FrontendSystemDesign.html"
+            frameborder="0"
+          ></iframe>
         </div>
       </div>
+
+      <!-- Memoization -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>19. Memoization:</h4>
+          <button id="memoize">Memoization</button>
+        </div>
+      </div>
+
+      <!-- Finding the Top K Most Used Words in a Log File -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>20. Finding the Top K Most Used Words in a Log File:</h4>
+          <button id="top_k">Finding the Top K Most Used Words in a Log File</button>
+        </div>
+      </div>
+
+      <!-- String Repeater -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>21. String Repeater:</h4>
+          <button id="stringRepeater">String Repeater</button>
+        </div>
+      </div>
+
+      <!-- Exclude Items -->
+      <div class="border">
+        <div class="div" style="cursor: pointer">
+          <h4>22. Exclude Items:</h4>
+          <button id="excludeItems">Exclude Items</button>
+        </div>
+      </div>
+
     </div>
 
     <script src="./arrayMethods.js" defer></script>
@@ -468,6 +512,8 @@
     <script src="./debounce2.js" defer></script>
     <script src="./debounce3.js" defer></script>
     <script src="./debounce4.js" defer></script>
+    <script src="./excludeItems.js" defer></script>
+    <script src="./memoize.js" defer></script>
     <script src="./promise.js" defer></script>
     <script src="./currying.js" defer></script>
     <script src="./throttle1.js" defer></script>
@@ -487,12 +533,15 @@
     <script src="./Flattening/flatten3.js" defer></script>
     <script src="./Flattening/flatten3.5.js" defer></script>
     <script src="./Flattening/flatten4.js" defer></script>
+    <script src="./Flattening/flatten5.js" defer></script>
     <script src="./Questions/FirstDuplicateLetter.js" defer></script>
     <script src="./Questions/ObjectPathByKey.js" defer></script>
     <script src="./Questions/MergeSortedArray.js" defer></script>
     <script src="./Questions/MeetingSlot.js" defer></script>
     <script src="./Questions/JsonStringify.js" defer></script>
     <script src="./Questions/Anagram.js" defer></script>
+    <script src="./stringRepeater.js" defer></script>
     <script src="./testingFramework.js" defer></script>
+    <script src="./TopK.js" defer></script>
   </body>
 </html>

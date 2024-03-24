@@ -1382,7 +1382,8 @@ app.use((req, res, next) => {
               them from being interpreted as executable code.
             </p>
             <h4>Example (Using a Library like DOMPurify):</h4>
-            <pre><code>const userInput = '<img src="x" onerror="alert(\'XSS Attack!\')">';
+            <!-- 'XSS Attack!\ -->
+            <pre><code>const userInput = '<img src="#" onerror="console.log('Error')">';
 const sanitizedHTML = DOMPurify.sanitize(userInput);
 // Render the sanitized HTML in the document
 document.getElementById('output').innerHTML = sanitizedHTML;</code></pre>
@@ -1395,7 +1396,8 @@ document.getElementById('output').innerHTML = sanitizedHTML;</code></pre>
               JSX to escape potentially dangerous content by default.
             </p>
             <h4>Example (React JSX):</h4>
-            <pre><code>const userInput = '<img src="x" onerror="alert(\'XSS Attack!\')">';
+            <!-- \'XSS Attack!\ -->
+            <pre><code>const userInput = '<img src="#" onerror="console.log('Error')">';
 const output = &lt;div&gt;{userInput}&lt;/div&gt;; // User input is escaped by JSX</code></pre>
           </li>
           <li>
