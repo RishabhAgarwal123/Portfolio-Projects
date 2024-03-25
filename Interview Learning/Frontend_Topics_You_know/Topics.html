@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../Frontend_System_Design/style.css" />
+  </head>
+  <body>
+    <div>
+      <button class="accordion">
+        <strong>Intro</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          Studying frontend trivia questions can be an effective way to enhance
+          your knowledge and skills in web development. By understanding key
+          concepts and principles, you can confidently answer questions during
+          interviews or discussions and demonstrate your expertise in frontend
+          development. In this article, we will explore five important frontend
+          trivia questions and provide explanations for each. By studying and
+          grasping these concepts, you’ll be well-prepared to tackle frontend
+          trivia questions with ease.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>Propagation: What is Event Propagation?</strong
+        ><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <div class="section">
+          <h2>Understanding the Event Flow</h2>
+          <p>
+            Event Propagation is a fundamental concept in JavaScript and a
+            crucial topic in front-end development interviews. It pertains to
+            the flow of event execution in the DOM tree when an event occurs,
+            meaning, it controls the order of event handlers when an event is
+            triggered. To grasp the concept deeply, it is vital to understand
+            that events in the DOM tree can propagate in two phases: capturing
+            (or capture) phase and bubbling phase.
+          </p>
+        </div>
+        <div class="section">
+          <h2>Capture Phase</h2>
+          <p>
+            The first phase is the capture or capturing phase. In this phase,
+            the event starts from the root and trickles down to the target
+            element that triggered the event. Although not commonly used, this
+            phase allows developers to have a finer level of control over the
+            event handling process. The capture phase enables the outermost
+            elements to respond to an event before the target element does. This
+            can be particularly useful in situations where you need to intercept
+            or modify events at a high level in the DOM hierarchy.
+          </p>
+        </div>
+        <div class="section">
+          <h2>Bubbling Phase</h2>
+          <p>
+            Following the capturing phase is the bubbling phase, which is
+            perhaps more commonly utilized. In this phase, the event bubbles up
+            from the target element that triggered the event to the root of the
+            document. This is the default phase in which event handlers are
+            triggered if no phase is specified. Event bubbling ensures that the
+            innermost element's event handlers are executed first and the outer
+            element's event handlers are executed thereafter.
+          </p>
+          <p>
+            During this phase, one can employ event delegation, a practice of
+            adding an event listener to a parent element to avoid adding event
+            listeners to multiple child elements. This not only optimizes
+            performance but also works seamlessly with dynamically added
+            elements.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Using event.stopPropagation()</h2>
+          <p>
+            A critical aspect of controlling event propagation is the method
+            <code>event.stopPropagation()</code>. This method, when invoked
+            within an event handler, prevents further propagation of the event
+            through either phase, meaning the event will not travel any further
+            along the event flow. This can be a powerful tool when used
+            correctly, allowing for more nuanced control over event handling in
+            complex applications. Moreover, developers can also use
+            <code>event.stopImmediatePropagation()</code> to prevent other event
+            handlers on the same element from running.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Practical Examples and Significance</h2>
+          <p>
+            To illustrate, consider a scenario where you have nested elements,
+            and each has an event listener attached. Understanding event
+            propagation will allow you to control which handlers respond to an
+            event and in what order, offering a structured approach to handle
+            complex functionalities.
+          </p>
+          <p>
+            Understanding event propagation thoroughly can provide several
+            benefits in front-end development. Firstly, it can help to prevent
+            undesirable effects from occurring by stopping events from reaching
+            elements that should not respond to them. Secondly, it enables the
+            use of event delegation, a technique that can significantly enhance
+            the performance and maintainability of web applications with many
+            interactive elements. Moreover, a deep understanding of event
+            propagation fosters writing clean, optimized, and bug-resistant
+            code.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Conclusion</h2>
+          <p>
+            In conclusion, a firm understanding of event propagation —
+            encompassing the capturing phase, the bubbling phase, and the
+            utilization of methods to control propagation — is indispensable for
+            a frontend developer aiming to build scalable and efficient web
+            applications. By focusing on this topic, prospective candidates can
+            not only crack their front-end interviews but also pave the way for
+            a successful career in web development.
+          </p>
+        </div>
+      </div>
+
+      <button class="accordion">
+        <strong>Progressive enhancement vs Graceful degradation</strong
+        ><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <h3>
+          Can you describe the difference between progressive enhancement and
+          graceful degradation?
+        </h3>
+        <p>
+          Understanding the nuances between "Progressive Enhancement" and
+          "Graceful Degradation" is fundamental in crafting web applications
+          that offer a remarkable and consistent user experience across a myriad
+          of devices and browsers. Both strategies pertain to how a website or
+          application adapts to varying levels of technological capabilities,
+          but they approach the challenge from opposite directions.
+        </p>
+        <h3>Graceful Degradation</h3>
+        <p>
+          Graceful Degradation is a strategy that begins with the creation of a
+          website or application with all the modern features and
+          functionalities, making it fully compatible with the latest browsers
+          or devices. Once the primary, feature-rich version is established,
+          developers then focus on ensuring that the site or application remains
+          functional on older browsers or devices, albeit potentially with
+          reduced functionality or aesthetics. <br />
+          The core principle of graceful degradation is to present the best
+          possible version of the website first, but to also ensure that users
+          with older technologies are not excluded entirely. They might miss out
+          on some functionalities or have a less refined experience, but the
+          essential features of the website would still be available to them.
+          This approach requires careful planning to avoid scenarios where older
+          technologies encounter insurmountable issues that prevent users from
+          accessing the basic content or functionalities.
+        </p>
+        <h3>Progressive Enhancement</h3>
+        <p>
+          On the other side of the spectrum is Progressive Enhancement, a
+          strategy that starts with the development of the most basic version of
+          a website, which would be functional on any device or browser, no
+          matter how old. From this foundation, developers then incrementally
+          add features and functionalities that enhance the user experience but
+          are not essential for the basic use of the site. These enhancements
+          are layered in such a way that they activate only when accessed
+          through browsers or devices capable of supporting them. <br />
+          Progressive enhancement emphasizes universal accessibility and
+          usability, ensuring that all users can access the essential content
+          and functionalities of a site, regardless of the limitations of their
+          technology. This approach fosters a user-centric philosophy, focusing
+          on delivering a solid base experience that can be enriched for users
+          with access to more advanced technologies.
+        </p>
+        <h3>Comparative Analysis</h3>
+        <p>
+          Comparing the two, Progressive Enhancement can be seen as a
+          "mobile-first" or "content-first" approach, focusing on delivering the
+          critical content to users above all else, and then progressively
+          adding enhancements for users with the capacity to appreciate them.
+          Graceful Degradation, meanwhile, might be considered a "desktop-first"
+          approach, focusing initially on delivering a rich, full-featured
+          experience, and then working backward to accommodate users with lesser
+          capabilities.
+        </p>
+        <h3>Real-world Application and Implications</h3>
+        <p>
+          In real-world application development, choosing between progressive
+          enhancement and graceful degradation often depends on the specific
+          requirements and target audience of the project. Progressive
+          enhancement may be favored for public-facing websites where the
+          broadest accessibility is a priority. At the same time, graceful
+          degradation might be the preferred strategy for applications targeting
+          users known to have access to modern technology. <br />
+          Furthermore, from a testing and maintenance perspective, progressive
+          enhancement can often be easier to manage, as it naturally encourages
+          modular and layered development. In contrast, graceful degradation can
+          sometimes lead to more complex codebases as developers attempt to
+          retrofit compatibility for older technologies.
+        </p>
+        <h3>Conclusion</h3>
+        <p>
+          In conclusion, both Progressive Enhancement and Graceful Degradation
+          are vital strategies in the realm of web development, fostering
+          inclusivity and optimal user experience. Aspiring developers aiming to
+          excel in front-end interviews should not only grasp the conceptual
+          differences between the two approaches but also understand how to
+          implement each strategy practically in different project contexts.
+          Moreover, an adept understanding of these strategies equips candidates
+          to articulate well-informed choices in building robust, scalable, and
+          user-friendly web applications.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong>How does "this" work?</strong><span class="arrow"></span>
+      </button>
+      <div class="panel">
+        <p>
+          The concept of this in JavaScript is both pivotal and occasionally
+          perplexing, especially for newcomers. It is a complex aspect of
+          JavaScript, encompassing various nuances that are determined by how a
+          function is called rather than where it is defined. Understanding this
+          is vital for anyone venturing into JavaScript development,
+          particularly because it plays an instrumental role in object-oriented
+          programming within the language.
+        </p>
+        <h2>Contextual Behavior</h2>
+        <p>
+          At its core, <code>this</code> refers to the context in which a
+          function is executed, and it can represent different values based on
+          the circumstances of the function call. Let’s delve into various
+          scenarios that influence the value of <code>this</code>:
+        </p>
+        <h3>Global Context</h3>
+        <p>
+          In a global context, outside of any function or object,
+          <code>this</code> refers to the global object. In browsers, it
+          generally refers to the window object, while in a Node.js environment,
+          it refers to the global object.
+        </p>
+        <pre><code>console.log(this); // In a browser, this will refer to the window object</code></pre>
+
+        <h3>Function Context</h3>
+        <p>
+          Inside a regular function call, <code>this</code> will refer to the
+          global object (in non-strict mode) or be undefined (in strict mode).
+          This behavior can sometimes lead to bugs and unexpected behavior in
+          your code.
+        </p>
+        <pre><code>function test() { console.log(this); } test(); // In non-strict mode, this will refer to the global object</code></pre>
+        <h3>Object Method Context</h3>
+        <p>
+          When a function is called as a method of an object,
+          <code>this</code> refers to the object on which the method was called.
+        </p>
+        <pre><code>const obj = { 
+    prop: 42,
+func: function() { return this.prop; }
+};
+console.log(obj.func()); // Logs 42</code></pre>
+        <h2>Advanced Scenarios</h2>
+        <h3>Event Handlers</h3>
+        <p>
+          In the context of event handlers, <code>this</code> refers to the
+          element that triggered the event.
+        </p>
+        <pre><code>button.addEventListener('click', function() {
+    console.log(this); // this will refer to the button element
+});</code></pre>
+        <h3>Constructor Functions</h3>
+        <p>
+          Inside a constructor function, <code>this</code> refers to the newly
+          created instance of the object.
+        </p>
+        <pre><code>function Person(name) {
+    this.name = name;
+}
+const john = new Person('John');
+console.log(john.name); // Logs 'John'</code></pre>
+        <h3>Arrow Functions</h3>
+        <p>
+          Arrow functions do not have their own <code>this</code> context;
+          instead, they inherit <code>this</code> from the enclosing lexical
+          context.
+        </p>
+        <pre><code>const obj = {
+    prop: 42,
+    func: () => {
+    return this.prop;
+    }
+    };
+    console.log(obj.func()); // undefined, as arrow functions do not have their own this context</code></pre>
+
+        <h2>Handling 'this' with Call, Apply, and Bind</h2>
+        <p>
+          JavaScript also provides methods to manipulate the context of
+          <code>this</code> explicitly:
+        </p>
+        <ul>
+          <li>
+            <strong>Call:</strong> The <code>call</code> method allows you to
+            invoke a function with a specified <code>this</code> value and
+            arguments.
+          </li>
+          <li>
+            <strong>Apply:</strong> Similar to <code>call</code>, but takes an
+            array-like object of arguments.
+          </li>
+          <li>
+            <strong>Bind:</strong> Returns a new function, where
+            <code>this</code> has a predefined value.
+          </li>
+        </ul>
+        <h3>Example:</h3>
+        <pre><code>function greet(greeting) {
+    return ${greeting}, ${this.name};
+}
+
+const person = { name: 'Alice' };
+const greetPerson = greet.bind(person);
+console.log(greetPerson('Hello')); // Logs 'Hello, Alice'</code></pre>
+        <h2>Conclusion</h2>
+        <p>
+          To navigate JavaScript effectively, gaining a solid grasp on how
+          <code>this</code> operates is indispensable. It not only aids in
+          writing more robust and error-free code but also enables developers to
+          utilize powerful design patterns such as constructors and prototypes.
+          As someone preparing for front-end interviews, deep-diving into the
+          workings and applications of <code>this</code> will certainly stand
+          you in good stead, facilitating nuanced discussions around JavaScript
+          programming. Remember, practice is key; continually experimenting with
+          <code>this</code> in different scenarios will solidify your
+          understanding and skill in managing context within JavaScript.
+        </p>
+      </div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+
+      <button class="accordion">
+        <strong></strong><span class="arrow"></span>
+      </button>
+      <div class="panel"></div>
+    </div>
+    <script src="../Frontend_System_Design/main.js"></script>
+  </body>
+</html>
