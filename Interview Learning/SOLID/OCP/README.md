@@ -14,3 +14,7 @@ Disadvantages:
     1. The resource allocator code need to be unit tested when a new esouce type is added.
     2. Adding a new resource type introduces considerable risk in the design as almost all aspects of resource allocation have to be modified.
     3. Developer adding a new resource type has to understand the inner workings for the resource allocator.
+
+Examples:
+    1. Creating a quiz with multiple types of questions: MCQ, True/False... .
+    2. Say we need to make class Product which have some proprities of the product like its name , color and size. We also need to make a filter to filter these products by size , color , name or combination of the three.
