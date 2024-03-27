@@ -4,7 +4,9 @@ Or no client should be forced to depend on methods it does not use.
 
 Advantages:
 
-1.  Faster Compilation: If you have violated ISP i.e... that you have stuffed methods in interface, and when method signature changes, you need to recompile all derived classes. This is an important aspects in some compiled languages like C++ which is well known for slow compilation. While another way around is self explainable. 2. Reuseability: 'Fat Interfaces'- Interfaces with additional useless methods - lead to inadverent coupling between classes. Thus, an experienced dev knows coupling is bane of reuseability. 3. Maintainability: The much more universal ISP benefit is that by avoiding unneeded dependencies, the system becomes:
+1.  Faster Compilation: If you have violated ISP i.e... that you have stuffed methods in interface, and when method signature changes, you need to recompile all derived classes. This is an important aspects in some compiled languages like C++ which is well known for slow compilation. While another way around is self explainable. 
+2. Reuseability: 'Fat Interfaces'- Interfaces with additional useless methods - lead to inadverent coupling between classes. Thus, an experienced dev knows coupling is bane of reuseability. 
+3. Maintainability: The much more universal ISP benefit is that by avoiding unneeded dependencies, the system becomes:
     a. Easier to understand.
     b. Lighter to test.
     c. Quicker to change.
